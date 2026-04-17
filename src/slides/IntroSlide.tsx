@@ -46,7 +46,7 @@ export function IntroSlide() {
   return (
     <div style={{
       position: "absolute", inset: 0,
-      background: theme.darkGray,
+      background: "#424242",
       fontFamily: font,
       overflow: "hidden",
     }}>
