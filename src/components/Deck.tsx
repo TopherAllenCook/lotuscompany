@@ -245,7 +245,7 @@ function DeckInner({ slides, initialIndex = 0 }: DeckProps) {
         if (editorOpen) { closeEditor(); return; }
         return;
       }
-      if (e.key === "e" || e.key === "E") {
+      if ((e.key === "e" || e.key === "E") && !["INPUT", "TEXTAREA"].includes((e.target as Element).tagName)) {
         if (editorOpen) closeEditor();
         else openEditor();
         return;

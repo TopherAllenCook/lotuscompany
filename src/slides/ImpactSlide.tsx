@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { LotusMark } from "@/components/LotusMark";
 import { theme, font, EASE_OUT } from "@/lib/theme";
 import { asset } from "@/lib/storage";
+import { EditableText } from "@/components/EditableText";
 
 const lift = (delay: number) => ({
   initial:   { opacity: 0, y: 10 },
@@ -15,6 +16,8 @@ const reveal = (delay: number) => ({
   animate:   { clipPath: "inset(0% 0 -20px 0)",   y: 0 },
   transition: { delay, duration: 0.7, ease: EASE_OUT },
 });
+
+const TITLE_WORDS = ["the", "impact", "initiative."];
 
 export function ImpactSlide() {
   return (
@@ -30,7 +33,7 @@ export function ImpactSlide() {
         style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 40%" }}
       />
 
-      {/* Gradient — heavy at bottom */}
+      {/* Gradient */}
       <div style={{
         position: "absolute", inset: 0,
         background: "linear-gradient(to top, rgba(5,10,12,0.97) 0%, rgba(5,10,12,0.65) 40%, rgba(5,10,12,0.15) 70%, rgba(5,10,12,0.05) 100%)",
@@ -44,28 +47,30 @@ export function ImpactSlide() {
         02 / steelton village
       </motion.div>
 
-      {/* Main content — bottom aligned */}
+      {/* Main content */}
       <div style={{ position: "absolute", bottom: 72, left: 72, right: 72 }}>
 
         {/* Eyebrow */}
         <motion.div {...lift(0.3)} style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 24 }}>
           <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.3, duration: 0.5 }}
             style={{ width: 52, height: 1.5, background: theme.turquoise, transformOrigin: "left" }} />
-          <span style={{ fontSize: 13, fontWeight: 400, letterSpacing: "0.4em", color: theme.turquoise, textTransform: "lowercase" }}>
+          <EditableText id="impact:eyebrow" label="eyebrow" as="span" style={{ fontSize: 13, fontWeight: 400, letterSpacing: "0.4em", color: theme.turquoise, textTransform: "lowercase" }}>
             steelton village · phase 1
-          </span>
+          </EditableText>
           <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.3, duration: 0.5 }}
             style={{ width: 52, height: 1.5, background: theme.turquoise, transformOrigin: "left" }} />
         </motion.div>
 
         {/* Title */}
         <div style={{ fontSize: "clamp(64px,8vw,128px)", fontWeight: 300, color: "#fff", lineHeight: 0.92, letterSpacing: "-0.025em", textTransform: "lowercase" }}>
-          {["the", "impact", "initiative."].map((word, i) => (
+          {TITLE_WORDS.map((word, i) => (
             <div key={word} style={{ overflow: "hidden", paddingBottom: 10 }}>
               <motion.span {...reveal(0.5 + i * 0.15)} style={{ display: "inline-block" }}>
-                {word === "initiative." ? (
-                  <>initiative<span style={{ color: theme.turquoise }}>.</span></>
-                ) : word}
+                <EditableText id={`impact:title-${i}`} label={`title — ${word}`} as="span">
+                  {word === "initiative." ? (
+                    <>initiative<span style={{ color: theme.turquoise }}>.</span></>
+                  ) : word}
+                </EditableText>
               </motion.span>
             </div>
           ))}
@@ -73,8 +78,10 @@ export function ImpactSlide() {
       </div>
 
       {/* Tagline */}
-      <motion.div {...lift(1.3)} style={{ position: "absolute", bottom: 32, right: 72, fontSize: 13, fontWeight: 300, color: "rgba(206,232,238,0.40)", letterSpacing: "0.28em", textTransform: "lowercase" }}>
-        mindfully creating.
+      <motion.div {...lift(1.3)} style={{ position: "absolute", bottom: 32, right: 72 }}>
+        <EditableText id="impact:tagline" label="tagline" as="span" style={{ fontSize: 13, fontWeight: 300, color: "rgba(206,232,238,0.40)", letterSpacing: "0.28em", textTransform: "lowercase" }}>
+          mindfully creating.
+        </EditableText>
       </motion.div>
     </div>
   );

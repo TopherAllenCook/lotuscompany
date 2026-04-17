@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { LotusMark } from "@/components/LotusMark";
 import { theme, font, EASE_OUT } from "@/lib/theme";
+import { EditableText } from "@/components/EditableText";
 
 const reveal = (delay: number) => ({
   initial:   { clipPath: "inset(110% 0 -20px 0)", y: 22 },
@@ -60,43 +61,47 @@ export function IntroSlide() {
 
         <div style={{ textAlign: "center" }}>
           <div style={{ overflow: "hidden", paddingBottom: 4, marginBottom: 4 }}>
-            <motion.span
-              {...reveal(0.55)}
-              style={{
-                display: "inline-block",
+            <motion.span {...reveal(0.55)} style={{ display: "inline-block" }}>
+              <EditableText id="intro:the-lotus" label="the lotus" as="span" style={{
                 fontSize: "clamp(24px, 2.8vw, 48px)",
                 fontWeight: 400, color: "#fff",
                 letterSpacing: "0.42em", textTransform: "lowercase",
-              }}
-            >the lotus</motion.span>
+              }}>
+                the lotus
+              </EditableText>
+            </motion.span>
           </div>
 
           <div style={{ overflow: "hidden", paddingBottom: 10 }}>
-            <motion.span
-              {...reveal(0.72)}
-              style={{
-                display: "inline-block",
+            <motion.span {...reveal(0.72)} style={{ display: "inline-block" }}>
+              <EditableText id="intro:tagline" label="impact initiative." as="span" style={{
                 fontSize: "clamp(52px, 7.5vw, 128px)",
                 fontWeight: 300, color: theme.turquoise,
                 letterSpacing: "-0.02em", textTransform: "lowercase", lineHeight: 0.92,
-              }}
-            >impact initiative<span style={{ color: "#028faa" }}>.</span></motion.span>
+              }}>
+                impact initiative<span style={{ color: "#028faa" }}>.</span>
+              </EditableText>
+            </motion.span>
           </div>
 
           <motion.div
             initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ delay: 1.0, duration: 0.6, ease: EASE_OUT }}
-            style={{
+          >
+            <EditableText id="intro:mindfully" label="mindfully creating." as="span" style={{
+              display: "inline-block",
               marginTop: 20,
               fontSize: "clamp(15px, 1.5vw, 20px)", fontWeight: 400,
               color: "#fff", letterSpacing: "0.32em", textTransform: "lowercase",
-            }}
-          >mindfully creating.</motion.div>
+            }}>
+              mindfully creating.
+            </EditableText>
+          </motion.div>
         </div>
       </div>
 
-      {/* Pillars — moved up from bottom edge */}
+      {/* Pillars */}
       <div style={{
         position: "absolute",
         bottom: 96,
@@ -116,11 +121,13 @@ export function IntroSlide() {
             {i > 0 && (
               <div style={{ width: 3, height: 3, borderRadius: "50%", background: "#028faa", flexShrink: 0 }} />
             )}
-            <span style={{
+            <EditableText id={`intro:pillar-${i}`} label={`pillar — ${pillar}`} as="span" style={{
               fontSize: "clamp(12px, 1.1vw, 15px)", fontWeight: 400,
               color: "#fff", letterSpacing: "0.26em",
               textTransform: "lowercase", whiteSpace: "nowrap",
-            }}>{pillar}</span>
+            }}>
+              {pillar}
+            </EditableText>
           </motion.div>
         ))}
       </div>

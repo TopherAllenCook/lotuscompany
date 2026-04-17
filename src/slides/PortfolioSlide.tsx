@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { LotusMark } from "@/components/LotusMark";
 import { theme, font, EASE_OUT } from "@/lib/theme";
 import { asset } from "@/lib/storage";
+import { EditableText } from "@/components/EditableText";
 
 const IMAGES = [
   { src: asset("/nova/Commercial 2025-07-07 Lotus-Nova-1.jpg"),                            label: "lotus nova",      col: "1", row: "1 / 3" },
@@ -28,7 +29,9 @@ export function PortfolioSlide() {
       </motion.div>
       <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.5 }}
         style={{ position: "absolute", top: 62, right: 72, display: "flex", alignItems: "center", gap: 12, zIndex: 10 }}>
-        <span style={{ fontSize: 12, fontWeight: 400, letterSpacing: "0.36em", color: theme.turquoise, textTransform: "lowercase" }}>the lotus portfolio</span>
+        <EditableText id="portfolio:header" label="header — the lotus portfolio" as="span" style={{ fontSize: 12, fontWeight: 400, letterSpacing: "0.36em", color: theme.turquoise, textTransform: "lowercase" }}>
+          the lotus portfolio
+        </EditableText>
         <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.35, duration: 0.5 }}
           style={{ width: 36, height: 1.5, background: theme.turquoise, transformOrigin: "left" }} />
       </motion.div>
@@ -60,18 +63,23 @@ export function PortfolioSlide() {
               position: "absolute", bottom: 0, left: 0, right: 0,
               padding: "24px 14px 12px",
               background: "linear-gradient(to top, rgba(0,0,0,0.58) 0%, transparent 100%)",
-              fontSize: 10, fontWeight: 400, letterSpacing: "0.3em",
-              color: "rgba(206,232,238,0.78)", textTransform: "lowercase",
             }}>
-              {img.label}
+              <EditableText id={`portfolio:img-label-${i}`} label={`image — ${img.label} ${i}`} as="span" style={{
+                fontSize: 10, fontWeight: 400, letterSpacing: "0.3em",
+                color: "rgba(206,232,238,0.78)", textTransform: "lowercase",
+              }}>
+                {img.label}
+              </EditableText>
             </div>
           </motion.div>
         ))}
       </div>
 
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9, duration: 0.6 }}
-        style={{ position: "absolute", bottom: 16, right: 64, fontSize: 13, fontWeight: 300, color: "rgba(206,232,238,0.40)", letterSpacing: "0.28em", textTransform: "lowercase" }}>
-        mindfully creating.
+        style={{ position: "absolute", bottom: 16, right: 64 }}>
+        <EditableText id="portfolio:tagline" label="tagline" as="span" style={{ fontSize: 13, fontWeight: 300, color: "rgba(206,232,238,0.40)", letterSpacing: "0.28em", textTransform: "lowercase" }}>
+          mindfully creating.
+        </EditableText>
       </motion.div>
     </div>
   );

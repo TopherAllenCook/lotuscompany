@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { LotusMark } from "@/components/LotusMark";
 import { theme, font, EASE_OUT } from "@/lib/theme";
 import { asset } from "@/lib/storage";
+import { EditableText } from "@/components/EditableText";
 
 const lift = (delay: number) => ({
   initial:   { opacity: 0, y: 12 },
@@ -44,33 +45,37 @@ export function CoverSlide() {
       {/* Location — top right */}
       <motion.div {...lift(0.25)} style={{ position: "absolute", top: 66, right: 72, display: "flex", alignItems: "center", gap: 12 }}>
         <div style={{ width: 5, height: 5, borderRadius: "50%", background: theme.turquoise }} />
-        <span style={{ fontSize: 13, fontWeight: 400, letterSpacing: "0.28em", color: theme.lightBlue, textTransform: "lowercase" }}>
+        <EditableText id="cover:location" label="location" as="span" style={{ fontSize: 13, fontWeight: 400, letterSpacing: "0.28em", color: theme.lightBlue, textTransform: "lowercase" }}>
           columbus, ohio
-        </span>
+        </EditableText>
       </motion.div>
 
-      {/* Eyebrow — floated up, white */}
+      {/* Eyebrow */}
       <motion.div {...lift(0.4)} style={{ position: "absolute", top: "14%", left: 72, right: 72, display: "flex", alignItems: "center", gap: 16 }}>
         <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.4, duration: 0.5, ease: "easeOut" }}
           style={{ width: 52, height: 1.5, background: theme.turquoise, transformOrigin: "left" }} />
-        <span style={{ fontSize: 13, fontWeight: 400, letterSpacing: "0.36em", color: "#fff", textTransform: "lowercase" }}>
+        <EditableText id="cover:eyebrow" label="eyebrow" as="span" style={{ fontSize: 13, fontWeight: 400, letterSpacing: "0.36em", color: "#fff", textTransform: "lowercase" }}>
           new development · phase 1
-        </span>
+        </EditableText>
         <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.4, duration: 0.5, ease: "easeOut" }}
           style={{ width: 52, height: 1.5, background: theme.turquoise, transformOrigin: "left" }} />
       </motion.div>
 
-      {/* Title + stats — moved up */}
+      {/* Title + stats */}
       <div style={{ position: "absolute", bottom: 96, left: 72, right: 72 }}>
 
         {/* Title */}
         <div style={{ fontSize: "clamp(64px,7vw,108px)", fontWeight: 300, color: "#fff", lineHeight: 0.92, letterSpacing: "-0.02em", textTransform: "lowercase", marginBottom: 36 }}>
           <div style={{ overflow: "hidden", paddingBottom: 10 }}>
-            <motion.span {...reveal(0.55)} style={{ display: "inline-block" }}>steelton</motion.span>
+            <motion.span {...reveal(0.55)} style={{ display: "inline-block" }}>
+              <EditableText id="cover:title-1" label="title — steelton" as="span">steelton</EditableText>
+            </motion.span>
           </div>
           <div style={{ overflow: "hidden", paddingBottom: 10 }}>
             <motion.span {...reveal(0.7)} style={{ display: "inline-block" }}>
-              village<span style={{ color: theme.turquoise }}>.</span>
+              <EditableText id="cover:title-2" label="title — village." as="span">
+                village<span style={{ color: theme.turquoise }}>.</span>
+              </EditableText>
             </motion.span>
           </div>
         </div>
@@ -78,22 +83,34 @@ export function CoverSlide() {
         {/* Stats strip */}
         <div style={{ display: "flex", alignItems: "center", gap: 40 }}>
           <motion.div {...lift(1.0)}>
-            <div style={{ fontSize: 36, fontWeight: 300, color: "#fff", lineHeight: 1, letterSpacing: "-0.02em" }}>270</div>
-            <div style={{ fontSize: 11, fontWeight: 400, color: theme.turquoise, letterSpacing: "0.22em", textTransform: "lowercase", marginTop: 5 }}>units</div>
+            <EditableText id="cover:stat-num-0" label="stat — 270 units number" as="div" style={{ fontSize: 36, fontWeight: 300, color: "#fff", lineHeight: 1, letterSpacing: "-0.02em" }}>
+              270
+            </EditableText>
+            <EditableText id="cover:stat-label-0" label="stat — units label" as="div" style={{ fontSize: 11, fontWeight: 400, color: theme.turquoise, letterSpacing: "0.22em", textTransform: "lowercase", marginTop: 5 }}>
+              units
+            </EditableText>
           </motion.div>
 
           <motion.div {...lift(1.0)} style={{ width: 1, height: 48, background: "rgba(206,232,238,0.18)" }} />
 
           <motion.div {...lift(1.1)}>
-            <div style={{ fontSize: 22, fontWeight: 400, color: "#fff", lineHeight: 1, letterSpacing: "0.08em", textTransform: "lowercase" }}>lihtc</div>
-            <div style={{ fontSize: 11, fontWeight: 400, color: theme.turquoise, letterSpacing: "0.22em", textTransform: "lowercase", marginTop: 5 }}>financing</div>
+            <EditableText id="cover:stat-num-1" label="stat — lihtc number" as="div" style={{ fontSize: 22, fontWeight: 400, color: "#fff", lineHeight: 1, letterSpacing: "0.08em", textTransform: "lowercase" }}>
+              lihtc
+            </EditableText>
+            <EditableText id="cover:stat-label-1" label="stat — financing label" as="div" style={{ fontSize: 11, fontWeight: 400, color: theme.turquoise, letterSpacing: "0.22em", textTransform: "lowercase", marginTop: 5 }}>
+              financing
+            </EditableText>
           </motion.div>
 
           <motion.div {...lift(1.1)} style={{ width: 1, height: 48, background: "rgba(206,232,238,0.18)" }} />
 
           <motion.div {...lift(1.2)}>
-            <div style={{ fontSize: 22, fontWeight: 300, color: "#fff", lineHeight: 1.15, textTransform: "lowercase" }}>development</div>
-            <div style={{ fontSize: 22, fontWeight: 300, color: theme.turquoise, lineHeight: 1.15, textTransform: "lowercase" }}>opportunity</div>
+            <EditableText id="cover:stat-line-1" label="stat — development line" as="div" style={{ fontSize: 22, fontWeight: 300, color: "#fff", lineHeight: 1.15, textTransform: "lowercase" }}>
+              development
+            </EditableText>
+            <EditableText id="cover:stat-line-2" label="stat — opportunity line" as="div" style={{ fontSize: 22, fontWeight: 300, color: theme.turquoise, lineHeight: 1.15, textTransform: "lowercase" }}>
+              opportunity
+            </EditableText>
           </motion.div>
         </div>
       </div>

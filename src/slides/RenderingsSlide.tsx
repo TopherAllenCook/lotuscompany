@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import { LotusMark } from "@/components/LotusMark";
 import { theme, font, EASE_OUT } from "@/lib/theme";
 import { asset } from "@/lib/storage";
+import { EditableText } from "@/components/EditableText";
 
-// Editorial layout: asymmetric columns + rows so each image has different visual weight
 const IMAGES = [
   { file: "Steelton I_Updated Lobby_2026.04.02.jpg",        label: "lobby",               col: "1", row: "1 / 3" },
   { file: "Steelton I_Unit Rendering_2026.03.10.jpg",       label: "unit interior",        col: "2", row: "1" },
@@ -28,7 +28,9 @@ export function RenderingsSlide() {
       </motion.div>
       <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.5 }}
         style={{ position: "absolute", top: 54, right: 72, display: "flex", alignItems: "center", gap: 12, zIndex: 10 }}>
-        <span style={{ fontSize: 12, fontWeight: 400, letterSpacing: "0.36em", color: theme.turquoise, textTransform: "lowercase" }}>the renderings</span>
+        <EditableText id="renderings:header" label="header — the renderings" as="span" style={{ fontSize: 12, fontWeight: 400, letterSpacing: "0.36em", color: theme.turquoise, textTransform: "lowercase" }}>
+          the renderings
+        </EditableText>
         <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.3, duration: 0.5 }}
           style={{ width: 36, height: 1.5, background: theme.turquoise, transformOrigin: "left" }} />
       </motion.div>
@@ -64,18 +66,23 @@ export function RenderingsSlide() {
               position: "absolute", bottom: 0, left: 0, right: 0,
               padding: "28px 16px 14px",
               background: "linear-gradient(to top, rgba(0,0,0,0.62) 0%, transparent 100%)",
-              fontSize: 10, fontWeight: 400, letterSpacing: "0.3em",
-              color: "rgba(206,232,238,0.80)", textTransform: "lowercase",
             }}>
-              {img.label}
+              <EditableText id={`renderings:img-label-${i}`} label={`image — ${img.label}`} as="span" style={{
+                fontSize: 10, fontWeight: 400, letterSpacing: "0.3em",
+                color: "rgba(206,232,238,0.80)", textTransform: "lowercase",
+              }}>
+                {img.label}
+              </EditableText>
             </div>
           </motion.div>
         ))}
       </div>
 
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9, duration: 0.6 }}
-        style={{ position: "absolute", bottom: 16, right: 64, fontSize: 13, fontWeight: 300, color: "rgba(206,232,238,0.40)", letterSpacing: "0.28em", textTransform: "lowercase" }}>
-        mindfully creating.
+        style={{ position: "absolute", bottom: 16, right: 64 }}>
+        <EditableText id="renderings:tagline" label="tagline" as="span" style={{ fontSize: 13, fontWeight: 300, color: "rgba(206,232,238,0.40)", letterSpacing: "0.28em", textTransform: "lowercase" }}>
+          mindfully creating.
+        </EditableText>
       </motion.div>
     </div>
   );

@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { theme, font, EASE_OUT } from "@/lib/theme";
+import { EditableText } from "@/components/EditableText";
 
 export function BeliefSlide() {
   return (
@@ -23,7 +24,7 @@ export function BeliefSlide() {
           }}
         />
 
-        {/* Soft top-left darkening for headline contrast */}
+        {/* Soft top-left darkening */}
         <div style={{
           position: "absolute", inset: 0,
           background: "linear-gradient(160deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.22) 45%, transparent 70%)",
@@ -35,52 +36,66 @@ export function BeliefSlide() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.1, duration: 0.5 }}
-          style={{
-            position: "absolute", top: 32, left: 52,
+          style={{ position: "absolute", top: 32, left: 52 }}
+        >
+          <EditableText id="belief:lotus-tag" label="/lotus tag" as="span" style={{
             fontSize: 11, fontWeight: 400, color: "#fff",
             letterSpacing: "0.32em", textTransform: "lowercase",
-          }}
-        >/lotus</motion.span>
+          }}>
+            /lotus
+          </EditableText>
+        </motion.span>
 
         {/* 02 — top right */}
         <motion.span
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.1, duration: 0.5 }}
-          style={{
-            position: "absolute", top: 32, right: 52,
+          style={{ position: "absolute", top: 32, right: 52 }}
+        >
+          <EditableText id="belief:slide-num" label="slide number" as="span" style={{
             fontSize: 11, fontWeight: 400, color: "#fff",
             letterSpacing: "0.32em",
-          }}
-        >02</motion.span>
+          }}>
+            02
+          </EditableText>
+        </motion.span>
 
-        {/* Headline — sits just below the /lotus label */}
+        {/* Headline */}
         <div style={{ position: "absolute", top: 58, left: 52 }}>
           <div style={{ overflow: "hidden", marginBottom: 6 }}>
             <motion.span
               initial={{ opacity: 0, y: "1em" }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.45, ease: EASE_OUT }}
-              style={{
+              style={{ display: "block" }}
+            >
+              <EditableText id="belief:headline-1" label="headline line 1" as="span" style={{
                 display: "block",
                 fontSize: "clamp(56px, 8.5vw, 140px)",
                 fontWeight: 300, color: "#fff",
                 letterSpacing: "0.01em", textTransform: "lowercase", lineHeight: 1.0,
-              }}
-            >mindfully creating</motion.span>
+              }}>
+                mindfully creating
+              </EditableText>
+            </motion.span>
           </div>
           <div style={{ overflow: "hidden" }}>
             <motion.span
               initial={{ opacity: 0, y: "1em" }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.48, duration: 0.45, ease: EASE_OUT }}
-              style={{
+              style={{ display: "block" }}
+            >
+              <EditableText id="belief:headline-2" label="headline line 2" as="span" style={{
                 display: "block",
                 fontSize: "clamp(56px, 8.5vw, 140px)",
                 fontWeight: 300, color: "#fff",
                 letterSpacing: "0.01em", textTransform: "lowercase", lineHeight: 1.0,
-              }}
-            >beautiful affordable housing</motion.span>
+              }}>
+                beautiful affordable housing
+              </EditableText>
+            </motion.span>
           </div>
         </div>
       </div>
@@ -96,22 +111,22 @@ export function BeliefSlide() {
         gap: 36,
       }}>
 
-        {/* Column 1: initiative overview */}
+        {/* Column 1 */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.82, duration: 0.5 }}
           style={{ flex: 1.4 }}
         >
-          <p style={{
+          <EditableText id="belief:col1-header" label="col 1 header — the initiative" as="p" style={{
             margin: "0 0 8px",
             fontSize: "clamp(11px, 1.05vw, 14px)",
             fontWeight: 600, color: theme.turquoise,
             letterSpacing: "0.18em", textTransform: "lowercase",
           }}>
             the initiative
-          </p>
-          <p style={{
+          </EditableText>
+          <EditableText id="belief:col1-body" label="col 1 body" as="p" style={{
             margin: 0,
             fontSize: "clamp(14px, 1.45vw, 20px)",
             fontWeight: 400, color: "#424242",
@@ -122,27 +137,27 @@ export function BeliefSlide() {
             housing built to a single standard — market-rate and affordable
             alike. on-site lotus impact hubs carry that standard into daily
             life with childcare, tutoring, and enriching services for residents.
-          </p>
+          </EditableText>
         </motion.div>
 
         <Divider delay={0.9} />
 
-        {/* Column 2: how it works */}
+        {/* Column 2 */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.95, duration: 0.5 }}
           style={{ flex: 1.4 }}
         >
-          <p style={{
+          <EditableText id="belief:col2-header" label="col 2 header — the structure" as="p" style={{
             margin: "0 0 8px",
             fontSize: "clamp(11px, 1.05vw, 14px)",
             fontWeight: 600, color: theme.turquoise,
             letterSpacing: "0.18em", textTransform: "lowercase",
           }}>
             the structure
-          </p>
-          <p style={{
+          </EditableText>
+          <EditableText id="belief:col2-body" label="col 2 body" as="p" style={{
             margin: 0,
             fontSize: "clamp(14px, 1.45vw, 20px)",
             fontWeight: 400, color: "#424242",
@@ -154,12 +169,12 @@ export function BeliefSlide() {
             motion. after repayment from tax credit investor equity, partners
             secure membership interest — aligning cash flow and equity upside
             with long-term social impact.
-          </p>
+          </EditableText>
         </motion.div>
 
         <Divider delay={1.0} />
 
-        {/* Column 3: kicker */}
+        {/* Column 3 */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -175,7 +190,7 @@ export function BeliefSlide() {
               background: theme.turquoise, flexShrink: 0, marginTop: 5,
             }}
           />
-          <p style={{
+          <EditableText id="belief:kicker" label="kicker" as="p" style={{
             margin: 0,
             fontSize: "clamp(16px, 1.7vw, 24px)",
             fontWeight: 400, color: "#028faa",
@@ -184,7 +199,7 @@ export function BeliefSlide() {
           }}>
             this is more than impact investing.<br />
             this is legacy building.
-          </p>
+          </EditableText>
         </motion.div>
 
       </div>

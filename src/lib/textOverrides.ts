@@ -1,4 +1,7 @@
 export interface TextOverride {
+  content?: string;
+  color?: string;
+  fontWeight?: number;
   fontSize?: number;
   translateX?: number;
   translateY?: number;

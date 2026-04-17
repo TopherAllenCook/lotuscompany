@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { LotusMark } from "@/components/LotusMark";
 import { theme, font, EASE_OUT } from "@/lib/theme";
 import { asset } from "@/lib/storage";
+import { EditableText } from "@/components/EditableText";
 
 function Counter({ to, delay, prefix = "", suffix = "" }: { to: number; delay: number; prefix?: string; suffix?: string }) {
   const val = useMotionValue(0);
@@ -41,7 +42,7 @@ export function LotusWaySlide() {
         style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 50%" }}
       />
 
-      {/* Gradient — strong at bottom, lighter at top */}
+      {/* Gradient */}
       <div style={{
         position: "absolute", inset: 0,
         background: "linear-gradient(to top, rgba(5,10,12,0.98) 0%, rgba(5,10,12,0.75) 35%, rgba(5,10,12,0.30) 60%, rgba(5,10,12,0.10) 100%)",
@@ -62,9 +63,9 @@ export function LotusWaySlide() {
         <motion.div {...lift(0.3)} style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 48 }}>
           <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.3, duration: 0.5 }}
             style={{ width: 52, height: 1.5, background: theme.turquoise, transformOrigin: "left" }} />
-          <span style={{ fontSize: 13, fontWeight: 400, letterSpacing: "0.4em", color: theme.turquoise, textTransform: "lowercase" }}>
+          <EditableText id="lotus-way:eyebrow" label="eyebrow — the lotus way" as="span" style={{ fontSize: 13, fontWeight: 400, letterSpacing: "0.4em", color: theme.turquoise, textTransform: "lowercase" }}>
             the lotus way
-          </span>
+          </EditableText>
           <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.3, duration: 0.5 }}
             style={{ width: 52, height: 1.5, background: theme.turquoise, transformOrigin: "left" }} />
         </motion.div>
@@ -79,17 +80,17 @@ export function LotusWaySlide() {
               transition={{ delay: 0.55 + i * 0.18, duration: 0.7, ease: EASE_OUT }}
               style={{ flex: 1, paddingRight: 48 }}
             >
-              {/* Number */}
+              {/* Number (Counter — not wrappable) */}
               <div style={{ fontSize: "clamp(56px,6.5vw,104px)", fontWeight: 300, color: "#fff", lineHeight: 0.9, letterSpacing: "-0.03em" }}>
                 <Counter to={stat.value} delay={0.8 + i * 0.15} prefix={stat.prefix} suffix={stat.suffix} />
               </div>
 
               {/* Unit label */}
-              <div style={{ fontSize: 13, fontWeight: 400, color: theme.turquoise, letterSpacing: "0.22em", textTransform: "lowercase", marginTop: 10, marginBottom: 12 }}>
+              <EditableText id={`lotus-way:unit-${i}`} label={`unit label — ${stat.unit}`} as="div" style={{ fontSize: 13, fontWeight: 400, color: theme.turquoise, letterSpacing: "0.22em", textTransform: "lowercase", marginTop: 10, marginBottom: 12 }}>
                 {stat.unit}
-              </div>
+              </EditableText>
 
-              {/* Divider line */}
+              {/* Divider */}
               <motion.div
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
@@ -98,17 +99,19 @@ export function LotusWaySlide() {
               />
 
               {/* Sub-label */}
-              <div style={{ fontSize: 12, fontWeight: 300, color: "rgba(206,232,238,0.50)", letterSpacing: "0.06em", lineHeight: 1.6, textTransform: "lowercase" }}>
+              <EditableText id={`lotus-way:sub-${i}`} label={`sub label — ${stat.unit}`} as="div" style={{ fontSize: 12, fontWeight: 300, color: "rgba(206,232,238,0.50)", letterSpacing: "0.06em", lineHeight: 1.6, textTransform: "lowercase" }}>
                 {stat.sub}
-              </div>
+              </EditableText>
             </motion.div>
           ))}
         </div>
       </div>
 
       {/* Tagline */}
-      <motion.div {...lift(1.6)} style={{ position: "absolute", bottom: 16, right: 72, fontSize: 13, fontWeight: 300, color: "rgba(206,232,238,0.40)", letterSpacing: "0.28em", textTransform: "lowercase" }}>
-        mindfully creating.
+      <motion.div {...lift(1.6)} style={{ position: "absolute", bottom: 16, right: 72 }}>
+        <EditableText id="lotus-way:tagline" label="tagline" as="span" style={{ fontSize: 13, fontWeight: 300, color: "rgba(206,232,238,0.40)", letterSpacing: "0.28em", textTransform: "lowercase" }}>
+          mindfully creating.
+        </EditableText>
       </motion.div>
     </div>
   );
