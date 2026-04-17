@@ -4,14 +4,13 @@ import { LotusMark } from "@/components/LotusMark";
 import { theme, font, EASE_OUT } from "@/lib/theme";
 import { asset } from "@/lib/storage";
 
-// Hand-picked selects across Nova, Republic, and Steelton
 const IMAGES = [
-  { src: asset("/nova/Commercial 2025-07-07 Lotus-Nova-1.jpg"),            label: "lotus nova",      span: "col" },
-  { src: asset("/republic/highlights/_DSC1121.jpg"),                        label: "lotus republic",  span: "" },
-  { src: asset("/nova/Commercial 2025-07-07 Lotus-Nova-14.jpg"),            label: "lotus nova",      span: "" },
-  { src: asset("/steelton-village/Steelton I_Pedestrian Promenade_2026.03.10.jpg"), label: "steelton village", span: "" },
-  { src: asset("/republic/aerials/Arial.jpg"),                              label: "lotus republic",  span: "col" },
-  { src: asset("/nova/Commercial 2025-07-07 Lotus-Nova-30.jpg"),            label: "lotus nova",      span: "" },
+  { src: asset("/nova/Commercial 2025-07-07 Lotus-Nova-1.jpg"),                            label: "lotus nova",      col: "1", row: "1 / 3" },
+  { src: asset("/republic/highlights/_DSC1121.jpg"),                                        label: "lotus republic",  col: "2", row: "1" },
+  { src: asset("/nova/Commercial 2025-07-07 Lotus-Nova-14.jpg"),                            label: "lotus nova",      col: "3", row: "1" },
+  { src: asset("/steelton-village/Steelton I_Pedestrian Promenade_2026.03.10.jpg"),         label: "steelton village",col: "2", row: "2" },
+  { src: asset("/republic/aerials/Arial.jpg"),                                              label: "lotus republic",  col: "3", row: "2 / 4" },
+  { src: asset("/nova/Commercial 2025-07-07 Lotus-Nova-30.jpg"),                            label: "lotus nova",      col: "2", row: "3" },
 ];
 
 export function PortfolioSlide() {
@@ -34,36 +33,43 @@ export function PortfolioSlide() {
           style={{ width: 36, height: 1.5, background: theme.turquoise, transformOrigin: "left" }} />
       </motion.div>
 
-      {/* Masonry-style grid */}
+      {/* Asymmetric masonry grid */}
       <div style={{
         position: "absolute", top: 108, bottom: 56, left: 64, right: 64,
         display: "grid",
-        gridTemplateColumns: "1.4fr 1fr 1fr",
-        gridTemplateRows: "1fr 1fr",
-        gap: 10,
+        gridTemplateColumns: "1.5fr 1fr 1fr",
+        gridTemplateRows: "1fr 1fr 1fr",
+        gap: 8,
       }}>
         {IMAGES.map((img, i) => (
           <motion.div
             key={i}
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2 + i * 0.09, duration: 0.6, ease: EASE_OUT }}
+            transition={{ delay: 0.12 + i * 0.1, duration: 0.75, ease: EASE_OUT }}
             style={{
               position: "relative",
               overflow: "hidden",
               borderRadius: 2,
-              gridRow: i === 0 || i === 4 ? "span 2" : undefined,
+              gridColumn: img.col,
+              gridRow: img.row,
             }}
           >
             <img src={img.src} alt={img.label} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-            <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "18px 14px 10px", background: "linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%)", fontSize: 10, fontWeight: 400, letterSpacing: "0.3em", color: "rgba(206,232,238,0.75)", textTransform: "lowercase" }}>
+            <div style={{
+              position: "absolute", bottom: 0, left: 0, right: 0,
+              padding: "24px 14px 12px",
+              background: "linear-gradient(to top, rgba(0,0,0,0.58) 0%, transparent 100%)",
+              fontSize: 10, fontWeight: 400, letterSpacing: "0.3em",
+              color: "rgba(206,232,238,0.78)", textTransform: "lowercase",
+            }}>
               {img.label}
             </div>
           </motion.div>
         ))}
       </div>
 
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.0, duration: 0.6 }}
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9, duration: 0.6 }}
         style={{ position: "absolute", bottom: 16, right: 64, fontSize: 13, fontWeight: 300, color: "rgba(206,232,238,0.40)", letterSpacing: "0.28em", textTransform: "lowercase" }}>
         mindfully creating.
       </motion.div>

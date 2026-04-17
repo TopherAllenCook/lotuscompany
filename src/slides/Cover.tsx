@@ -37,7 +37,7 @@ export function CoverSlide() {
         transition={{ duration: 0.6 }}
         style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(160deg, rgba(15,20,22,0.40) 0%, rgba(10,14,16,0.55) 35%, rgba(5,10,12,0.78) 65%, rgba(2,6,8,0.94) 100%)",
+          background: "linear-gradient(160deg, rgba(15,20,22,0.35) 0%, rgba(10,14,16,0.50) 35%, rgba(5,10,12,0.80) 65%, rgba(2,6,8,0.96) 100%)",
         }}
       />
 
@@ -53,8 +53,8 @@ export function CoverSlide() {
 
       {/* Location — top right */}
       <motion.div {...lift(0.25)} style={{ position: "absolute", top: 66, right: 72, display: "flex", alignItems: "center", gap: 12 }}>
-        <div style={{ width: 6, height: 6, borderRadius: "50%", background: theme.turquoise }} />
-        <span style={{ fontSize: 15, fontWeight: 400, letterSpacing: "0.25em", color: theme.lightBlue, textTransform: "lowercase" }}>
+        <div style={{ width: 5, height: 5, borderRadius: "50%", background: theme.turquoise }} />
+        <span style={{ fontSize: 13, fontWeight: 400, letterSpacing: "0.28em", color: theme.lightBlue, textTransform: "lowercase" }}>
           columbus, ohio
         </span>
       </motion.div>
@@ -71,48 +71,44 @@ export function CoverSlide() {
         <motion.div {...lift(0.4)} style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 20 }}>
           <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.4, duration: 0.5, ease: "easeOut" }}
             style={{ width: 52, height: 1.5, background: theme.turquoise, transformOrigin: "left" }} />
-          <span style={{ fontSize: 14, fontWeight: 400, letterSpacing: "0.32em", color: theme.turquoise, textTransform: "lowercase" }}>
-            new development
+          <span style={{ fontSize: 13, fontWeight: 400, letterSpacing: "0.36em", color: theme.turquoise, textTransform: "lowercase" }}>
+            new development · phase 1
           </span>
           <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.4, duration: 0.5, ease: "easeOut" }}
             style={{ width: 52, height: 1.5, background: theme.turquoise, transformOrigin: "left" }} />
         </motion.div>
 
         {/* Title */}
-        <div style={{ fontSize: "clamp(64px,7vw,108px)", fontWeight: 300, color: "#fff", lineHeight: 0.92, letterSpacing: "-0.02em", textTransform: "lowercase", marginBottom: 14 }}>
+        <div style={{ fontSize: "clamp(64px,7vw,108px)", fontWeight: 300, color: "#fff", lineHeight: 0.92, letterSpacing: "-0.02em", textTransform: "lowercase", marginBottom: 36 }}>
           <div style={{ overflow: "hidden", paddingBottom: 10 }}>
             <motion.span {...reveal(0.55)} style={{ display: "inline-block" }}>steelton</motion.span>
           </div>
-          <div style={{ overflow: "hidden", paddingBottom: 44 }}>
+          <div style={{ overflow: "hidden", paddingBottom: 10 }}>
             <motion.span {...reveal(0.7)} style={{ display: "inline-block" }}>
               village<span style={{ color: theme.turquoise }}>.</span>
             </motion.span>
           </div>
         </div>
 
-        {/* Stats row */}
-        <div style={{ display: "flex", alignItems: "center", gap: 0 }}>
-          <motion.div {...lift(0.9)} style={{ display: "inline-flex", alignItems: "center", background: theme.turquoise, color: "#fff", fontSize: 13, fontWeight: 600, letterSpacing: "0.28em", textTransform: "lowercase", padding: "8px 22px", borderRadius: 2, marginRight: 40, flexShrink: 0 }}>
-            phase 1
+        {/* Stats strip */}
+        <div style={{ display: "flex", alignItems: "center", gap: 40 }}>
+          <motion.div {...lift(1.0)}>
+            <div style={{ fontSize: 36, fontWeight: 300, color: "#fff", lineHeight: 1, letterSpacing: "-0.02em" }}>270</div>
+            <div style={{ fontSize: 11, fontWeight: 400, color: theme.turquoise, letterSpacing: "0.22em", textTransform: "lowercase", marginTop: 5 }}>units</div>
           </motion.div>
 
-          <motion.div {...lift(1.0)} style={{ marginRight: 32, flexShrink: 0 }}>
-            <div style={{ fontSize: 40, fontWeight: 300, color: "#fff", lineHeight: 1, letterSpacing: "-0.02em" }}>270</div>
-            <div style={{ fontSize: 12, fontWeight: 400, color: theme.lightBlue, letterSpacing: "0.22em", textTransform: "lowercase", marginTop: 4 }}>units</div>
+          <motion.div {...lift(1.0)} style={{ width: 1, height: 48, background: "rgba(206,232,238,0.18)" }} />
+
+          <motion.div {...lift(1.1)}>
+            <div style={{ fontSize: 22, fontWeight: 400, color: "#fff", lineHeight: 1, letterSpacing: "0.08em", textTransform: "lowercase" }}>lihtc</div>
+            <div style={{ fontSize: 11, fontWeight: 400, color: theme.turquoise, letterSpacing: "0.22em", textTransform: "lowercase", marginTop: 5 }}>financing</div>
           </motion.div>
 
-          <motion.div {...lift(1.0)} style={{ width: 1, height: 52, background: "rgba(206,232,238,0.22)", marginRight: 32, flexShrink: 0 }} />
-
-          <motion.div {...lift(1.1)} style={{ marginRight: 32, flexShrink: 0 }}>
-            <div style={{ fontSize: 26, fontWeight: 400, color: "#fff", lineHeight: 1, letterSpacing: "0.12em" }}>lihtc</div>
-            <div style={{ fontSize: 12, fontWeight: 400, color: theme.lightBlue, letterSpacing: "0.22em", textTransform: "lowercase", marginTop: 4 }}>financing</div>
-          </motion.div>
-
-          <motion.div {...lift(1.1)} style={{ width: 1, height: 52, background: "rgba(206,232,238,0.22)", marginRight: 32, flexShrink: 0 }} />
+          <motion.div {...lift(1.1)} style={{ width: 1, height: 48, background: "rgba(206,232,238,0.18)" }} />
 
           <motion.div {...lift(1.2)}>
-            <div style={{ fontSize: 24, fontWeight: 300, color: "#fff", lineHeight: 1, textTransform: "lowercase" }}>development</div>
-            <div style={{ fontSize: 24, fontWeight: 300, color: theme.turquoise, lineHeight: 1.1, textTransform: "lowercase", marginTop: 3 }}>opportunity</div>
+            <div style={{ fontSize: 22, fontWeight: 300, color: "#fff", lineHeight: 1.15, textTransform: "lowercase" }}>development</div>
+            <div style={{ fontSize: 22, fontWeight: 300, color: theme.turquoise, lineHeight: 1.15, textTransform: "lowercase" }}>opportunity</div>
           </motion.div>
         </div>
       </div>

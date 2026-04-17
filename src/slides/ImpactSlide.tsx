@@ -18,25 +18,23 @@ const reveal = (delay: number) => ({
 
 export function ImpactSlide() {
   return (
-    <div style={{ position: "absolute", inset: 0, background: theme.darkBg, fontFamily: font, overflow: "hidden" }}>
+    <div style={{ position: "absolute", inset: 0, background: "#000", fontFamily: font, overflow: "hidden" }}>
 
-      {/* Right image panel */}
-      <motion.div
-        initial={{ opacity: 0, x: 40 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.1, duration: 0.8, ease: EASE_OUT }}
-        style={{ position: "absolute", top: 0, right: 0, width: 520, bottom: 0, overflow: "hidden" }}
-      >
-        <motion.img
-          src={asset("/steelton-village/Steelton I_Updated Lobby_2026.04.02.jpg")}
-          alt=""
-          initial={{ scale: 1.0 }}
-          animate={{ scale: 1.07 }}
-          transition={{ duration: 10, ease: "linear" }}
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
-        />
-        <div style={{ position: "absolute", inset: 0, left: 0, width: 180, background: `linear-gradient(to right, ${theme.darkBg} 0%, transparent 100%)` }} />
-      </motion.div>
+      {/* Full-bleed image */}
+      <motion.img
+        src={asset("/steelton-village/Steelton I_Updated Lobby_2026.04.02.jpg")}
+        alt=""
+        initial={{ scale: 1.0 }}
+        animate={{ scale: 1.07 }}
+        transition={{ duration: 12, ease: "linear" }}
+        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 40%" }}
+      />
+
+      {/* Gradient — heavy at bottom */}
+      <div style={{
+        position: "absolute", inset: 0,
+        background: "linear-gradient(to top, rgba(5,10,12,0.97) 0%, rgba(5,10,12,0.65) 40%, rgba(5,10,12,0.15) 70%, rgba(5,10,12,0.05) 100%)",
+      }} />
 
       {/* Top bar */}
       <motion.div {...lift(0)} style={{ position: "absolute", top: 56, left: 72 }}>
@@ -46,11 +44,11 @@ export function ImpactSlide() {
         02 / steelton village
       </motion.div>
 
-      {/* Main content */}
-      <div style={{ position: "absolute", top: "50%", left: 0, right: 440, transform: "translateY(-50%)", paddingLeft: 140, paddingRight: 72 }}>
+      {/* Main content — bottom aligned */}
+      <div style={{ position: "absolute", bottom: 72, left: 72, right: 72 }}>
 
         {/* Eyebrow */}
-        <motion.div {...lift(0.3)} style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 48 }}>
+        <motion.div {...lift(0.3)} style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 24 }}>
           <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.3, duration: 0.5 }}
             style={{ width: 52, height: 1.5, background: theme.turquoise, transformOrigin: "left" }} />
           <span style={{ fontSize: 13, fontWeight: 400, letterSpacing: "0.4em", color: theme.turquoise, textTransform: "lowercase" }}>
@@ -61,28 +59,21 @@ export function ImpactSlide() {
         </motion.div>
 
         {/* Title */}
-        <div style={{ fontSize: "clamp(72px,9vw,148px)", fontWeight: 300, color: "#fff", lineHeight: 0.9, letterSpacing: "-0.025em", textTransform: "lowercase", marginBottom: 52 }}>
-          {["the", "impact", "initiative"].map((word, i) => (
-            <div key={word} style={{ overflow: "hidden", paddingBottom: 14 }}>
+        <div style={{ fontSize: "clamp(64px,8vw,128px)", fontWeight: 300, color: "#fff", lineHeight: 0.92, letterSpacing: "-0.025em", textTransform: "lowercase" }}>
+          {["the", "impact", "initiative."].map((word, i) => (
+            <div key={word} style={{ overflow: "hidden", paddingBottom: 10 }}>
               <motion.span {...reveal(0.5 + i * 0.15)} style={{ display: "inline-block" }}>
-                {word}{i === 2 && <span style={{ color: theme.turquoise }}>.</span>}
+                {word === "initiative." ? (
+                  <>initiative<span style={{ color: theme.turquoise }}>.</span></>
+                ) : word}
               </motion.span>
             </div>
           ))}
         </div>
-
-        {/* Divider */}
-        <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 1.0, duration: 0.6, ease: "easeOut" }}
-          style={{ height: 1, background: "rgba(206,232,238,0.18)", marginBottom: 36, maxWidth: 480, transformOrigin: "left" }} />
-
-        {/* Subtitle */}
-        <motion.div {...lift(1.1)} style={{ fontSize: "clamp(32px,4vw,64px)", fontWeight: 300, letterSpacing: "0.08em", color: theme.lightBlue, textTransform: "lowercase" }}>
-          steelton<span style={{ color: theme.turquoise }}>.</span>
-        </motion.div>
       </div>
 
-      {/* Bottom tagline */}
-      <motion.div {...lift(1.3)} style={{ position: "absolute", bottom: 32, right: 64, fontSize: 13, fontWeight: 300, color: "rgba(206,232,238,0.40)", letterSpacing: "0.28em", textTransform: "lowercase" }}>
+      {/* Tagline */}
+      <motion.div {...lift(1.3)} style={{ position: "absolute", bottom: 32, right: 72, fontSize: 13, fontWeight: 300, color: "rgba(206,232,238,0.40)", letterSpacing: "0.28em", textTransform: "lowercase" }}>
         mindfully creating.
       </motion.div>
     </div>

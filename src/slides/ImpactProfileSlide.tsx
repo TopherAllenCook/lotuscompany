@@ -4,67 +4,76 @@ import { useEffect } from "react";
 import { LotusMark } from "@/components/LotusMark";
 import { theme, font, EASE_OUT } from "@/lib/theme";
 
-const BG    = theme.offWhite;
-const DARK  = theme.darkGray;
-const ACCENT = theme.turquoise;
-const DEEP   = "#4B7D96";
-
 function Counter({ to, delay, prefix = "", suffix = "" }: { to: number; delay: number; prefix?: string; suffix?: string }) {
   const val = useMotionValue(0);
   useEffect(() => {
-    const c = animate(val, to, { delay, duration: 1.4, ease: "easeOut" });
+    const c = animate(val, to, { delay, duration: 1.6, ease: "easeOut" });
     return c.stop;
   }, []);
   const display = useTransform(val, (v) => `${prefix}${Math.round(v).toLocaleString("en-US")}${suffix}`);
   return <motion.span>{display}</motion.span>;
 }
 
+const lift = (delay: number) => ({
+  initial:   { opacity: 0, y: 10 },
+  animate:   { opacity: 1, y: 0 },
+  transition: { delay, duration: 0.6, ease: EASE_OUT },
+});
+
+const METRICS = [
+  { value: 2277, prefix: "",  suffix: "",     label: "future residents served" },
+  { value: 1427, prefix: "$", suffix: "/mo",  label: "average monthly cost" },
+  { value: 20,   prefix: "",  suffix: "%",    label: "of steelton's 60% ami goal" },
+];
+
+const SEGMENTS = [
+  { width: "39.1%", color: theme.turquoise, label: "30–50% ami",   units: "109 units" },
+  { width: "40.5%", color: "#4B7D96",       label: "51–60% ami",   units: "109 units" },
+  { width: "20.4%", color: "rgba(206,232,238,0.25)", label: "market rate", units: "52 units" },
+];
+
 export function ImpactProfileSlide() {
   return (
-    <div style={{ position: "absolute", inset: 0, background: BG, fontFamily: font, overflow: "hidden" }}>
+    <div style={{ position: "absolute", inset: 0, background: theme.darkBg, fontFamily: font, overflow: "hidden" }}>
 
       {/* Logo */}
-      <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
-        style={{ position: "absolute", top: 56, left: 72, zIndex: 10 }}>
-        <LotusMark width={180} />
+      <motion.div {...lift(0)} style={{ position: "absolute", top: 56, left: 72, zIndex: 10 }}>
+        <LotusMark width={180} onDark />
       </motion.div>
 
       {/* Slide number */}
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1, duration: 0.5 }}
-        style={{ position: "absolute", top: 64, left: "50%", transform: "translateX(-50%)", fontSize: 11, fontWeight: 400, letterSpacing: "0.44em", color: "rgba(11,33,53,0.22)", textTransform: "lowercase" }}>
+      <motion.div {...lift(0.1)} style={{ position: "absolute", top: 64, left: "50%", transform: "translateX(-50%)", fontSize: 11, fontWeight: 400, letterSpacing: "0.44em", color: "rgba(206,232,238,0.22)", textTransform: "lowercase" }}>
         07 / steelton village
       </motion.div>
 
-      {/* Title */}
-      <div style={{ position: "absolute", top: 52, left: 72, right: 72 }}>
-        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
-          style={{ fontSize: "clamp(36px,3.5vw,54px)", fontWeight: 300, color: DARK, letterSpacing: "-0.015em", textTransform: "lowercase", paddingTop: 68 }}>
-          impact &amp; resident profile
-        </motion.div>
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}
-          style={{ display: "flex", alignItems: "center", gap: 16, marginTop: 8 }}>
-          <span style={{ fontSize: 15, fontWeight: 300, color: "rgba(66,66,66,0.68)", letterSpacing: "0.05em", textTransform: "lowercase", flexShrink: 0 }}>
-            steelton village phase 1 · who we serve and how
+      {/* Eyebrow / title */}
+      <div style={{ position: "absolute", top: 148, left: 72, right: 72 }}>
+        <motion.div {...lift(0.25)} style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 0 }}>
+          <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.25, duration: 0.5 }}
+            style={{ width: 52, height: 1.5, background: theme.turquoise, transformOrigin: "left" }} />
+          <span style={{ fontSize: 13, fontWeight: 400, letterSpacing: "0.4em", color: theme.turquoise, textTransform: "lowercase" }}>
+            impact &amp; resident profile
           </span>
-          <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.35, duration: 0.6 }}
-            style={{ flex: 1, height: 1, background: ACCENT, transformOrigin: "left" }} />
+          <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.25, duration: 0.5 }}
+            style={{ width: 52, height: 1.5, background: theme.turquoise, transformOrigin: "left" }} />
         </motion.div>
       </div>
 
-      {/* Hero numbers */}
-      <div style={{ position: "absolute", top: 220, left: 72, right: 72, display: "flex", gap: 0 }}>
-        {[
-          { value: 2277, prefix: "", suffix: "", label: "future residents served" },
-          { value: 1427, prefix: "$", suffix: "/mo", label: "average monthly cost" },
-          { value: 20,   prefix: "", suffix: "%",  label: "of steelton's 60% ami goal" },
-        ].map((item, i) => (
-          <motion.div key={i} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 + i * 0.15, duration: 0.7, ease: EASE_OUT }}
-            style={{ flex: 1, paddingRight: 40 }}>
-            <div style={{ fontSize: "clamp(40px,4.5vw,72px)", fontWeight: 700, color: DARK, lineHeight: 1, letterSpacing: "-0.03em" }}>
-              {item.prefix}<Counter to={item.value} delay={0.6 + i * 0.1} />{item.suffix}
+      {/* Hero metrics */}
+      <div style={{ position: "absolute", top: 210, left: 72, right: 72, display: "flex", gap: 0 }}>
+        {METRICS.map((m, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35 + i * 0.14, duration: 0.7, ease: EASE_OUT }}
+            style={{ flex: 1 }}
+          >
+            <div style={{ fontSize: "clamp(52px,6vw,96px)", fontWeight: 300, color: "#fff", lineHeight: 0.9, letterSpacing: "-0.03em" }}>
+              {m.prefix}<Counter to={m.value} delay={0.6 + i * 0.12} />{m.suffix}
             </div>
-            <div style={{ fontSize: 11, fontWeight: 400, color: "rgba(66,66,66,0.50)", letterSpacing: "0.12em", textTransform: "lowercase", marginTop: 6 }}>
-              {item.label}
+            <div style={{ fontSize: 11, fontWeight: 400, color: "rgba(206,232,238,0.45)", letterSpacing: "0.14em", textTransform: "lowercase", marginTop: 10 }}>
+              {m.label}
             </div>
           </motion.div>
         ))}
@@ -72,62 +81,67 @@ export function ImpactProfileSlide() {
 
       {/* Divider */}
       <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.9, duration: 0.7 }}
-        style={{ position: "absolute", top: 370, left: 72, right: 72, height: 1, background: "rgba(66,66,66,0.10)", transformOrigin: "left" }} />
+        style={{ position: "absolute", top: 390, left: 72, right: 72, height: 1, background: "rgba(206,232,238,0.10)", transformOrigin: "left" }} />
 
       {/* Audience split */}
-      <div style={{ position: "absolute", top: 394, left: 72, right: 72, display: "flex", alignItems: "flex-start", gap: 0 }}>
+      <div style={{ position: "absolute", top: 418, left: 72, right: 72, display: "flex", gap: 0 }}>
         {[
-          { label: "young professionals", units: 109, pct: "40.4%", color: ACCENT },
-          { label: "families",            units: 170, pct: "62.9%", color: DEEP  },
+          { label: "young professionals", units: 109, pct: "40.4%", color: theme.turquoise },
+          { label: "families",            units: 170, pct: "62.9%", color: "#4B7D96" },
         ].map((seg, i) => (
-          <motion.div key={i} initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1 + i * 0.12, duration: 0.6 }}
-            style={{ flex: 1 }}>
-            <div style={{ fontSize: 9, fontWeight: 400, color: seg.color, letterSpacing: "0.18em", textTransform: "lowercase", marginBottom: 8 }}>
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.0 + i * 0.12, duration: 0.6, ease: EASE_OUT }}
+            style={{ flex: 1 }}
+          >
+            <div style={{ fontSize: 10, fontWeight: 400, color: seg.color, letterSpacing: "0.2em", textTransform: "lowercase", marginBottom: 10 }}>
               {seg.label}
             </div>
             <div style={{ display: "flex", alignItems: "baseline", gap: 10 }}>
-              <span style={{ fontSize: "clamp(36px,4vw,60px)", fontWeight: 700, color: DARK, lineHeight: 1, letterSpacing: "-0.025em" }}>{seg.units}</span>
-              <span style={{ fontSize: 13, fontWeight: 400, color: seg.color, letterSpacing: "0.1em", textTransform: "lowercase" }}>units</span>
+              <span style={{ fontSize: "clamp(36px,4vw,64px)", fontWeight: 300, color: "#fff", lineHeight: 1, letterSpacing: "-0.025em" }}>{seg.units}</span>
+              <span style={{ fontSize: 12, fontWeight: 400, color: seg.color, letterSpacing: "0.12em", textTransform: "lowercase" }}>units</span>
             </div>
-            <div style={{ fontSize: 13, fontWeight: 300, color: "rgba(66,66,66,0.55)", marginTop: 4 }}>{seg.pct} of total</div>
+            <div style={{ fontSize: 12, fontWeight: 300, color: "rgba(206,232,238,0.40)", marginTop: 5, letterSpacing: "0.04em" }}>{seg.pct} of total</div>
           </motion.div>
         ))}
       </div>
 
-      {/* Segmented bar */}
-      <div style={{ position: "absolute", top: 560, left: 72, right: 72 }}>
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.4, duration: 0.4 }}
-          style={{ display: "flex", height: 28, borderRadius: 3, overflow: "hidden", gap: 2 }}>
-          {[
-            { width: "39.1%", color: ACCENT, label: "39.1%", units: 109 },
-            { width: "40.5%", color: DEEP,   label: "40.5%", units: 109 },
-            { width: "20.4%", color: DARK,   label: "20.4%", units: 61  },
-          ].map((seg, i) => (
-            <motion.div key={i}
+      {/* AMI bar — thin and elegant */}
+      <div style={{ position: "absolute", top: 570, left: 72, right: 72 }}>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.3, duration: 0.4 }}
+          style={{ display: "flex", height: 6, gap: 2, borderRadius: 3, overflow: "hidden" }}
+        >
+          {SEGMENTS.map((seg, i) => (
+            <motion.div
+              key={i}
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
-              transition={{ delay: 1.5 + i * 0.1, duration: 0.6, ease: "easeOut" }}
-              style={{ width: seg.width, height: "100%", background: seg.color, transformOrigin: "left", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <span style={{ fontSize: 10, fontWeight: 600, color: "#fff", letterSpacing: "0.06em" }}>{seg.label}</span>
-            </motion.div>
+              transition={{ delay: 1.4 + i * 0.1, duration: 0.7, ease: "easeOut" }}
+              style={{ width: seg.width, height: "100%", background: seg.color, transformOrigin: "left" }}
+            />
           ))}
         </motion.div>
-        <div style={{ display: "flex", gap: 2, marginTop: 8 }}>
-          {[
-            { width: "39.1%", label: "30–50% ami · 109 units" },
-            { width: "40.5%", label: "51–60% ami · 109 units" },
-            { width: "20.4%", label: "market rate · 52 units"  },
-          ].map((s, i) => (
-            <div key={i} style={{ width: s.width, fontSize: 9, fontWeight: 300, color: "rgba(66,66,66,0.50)", letterSpacing: "0.04em", textTransform: "lowercase" }}>
-              {s.label}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.7, duration: 0.5 }}
+          style={{ display: "flex", gap: 2, marginTop: 10 }}
+        >
+          {SEGMENTS.map((seg, i) => (
+            <div key={i} style={{ width: seg.width, fontSize: 10, fontWeight: 300, color: "rgba(206,232,238,0.40)", letterSpacing: "0.06em", textTransform: "lowercase" }}>
+              {seg.label} · {seg.units}
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       {/* Tagline */}
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.8, duration: 0.6 }}
-        style={{ position: "absolute", bottom: 16, right: 72, fontSize: 13, fontWeight: 300, color: "rgba(66,66,66,0.40)", letterSpacing: "0.28em", textTransform: "lowercase" }}>
+      <motion.div {...lift(1.9)} style={{ position: "absolute", bottom: 16, right: 72, fontSize: 13, fontWeight: 300, color: "rgba(206,232,238,0.40)", letterSpacing: "0.28em", textTransform: "lowercase" }}>
         mindfully creating.
       </motion.div>
     </div>
