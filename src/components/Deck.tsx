@@ -3,6 +3,7 @@ import { useState, useEffect, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { EASE_OUT, theme, font } from "@/lib/theme";
 import { SLIDE_REGISTRY } from "@/slides";
+import { LotusMark } from "@/components/LotusMark";
 
 interface DeckProps {
   slides: React.ReactNode[];
@@ -25,7 +26,6 @@ function NavArrow({
 }) {
   const [hovered, setHovered] = useState(false);
   const isPrev = direction === "prev";
-
   if (!visible) return null;
 
   return (
@@ -35,8 +35,7 @@ function NavArrow({
       onMouseLeave={() => setHovered(false)}
       style={{
         position: "fixed",
-        top: 0,
-        bottom: 0,
+        top: 0, bottom: 0,
         [isPrev ? "left" : "right"]: 0,
         width: "clamp(48px, 6vw, 80px)",
         background: "transparent",
@@ -51,86 +50,46 @@ function NavArrow({
       }}
       aria-label={isPrev ? "Previous slide" : "Next slide"}
     >
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 20 20"
-        fill="none"
-        style={{
-          transform: isPrev ? "rotate(180deg)" : undefined,
-          filter: "drop-shadow(0 1px 3px rgba(0,0,0,0.4))",
-        }}
-      >
-        <polyline
-          points="6,2 14,10 6,18"
-          stroke="#fff"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+        style={{ transform: isPrev ? "rotate(180deg)" : undefined, filter: "drop-shadow(0 1px 3px rgba(0,0,0,0.4))" }}>
+        <polyline points="6,2 14,10 6,18" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     </button>
   );
 }
 
-function DotNav({ index, total, go }: { index: number; total: number; go: (n: number) => void }) {
+function DotNav({ index, go }: { index: number; go: (n: number) => void }) {
   const [hoveredDot, setHoveredDot] = useState<number | null>(null);
 
   return (
     <div style={{
-      position: "fixed",
-      bottom: 20,
-      left: "50%",
-      transform: "translateX(-50%)",
-      zIndex: 100,
-      display: "flex",
-      alignItems: "center",
-      gap: 10,
+      position: "fixed", bottom: 20, left: "50%", transform: "translateX(-50%)",
+      zIndex: 100, display: "flex", alignItems: "center", gap: 10,
     }}>
       {SLIDE_REGISTRY.map((slide, i) => {
         const isActive = i === index;
         const isHovered = hoveredDot === i;
-
         return (
           <div key={slide.key} style={{ position: "relative", display: "flex", flexDirection: "column", alignItems: "center" }}>
-            {/* Tooltip */}
             <div style={{
-              position: "absolute",
-              bottom: "calc(100% + 10px)",
-              left: "50%",
-              transform: "translateX(-50%)",
-              background: "rgba(10,10,10,0.82)",
-              backdropFilter: "blur(6px)",
-              color: "#fff",
-              fontSize: 10,
-              fontFamily: font,
-              fontWeight: 400,
-              letterSpacing: "0.18em",
-              textTransform: "lowercase",
-              whiteSpace: "nowrap",
-              padding: "5px 10px",
-              borderRadius: 3,
-              pointerEvents: "none",
-              opacity: isHovered ? 1 : 0,
-              transition: "opacity 0.18s ease",
+              position: "absolute", bottom: "calc(100% + 10px)", left: "50%", transform: "translateX(-50%)",
+              background: "rgba(10,10,10,0.82)", backdropFilter: "blur(6px)",
+              color: "#fff", fontSize: 10, fontFamily: font, fontWeight: 400,
+              letterSpacing: "0.18em", textTransform: "lowercase", whiteSpace: "nowrap",
+              padding: "5px 10px", borderRadius: 3, pointerEvents: "none",
+              opacity: isHovered ? 1 : 0, transition: "opacity 0.18s ease",
             }}>
               {slide.title.toLowerCase()}
             </div>
-
-            {/* Dot */}
             <button
               onClick={() => go(i)}
               onMouseEnter={() => setHoveredDot(i)}
               onMouseLeave={() => setHoveredDot(null)}
               aria-label={`Go to ${slide.title}`}
               style={{
-                width: isActive ? 20 : 6,
-                height: 6,
-                borderRadius: 3,
+                width: isActive ? 20 : 6, height: 6, borderRadius: 3,
                 background: isActive ? theme.turquoise : "rgba(255,255,255,0.45)",
-                border: "none",
-                cursor: "pointer",
-                padding: 0,
+                border: "none", cursor: "pointer", padding: 0,
                 transition: "width 0.3s ease, background 0.3s ease",
               }}
             />
@@ -141,8 +100,103 @@ function DotNav({ index, total, go }: { index: number; total: number; go: (n: nu
   );
 }
 
+function SlideDrawer({ index, go, onClose }: { index: number; go: (n: number) => void; onClose: () => void }) {
+  return (
+    <>
+      {/* Backdrop */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.25 }}
+        onClick={onClose}
+        style={{
+          position: "fixed", inset: 0, zIndex: 200,
+          background: "rgba(0,0,0,0.45)", backdropFilter: "blur(2px)",
+        }}
+      />
+
+      {/* Drawer panel */}
+      <motion.div
+        initial={{ x: "-100%" }}
+        animate={{ x: 0 }}
+        exit={{ x: "-100%" }}
+        transition={{ duration: 0.35, ease: EASE_OUT }}
+        style={{
+          position: "fixed", top: 0, left: 0, bottom: 0, width: 280,
+          background: "#111", zIndex: 201,
+          display: "flex", flexDirection: "column",
+          padding: "32px 0 48px",
+        }}
+      >
+        {/* Logo + close */}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 28px 32px" }}>
+          <LotusMark width={96} onDark />
+          <button
+            onClick={onClose}
+            style={{ background: "none", border: "none", cursor: "pointer", padding: 4, color: "rgba(255,255,255,0.4)", fontSize: 20, lineHeight: 1 }}
+            aria-label="Close menu"
+          >
+            ×
+          </button>
+        </div>
+
+        {/* Divider */}
+        <div style={{ height: 1, background: "rgba(255,255,255,0.08)", margin: "0 28px 24px" }} />
+
+        {/* Slide list */}
+        <nav style={{ flex: 1, overflowY: "auto" }}>
+          {SLIDE_REGISTRY.map((slide, i) => {
+            const isActive = i === index;
+            return (
+              <button
+                key={slide.key}
+                onClick={() => { go(i); onClose(); }}
+                style={{
+                  display: "flex", alignItems: "center", gap: 16,
+                  width: "100%", padding: "12px 28px",
+                  background: isActive ? "rgba(77,186,214,0.08)" : "transparent",
+                  border: "none", borderLeft: isActive ? `2px solid ${theme.turquoise}` : "2px solid transparent",
+                  cursor: "pointer", textAlign: "left",
+                  transition: "background 0.15s ease",
+                }}
+              >
+                <span style={{
+                  fontSize: 10, fontFamily: font, fontWeight: 400,
+                  color: isActive ? theme.turquoise : "rgba(255,255,255,0.3)",
+                  letterSpacing: "0.2em", minWidth: 22,
+                }}>
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span style={{
+                  fontSize: 13, fontFamily: font, fontWeight: 400,
+                  color: isActive ? "#fff" : "rgba(255,255,255,0.55)",
+                  letterSpacing: "0.08em", textTransform: "lowercase",
+                }}>
+                  {slide.title.toLowerCase()}
+                </span>
+              </button>
+            );
+          })}
+        </nav>
+
+        {/* Footer label */}
+        <div style={{ padding: "0 28px", marginTop: 24 }}>
+          <span style={{
+            fontSize: 9, fontFamily: font, color: "rgba(255,255,255,0.2)",
+            letterSpacing: "0.22em", textTransform: "lowercase",
+          }}>
+            the lotus impact initiative
+          </span>
+        </div>
+      </motion.div>
+    </>
+  );
+}
+
 export function Deck({ slides }: DeckProps) {
   const [[index], setPage] = useState([0, 0]);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const go = useCallback((next: number) => {
     const clamped = Math.max(0, Math.min(slides.length - 1, next));
@@ -151,12 +205,14 @@ export function Deck({ slides }: DeckProps) {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") { setDrawerOpen(false); return; }
+      if (drawerOpen) return;
       if (e.key === "ArrowRight" || e.key === " ") go(index + 1);
       if (e.key === "ArrowLeft") go(index - 1);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [index, go]);
+  }, [index, go, drawerOpen]);
 
   useEffect(() => {
     let startX = 0;
@@ -192,7 +248,28 @@ export function Deck({ slides }: DeckProps) {
       <NavArrow direction="prev" onClick={() => go(index - 1)} visible={index > 0} />
       <NavArrow direction="next" onClick={() => go(index + 1)} visible={index < slides.length - 1} />
 
-      <DotNav index={index} total={slides.length} go={go} />
+      <DotNav index={index} go={go} />
+
+      {/* Logo trigger — top left */}
+      <button
+        onClick={() => setDrawerOpen(true)}
+        aria-label="Open slide menu"
+        style={{
+          position: "fixed", top: 20, left: 24, zIndex: 150,
+          background: "rgba(0,0,0,0.28)", backdropFilter: "blur(8px)",
+          border: "1px solid rgba(255,255,255,0.1)",
+          borderRadius: 6, padding: "7px 12px",
+          cursor: "pointer", display: "flex", alignItems: "center",
+        }}
+      >
+        <LotusMark width={64} onDark />
+      </button>
+
+      <AnimatePresence>
+        {drawerOpen && (
+          <SlideDrawer index={index} go={go} onClose={() => setDrawerOpen(false)} />
+        )}
+      </AnimatePresence>
     </div>
   );
 }
