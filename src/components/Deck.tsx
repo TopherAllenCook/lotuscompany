@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { EASE_OUT, theme, font } from "@/lib/theme";
 import { SLIDE_REGISTRY } from "@/slides";
@@ -7,6 +8,7 @@ import { LotusMark } from "@/components/LotusMark";
 
 interface DeckProps {
   slides: React.ReactNode[];
+  initialIndex?: number;
 }
 
 const VARIANTS = {
@@ -194,14 +196,16 @@ function SlideDrawer({ index, go, onClose }: { index: number; go: (n: number) =>
   );
 }
 
-export function Deck({ slides }: DeckProps) {
-  const [[index], setPage] = useState([0, 0]);
+export function Deck({ slides, initialIndex = 0 }: DeckProps) {
+  const router = useRouter();
+  const [[index], setPage] = useState([initialIndex, 0]);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const go = useCallback((next: number) => {
     const clamped = Math.max(0, Math.min(slides.length - 1, next));
     setPage(([cur]) => [clamped, clamped > cur ? 1 : -1]);
-  }, [slides.length]);
+    router.push(`/${SLIDE_REGISTRY[clamped].key}`);
+  }, [slides.length, router]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {

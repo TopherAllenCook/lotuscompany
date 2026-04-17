@@ -1,6 +1,5 @@
-import { Deck } from "@/components/Deck";
-import { slides } from "@/slides";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  return <Deck slides={slides} />;
+  redirect("/intro");
 }
