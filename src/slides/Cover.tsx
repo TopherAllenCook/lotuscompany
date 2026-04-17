@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { LotusMark } from "@/components/LotusMark";
 import { theme, font, EASE_OUT } from "@/lib/theme";
+import { asset } from "@/lib/storage";
 
 const lift = (delay: number) => ({
   initial:   { opacity: 0, y: 12 },
@@ -21,7 +22,7 @@ export function CoverSlide() {
 
       {/* Background image */}
       <motion.img
-        src="/steelton-village/Steelton I_Pedestrian Promenade_2026.03.10.jpg"
+        src={asset("/steelton-village/Steelton I_Pedestrian Promenade_2026.03.10.jpg")}
         alt=""
         initial={{ scale: 1.0 }}
         animate={{ scale: 1.07 }}

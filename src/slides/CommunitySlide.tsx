@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { LotusMark } from "@/components/LotusMark";
 import { theme, font, EASE_OUT } from "@/lib/theme";
+import { asset } from "@/lib/storage";
 
 const COLUMNS = [
   {
@@ -33,7 +34,7 @@ export function CommunitySlide() {
         style={{ position: "absolute", top: 0, right: 0, width: 480, bottom: 0, overflow: "hidden" }}
       >
         <motion.img
-          src="/steelton-village/Steelton I_North Park_2026.03.10.jpg"
+          src={asset("/steelton-village/Steelton I_North Park_2026.03.10.jpg")}
           alt=""
           initial={{ scale: 1.0 }}
           animate={{ scale: 1.07 }}

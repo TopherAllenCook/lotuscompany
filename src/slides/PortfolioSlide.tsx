@@ -2,15 +2,16 @@
 import { motion } from "framer-motion";
 import { LotusMark } from "@/components/LotusMark";
 import { theme, font, EASE_OUT } from "@/lib/theme";
+import { asset } from "@/lib/storage";
 
 // Hand-picked selects across Nova, Republic, and Steelton
 const IMAGES = [
-  { src: "/portfolio/Commercial 2025-07-07 Lotus-Nova-1.jpg",            label: "lotus nova",      span: "col" },
-  { src: "/portfolio/_DSC1121.jpg",                                        label: "lotus republic",  span: "" },
-  { src: "/portfolio/Commercial 2025-07-07 Lotus-Nova-14.jpg",            label: "lotus nova",      span: "" },
-  { src: "/steelton-village/Steelton I_Pedestrian Promenade_2026.03.10.jpg", label: "steelton village", span: "" },
-  { src: "/portfolio/Arial.jpg",                                           label: "lotus republic",  span: "col" },
-  { src: "/portfolio/Commercial 2025-07-07 Lotus-Nova-30.jpg",            label: "lotus nova",      span: "" },
+  { src: asset("/nova/Commercial 2025-07-07 Lotus-Nova-1.jpg"),            label: "lotus nova",      span: "col" },
+  { src: asset("/republic/highlights/_DSC1121.jpg"),                        label: "lotus republic",  span: "" },
+  { src: asset("/nova/Commercial 2025-07-07 Lotus-Nova-14.jpg"),            label: "lotus nova",      span: "" },
+  { src: asset("/steelton-village/Steelton I_Pedestrian Promenade_2026.03.10.jpg"), label: "steelton village", span: "" },
+  { src: asset("/republic/aerials/Arial.jpg"),                              label: "lotus republic",  span: "col" },
+  { src: asset("/nova/Commercial 2025-07-07 Lotus-Nova-30.jpg"),            label: "lotus nova",      span: "" },
 ];
 
 export function PortfolioSlide() {

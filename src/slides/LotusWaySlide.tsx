@@ -3,6 +3,7 @@ import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { useEffect } from "react";
 import { LotusMark } from "@/components/LotusMark";
 import { theme, font, EASE_OUT } from "@/lib/theme";
+import { asset } from "@/lib/storage";
 
 const BG    = theme.offWhite;
 const DARK  = theme.darkGray;
@@ -71,7 +72,7 @@ export function LotusWaySlide() {
           <div style={{ fontSize: 22, fontWeight: 400, color: ACCENT, letterSpacing: "0.14em", textTransform: "lowercase" }}>the fort</div>
           <div style={{ fontSize: 11, fontWeight: 300, color: "rgba(66,66,66,0.40)", letterSpacing: "0.06em" }}>add image: public/steelton-village/the-fort.jpg</div>
         </div>
-        <img src="/steelton-village/the-fort.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+        <img src={asset("/steelton-village/the-fort.jpg")} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
         <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 90, background: `linear-gradient(to top, ${BG} 0%, transparent 100%)` }} />
       </motion.div>
 

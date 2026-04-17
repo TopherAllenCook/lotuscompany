@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { LotusMark } from "@/components/LotusMark";
 import { theme, font, EASE_OUT } from "@/lib/theme";
+import { asset } from "@/lib/storage";
 
 const lift = (delay: number) => ({
   initial:   { opacity: 0, y: 10 },
@@ -27,7 +28,7 @@ export function ImpactSlide() {
         style={{ position: "absolute", top: 0, right: 0, width: 520, bottom: 0, overflow: "hidden" }}
       >
         <motion.img
-          src="/steelton-village/Steelton I_Updated Lobby_2026.04.02.jpg"
+          src={asset("/steelton-village/Steelton I_Updated Lobby_2026.04.02.jpg")}
           alt=""
           initial={{ scale: 1.0 }}
           animate={{ scale: 1.07 }}

@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { LotusMark } from "@/components/LotusMark";
 import { theme, font, EASE_OUT } from "@/lib/theme";
+import { asset } from "@/lib/storage";
 
 const IMAGES = [
   { file: "Steelton I_Updated Lobby_2026.04.02.jpg",         label: "lobby"               },
@@ -43,7 +44,7 @@ export function RenderingsSlide() {
             style={{ position: "relative", overflow: "hidden", borderRadius: 2 }}
           >
             <img
-              src={`/steelton-village/${img.file}`}
+              src={asset(`/steelton-village/${img.file}`)}
               alt={img.label}
               style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
             />
