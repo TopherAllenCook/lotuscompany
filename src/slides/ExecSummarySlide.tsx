@@ -3,50 +3,79 @@ import { motion } from "framer-motion";
 import { theme, font, EASE_OUT } from "@/lib/theme";
 
 const fade = (delay: number) => ({
-  initial: { opacity: 0, y: 8 },
+  initial: { opacity: 0, y: 6 },
   animate: { opacity: 1, y: 0 },
-  transition: { delay, duration: 0.45, ease: EASE_OUT },
+  transition: { delay, duration: 0.4, ease: EASE_OUT },
 });
 
-function SectionLabel({ children }: { children: React.ReactNode }) {
+/* ── primitives ── */
+
+function ColHead({ children }: { children: React.ReactNode }) {
   return (
     <p style={{
-      margin: "0 0 6px",
-      fontSize: "clamp(10px, 0.9vw, 13px)",
+      margin: "0 0 10px",
+      fontSize: "clamp(9px, 0.82vw, 11px)",
       fontWeight: 600, color: theme.turquoise,
-      letterSpacing: "0.12em", textTransform: "uppercase", fontFamily: font,
+      letterSpacing: "0.2em", textTransform: "lowercase", fontFamily: font,
+      lineHeight: 1,
     }}>{children}</p>
   );
 }
 
-function Body({ children, style }: { children: React.ReactNode; style?: React.CSSProperties }) {
+function SectionHead({ children }: { children: React.ReactNode }) {
   return (
     <p style={{
-      margin: "0 0 4px",
-      fontSize: "clamp(10px, 0.88vw, 13px)",
-      fontWeight: 400, color: "#424242",
-      letterSpacing: "0.02em", lineHeight: 1.65, fontFamily: font,
-      ...style,
+      margin: "10px 0 4px",
+      fontSize: "clamp(9px, 0.78vw, 11px)",
+      fontWeight: 600, color: "#424242",
+      letterSpacing: "0.14em", textTransform: "lowercase", fontFamily: font,
+      lineHeight: 1.2,
     }}>{children}</p>
   );
 }
 
-function Bold({ children }: { children: React.ReactNode }) {
-  return <span style={{ fontWeight: 700 }}>{children}</span>;
+function FieldLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <p style={{
+      margin: "7px 0 1px",
+      fontSize: "clamp(9px, 0.78vw, 11px)",
+      fontWeight: 300, color: "#424242",
+      letterSpacing: "0.08em", textTransform: "lowercase", fontFamily: font,
+      lineHeight: 1.3,
+    }}>{children}</p>
+  );
+}
+
+function Val({ children }: { children: React.ReactNode }) {
+  return (
+    <p style={{
+      margin: "0 0 2px",
+      fontSize: "clamp(9px, 0.82vw, 12px)",
+      fontWeight: 400, color: "#424242",
+      letterSpacing: "0.02em", textTransform: "lowercase", fontFamily: font,
+      lineHeight: 1.6,
+    }}>{children}</p>
+  );
 }
 
 function Bullet({ children }: { children: React.ReactNode }) {
   return (
-    <div style={{ display: "flex", gap: 8, marginBottom: 3 }}>
-      <span style={{ color: theme.turquoise, fontFamily: font, fontSize: "clamp(10px, 0.88vw, 13px)", lineHeight: 1.65, flexShrink: 0 }}>•</span>
-      <p style={{ margin: 0, fontSize: "clamp(10px, 0.88vw, 13px)", fontWeight: 400, color: "#424242", letterSpacing: "0.02em", lineHeight: 1.65, fontFamily: font }}>{children}</p>
+    <div style={{ display: "flex", gap: 6, marginBottom: 2 }}>
+      <span style={{ color: theme.turquoise, fontSize: "clamp(9px, 0.82vw, 12px)", lineHeight: 1.6, flexShrink: 0, fontFamily: font }}>·</span>
+      <p style={{ margin: 0, fontSize: "clamp(9px, 0.82vw, 12px)", fontWeight: 400, color: "#424242", letterSpacing: "0.02em", textTransform: "lowercase", lineHeight: 1.6, fontFamily: font }}>{children}</p>
     </div>
   );
 }
 
-function Rule() {
-  return <div style={{ height: 1, background: "rgba(66,66,66,0.12)", margin: "10px 0" }} />;
+function VRule() {
+  return <div style={{ width: 1, background: "rgba(66,66,66,0.1)", flexShrink: 0, alignSelf: "stretch" }} />;
 }
+
+function HRule() {
+  return <div style={{ height: 1, background: "rgba(66,66,66,0.1)", margin: "8px 0" }} />;
+}
+
+/* ── slide ── */
 
 export function ExecSummarySlide() {
   return (
@@ -55,99 +84,149 @@ export function ExecSummarySlide() {
       background: "#fff", fontFamily: font,
       overflow: "hidden",
       display: "flex", flexDirection: "column",
-      padding: "36px 52px 32px",
     }}>
 
-      {/* Header */}
-      <motion.div {...fade(0.05)}>
-        <h1 style={{
-          margin: "0 0 10px",
-          fontSize: "clamp(18px, 2.0vw, 30px)",
-          fontWeight: 700, color: "#1a1a1a",
-          letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: font,
-          lineHeight: 1.1,
+      {/* ── TITLE BAR ── */}
+      <motion.div {...fade(0.05)} style={{
+        display: "flex", alignItems: "baseline", justifyContent: "space-between",
+        padding: "28px 48px 16px",
+        borderBottom: "2px solid #1a1a1a",
+      }}>
+        <span style={{
+          fontSize: "clamp(14px, 1.5vw, 22px)",
+          fontWeight: 600, color: "#1a1a1a",
+          letterSpacing: "0.06em", textTransform: "lowercase", fontFamily: font,
         }}>
-          Executive Summary&nbsp;
-          <span style={{ color: "rgba(66,66,66,0.4)", fontWeight: 300 }}>—</span>
-          &nbsp;Lotus Impact Initiative
-        </h1>
-        <div style={{ height: 2, background: "#1a1a1a", marginBottom: 18 }} />
+          executive summary.&nbsp;
+          <span style={{ fontWeight: 300, color: "#424242" }}>lotus impact initiative.</span>
+        </span>
+        <span style={{
+          fontSize: "clamp(9px, 0.78vw, 11px)",
+          fontWeight: 400, color: "rgba(66,66,66,0.38)",
+          letterSpacing: "0.22em", textTransform: "lowercase", fontFamily: font,
+        }}>03. executive summary.</span>
       </motion.div>
 
-      {/* Two-column body */}
-      <div style={{ flex: 1, display: "flex", gap: 40, minHeight: 0 }}>
+      {/* ── HERO STATS BAND ── */}
+      <motion.div {...fade(0.12)} style={{
+        background: "#1a1a1a",
+        display: "flex",
+      }}>
+        {[
+          { num: "800",       label: "affordable units\ndelivered each year" },
+          { num: "2,000",     label: "residents served\nannually" },
+          { num: "13 to 15%", label: "target IRR\nper project" },
+          { num: "$300M",     label: "projected 25-year\nreturn to investors" },
+        ].map((stat, i) => (
+          <div key={i} style={{
+            flex: 1,
+            padding: "16px 24px",
+            borderRight: i < 3 ? "1px solid rgba(255,255,255,0.08)" : "none",
+            display: "flex", flexDirection: "column", gap: 4,
+          }}>
+            <span style={{
+              fontSize: "clamp(22px, 2.6vw, 40px)",
+              fontWeight: 700, color: theme.turquoise,
+              letterSpacing: "-0.01em", fontFamily: font, lineHeight: 1,
+            }}>{stat.num}</span>
+            <span style={{
+              fontSize: "clamp(9px, 0.78vw, 11px)",
+              fontWeight: 400, color: "rgba(255,255,255,0.55)",
+              letterSpacing: "0.08em", textTransform: "lowercase", fontFamily: font,
+              lineHeight: 1.5, whiteSpace: "pre-line",
+            }}>{stat.label}</span>
+          </div>
+        ))}
+      </motion.div>
 
-        {/* LEFT COLUMN */}
-        <motion.div {...fade(0.15)} style={{ flex: 1, display: "flex", flexDirection: "column", gap: 0 }}>
+      {/* ── THREE COLUMNS ── */}
+      <div style={{ flex: 1, display: "flex", minHeight: 0, padding: "0 48px" }}>
 
-          {/* Why This Matters */}
-          <SectionLabel>Why This Matters</SectionLabel>
-          <Body><Bold>Housing Crisis:</Bold> Millions face unaffordable housing, eroding stability and quality of life.</Body>
-          <Body><Bold>Communities at Risk:</Bold> Families struggle to find dignified, attainable homes, impacting health, education, and opportunity.</Body>
+        {/* COL 1 — the belief */}
+        <motion.div {...fade(0.2)} style={{ flex: 1, padding: "16px 20px 16px 0", overflowY: "auto" }}>
+          <ColHead>the belief.</ColHead>
 
-          <Rule />
+          <SectionHead>why this matters</SectionHead>
+          <FieldLabel>housing crisis.</FieldLabel>
+          <Val>millions face unaffordable housing, which erodes stability and quality of life.</Val>
+          <FieldLabel>communities at risk.</FieldLabel>
+          <Val>families struggle to find dignified, attainable homes, which weighs on health, education, and opportunity.</Val>
 
-          {/* The Impact Initiative */}
-          <SectionLabel>The Impact Initiative</SectionLabel>
-          <Body><Bold>Goal:</Bold> Launch 8 Affordable Housing Projects per Year (Phase 1).</Body>
-          <Body style={{ marginBottom: 4 }}><Bold>Impact Directive 2026:</Bold></Body>
-          <Bullet><Bold>800 Affordable Units Annually</Bold> (6 projects × 125 units each). (&lt;60% AMI)</Bullet>
-          <Bullet><Bold>2,000 Low-Income Residents Served Each Year</Bold> (avg. 2.5 persons per household).</Bullet>
-          <Bullet><Bold>5,000 Residents Over Project Lifetime</Bold> (15-year ownership, 5-year avg. residency).</Bullet>
-          <Body style={{ marginTop: 4 }}><Bold>Vision:</Bold> <em>Lotus Advantage</em> communities—housing that respects people and fosters thriving neighborhoods.</Body>
+          <HRule />
 
-          <Rule />
-
-          {/* The Lotus Way */}
-          <SectionLabel>The Lotus Way</SectionLabel>
-          <Body><Bold>Dignified Housing:</Bold> Homes designed for livability, sustainability, and community well-being.</Body>
-          <Body><Bold>Mindfully Creating:</Bold> Integrating thoughtful design and social impact into every project.</Body>
-
+          <SectionHead>the lotus way</SectionHead>
+          <FieldLabel>dignified housing.</FieldLabel>
+          <Val>homes designed for livability, sustainability, and community wellbeing. market-rate and affordable, built to the same standard.</Val>
+          <FieldLabel>mindfully creating.</FieldLabel>
+          <Val>thoughtful design and social impact integrated into every project, from site selection through resident services.</Val>
         </motion.div>
 
-        {/* Vertical divider */}
-        <motion.div
-          initial={{ scaleY: 0 }} animate={{ scaleY: 1 }}
-          transition={{ delay: 0.2, duration: 0.5, ease: EASE_OUT }}
-          style={{ width: 1, background: "rgba(66,66,66,0.1)", transformOrigin: "top", flexShrink: 0 }}
-        />
+        <VRule />
 
-        {/* RIGHT COLUMN */}
-        <motion.div {...fade(0.25)} style={{ flex: 1, display: "flex", flexDirection: "column", gap: 0 }}>
+        {/* COL 2 — the initiative */}
+        <motion.div {...fade(0.28)} style={{ flex: 1, padding: "16px 20px", overflowY: "auto" }}>
+          <ColHead>the initiative.</ColHead>
 
-          {/* How It Works */}
-          <SectionLabel>How It Works — Simple Terms</SectionLabel>
-          <Body><Bold>What is LIHTC and how does it work?</Bold></Body>
-          <Body style={{ marginBottom: 4 }}><Bold>GP Conduit Structure:</Bold></Body>
-          <Bullet>Provides <Bold>capital with repayment</Bold> for predevelopment/acquisition.</Bullet>
-          <Bullet><Bold>Tax Credit Investors repay loans at construction closing</Bold> after LIHTC application and award.</Bullet>
-          <Bullet>Impact Partners Investment receive <Bold>GP interest and economics</Bold> (ownership, fees, cash flow rights) upon repayment to the Impact Initiative.</Bullet>
-          <Body style={{ marginTop: 4 }}><Bold>Result:</Bold> Capital recycles into new projects, scaling impact without permanent lock-up.</Body>
+          <SectionHead>goal</SectionHead>
+          <Val>launch 8 affordable housing projects per year in phase one.</Val>
 
-          <Rule />
+          <HRule />
 
-          {/* Investment Directive */}
-          <SectionLabel>Investment Directive</SectionLabel>
-          <Body><Bold>Year 1 Capital Commitment Target:</Bold> $16–20M Total Capital (avg. $3M per project × 6 projects).</Body>
-          <Body style={{ marginBottom: 4 }}><Bold>Investment Return Targets / Project:</Bold></Body>
-          <Body style={{ paddingLeft: 16 }}><Bold>Project Hold Period:</Bold> 18 years</Body>
-          <Body style={{ paddingLeft: 16, marginBottom: 4 }}><Bold>Return:</Bold> 13–15% IRR target; 2–3x multiple on invested capital</Body>
-          <Body><Bold>Recommitment:</Bold> Annual subscription with 1-year redemption window.</Body>
-          <Body><Bold>Transparency:</Bold> Quarterly KPI reporting + Annual Investment Summit.</Body>
-          <Body><Bold>Projected Return:</Bold> $300M total return to investors over 25 years with 10-years of annual recommitment.</Body>
+          <SectionHead>impact directive 2026</SectionHead>
+          <Bullet>800 affordable units annually, across 6 projects at 125 units each, all under 60 percent AMI.</Bullet>
+          <Bullet>2,000 low-income residents served each year, at an average of 2.5 per household.</Bullet>
+          <Bullet>5,000 residents over a project lifetime, with 15-year ownership and 5-year average residency.</Bullet>
 
+          <HRule />
+
+          <SectionHead>vision</SectionHead>
+          <Val><em>Lotus Advantage</em> communities. housing that respects people and fosters thriving neighborhoods.</Val>
         </motion.div>
+
+        <VRule />
+
+        {/* COL 3 — the mechanism and the return */}
+        <motion.div {...fade(0.36)} style={{ flex: 1, padding: "16px 0 16px 20px", overflowY: "auto" }}>
+          <ColHead>the mechanism and the return.</ColHead>
+
+          <SectionHead>how it works</SectionHead>
+          <Val>the GP conduit provides capital with repayment for predevelopment and acquisition.</Val>
+          <Val>tax credit investors repay those loans at construction closing, after LIHTC application and award.</Val>
+          <Val>Impact Partners then receive GP interest and economics, including ownership, fees, and cash flow rights, upon repayment to the Impact Initiative.</Val>
+          <Val>capital recycles into new projects, scaling impact without permanent lock-up.</Val>
+
+          <HRule />
+
+          <SectionHead>investment directive</SectionHead>
+          <FieldLabel>year one commitment target.</FieldLabel>
+          <Val>$16M to $20M total capital, averaging $3M per project across 6 projects.</Val>
+          <FieldLabel>project hold period.</FieldLabel>
+          <Val>18 years.</Val>
+          <FieldLabel>return target.</FieldLabel>
+          <Val>13 to 15 percent IRR, with a 2x to 3x multiple on invested capital.</Val>
+          <FieldLabel>recommitment.</FieldLabel>
+          <Val>annual subscription with a 1-year redemption window.</Val>
+          <FieldLabel>transparency.</FieldLabel>
+          <Val>quarterly KPI reporting and an annual investment summit.</Val>
+        </motion.div>
+
       </div>
 
-      {/* Slide number */}
-      <motion.span
-        {...fade(0.35)}
-        style={{
-          position: "absolute", bottom: 24, right: 52,
-          fontSize: 11, fontWeight: 400, color: "rgba(66,66,66,0.35)",
-          letterSpacing: "0.22em", fontFamily: font,
-        }}
-      >03 — executive summary</motion.span>
+      {/* ── KICKER STRIP ── */}
+      <motion.div {...fade(0.44)} style={{
+        padding: "10px 48px 14px",
+        borderTop: `1px solid rgba(66,66,66,0.1)`,
+        display: "flex", alignItems: "center", gap: 10,
+      }}>
+        <div style={{ width: 5, height: 5, borderRadius: "50%", background: theme.turquoise, flexShrink: 0 }} />
+        <span style={{
+          fontSize: "clamp(10px, 0.92vw, 13px)",
+          fontWeight: 400, color: "#028faa",
+          letterSpacing: "0.06em", textTransform: "lowercase", fontFamily: font,
+        }}>
+          this is more than impact investing. this is legacy building.
+        </span>
+      </motion.div>
 
     </div>
   );
