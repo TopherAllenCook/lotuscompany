@@ -63,7 +63,7 @@ export function BeliefSlide() {
               transition={{ delay: 0.3, duration: 0.45, ease: EASE_OUT }}
               style={{
                 display: "block",
-                fontSize: "clamp(38px, 5.2vw, 84px)",
+                fontSize: "clamp(48px, 6.8vw, 110px)",
                 fontWeight: 300, color: "#fff",
                 letterSpacing: "0.01em", textTransform: "lowercase", lineHeight: 1.0,
               }}
@@ -76,7 +76,7 @@ export function BeliefSlide() {
               transition={{ delay: 0.48, duration: 0.45, ease: EASE_OUT }}
               style={{
                 display: "block",
-                fontSize: "clamp(38px, 5.2vw, 84px)",
+                fontSize: "clamp(48px, 6.8vw, 110px)",
                 fontWeight: 300, color: "#fff",
                 letterSpacing: "0.01em", textTransform: "lowercase", lineHeight: 1.0,
               }}
@@ -105,7 +105,7 @@ export function BeliefSlide() {
         >
           <p style={{
             margin: "0 0 8px",
-            fontSize: "clamp(9px, 0.85vw, 11px)",
+            fontSize: "clamp(11px, 1.05vw, 14px)",
             fontWeight: 600, color: theme.turquoise,
             letterSpacing: "0.18em", textTransform: "lowercase",
           }}>
@@ -113,7 +113,7 @@ export function BeliefSlide() {
           </p>
           <p style={{
             margin: 0,
-            fontSize: "clamp(11px, 1.05vw, 15px)",
+            fontSize: "clamp(14px, 1.45vw, 20px)",
             fontWeight: 400, color: "#424242",
             letterSpacing: "0.02em", textTransform: "lowercase",
             lineHeight: 1.7,
@@ -136,7 +136,7 @@ export function BeliefSlide() {
         >
           <p style={{
             margin: "0 0 8px",
-            fontSize: "clamp(9px, 0.85vw, 11px)",
+            fontSize: "clamp(11px, 1.05vw, 14px)",
             fontWeight: 600, color: theme.turquoise,
             letterSpacing: "0.18em", textTransform: "lowercase",
           }}>
@@ -144,7 +144,7 @@ export function BeliefSlide() {
           </p>
           <p style={{
             margin: 0,
-            fontSize: "clamp(11px, 1.05vw, 15px)",
+            fontSize: "clamp(14px, 1.45vw, 20px)",
             fontWeight: 400, color: "#424242",
             letterSpacing: "0.02em", textTransform: "lowercase",
             lineHeight: 1.7,
@@ -177,7 +177,7 @@ export function BeliefSlide() {
           />
           <p style={{
             margin: 0,
-            fontSize: "clamp(12px, 1.15vw, 17px)",
+            fontSize: "clamp(16px, 1.7vw, 24px)",
             fontWeight: 400, color: "#028faa",
             letterSpacing: "0.03em", textTransform: "lowercase",
             lineHeight: 1.65,
@@ -199,7 +199,7 @@ function Divider({ delay }: { delay: number }) {
       animate={{ scaleY: 1 }}
       transition={{ delay, duration: 0.4, ease: EASE_OUT }}
       style={{
-        width: 1, height: 56,
+        width: 1, height: 72,
         background: "rgba(66,66,66,0.15)",
         transformOrigin: "top", flexShrink: 0,
       }}
