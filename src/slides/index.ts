@@ -16,6 +16,7 @@
  */
 
 import React from "react";
+import { IntroSlide }         from "./IntroSlide";
 import { CoverSlide }         from "./CoverSlide";
 import { ImpactSlide }        from "./ImpactSlide";
 import { CommunitySlide }     from "./CommunitySlide";
@@ -25,6 +26,7 @@ import { LotusWaySlide }      from "./LotusWaySlide";
 import { ImpactProfileSlide } from "./ImpactProfileSlide";
 
 export const SLIDE_REGISTRY = [
+  { key: "intro",          component: IntroSlide,          title: "Intro" },
   { key: "cover",          component: CoverSlide,          title: "Steelton Village" },
   { key: "impact",         component: ImpactSlide,         title: "Impact" },
   { key: "community",      component: CommunitySlide,      title: "Community" },
