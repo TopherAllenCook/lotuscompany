@@ -4,118 +4,197 @@ import { LotusMark } from "@/components/LotusMark";
 import { theme, font, EASE_OUT } from "@/lib/theme";
 import { asset } from "@/lib/storage";
 
-const IMAGES = [
-  { src: asset("/nova/Commercial 2025-07-07 Lotus-Nova-1.jpg"),                           style: { top: "5%",  left: "3%",   width: "31%", height: "40%" } },
-  { src: asset("/republic/highlights/_DSC1121.jpg"),                                       style: { top: "3%",  left: "37%",  width: "26%", height: "33%" } },
-  { src: asset("/nova/Commercial 2025-07-07 Lotus-Nova-14.jpg"),                           style: { top: "4%",  right: "3%",  width: "25%", height: "44%" } },
-  { src: asset("/steelton-village/Steelton I_Pedestrian Promenade_2026.03.10.jpg"),        style: { top: "48%", left: "4%",  width: "28%", height: "34%" } },
-  { src: asset("/republic/aerials/Arial.jpg"),                                             style: { bottom: "5%", left: "35%", width: "30%", height: "33%" } },
-  { src: asset("/nova/Commercial 2025-07-07 Lotus-Nova-30.jpg"),                           style: { bottom: "4%", right: "4%", width: "26%", height: "40%" } },
-  { src: asset("/steelton-village/Steelton I_Clubhouse_2026.03.10.jpg"),                   style: { top: "40%", right: "5%",  width: "22%", height: "29%" } },
+const FRAME_IMAGES = [
+  { src: asset("/nova/Commercial 2025-07-07 Lotus-Nova-1.jpg"),
+    style: { top: 0, left: 0, width: "33.5%", height: "30%" } },
+  { src: asset("/steelton-village/Steelton I_Pedestrian Promenade_2026.03.10.jpg"),
+    style: { top: 0, left: "33.5%", width: "33%", height: "30%" } },
+  { src: asset("/nova/Commercial 2025-07-07 Lotus-Nova-14.jpg"),
+    style: { top: 0, right: 0, width: "33.5%", height: "30%" } },
+  { src: asset("/republic/highlights/_DSC1121.jpg"),
+    style: { top: "30%", left: 0, width: "20%", height: "40%" } },
+  { src: asset("/republic/aerials/Arial.jpg"),
+    style: { top: "30%", right: 0, width: "20%", height: "40%" } },
+  { src: asset("/nova/Commercial 2025-07-07 Lotus-Nova-30.jpg"),
+    style: { bottom: 0, left: 0, width: "33.5%", height: "30%" } },
+  { src: asset("/steelton-village/Steelton I_Clubhouse_2026.03.10.jpg"),
+    style: { bottom: 0, left: "33.5%", width: "33%", height: "30%" } },
+  { src: asset("/steelton-village/Steelton I_North Park_2026.03.10.jpg"),
+    style: { bottom: 0, right: 0, width: "33.5%", height: "30%" } },
 ];
 
-// Timing
-const LAST_ENTER   = 0.3 + (IMAGES.length - 1) * 0.22 + 0.55; // ~2.1s
-const HOLD         = 1.1;
-const EXIT_START   = LAST_ENTER + HOLD;   // ~3.2s
-const EXIT_DUR     = 0.85;
-const LOGO_DELAY   = EXIT_START + EXIT_DUR + 0.2; // ~4.25s
+// Corners first, then top/bottom center, then sides
+const ENTER_ORDER = [0, 2, 5, 7, 1, 6, 3, 4];
+
+const ENTER_DUR  = 0.45;
+const STAGGER    = 0.055;
+const LAST_IN    = STAGGER * (FRAME_IMAGES.length - 1) + ENTER_DUR;
+const HOLD       = 1.8;
+const EXIT_START = LAST_IN + HOLD;
+const EXIT_DUR   = 0.50;
+const LOGO_AT    = EXIT_START + EXIT_DUR - 0.05;
+
+const PILLARS = ["dignified housing", "community investment", "arts & culture", "economic impact"];
 
 const reveal = (delay: number) => ({
-  initial:   { clipPath: "inset(110% 0 -20px 0)", y: 28 },
+  initial:   { clipPath: "inset(110% 0 -20px 0)", y: 22 },
   animate:   { clipPath: "inset(0% 0 -20px 0)",   y: 0 },
-  transition: { delay, duration: 0.75, ease: EASE_OUT },
+  transition: { delay, duration: 0.68, ease: EASE_OUT },
 });
 
 export function IntroSlide() {
   return (
-    <div style={{ position: "absolute", inset: 0, background: theme.darkBg, fontFamily: font, overflow: "hidden" }}>
+    <div style={{
+      position: "absolute", inset: 0,
+      background: theme.darkBg,
+      fontFamily: font,
+      overflow: "hidden",
+    }}>
 
-      {/* Scattered image collage — fades out as a group */}
-      <motion.div
-        initial={{ opacity: 1 }}
-        animate={{ opacity: 0 }}
-        transition={{ delay: EXIT_START, duration: EXIT_DUR, ease: "easeIn" }}
-        style={{ position: "absolute", inset: 0, pointerEvents: "none" }}
-      >
-        {IMAGES.map((img, i) => (
+      {/* Frame images */}
+      {FRAME_IMAGES.map((img, i) => {
+        const order  = ENTER_ORDER.indexOf(i);
+        const eDelay = order * STAGGER;
+        const total  = ENTER_DUR + HOLD + EXIT_DUR;
+        return (
           <motion.div
             key={i}
-            initial={{ opacity: 0, scale: 0.86 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3 + i * 0.22, duration: 0.55, ease: EASE_OUT }}
-            style={{
-              position: "absolute",
-              overflow: "hidden",
-              borderRadius: 3,
-              ...img.style,
+            initial={{ opacity: 0, scale: 0.94 }}
+            animate={{ opacity: [0, 1, 1, 0], scale: [0.94, 1, 1, 1] }}
+            transition={{
+              delay: eDelay,
+              duration: total,
+              times: [
+                0,
+                ENTER_DUR / total,
+                (ENTER_DUR + HOLD) / total,
+                1,
+              ],
+              ease: ["easeOut", "linear", "easeIn", "easeIn"],
             }}
+            style={{ position: "absolute", overflow: "hidden", ...img.style }}
           >
             <img src={img.src} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
           </motion.div>
-        ))}
-      </motion.div>
+        );
+      })}
 
-      {/* Dark vignette scrim so images don't bleed into the logo moment */}
+      {/* Radial depth glow — dark turquoise at center, creates stage depth */}
+      <div style={{
+        position: "absolute", inset: 0,
+        background: `radial-gradient(ellipse 58% 52% at 50% 50%, rgba(2,143,170,0.09) 0%, rgba(5,10,12,0.88) 55%, rgba(5,10,12,1) 100%)`,
+        pointerEvents: "none",
+      }} />
+
+      {/* CENTER LOCKUP — logo anchored directly above title, reads as one unit */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: EXIT_START, duration: EXIT_DUR + 0.3, ease: "easeIn" }}
-        style={{ position: "absolute", inset: 0, background: theme.darkBg, pointerEvents: "none" }}
-      />
-
-      {/* Logo + headline — fades in after images leave */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: LOGO_DELAY, duration: 0.6, ease: EASE_OUT }}
+        transition={{ delay: LOGO_AT, duration: 0.65, ease: EASE_OUT }}
         style={{
-          position: "absolute", inset: 0,
-          display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-          gap: 48,
+          position: "absolute",
+          top: "30%", bottom: "30%",
+          left: "20%", right: "20%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
-        <LotusMark width={130} onDark />
+        {/* Logo — large, anchored to title */}
+        <div style={{ marginBottom: 28 }}>
+          <LotusMark width={148} onDark />
+        </div>
 
-        {/* Headline — staggered clip-path reveal */}
-        <div style={{ textAlign: "center", lineHeight: 0.95 }}>
-          <div style={{ overflow: "hidden", paddingBottom: 8 }}>
-            <motion.span {...reveal(LOGO_DELAY + 0.15)} style={{
-              display: "inline-block",
-              fontSize: "clamp(52px, 6.5vw, 112px)",
-              fontWeight: 400,
-              color: theme.turquoise,
-              letterSpacing: "0.06em",
-              textTransform: "lowercase",
-            }}>
+        {/* Title — 2-line intentional break: parent brand / program name */}
+        <div style={{ textAlign: "center" }}>
+          {/* Line 1: parent brand — smaller, letterspaced */}
+          <div style={{ overflow: "hidden", paddingBottom: 4, marginBottom: 6 }}>
+            <motion.span
+              {...reveal(LOGO_AT + 0.1)}
+              style={{
+                display: "inline-block",
+                fontSize: "clamp(18px, 2.2vw, 38px)",
+                fontWeight: 400,
+                color: "rgba(206,232,238,0.55)",
+                letterSpacing: "0.42em",
+                textTransform: "lowercase",
+              }}
+            >
               the lotus
             </motion.span>
           </div>
+
+          {/* Line 2: program name — oversized, bold, high contrast */}
           <div style={{ overflow: "hidden", paddingBottom: 8 }}>
-            <motion.span {...reveal(LOGO_DELAY + 0.35)} style={{
-              display: "inline-block",
-              fontSize: "clamp(52px, 6.5vw, 112px)",
-              fontWeight: 300,
-              color: theme.turquoise,
-              letterSpacing: "0.06em",
-              textTransform: "lowercase",
-            }}>
-              impact
+            <motion.span
+              {...reveal(LOGO_AT + 0.28)}
+              style={{
+                display: "inline-block",
+                fontSize: "clamp(52px, 7.5vw, 128px)",
+                fontWeight: 300,
+                color: theme.turquoise,
+                letterSpacing: "-0.02em",
+                textTransform: "lowercase",
+                lineHeight: 0.92,
+              }}
+            >
+              impact initiative<span style={{ color: "#028faa" }}>.</span>
             </motion.span>
           </div>
-          <div style={{ overflow: "hidden", paddingBottom: 8 }}>
-            <motion.span {...reveal(LOGO_DELAY + 0.55)} style={{
-              display: "inline-block",
-              fontSize: "clamp(52px, 6.5vw, 112px)",
-              fontWeight: 300,
-              color: theme.turquoise,
-              letterSpacing: "0.06em",
+
+          {/* Subtitle — short, declarative, approved vocabulary */}
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: LOGO_AT + 0.52, duration: 0.55, ease: EASE_OUT }}
+            style={{
+              marginTop: 20,
+              fontSize: "clamp(11px, 1.1vw, 14px)",
+              fontWeight: 400,
+              color: "rgba(206,232,238,0.38)",
+              letterSpacing: "0.32em",
               textTransform: "lowercase",
-            }}>
-              initiative.
-            </motion.span>
-          </div>
+              textAlign: "center",
+            }}
+          >
+            dignified housing&nbsp;&nbsp;·&nbsp;&nbsp;measurable impact
+          </motion.div>
         </div>
+      </motion.div>
+
+      {/* Impact pillars footer */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: LOGO_AT + 0.7, duration: 0.6, ease: EASE_OUT }}
+        style={{
+          position: "absolute",
+          bottom: 32,
+          left: "20%", right: "20%",
+          display: "flex",
+          justifyContent: "center",
+          gap: "clamp(24px, 4vw, 56px)",
+          alignItems: "center",
+        }}
+      >
+        {PILLARS.map((pillar, i) => (
+          <div key={i} style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            {i > 0 && (
+              <div style={{ width: 3, height: 3, borderRadius: "50%", background: "#028faa", flexShrink: 0 }} />
+            )}
+            <span style={{
+              fontSize: "clamp(9px, 0.85vw, 11px)",
+              fontWeight: 400,
+              color: "rgba(206,232,238,0.28)",
+              letterSpacing: "0.26em",
+              textTransform: "lowercase",
+              whiteSpace: "nowrap",
+            }}>
+              {pillar}
+            </span>
+          </div>
+        ))}
       </motion.div>
 
     </div>
