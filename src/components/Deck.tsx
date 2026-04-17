@@ -13,6 +13,65 @@ const VARIANTS = {
   exit:   { opacity: 0, scale: 0.975 },
 };
 
+function NavArrow({
+  direction,
+  onClick,
+  visible,
+}: {
+  direction: "prev" | "next";
+  onClick: () => void;
+  visible: boolean;
+}) {
+  const [hovered, setHovered] = useState(false);
+  const isPrev = direction === "prev";
+
+  if (!visible) return null;
+
+  return (
+    <button
+      onClick={onClick}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        position: "fixed",
+        top: 0,
+        bottom: 0,
+        [isPrev ? "left" : "right"]: 0,
+        width: "clamp(48px, 6vw, 80px)",
+        background: "transparent",
+        border: "none",
+        cursor: "pointer",
+        zIndex: 50,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        opacity: hovered ? 1 : 0,
+        transition: "opacity 0.25s ease",
+      }}
+      aria-label={isPrev ? "Previous slide" : "Next slide"}
+    >
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        fill="none"
+        style={{
+          transform: isPrev ? "rotate(180deg)" : undefined,
+          filter: "drop-shadow(0 1px 3px rgba(0,0,0,0.4))",
+        }}
+      >
+        <polyline
+          points="6,2 14,10 6,18"
+          stroke="#fff"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </button>
+  );
+}
+
 export function Deck({ slides }: DeckProps) {
   const [[index], setPage] = useState([0, 0]);
 
@@ -60,6 +119,9 @@ export function Deck({ slides }: DeckProps) {
           {slides[index]}
         </motion.div>
       </AnimatePresence>
+
+      <NavArrow direction="prev" onClick={() => go(index - 1)} visible={index > 0} />
+      <NavArrow direction="next" onClick={() => go(index + 1)} visible={index < slides.length - 1} />
 
       {/* Progress bar */}
       <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, height: 2, background: "rgba(255,255,255,0.06)", zIndex: 100 }}>
