@@ -41,16 +41,6 @@ export function CoverSlide() {
         }}
       />
 
-      {/* Top-left logo */}
-      <motion.div {...lift(0)} style={{ position: "absolute", top: 56, left: 72 }}>
-        <LotusMark width={180} onDark />
-      </motion.div>
-
-      {/* Slide number */}
-      <motion.div {...lift(0.1)} style={{ position: "absolute", top: 64, left: "50%", transform: "translateX(-50%)", fontSize: 11, fontWeight: 400, letterSpacing: "0.44em", color: "rgba(206,232,238,0.22)", textTransform: "lowercase" }}>
-        01 / steelton village
-      </motion.div>
-
       {/* Location — top right */}
       <motion.div {...lift(0.25)} style={{ position: "absolute", top: 66, right: 72, display: "flex", alignItems: "center", gap: 12 }}>
         <div style={{ width: 5, height: 5, borderRadius: "50%", background: theme.turquoise }} />
@@ -59,24 +49,19 @@ export function CoverSlide() {
         </span>
       </motion.div>
 
-      {/* Tagline */}
-      <motion.div {...lift(1.4)} style={{ position: "absolute", bottom: 32, right: 72, fontSize: 13, fontWeight: 300, color: "rgba(206,232,238,0.40)", letterSpacing: "0.28em", textTransform: "lowercase" }}>
-        mindfully creating.
+      {/* Eyebrow — floated up, white */}
+      <motion.div {...lift(0.4)} style={{ position: "absolute", top: "36%", left: 72, right: 72, display: "flex", alignItems: "center", gap: 16 }}>
+        <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.4, duration: 0.5, ease: "easeOut" }}
+          style={{ width: 52, height: 1.5, background: theme.turquoise, transformOrigin: "left" }} />
+        <span style={{ fontSize: 13, fontWeight: 400, letterSpacing: "0.36em", color: "#fff", textTransform: "lowercase" }}>
+          new development · phase 1
+        </span>
+        <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.4, duration: 0.5, ease: "easeOut" }}
+          style={{ width: 52, height: 1.5, background: theme.turquoise, transformOrigin: "left" }} />
       </motion.div>
 
-      {/* Main content */}
-      <div style={{ position: "absolute", bottom: 72, left: 72, right: 72 }}>
-
-        {/* Eyebrow */}
-        <motion.div {...lift(0.4)} style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 20 }}>
-          <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.4, duration: 0.5, ease: "easeOut" }}
-            style={{ width: 52, height: 1.5, background: theme.turquoise, transformOrigin: "left" }} />
-          <span style={{ fontSize: 13, fontWeight: 400, letterSpacing: "0.36em", color: theme.turquoise, textTransform: "lowercase" }}>
-            new development · phase 1
-          </span>
-          <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.4, duration: 0.5, ease: "easeOut" }}
-            style={{ width: 52, height: 1.5, background: theme.turquoise, transformOrigin: "left" }} />
-        </motion.div>
+      {/* Title + stats — moved up */}
+      <div style={{ position: "absolute", bottom: 96, left: 72, right: 72 }}>
 
         {/* Title */}
         <div style={{ fontSize: "clamp(64px,7vw,108px)", fontWeight: 300, color: "#fff", lineHeight: 0.92, letterSpacing: "-0.02em", textTransform: "lowercase", marginBottom: 36 }}>
@@ -112,6 +97,11 @@ export function CoverSlide() {
           </motion.div>
         </div>
       </div>
+
+      {/* Lotus logo — bottom left */}
+      <motion.div {...lift(1.3)} style={{ position: "absolute", bottom: 28, left: 72 }}>
+        <LotusMark width={160} onDark />
+      </motion.div>
     </div>
   );
 }
