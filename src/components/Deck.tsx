@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { EASE_OUT, theme, font } from "@/lib/theme";
 import { SLIDE_REGISTRY } from "@/slides";
 import { LotusMark } from "@/components/LotusMark";
+import { EditModeProvider, useEditMode } from "@/components/EditableText";
 
 interface DeckProps {
   slides: React.ReactNode[];
@@ -196,10 +197,11 @@ function SlideDrawer({ index, go, onClose }: { index: number; go: (n: number) =>
   );
 }
 
-export function Deck({ slides, initialIndex = 0 }: DeckProps) {
+function DeckInner({ slides, initialIndex = 0 }: DeckProps) {
   const router = useRouter();
   const [[index], setPage] = useState([initialIndex, 0]);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const { editMode, setEditMode } = useEditMode();
 
   const go = useCallback((next: number) => {
     const clamped = Math.max(0, Math.min(slides.length - 1, next));
@@ -209,14 +211,15 @@ export function Deck({ slides, initialIndex = 0 }: DeckProps) {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") { setDrawerOpen(false); return; }
-      if (drawerOpen) return;
+      if (e.key === "Escape") { setDrawerOpen(false); setEditMode(false); return; }
+      if (e.key === "e" || e.key === "E") { setEditMode(!editMode); return; }
+      if (drawerOpen || editMode) return;
       if (e.key === "ArrowRight" || e.key === " ") go(index + 1);
       if (e.key === "ArrowLeft") go(index - 1);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [index, go, drawerOpen]);
+  }, [index, go, drawerOpen, editMode, setEditMode]);
 
   useEffect(() => {
     let startX = 0;
@@ -274,6 +277,56 @@ export function Deck({ slides, initialIndex = 0 }: DeckProps) {
           <SlideDrawer index={index} go={go} onClose={() => setDrawerOpen(false)} />
         )}
       </AnimatePresence>
+
+      {/* Edit mode toggle — bottom right */}
+      <button
+        onClick={() => setEditMode(!editMode)}
+        title="Toggle text editor (E)"
+        style={{
+          position: "fixed", bottom: 20, right: 24, zIndex: 150,
+          background: editMode ? "rgba(2,143,170,0.85)" : "rgba(0,0,0,0.28)",
+          backdropFilter: "blur(8px)",
+          border: editMode ? "1px solid rgba(77,186,214,0.7)" : "1px solid rgba(255,255,255,0.1)",
+          borderRadius: 5, padding: "6px 13px",
+          cursor: "pointer", display: "flex", alignItems: "center", gap: 7,
+          transition: "background 0.2s ease, border-color 0.2s ease",
+        }}
+      >
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+          <path d="M9 1.5L11.5 4L4.5 11H2V8.5L9 1.5Z"
+            stroke={editMode ? "#fff" : "rgba(255,255,255,0.55)"}
+            strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+        <span style={{
+          fontFamily: font, fontSize: 9, letterSpacing: "0.18em",
+          color: editMode ? "#fff" : "rgba(255,255,255,0.45)",
+          textTransform: "lowercase",
+        }}>
+          {editMode ? "editing" : "edit"}
+        </span>
+      </button>
+
+      {editMode && (
+        <div style={{
+          position: "fixed", top: 16, left: "50%", transform: "translateX(-50%)",
+          zIndex: 200, background: "rgba(2,143,170,0.9)", backdropFilter: "blur(8px)",
+          border: "1px solid rgba(77,186,214,0.5)",
+          borderRadius: 4, padding: "5px 14px",
+          fontFamily: font, fontSize: 9, color: "#fff",
+          letterSpacing: "0.18em", textTransform: "lowercase",
+          pointerEvents: "none",
+        }}>
+          click any text to edit · e to exit · esc to cancel
+        </div>
+      )}
     </div>
+  );
+}
+
+export function Deck(props: DeckProps) {
+  return (
+    <EditModeProvider>
+      <DeckInner {...props} />
+    </EditModeProvider>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { theme, font, EASE_OUT } from "@/lib/theme";
+import { EditableText } from "@/components/EditableText";
 
 // Brand colors — per slide_03_executive_summary.html
 const BG        = "#ffffff";
@@ -78,13 +79,13 @@ export function ExecSummarySlide() {
               <ellipse cx="20" cy="24" rx="3" ry="12" transform="rotate(60 20 24)"/>
             </g>
           </svg>
-          <h1 style={{
+          <EditableText id="exec-summary:title" as="h1" style={{
             margin: 0, fontFamily: font, fontWeight: 500,
             fontSize: "clamp(12px, 1.0vw, 16px)", color: DARK,
             letterSpacing: "0.01em", textTransform: "lowercase", lineHeight: 1,
           }}>
             executive summary. lotus impact initiative.
-          </h1>
+          </EditableText>
         </div>
         <span style={{
           fontFamily: font, fontWeight: 400,
@@ -97,7 +98,7 @@ export function ExecSummarySlide() {
 
       {/* ── SUBTITLE ── */}
       <motion.div {...fade(0.08)} style={{ flexShrink: 0, marginBottom: S[2] }}>
-        <p style={{
+        <EditableText id="exec-summary:subtitle" as="p" style={{
           margin: 0, fontFamily: font, fontWeight: 400,
           fontSize: "clamp(14px, 1.45vw, 22px)", color: DARK,
           letterSpacing: "-0.005em", lineHeight: 1.35,
@@ -106,7 +107,7 @@ export function ExecSummarySlide() {
             dignified housing, built to one standard.
           </span>{" "}
           market-rate and affordable, indistinguishable by design.
-        </p>
+        </EditableText>
       </motion.div>
 
       {/* ── HERO STATS ── */}
@@ -129,7 +130,7 @@ export function ExecSummarySlide() {
             padding: `0 ${S[2]}px`,
             borderLeft: i > 0 ? `1px solid rgba(77,186,214,0.30)` : "none",
           }}>
-            <div style={{
+            <EditableText id={`exec-summary:stat-num-${i}`} style={{
               fontFamily: font, fontWeight: 600, color: DARK_TQ,
               fontSize: "clamp(24px, 3.6vw, 56px)",
               lineHeight: 1, marginBottom: S[1],
@@ -141,15 +142,15 @@ export function ExecSummarySlide() {
                   {stat.suffix}
                 </span>
               )}
-            </div>
-            <div style={{
+            </EditableText>
+            <EditableText id={`exec-summary:stat-label-${i}`} style={{
               fontFamily: font, fontWeight: 400, color: STAT_LBL,
               fontSize: "clamp(9px, 0.65vw, 11px)",
               letterSpacing: "0.05em", textTransform: "lowercase",
               lineHeight: 1.45, whiteSpace: "pre-line",
             }}>
               {stat.label}
-            </div>
+            </EditableText>
           </div>
         ))}
       </motion.div>
@@ -193,13 +194,13 @@ export function ExecSummarySlide() {
         borderTop: `1px solid ${LB}`,
         display: "flex", alignItems: "center", gap: S[3],
       }}>
-        <p style={{
+        <EditableText id="exec-summary:kicker" as="p" style={{
           margin: 0, fontFamily: font, fontWeight: 500,
           fontSize: "clamp(11px, 1.1vw, 18px)", color: DARK_TQ,
           letterSpacing: "0.01em", textTransform: "lowercase", whiteSpace: "nowrap",
         }}>
           this is more than impact investing. this is legacy building.
-        </p>
+        </EditableText>
         <div style={{ flex: 1, display: "flex", alignItems: "center", gap: S[1] }}>
           <div style={{
             flex: 1, height: 1,
