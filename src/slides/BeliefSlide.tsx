@@ -26,7 +26,7 @@ export function BeliefSlide() {
         {/* Soft top-left darkening for headline contrast */}
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(135deg, rgba(0,0,0,0.38) 0%, rgba(0,0,0,0.14) 35%, transparent 65%)",
+          background: "linear-gradient(160deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.22) 45%, transparent 70%)",
           pointerEvents: "none",
         }} />
 
@@ -54,8 +54,8 @@ export function BeliefSlide() {
           }}
         >02</motion.span>
 
-        {/* Headline — lower-left of photo */}
-        <div style={{ position: "absolute", bottom: 36, left: 52 }}>
+        {/* Headline — upper-left of photo */}
+        <div style={{ position: "absolute", top: 64, left: 52 }}>
           <div style={{ overflow: "hidden", marginBottom: 6 }}>
             <motion.span
               initial={{ opacity: 0, y: "1em" }}
@@ -63,7 +63,7 @@ export function BeliefSlide() {
               transition={{ delay: 0.3, duration: 0.45, ease: EASE_OUT }}
               style={{
                 display: "block",
-                fontSize: "clamp(48px, 6.8vw, 110px)",
+                fontSize: "clamp(56px, 8.5vw, 140px)",
                 fontWeight: 300, color: "#fff",
                 letterSpacing: "0.01em", textTransform: "lowercase", lineHeight: 1.0,
               }}
@@ -76,7 +76,7 @@ export function BeliefSlide() {
               transition={{ delay: 0.48, duration: 0.45, ease: EASE_OUT }}
               style={{
                 display: "block",
-                fontSize: "clamp(48px, 6.8vw, 110px)",
+                fontSize: "clamp(56px, 8.5vw, 140px)",
                 fontWeight: 300, color: "#fff",
                 letterSpacing: "0.01em", textTransform: "lowercase", lineHeight: 1.0,
               }}
