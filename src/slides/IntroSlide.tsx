@@ -86,32 +86,40 @@ export function IntroSlide() {
         pointerEvents: "none",
       }} />
 
-      {/* CENTER LOCKUP — logo anchored directly above title, reads as one unit */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: LOGO_AT, duration: 0.65, ease: EASE_OUT }}
-        style={{
-          position: "absolute",
-          top: "30%", bottom: "30%",
-          left: "20%", right: "20%",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        {/* Logo — large, anchored to title */}
-        <div style={{ marginBottom: 28 }}>
+      {/* CENTER LOCKUP */}
+      <div style={{
+        position: "absolute",
+        top: "30%", bottom: "30%",
+        left: "20%", right: "20%",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+      }}>
+        {/* Logo — scales up from slightly small */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.82 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: LOGO_AT, duration: 0.7, ease: [0.34, 1.56, 0.64, 1] }}
+          style={{ marginBottom: 24 }}
+        >
           <LotusMark width={148} onDark />
-        </div>
+        </motion.div>
 
-        {/* Title — 2-line intentional break: parent brand / program name */}
+        {/* Turquoise rule — draws left to right */}
+        <motion.div
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ delay: LOGO_AT + 0.35, duration: 0.55, ease: EASE_OUT }}
+          style={{ width: 64, height: 1.5, background: theme.turquoise, transformOrigin: "left", marginBottom: 22 }}
+        />
+
+        {/* Title */}
         <div style={{ textAlign: "center" }}>
-          {/* Line 1: parent brand — smaller, letterspaced */}
-          <div style={{ overflow: "hidden", paddingBottom: 4, marginBottom: 6 }}>
+          {/* Line 1: "the lotus" */}
+          <div style={{ overflow: "hidden", paddingBottom: 4, marginBottom: 4 }}>
             <motion.span
-              {...reveal(LOGO_AT + 0.1)}
+              {...reveal(LOGO_AT + 0.45)}
               style={{
                 display: "inline-block",
                 fontSize: "clamp(24px, 2.8vw, 48px)",
@@ -125,10 +133,10 @@ export function IntroSlide() {
             </motion.span>
           </div>
 
-          {/* Line 2: program name — oversized, bold, high contrast */}
-          <div style={{ overflow: "hidden", paddingBottom: 8 }}>
+          {/* Line 2: "impact initiative." — hero type */}
+          <div style={{ overflow: "hidden", paddingBottom: 10 }}>
             <motion.span
-              {...reveal(LOGO_AT + 0.28)}
+              {...reveal(LOGO_AT + 0.62)}
               style={{
                 display: "inline-block",
                 fontSize: "clamp(52px, 7.5vw, 128px)",
@@ -143,11 +151,11 @@ export function IntroSlide() {
             </motion.span>
           </div>
 
-          {/* Subtitle — short, declarative, approved vocabulary */}
+          {/* Subtitle */}
           <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: LOGO_AT + 0.52, duration: 0.55, ease: EASE_OUT }}
+            initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ delay: LOGO_AT + 0.9, duration: 0.6, ease: EASE_OUT }}
             style={{
               marginTop: 20,
               fontSize: "clamp(15px, 1.5vw, 20px)",
@@ -161,25 +169,26 @@ export function IntroSlide() {
             mindfully creating.
           </motion.div>
         </div>
-      </motion.div>
+      </div>
 
-      {/* Impact pillars footer */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: LOGO_AT + 0.7, duration: 0.6, ease: EASE_OUT }}
-        style={{
-          position: "absolute",
-          bottom: 32,
-          left: "20%", right: "20%",
-          display: "flex",
-          justifyContent: "center",
-          gap: "clamp(24px, 4vw, 56px)",
-          alignItems: "center",
-        }}
-      >
+      {/* Impact pillars footer — each pillar staggers in */}
+      <div style={{
+        position: "absolute",
+        bottom: 32,
+        left: "20%", right: "20%",
+        display: "flex",
+        justifyContent: "center",
+        gap: "clamp(24px, 4vw, 56px)",
+        alignItems: "center",
+      }}>
         {PILLARS.map((pillar, i) => (
-          <div key={i} style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: LOGO_AT + 1.1 + i * 0.1, duration: 0.5, ease: EASE_OUT }}
+            style={{ display: "flex", alignItems: "center", gap: 10 }}
+          >
             {i > 0 && (
               <div style={{ width: 3, height: 3, borderRadius: "50%", background: "#028faa", flexShrink: 0 }} />
             )}
@@ -193,9 +202,9 @@ export function IntroSlide() {
             }}>
               {pillar}
             </span>
-          </div>
+          </motion.div>
         ))}
-      </motion.div>
+      </div>
 
     </div>
   );
