@@ -158,7 +158,7 @@ export function IntroSlide() {
               textAlign: "center",
             }}
           >
-            dignified housing&nbsp;&nbsp;·&nbsp;&nbsp;measurable impact
+            mindfully creating.
           </motion.div>
         </div>
       </motion.div>
