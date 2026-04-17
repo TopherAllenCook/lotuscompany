@@ -24,7 +24,6 @@ export function EditableEl({ id, label, type = "shape", style, className, childr
     return () => registerEl(id, resolvedLabel, type, null);
   }, [id, resolvedLabel, type, registerEl]);
 
-  // Build override styles
   const ovr: CSSProperties = {};
   if (override.width != null)      ovr.width      = `${override.width}px`;
   if (override.height != null)     ovr.height     = `${override.height}px`;
@@ -51,28 +50,42 @@ export function EditableEl({ id, label, type = "shape", style, className, childr
   const handleMouseDown = useDragToMove(
     id, editMode, setActiveId, setOverride, overrideRef,
     ref as React.RefObject<HTMLElement | null>,
-    baseTransform, gridSize, snapToGrid
+    baseTransform, gridSize, snapToGrid,
   );
+
+  if (!editMode) {
+    return (
+      <div ref={ref} className={className} style={{ ...style, ...ovr }}>
+        {children}
+      </div>
+    );
+  }
 
   return (
     <div
       ref={ref}
       className={className}
-      onMouseDown={editMode ? handleMouseDown : undefined}
       style={{
         ...style,
         ...ovr,
-        ...(editMode ? {
-          outline: isActive
-            ? "2px solid #028faa"
-            : "1px dashed rgba(2,143,170,0.22)",
-          outlineOffset: 2,
-          cursor: isActive ? "move" : "crosshair",
-          boxSizing: "border-box" as const,
-        } : {}),
+        position: (style?.position as CSSProperties["position"]) ?? "relative",
+        outline: isActive
+          ? "2px solid #028faa"
+          : "1px dashed rgba(2,143,170,0.45)",
+        outlineOffset: 3,
       }}
     >
       {children}
+      {/* Expanded transparent hit area — ensures thin bars (1–2 px) are easily clickable */}
+      <div
+        onMouseDown={handleMouseDown}
+        style={{
+          position: "absolute",
+          inset: -10,
+          cursor: isActive ? "move" : "crosshair",
+          zIndex: 9000,
+        }}
+      />
     </div>
   );
 }

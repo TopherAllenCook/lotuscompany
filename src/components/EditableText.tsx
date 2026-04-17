@@ -127,7 +127,6 @@ export function useDragToMove(
       if (!dragging) return;
       const shift = `translate(${origTx + dx}px, ${origTy + dy}px)`;
       el.style.transform = baseTransform ? `${baseTransform} ${shift}` : shift;
-      el.style.cursor = "move";
     };
 
     const onUp = (me: MouseEvent) => {
@@ -135,7 +134,6 @@ export function useDragToMove(
         const dx = me.clientX - startX;
         const dy = me.clientY - startY;
         setOverride(id, { translateX: snap(origTx + dx), translateY: snap(origTy + dy) });
-        el.style.cursor = "";
       }
       window.removeEventListener("mousemove", onMove);
       window.removeEventListener("mouseup", onUp);
@@ -198,24 +196,36 @@ export function EditableText<T extends keyof React.JSX.IntrinsicElements = "div"
       ? override.content
       : children;
 
+  if (!editMode) {
+    return <Tag ref={ref} style={{ ...style, ...ovr }}>{displayChildren}</Tag>;
+  }
+
   return (
     <Tag
       ref={ref}
-      onMouseDown={editMode ? handleMouseDown : undefined}
       style={{
         ...style,
         ...ovr,
-        ...(editMode ? {
-          outline: isActive
-            ? "2px solid #028faa"
-            : "1px dashed rgba(2,143,170,0.25)",
-          outlineOffset: 3,
-          cursor: isActive ? "move" : "default",
-          userSelect: "none" as const,
-        } : {}),
+        position: (style?.position as CSSProperties["position"]) ?? "relative",
+        outline: isActive
+          ? "2px solid #028faa"
+          : "1px dashed rgba(2,143,170,0.25)",
+        outlineOffset: 3,
+        userSelect: "none" as const,
       }}
     >
       {displayChildren}
+      {/* Overlay — gives a larger hit area and handles drag without needing a precise click on the element */}
+      <span
+        onMouseDown={handleMouseDown}
+        style={{
+          position: "absolute",
+          inset: -8,
+          display: "block",
+          cursor: isActive ? "move" : "default",
+          zIndex: 9000,
+        }}
+      />
     </Tag>
   );
 }
