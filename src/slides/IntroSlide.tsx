@@ -3,27 +3,18 @@ import { motion } from "framer-motion";
 import { LotusMark } from "@/components/LotusMark";
 import { theme, font, EASE_OUT } from "@/lib/theme";
 
-// Scattered card positions — swap src to change any image.
-// Add images to public/intro/ then update src here.
-//
-// Slot guide:
-//   0 — far left,  tall portrait    → community / people shot
-//   1 — left,      portrait         → building exterior
-//   2 — top center, large portrait  → hero Nova shot
-//   3 — top right, landscape        → aerial / overview
-//   4 — right,     portrait         → aerial detail
-//   5 — center,    tall portrait    → interior / amenity
-//   6 — right mid, landscape        → steelton rendering
-//   7 — lower left, portrait        → highlight / event
+// Swap src to change an image — add files to public/intro/ first.
+// Slot guide: 0 far-left | 1 left | 2 top-center hero | 3 top-right | 4 far-right | 5 lower-left | 6 lower-center | 7 lower-right
 const CARDS = [
-  { src: "/intro/highlights-1.jpg",                              left: "18%", top: "22%", w: 300, h: 400, rot: -14 }, // 0
-  { src: "/intro/nova-1.jpg",                                    left: "30%", top: "20%", w: 255, h: 335, rot:  -8 }, // 1
-  { src: "/intro/nova-14.jpg",                                   left: "41%", top:  "9%", w: 315, h: 395, rot:   4 }, // 2
-  { src: "/intro/aerial-1.jpg",                                  left: "52%", top: "11%", w: 260, h: 195, rot:   2 }, // 3 landscape
-  { src: "/intro/aerial-2.jpg",                                  left: "56%", top: "26%", w: 260, h: 195, rot:  -3 }, // 4 landscape
-  { src: "/intro/nova-45.jpg",                                   left: "43%", top: "34%", w: 300, h: 380, rot:  -6 }, // 5
-  { src: "/steelton-village/Steelton I_Pedestrian Promenade_2026.03.10.jpg", left: "60%", top: "40%", w: 260, h: 175, rot: 7 }, // 6 rendering
-  { src: "/intro/highlights-2.jpg",                              left: "26%", top: "37%", w: 260, h: 340, rot:  12 }, // 7
+  { src: "/intro/highlights-1.jpg",  left:  "2%", top:  "5%", w: 285, h: 390, rot: -12 }, // 0 far left
+  { src: "/intro/nova-1.jpg",        left: "20%", top: "12%", w: 265, h: 345, rot:  -5 }, // 1 left
+  { src: "/intro/nova-14.jpg",       left: "37%", top:  "2%", w: 330, h: 430, rot:   3 }, // 2 top-center hero
+  { src: "/intro/aerial-1.jpg",      left: "58%", top:  "6%", w: 280, h: 210, rot:   8 }, // 3 top-right landscape
+  { src: "/intro/aerial-2.jpg",      left: "72%", top: "18%", w: 265, h: 345, rot:  -7 }, // 4 far right
+  { src: "/intro/highlights-2.jpg",  left:  "8%", top: "44%", w: 285, h: 370, rot:  10 }, // 5 lower-left
+  { src: "/intro/nova-45.jpg",       left: "42%", top: "50%", w: 310, h: 240, rot:  -4 }, // 6 lower-center landscape
+  { src: "/steelton-village/Steelton I_Pedestrian Promenade_2026.03.10.jpg",
+                                     left: "64%", top: "44%", w: 275, h: 340, rot:   6 }, // 7 lower-right
 ];
 
 // Deal order: spread outward from center cards first
@@ -79,10 +70,9 @@ export function IntroSlide() {
               position: "absolute",
               left: card.left, top: card.top,
               width: card.w, height: card.h,
-              borderRadius: 30,
               overflow: "hidden",
               zIndex,
-              boxShadow: "0 12px 48px rgba(0,0,0,0.55), inset 0 0 0 1px rgba(255,255,255,0.13)",
+              boxShadow: "0 16px 56px rgba(0,0,0,0.60)",
               transformOrigin: "center center",
             }}
           >
@@ -91,12 +81,6 @@ export function IntroSlide() {
               alt=""
               style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
             />
-            {/* glass sheen */}
-            <div style={{
-              position: "absolute", inset: 0,
-              background: "linear-gradient(135deg, rgba(255,255,255,0.11) 0%, rgba(255,255,255,0.03) 45%, transparent 70%)",
-              pointerEvents: "none",
-            }} />
           </motion.div>
         );
       })}
