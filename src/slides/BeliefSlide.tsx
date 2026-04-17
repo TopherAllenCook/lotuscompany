@@ -6,8 +6,8 @@ export function BeliefSlide() {
   return (
     <div style={{ position: "absolute", inset: 0, background: "#fff", fontFamily: font, overflow: "hidden" }}>
 
-      {/* ── UPPER ~55%: photo ── */}
-      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "55%" }}>
+      {/* ── UPPER 65%: photo ── */}
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "65%" }}>
 
         {/* Ken-burns photo */}
         <motion.img
@@ -54,8 +54,8 @@ export function BeliefSlide() {
           }}
         >02</motion.span>
 
-        {/* Headline — upper-left of photo */}
-        <div style={{ position: "absolute", top: 64, left: 52 }}>
+        {/* Headline — sits just below the /lotus label */}
+        <div style={{ position: "absolute", top: 58, left: 52 }}>
           <div style={{ overflow: "hidden", marginBottom: 6 }}>
             <motion.span
               initial={{ opacity: 0, y: "1em" }}
@@ -88,7 +88,7 @@ export function BeliefSlide() {
       {/* ── LOWER 45%: white ── */}
       <div style={{
         position: "absolute",
-        top: "55%", left: 0, right: 0, bottom: 0,
+        top: "65%", left: 0, right: 0, bottom: 0,
         background: "#fff",
         display: "flex",
         alignItems: "center",
