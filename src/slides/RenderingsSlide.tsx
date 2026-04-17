@@ -4,6 +4,7 @@ import { LotusMark } from "@/components/LotusMark";
 import { theme, font, EASE_OUT } from "@/lib/theme";
 import { asset } from "@/lib/storage";
 import { EditableText } from "@/components/EditableText";
+import { EditableEl } from "@/components/EditableEl";
 
 const IMAGES = [
   { file: "Steelton I_Updated Lobby_2026.04.02.jpg",        label: "lobby",               col: "1", row: "1 / 3" },
@@ -32,7 +33,9 @@ export function RenderingsSlide() {
           the renderings
         </EditableText>
         <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.3, duration: 0.5 }}
-          style={{ width: 36, height: 1.5, background: theme.turquoise, transformOrigin: "left" }} />
+          style={{ transformOrigin: "left" }}>
+          <EditableEl id="renderings:header-rule" label="header rule" type="bar" style={{ width: 36, height: 1.5, background: theme.turquoise }} />
+        </motion.div>
       </motion.div>
 
       {/* Editorial grid */}

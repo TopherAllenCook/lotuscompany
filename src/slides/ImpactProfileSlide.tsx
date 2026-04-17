@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { LotusMark } from "@/components/LotusMark";
 import { theme, font, EASE_OUT } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
+import { EditableEl } from "@/components/EditableEl";
 
 function Counter({ to, delay, prefix = "", suffix = "" }: { to: number; delay: number; prefix?: string; suffix?: string }) {
   const val = useMotionValue(0);
@@ -56,12 +57,16 @@ export function ImpactProfileSlide() {
       <div style={{ position: "absolute", top: 148, left: 72, right: 72 }}>
         <motion.div {...lift(0.25)} style={{ display: "flex", alignItems: "center", gap: 16 }}>
           <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.25, duration: 0.5 }}
-            style={{ width: 52, height: 1.5, background: theme.turquoise, transformOrigin: "left" }} />
+            style={{ transformOrigin: "left" }}>
+            <EditableEl id="impact-profile:rule-left" label="eyebrow rule left" type="bar" style={{ width: 52, height: 1.5, background: theme.turquoise }} />
+          </motion.div>
           <EditableText id="impact-profile:eyebrow" label="eyebrow — impact & resident profile" as="span" style={{ fontSize: 13, fontWeight: 400, letterSpacing: "0.4em", color: theme.turquoise, textTransform: "lowercase" }}>
             impact &amp; resident profile
           </EditableText>
           <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.25, duration: 0.5 }}
-            style={{ width: 52, height: 1.5, background: theme.turquoise, transformOrigin: "left" }} />
+            style={{ transformOrigin: "left" }}>
+            <EditableEl id="impact-profile:rule-right" label="eyebrow rule right" type="bar" style={{ width: 52, height: 1.5, background: theme.turquoise }} />
+          </motion.div>
         </motion.div>
       </div>
 
@@ -87,7 +92,9 @@ export function ImpactProfileSlide() {
 
       {/* Divider */}
       <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.9, duration: 0.7 }}
-        style={{ position: "absolute", top: 390, left: 72, right: 72, height: 1, background: "rgba(206,232,238,0.10)", transformOrigin: "left" }} />
+        style={{ position: "absolute", top: 390, left: 72, right: 72, transformOrigin: "left" }}>
+        <EditableEl id="impact-profile:divider" label="section divider" type="bar" style={{ height: 1, background: "rgba(206,232,238,0.10)" }} />
+      </motion.div>
 
       {/* Audience split */}
       <div style={{ position: "absolute", top: 418, left: 72, right: 72, display: "flex", gap: 0 }}>
@@ -125,8 +132,11 @@ export function ImpactProfileSlide() {
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ delay: 1.4 + i * 0.1, duration: 0.7, ease: "easeOut" }}
-              style={{ width: seg.width, height: "100%", background: seg.color, transformOrigin: "left" }}
-            />
+              style={{ width: seg.width, height: "100%", transformOrigin: "left" }}
+            >
+              <EditableEl id={`impact-profile:ami-bar-${i}`} label={`ami segment — ${seg.label}`} type="bar"
+                style={{ width: "100%", height: "100%", background: seg.color }} />
+            </motion.div>
           ))}
         </motion.div>
         <motion.div

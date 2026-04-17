@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { LotusMark } from "@/components/LotusMark";
 import { theme, font, EASE_OUT } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
+import { EditableEl } from "@/components/EditableEl";
 
 const reveal = (delay: number) => ({
   initial:   { clipPath: "inset(110% 0 -20px 0)", y: 22 },
@@ -56,8 +57,10 @@ export function IntroSlide() {
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ delay: 0.45, duration: 0.55, ease: EASE_OUT }}
-          style={{ width: 64, height: 1.5, background: theme.turquoise, transformOrigin: "left", marginBottom: 22 }}
-        />
+          style={{ transformOrigin: "left", marginBottom: 22 }}
+        >
+          <EditableEl id="intro:rule" label="center rule" type="bar" style={{ width: 64, height: 1.5, background: theme.turquoise }} />
+        </motion.div>
 
         <div style={{ textAlign: "center" }}>
           <div style={{ overflow: "hidden", paddingBottom: 4, marginBottom: 4 }}>
@@ -119,7 +122,7 @@ export function IntroSlide() {
             style={{ display: "flex", alignItems: "center", gap: 10 }}
           >
             {i > 0 && (
-              <div style={{ width: 3, height: 3, borderRadius: "50%", background: "#028faa", flexShrink: 0 }} />
+              <EditableEl id={`intro:dot-${i}`} label={`pillar dot ${i}`} type="dot" style={{ width: 3, height: 3, borderRadius: "50%", background: "#028faa", flexShrink: 0 }} />
             )}
             <EditableText id={`intro:pillar-${i}`} label={`pillar — ${pillar}`} as="span" style={{
               fontSize: "clamp(12px, 1.1vw, 15px)", fontWeight: 400,

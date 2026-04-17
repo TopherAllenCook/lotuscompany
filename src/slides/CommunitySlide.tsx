@@ -4,6 +4,7 @@ import { LotusMark } from "@/components/LotusMark";
 import { theme, font, EASE_OUT } from "@/lib/theme";
 import { asset } from "@/lib/storage";
 import { EditableText } from "@/components/EditableText";
+import { EditableEl } from "@/components/EditableEl";
 
 const lift = (delay: number) => ({
   initial:   { opacity: 0, y: 12 },
@@ -58,12 +59,16 @@ export function CommunitySlide() {
         {/* Eyebrow */}
         <motion.div {...lift(0.3)} style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 28 }}>
           <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.3, duration: 0.5 }}
-            style={{ width: 52, height: 1.5, background: theme.turquoise, transformOrigin: "left" }} />
+            style={{ transformOrigin: "left" }}>
+            <EditableEl id="community:rule-left" label="eyebrow rule left" type="bar" style={{ width: 52, height: 1.5, background: theme.turquoise }} />
+          </motion.div>
           <EditableText id="community:eyebrow" label="eyebrow" as="span" style={{ fontSize: 13, fontWeight: 400, letterSpacing: "0.4em", color: theme.turquoise, textTransform: "lowercase" }}>
             steelton village · phase 1
           </EditableText>
           <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.3, duration: 0.5 }}
-            style={{ width: 52, height: 1.5, background: theme.turquoise, transformOrigin: "left" }} />
+            style={{ transformOrigin: "left" }}>
+            <EditableEl id="community:rule-right" label="eyebrow rule right" type="bar" style={{ width: 52, height: 1.5, background: theme.turquoise }} />
+          </motion.div>
         </motion.div>
 
         {/* Editorial statement */}

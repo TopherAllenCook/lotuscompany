@@ -3,21 +3,31 @@ import {
   createContext, useContext, useState, useRef, useEffect,
   useCallback, type ReactNode, type CSSProperties,
 } from "react";
-import { loadOverrides, saveOverrides, type TextOverride, type OverridesMap } from "@/lib/textOverrides";
+import { loadOverrides, saveOverrides, type ElementOverride, type OverridesMap } from "@/lib/textOverrides";
 
-// ─── Context ────────────────────────────────────────────────────────────────
+// ─── Types ───────────────────────────────────────────────────────────────────
+
+export type ElementType = "text" | "bar" | "shape" | "dot" | "image" | "gradient";
+
+// ─── Context ─────────────────────────────────────────────────────────────────
 
 interface EditCtx {
   editMode: boolean;
   setEditMode: (v: boolean) => void;
   overrides: OverridesMap;
-  setOverride: (id: string, patch: Partial<TextOverride>) => void;
+  setOverride: (id: string, patch: Partial<ElementOverride>) => void;
   clearOverride: (id: string) => void;
   activeId: string | null;
   setActiveId: (id: string | null) => void;
-  registerEl: (id: string, label: string, el: HTMLElement | null) => void;
+  registerEl: (id: string, label: string, type: ElementType, el: HTMLElement | null) => void;
   getEl: (id: string) => HTMLElement | null;
-  registeredList: { id: string; label: string }[];
+  registeredList: { id: string; label: string; type: ElementType }[];
+  gridSize: number;
+  snapToGrid: boolean;
+  showGrid: boolean;
+  setGridSize: (n: number) => void;
+  setSnapToGrid: (b: boolean) => void;
+  setShowGrid: (b: boolean) => void;
 }
 
 const Ctx = createContext<EditCtx | null>(null);
@@ -26,12 +36,15 @@ export function EditModeProvider({ children }: { children: ReactNode }) {
   const [editMode, setEditMode] = useState(false);
   const [overrides, setOverrides] = useState<OverridesMap>({});
   const [activeId, setActiveId] = useState<string | null>(null);
-  const [registeredList, setRegisteredList] = useState<{ id: string; label: string }[]>([]);
+  const [registeredList, setRegisteredList] = useState<{ id: string; label: string; type: ElementType }[]>([]);
+  const [gridSize, setGridSize] = useState(8);
+  const [snapToGrid, setSnapToGrid] = useState(true);
+  const [showGrid, setShowGrid] = useState(false);
   const elMap = useRef<Record<string, HTMLElement | null>>({});
 
   useEffect(() => { setOverrides(loadOverrides()); }, []);
 
-  const setOverride = useCallback((id: string, patch: Partial<TextOverride>) => {
+  const setOverride = useCallback((id: string, patch: Partial<ElementOverride>) => {
     setOverrides(prev => {
       const next = { ...prev, [id]: { ...prev[id], ...patch } };
       saveOverrides(next);
@@ -48,11 +61,11 @@ export function EditModeProvider({ children }: { children: ReactNode }) {
     });
   }, []);
 
-  const registerEl = useCallback((id: string, label: string, el: HTMLElement | null) => {
+  const registerEl = useCallback((id: string, label: string, type: ElementType, el: HTMLElement | null) => {
     elMap.current[id] = el;
     if (el) {
       setRegisteredList(prev =>
-        prev.some(e => e.id === id) ? prev : [...prev, { id, label }]
+        prev.some(e => e.id === id) ? prev : [...prev, { id, label, type }]
       );
     } else {
       setRegisteredList(prev => prev.filter(e => e.id !== id));
@@ -65,6 +78,7 @@ export function EditModeProvider({ children }: { children: ReactNode }) {
     <Ctx.Provider value={{
       editMode, setEditMode, overrides, setOverride, clearOverride,
       activeId, setActiveId, registerEl, getEl, registeredList,
+      gridSize, snapToGrid, showGrid, setGridSize, setSnapToGrid, setShowGrid,
     }}>
       {children}
     </Ctx.Provider>
@@ -77,7 +91,62 @@ export function useEditMode() {
   return ctx;
 }
 
-// ─── EditableText ────────────────────────────────────────────────────────────
+// ─── Shared drag logic ────────────────────────────────────────────────────────
+
+export function useDragToMove(
+  id: string,
+  editMode: boolean,
+  setActiveId: (id: string | null) => void,
+  setOverride: (id: string, patch: Partial<ElementOverride>) => void,
+  overrideRef: React.MutableRefObject<ElementOverride>,
+  elRef: React.RefObject<HTMLElement | null>,
+  baseTransform: string,
+  gridSize: number,
+  snapToGrid: boolean,
+) {
+  return useCallback((e: React.MouseEvent) => {
+    if (!editMode) return;
+    e.stopPropagation();
+    setActiveId(id);
+
+    const el = elRef.current;
+    if (!el) return;
+
+    const origTx = overrideRef.current.translateX ?? 0;
+    const origTy = overrideRef.current.translateY ?? 0;
+    const startX = e.clientX;
+    const startY = e.clientY;
+    let dragging = false;
+
+    const snap = (v: number) => snapToGrid ? Math.round(v / gridSize) * gridSize : v;
+
+    const onMove = (me: MouseEvent) => {
+      const dx = me.clientX - startX;
+      const dy = me.clientY - startY;
+      if (!dragging && (Math.abs(dx) > 3 || Math.abs(dy) > 3)) dragging = true;
+      if (!dragging) return;
+      const shift = `translate(${origTx + dx}px, ${origTy + dy}px)`;
+      el.style.transform = baseTransform ? `${baseTransform} ${shift}` : shift;
+      el.style.cursor = "move";
+    };
+
+    const onUp = (me: MouseEvent) => {
+      if (dragging) {
+        const dx = me.clientX - startX;
+        const dy = me.clientY - startY;
+        setOverride(id, { translateX: snap(origTx + dx), translateY: snap(origTy + dy) });
+        el.style.cursor = "";
+      }
+      window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("mouseup", onUp);
+    };
+
+    window.addEventListener("mousemove", onMove);
+    window.addEventListener("mouseup", onUp);
+  }, [editMode, id, setActiveId, setOverride, baseTransform, gridSize, snapToGrid]);
+}
+
+// ─── EditableText ─────────────────────────────────────────────────────────────
 
 export function EditableText<T extends keyof React.JSX.IntrinsicElements = "div">({
   id,
@@ -93,7 +162,7 @@ export function EditableText<T extends keyof React.JSX.IntrinsicElements = "div"
   style?: CSSProperties;
 }) {
   const Tag = (as ?? "div") as React.ElementType;
-  const { editMode, overrides, activeId, setActiveId, registerEl, setOverride } = useEditMode();
+  const { editMode, overrides, activeId, setActiveId, registerEl, setOverride, gridSize, snapToGrid } = useEditMode();
   const ref = useRef<HTMLElement>(null);
   const override = overrides[id] ?? {};
   const resolvedLabel = label ?? id.split(":").slice(1).join(" ");
@@ -101,11 +170,10 @@ export function EditableText<T extends keyof React.JSX.IntrinsicElements = "div"
   overrideRef.current = override;
 
   useEffect(() => {
-    registerEl(id, resolvedLabel, ref.current);
-    return () => registerEl(id, resolvedLabel, null);
+    registerEl(id, resolvedLabel, "text", ref.current);
+    return () => registerEl(id, resolvedLabel, "text", null);
   }, [id, resolvedLabel, registerEl]);
 
-  // Build override styles
   const ovr: CSSProperties = {};
   if (override.fontSize != null)      ovr.fontSize      = `${override.fontSize}px`;
   if (override.letterSpacing != null) ovr.letterSpacing = `${override.letterSpacing}em`;
@@ -119,49 +187,11 @@ export function EditableText<T extends keyof React.JSX.IntrinsicElements = "div"
   }
 
   const isActive = editMode && activeId === id;
+  const baseTransform = (style?.transform as string) ?? "";
 
-  const handleMouseDown = useCallback((e: React.MouseEvent) => {
-    if (!editMode) return;
-    setActiveId(id);
-
-    const el = ref.current;
-    if (!el) return;
-
-    const origTx = overrideRef.current.translateX ?? 0;
-    const origTy = overrideRef.current.translateY ?? 0;
-    const startX = e.clientX;
-    const startY = e.clientY;
-    const baseTransform = (style?.transform as string) ?? "";
-    let dragging = false;
-
-    const onMove = (me: MouseEvent) => {
-      const dx = me.clientX - startX;
-      const dy = me.clientY - startY;
-      if (!dragging && (Math.abs(dx) > 3 || Math.abs(dy) > 3)) {
-        dragging = true;
-      }
-      if (!dragging) return;
-      const newTx = origTx + dx;
-      const newTy = origTy + dy;
-      const shift = `translate(${newTx}px, ${newTy}px)`;
-      el.style.transform = baseTransform ? `${baseTransform} ${shift}` : shift;
-      el.style.cursor = "move";
-    };
-
-    const onUp = (me: MouseEvent) => {
-      if (dragging) {
-        const dx = me.clientX - startX;
-        const dy = me.clientY - startY;
-        setOverride(id, { translateX: origTx + dx, translateY: origTy + dy });
-        el.style.cursor = "";
-      }
-      window.removeEventListener("mousemove", onMove);
-      window.removeEventListener("mouseup", onUp);
-    };
-
-    window.addEventListener("mousemove", onMove);
-    window.addEventListener("mouseup", onUp);
-  }, [editMode, id, setActiveId, setOverride, style]);
+  const handleMouseDown = useDragToMove(
+    id, editMode, setActiveId, setOverride, overrideRef, ref, baseTransform, gridSize, snapToGrid
+  );
 
   const displayChildren =
     override.content !== undefined && typeof children === "string"

@@ -1,15 +1,27 @@
-export interface TextOverride {
+export interface ElementOverride {
+  // text
   content?: string;
   color?: string;
   fontWeight?: number;
   fontSize?: number;
-  translateX?: number;
-  translateY?: number;
   letterSpacing?: number;
   lineHeight?: number;
+  // universal position
+  translateX?: number;
+  translateY?: number;
+  // dimensions
+  width?: number;   // px
+  height?: number;  // px
+  // visual
+  background?: string;
+  opacity?: number;
+  rotate?: number;  // degrees
 }
 
-export type OverridesMap = Record<string, TextOverride>;
+// backward-compat alias
+export type TextOverride = ElementOverride;
+
+export type OverridesMap = Record<string, ElementOverride>;
 
 const KEY = "lotus-text-overrides";
 

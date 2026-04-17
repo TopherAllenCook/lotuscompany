@@ -7,6 +7,7 @@ import { SLIDE_REGISTRY } from "@/slides";
 import { LotusMark } from "@/components/LotusMark";
 import { EditModeProvider, useEditMode } from "@/components/EditableText";
 import { EditorPanel } from "@/components/EditorPanel";
+import { GridOverlay } from "@/components/GridOverlay";
 
 interface DeckProps {
   slides: React.ReactNode[];
@@ -193,7 +194,7 @@ function SlideDrawer({ index, go, onClose, onOpenEditor }: {
             color: "rgba(2,143,170,0.8)",
             letterSpacing: "0.1em", textTransform: "lowercase",
           }}>
-            edit text
+            edit
           </span>
         </button>
 
@@ -216,7 +217,7 @@ function DeckInner({ slides, initialIndex = 0 }: DeckProps) {
   const [[index], setPage] = useState([initialIndex, 0]);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [editorOpen, setEditorOpen] = useState(false);
-  const { editMode, setEditMode, setActiveId } = useEditMode();
+  const { editMode, setEditMode, setActiveId, gridSize, showGrid } = useEditMode();
 
   const currentSlideKey = SLIDE_REGISTRY[index].key;
 
@@ -287,6 +288,7 @@ function DeckInner({ slides, initialIndex = 0 }: DeckProps) {
           style={{ position: "absolute", inset: 0 }}
         >
           {slides[index]}
+          <GridOverlay size={gridSize} visible={editMode && showGrid} />
         </motion.div>
       </AnimatePresence>
 
@@ -334,7 +336,7 @@ function DeckInner({ slides, initialIndex = 0 }: DeckProps) {
           color: editorOpen ? "#fff" : "rgba(255,255,255,0.45)",
           textTransform: "lowercase",
         }}>
-          {editorOpen ? "close editor" : "edit text"}
+          {editorOpen ? "close editor" : "edit"}
         </span>
       </button>
 

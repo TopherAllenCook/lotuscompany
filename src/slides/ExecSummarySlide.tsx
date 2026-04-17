@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { theme, font, EASE_OUT } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
+import { EditableEl } from "@/components/EditableEl";
 
 // Brand colors — per slide_03_executive_summary.html
 const BG        = "#ffffff";
@@ -25,7 +26,7 @@ const fade = (delay: number) => ({
   transition: { delay, duration: 0.45, ease: EASE_OUT },
 });
 
-function ColHeader({ children }: { children: React.ReactNode }) {
+function ColHeader({ id, children }: { id: string; children: React.ReactNode }) {
   return (
     <div style={{ marginBottom: S[2] }}>
       <p style={{
@@ -33,7 +34,7 @@ function ColHeader({ children }: { children: React.ReactNode }) {
         fontSize: "clamp(9px, 0.72vw, 11px)", color: DARK_TQ,
         letterSpacing: "0.22em", textTransform: "lowercase", lineHeight: 1,
       }}>{children}</p>
-      <div style={{ width: 22, height: 1, background: TQ }} />
+      <EditableEl id={id} label={`col underline — ${typeof children === "string" ? children : id}`} type="bar" style={{ width: 22, height: 1, background: TQ }} />
     </div>
   );
 }
@@ -162,7 +163,7 @@ export function ExecSummarySlide() {
         gap: `0 ${S[7]}px`,
       }}>
         <motion.div {...fade(0.20)}>
-          <ColHeader>the initiative</ColHeader>
+          <ColHeader id="exec-summary:col-underline-0">the initiative</ColHeader>
           <Line label="goal.">8 projects per year, phase one.</Line>
           <Line label="units.">800 annually, under 60% ami.</Line>
           <Line label="residents.">2,000 per year. 5,000 over project lifetime.</Line>
@@ -170,7 +171,7 @@ export function ExecSummarySlide() {
         </motion.div>
 
         <motion.div {...fade(0.28)}>
-          <ColHeader>how it works</ColHeader>
+          <ColHeader id="exec-summary:col-underline-1">how it works</ColHeader>
           <Line>gp conduit funds predevelopment and acquisition.</Line>
           <Line>tax credit investors repay at construction closing.</Line>
           <Line>impact partners earn gp interest after repayment.</Line>
@@ -178,7 +179,7 @@ export function ExecSummarySlide() {
         </motion.div>
 
         <motion.div {...fade(0.36)}>
-          <ColHeader>investment terms</ColHeader>
+          <ColHeader id="exec-summary:col-underline-2">investment terms</ColHeader>
           <Line label="commitment.">$16m to $20m, year one.</Line>
           <Line label="hold.">18 years.</Line>
           <Line label="return.">13 to 15% irr, 2x to 3x moic.</Line>
@@ -202,14 +203,11 @@ export function ExecSummarySlide() {
           this is more than impact investing. this is legacy building.
         </EditableText>
         <div style={{ flex: 1, display: "flex", alignItems: "center", gap: S[1] }}>
-          <div style={{
+          <EditableEl id="exec-summary:kicker-line" label="kicker gradient line" type="bar" style={{
             flex: 1, height: 1,
             background: `linear-gradient(90deg, ${TQ} 0%, ${LB} 60%, transparent 100%)`,
           }} />
-          <div style={{
-            width: 9, height: 9, borderRadius: "50%",
-            background: TQ, flexShrink: 0,
-          }} />
+          <EditableEl id="exec-summary:kicker-dot" label="kicker dot" type="dot" style={{ width: 9, height: 9, borderRadius: "50%", background: TQ, flexShrink: 0 }} />
         </div>
       </motion.div>
 

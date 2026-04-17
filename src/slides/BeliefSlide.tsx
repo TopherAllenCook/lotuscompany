@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { theme, font, EASE_OUT } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
+import { EditableEl } from "@/components/EditableEl";
 
 export function BeliefSlide() {
   return (
@@ -140,7 +141,7 @@ export function BeliefSlide() {
           </EditableText>
         </motion.div>
 
-        <Divider delay={0.9} />
+        <Divider delay={0.9} id="belief:divider-0" />
 
         {/* Column 2 */}
         <motion.div
@@ -172,7 +173,7 @@ export function BeliefSlide() {
           </EditableText>
         </motion.div>
 
-        <Divider delay={1.0} />
+        <Divider delay={1.0} id="belief:divider-1" />
 
         {/* Column 3 */}
         <motion.div
@@ -185,11 +186,10 @@ export function BeliefSlide() {
             initial={{ scale: 0 }}
             animate={{ scale: [0, 1.4, 1] }}
             transition={{ delay: 1.3, duration: 0.35 }}
-            style={{
-              width: 6, height: 6, borderRadius: "50%",
-              background: theme.turquoise, flexShrink: 0, marginTop: 5,
-            }}
-          />
+            style={{ flexShrink: 0, marginTop: 5 }}
+          >
+            <EditableEl id="belief:kicker-dot" label="kicker dot" type="dot" style={{ width: 6, height: 6, borderRadius: "50%", background: theme.turquoise }} />
+          </motion.div>
           <EditableText id="belief:kicker" label="kicker" as="p" style={{
             margin: 0,
             fontSize: "clamp(16px, 1.7vw, 24px)",
@@ -207,17 +207,15 @@ export function BeliefSlide() {
   );
 }
 
-function Divider({ delay }: { delay: number }) {
+function Divider({ delay, id }: { delay: number; id: string }) {
   return (
     <motion.div
       initial={{ scaleY: 0 }}
       animate={{ scaleY: 1 }}
       transition={{ delay, duration: 0.4, ease: EASE_OUT }}
-      style={{
-        width: 1, height: 72,
-        background: "rgba(66,66,66,0.15)",
-        transformOrigin: "top", flexShrink: 0,
-      }}
-    />
+      style={{ transformOrigin: "top", flexShrink: 0 }}
+    >
+      <EditableEl id={id} label="column divider" type="bar" style={{ width: 1, height: 72, background: "rgba(66,66,66,0.15)" }} />
+    </motion.div>
   );
 }

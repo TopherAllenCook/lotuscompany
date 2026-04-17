@@ -5,6 +5,7 @@ import { LotusMark } from "@/components/LotusMark";
 import { theme, font, EASE_OUT } from "@/lib/theme";
 import { asset } from "@/lib/storage";
 import { EditableText } from "@/components/EditableText";
+import { EditableEl } from "@/components/EditableEl";
 
 function Counter({ to, delay, prefix = "", suffix = "" }: { to: number; delay: number; prefix?: string; suffix?: string }) {
   const val = useMotionValue(0);
@@ -62,12 +63,16 @@ export function LotusWaySlide() {
         {/* Eyebrow */}
         <motion.div {...lift(0.3)} style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 48 }}>
           <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.3, duration: 0.5 }}
-            style={{ width: 52, height: 1.5, background: theme.turquoise, transformOrigin: "left" }} />
+            style={{ transformOrigin: "left" }}>
+            <EditableEl id="lotus-way:rule-left" label="eyebrow rule left" type="bar" style={{ width: 52, height: 1.5, background: theme.turquoise }} />
+          </motion.div>
           <EditableText id="lotus-way:eyebrow" label="eyebrow — the lotus way" as="span" style={{ fontSize: 13, fontWeight: 400, letterSpacing: "0.4em", color: theme.turquoise, textTransform: "lowercase" }}>
             the lotus way
           </EditableText>
           <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.3, duration: 0.5 }}
-            style={{ width: 52, height: 1.5, background: theme.turquoise, transformOrigin: "left" }} />
+            style={{ transformOrigin: "left" }}>
+            <EditableEl id="lotus-way:rule-right" label="eyebrow rule right" type="bar" style={{ width: 52, height: 1.5, background: theme.turquoise }} />
+          </motion.div>
         </motion.div>
 
         {/* Three kinetic stat blocks */}
@@ -95,8 +100,10 @@ export function LotusWaySlide() {
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ delay: 0.9 + i * 0.15, duration: 0.5 }}
-                style={{ width: "100%", maxWidth: 200, height: 1, background: "rgba(206,232,238,0.18)", transformOrigin: "left", marginBottom: 12 }}
-              />
+                style={{ transformOrigin: "left", marginBottom: 12 }}
+              >
+                <EditableEl id={`lotus-way:divider-${i}`} label={`stat divider ${i}`} type="bar" style={{ width: "100%", maxWidth: 200, height: 1, background: "rgba(206,232,238,0.18)" }} />
+              </motion.div>
 
               {/* Sub-label */}
               <EditableText id={`lotus-way:sub-${i}`} label={`sub label — ${stat.unit}`} as="div" style={{ fontSize: 12, fontWeight: 300, color: "rgba(206,232,238,0.50)", letterSpacing: "0.06em", lineHeight: 1.6, textTransform: "lowercase" }}>

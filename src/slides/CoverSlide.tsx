@@ -4,6 +4,7 @@ import { LotusMark } from "@/components/LotusMark";
 import { theme, font, EASE_OUT } from "@/lib/theme";
 import { asset } from "@/lib/storage";
 import { EditableText } from "@/components/EditableText";
+import { EditableEl } from "@/components/EditableEl";
 
 const lift = (delay: number) => ({
   initial:   { opacity: 0, y: 12 },
@@ -44,7 +45,7 @@ export function CoverSlide() {
 
       {/* Location — top right */}
       <motion.div {...lift(0.25)} style={{ position: "absolute", top: 66, right: 72, display: "flex", alignItems: "center", gap: 12 }}>
-        <div style={{ width: 5, height: 5, borderRadius: "50%", background: theme.turquoise }} />
+        <EditableEl id="cover:location-dot" label="location dot" type="dot" style={{ width: 5, height: 5, borderRadius: "50%", background: theme.turquoise }} />
         <EditableText id="cover:location" label="location" as="span" style={{ fontSize: 13, fontWeight: 400, letterSpacing: "0.28em", color: theme.lightBlue, textTransform: "lowercase" }}>
           columbus, ohio
         </EditableText>
@@ -53,12 +54,16 @@ export function CoverSlide() {
       {/* Eyebrow */}
       <motion.div {...lift(0.4)} style={{ position: "absolute", top: "14%", left: 72, right: 72, display: "flex", alignItems: "center", gap: 16 }}>
         <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.4, duration: 0.5, ease: "easeOut" }}
-          style={{ width: 52, height: 1.5, background: theme.turquoise, transformOrigin: "left" }} />
+          style={{ transformOrigin: "left" }}>
+          <EditableEl id="cover:rule-left" label="eyebrow rule left" type="bar" style={{ width: 52, height: 1.5, background: theme.turquoise }} />
+        </motion.div>
         <EditableText id="cover:eyebrow" label="eyebrow" as="span" style={{ fontSize: 13, fontWeight: 400, letterSpacing: "0.36em", color: "#fff", textTransform: "lowercase" }}>
           new development · phase 1
         </EditableText>
         <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.4, duration: 0.5, ease: "easeOut" }}
-          style={{ width: 52, height: 1.5, background: theme.turquoise, transformOrigin: "left" }} />
+          style={{ transformOrigin: "left" }}>
+          <EditableEl id="cover:rule-right" label="eyebrow rule right" type="bar" style={{ width: 52, height: 1.5, background: theme.turquoise }} />
+        </motion.div>
       </motion.div>
 
       {/* Title + stats */}
@@ -91,7 +96,9 @@ export function CoverSlide() {
             </EditableText>
           </motion.div>
 
-          <motion.div {...lift(1.0)} style={{ width: 1, height: 48, background: "rgba(206,232,238,0.18)" }} />
+          <motion.div {...lift(1.0)}>
+            <EditableEl id="cover:stat-divider-0" label="stat divider 1" type="bar" style={{ width: 1, height: 48, background: "rgba(206,232,238,0.18)" }} />
+          </motion.div>
 
           <motion.div {...lift(1.1)}>
             <EditableText id="cover:stat-num-1" label="stat — lihtc number" as="div" style={{ fontSize: 22, fontWeight: 400, color: "#fff", lineHeight: 1, letterSpacing: "0.08em", textTransform: "lowercase" }}>
@@ -102,7 +109,9 @@ export function CoverSlide() {
             </EditableText>
           </motion.div>
 
-          <motion.div {...lift(1.1)} style={{ width: 1, height: 48, background: "rgba(206,232,238,0.18)" }} />
+          <motion.div {...lift(1.1)}>
+            <EditableEl id="cover:stat-divider-1" label="stat divider 2" type="bar" style={{ width: 1, height: 48, background: "rgba(206,232,238,0.18)" }} />
+          </motion.div>
 
           <motion.div {...lift(1.2)}>
             <EditableText id="cover:stat-line-1" label="stat — development line" as="div" style={{ fontSize: 22, fontWeight: 300, color: "#fff", lineHeight: 1.15, textTransform: "lowercase" }}>
