@@ -6,6 +6,7 @@ import { EASE_OUT, theme, font } from "@/lib/theme";
 import { SLIDE_REGISTRY } from "@/slides";
 import { LotusMark } from "@/components/LotusMark";
 import { EditModeProvider, useEditMode } from "@/components/EditableText";
+import { EditorPanel } from "@/components/EditorPanel";
 
 interface DeckProps {
   slides: React.ReactNode[];
@@ -18,14 +19,8 @@ const VARIANTS = {
   exit:   { opacity: 0, scale: 0.975 },
 };
 
-function NavArrow({
-  direction,
-  onClick,
-  visible,
-}: {
-  direction: "prev" | "next";
-  onClick: () => void;
-  visible: boolean;
+function NavArrow({ direction, onClick, visible }: {
+  direction: "prev" | "next"; onClick: () => void; visible: boolean;
 }) {
   const [hovered, setHovered] = useState(false);
   const isPrev = direction === "prev";
@@ -37,19 +32,13 @@ function NavArrow({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        position: "fixed",
-        top: 0, bottom: 0,
+        position: "fixed", top: 0, bottom: 0,
         [isPrev ? "left" : "right"]: 0,
         width: "clamp(48px, 6vw, 80px)",
-        background: "transparent",
-        border: "none",
-        cursor: "pointer",
-        zIndex: 50,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        opacity: hovered ? 1 : 0,
-        transition: "opacity 0.25s ease",
+        background: "transparent", border: "none",
+        cursor: "pointer", zIndex: 50,
+        display: "flex", alignItems: "center", justifyContent: "center",
+        opacity: hovered ? 1 : 0, transition: "opacity 0.25s ease",
       }}
       aria-label={isPrev ? "Previous slide" : "Next slide"}
     >
@@ -103,14 +92,17 @@ function DotNav({ index, go }: { index: number; go: (n: number) => void }) {
   );
 }
 
-function SlideDrawer({ index, go, onClose }: { index: number; go: (n: number) => void; onClose: () => void }) {
+function SlideDrawer({ index, go, onClose, onOpenEditor }: {
+  index: number;
+  go: (n: number) => void;
+  onClose: () => void;
+  onOpenEditor: () => void;
+}) {
   return (
     <>
       {/* Backdrop */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
+        initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
         transition={{ duration: 0.25 }}
         onClick={onClose}
         style={{
@@ -119,11 +111,9 @@ function SlideDrawer({ index, go, onClose }: { index: number; go: (n: number) =>
         }}
       />
 
-      {/* Drawer panel */}
+      {/* Drawer */}
       <motion.div
-        initial={{ x: "-100%" }}
-        animate={{ x: 0 }}
-        exit={{ x: "-100%" }}
+        initial={{ x: "-100%" }} animate={{ x: 0 }} exit={{ x: "-100%" }}
         transition={{ duration: 0.35, ease: EASE_OUT }}
         style={{
           position: "fixed", top: 0, left: 0, bottom: 0, width: 280,
@@ -139,12 +129,9 @@ function SlideDrawer({ index, go, onClose }: { index: number; go: (n: number) =>
             onClick={onClose}
             style={{ background: "none", border: "none", cursor: "pointer", padding: 4, color: "rgba(255,255,255,0.4)", fontSize: 20, lineHeight: 1 }}
             aria-label="Close menu"
-          >
-            ×
-          </button>
+          >×</button>
         </div>
 
-        {/* Divider */}
         <div style={{ height: 1, background: "rgba(255,255,255,0.08)", margin: "0 28px 24px" }} />
 
         {/* Slide list */}
@@ -183,8 +170,35 @@ function SlideDrawer({ index, go, onClose }: { index: number; go: (n: number) =>
           })}
         </nav>
 
+        {/* Divider before editor link */}
+        <div style={{ height: 1, background: "rgba(255,255,255,0.08)", margin: "16px 28px 0" }} />
+
+        {/* Edit text link */}
+        <button
+          onClick={() => { onClose(); onOpenEditor(); }}
+          style={{
+            display: "flex", alignItems: "center", gap: 12,
+            width: "100%", padding: "14px 28px",
+            background: "transparent", border: "none",
+            cursor: "pointer", textAlign: "left",
+          }}
+        >
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" style={{ flexShrink: 0 }}>
+            <path d="M9 1.5L11.5 4L4.5 11H2V8.5L9 1.5Z"
+              stroke="rgba(2,143,170,0.7)"
+              strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          <span style={{
+            fontSize: 11, fontFamily: font, fontWeight: 400,
+            color: "rgba(2,143,170,0.8)",
+            letterSpacing: "0.1em", textTransform: "lowercase",
+          }}>
+            edit text
+          </span>
+        </button>
+
         {/* Footer label */}
-        <div style={{ padding: "0 28px", marginTop: 24 }}>
+        <div style={{ padding: "8px 28px 0" }}>
           <span style={{
             fontSize: 9, fontFamily: font, color: "rgba(255,255,255,0.2)",
             letterSpacing: "0.22em", textTransform: "lowercase",
@@ -201,40 +215,64 @@ function DeckInner({ slides, initialIndex = 0 }: DeckProps) {
   const router = useRouter();
   const [[index], setPage] = useState([initialIndex, 0]);
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const { editMode, setEditMode } = useEditMode();
+  const [editorOpen, setEditorOpen] = useState(false);
+  const { editMode, setEditMode, setActiveId } = useEditMode();
+
+  const currentSlideKey = SLIDE_REGISTRY[index].key;
 
   const go = useCallback((next: number) => {
     const clamped = Math.max(0, Math.min(slides.length - 1, next));
     setPage(([cur]) => [clamped, clamped > cur ? 1 : -1]);
     router.push(`/${SLIDE_REGISTRY[clamped].key}`);
-  }, [slides.length, router]);
+    setActiveId(null);
+  }, [slides.length, router, setActiveId]);
+
+  const openEditor = useCallback(() => {
+    setEditorOpen(true);
+    setEditMode(true);
+  }, [setEditMode]);
+
+  const closeEditor = useCallback(() => {
+    setEditorOpen(false);
+    setEditMode(false);
+    setActiveId(null);
+  }, [setEditMode, setActiveId]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") { setDrawerOpen(false); setEditMode(false); return; }
-      if (e.key === "e" || e.key === "E") { setEditMode(!editMode); return; }
-      if (drawerOpen || editMode) return;
+      if (e.key === "Escape") {
+        setDrawerOpen(false);
+        if (editorOpen) { closeEditor(); return; }
+        return;
+      }
+      if (e.key === "e" || e.key === "E") {
+        if (editorOpen) closeEditor();
+        else openEditor();
+        return;
+      }
+      if (drawerOpen || editorOpen) return;
       if (e.key === "ArrowRight" || e.key === " ") go(index + 1);
       if (e.key === "ArrowLeft") go(index - 1);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [index, go, drawerOpen, editMode, setEditMode]);
+  }, [index, go, drawerOpen, editorOpen, openEditor, closeEditor]);
 
   useEffect(() => {
     let startX = 0;
     const onStart = (e: TouchEvent) => { startX = e.touches[0].clientX; };
-    const onEnd   = (e: TouchEvent) => {
+    const onEnd = (e: TouchEvent) => {
+      if (editorOpen) return;
       const dx = e.changedTouches[0].clientX - startX;
       if (Math.abs(dx) > 50) go(index + (dx < 0 ? 1 : -1));
     };
     window.addEventListener("touchstart", onStart);
-    window.addEventListener("touchend",   onEnd);
+    window.addEventListener("touchend", onEnd);
     return () => {
       window.removeEventListener("touchstart", onStart);
-      window.removeEventListener("touchend",   onEnd);
+      window.removeEventListener("touchend", onEnd);
     };
-  }, [index, go]);
+  }, [index, go, editorOpen]);
 
   return (
     <div style={{ position: "fixed", inset: 0, overflow: "hidden", background: "#000" }}>
@@ -252,8 +290,8 @@ function DeckInner({ slides, initialIndex = 0 }: DeckProps) {
         </motion.div>
       </AnimatePresence>
 
-      <NavArrow direction="prev" onClick={() => go(index - 1)} visible={index > 0} />
-      <NavArrow direction="next" onClick={() => go(index + 1)} visible={index < slides.length - 1} />
+      <NavArrow direction="prev" onClick={() => go(index - 1)} visible={index > 0 && !editorOpen} />
+      <NavArrow direction="next" onClick={() => go(index + 1)} visible={index < slides.length - 1 && !editorOpen} />
 
       <DotNav index={index} go={go} />
 
@@ -272,53 +310,51 @@ function DeckInner({ slides, initialIndex = 0 }: DeckProps) {
         <LotusMark width={64} onDark />
       </button>
 
-      <AnimatePresence>
-        {drawerOpen && (
-          <SlideDrawer index={index} go={go} onClose={() => setDrawerOpen(false)} />
-        )}
-      </AnimatePresence>
-
-      {/* Edit mode toggle — bottom right */}
+      {/* Edit button — bottom right */}
       <button
-        onClick={() => setEditMode(!editMode)}
-        title="Toggle text editor (E)"
+        onClick={editorOpen ? closeEditor : openEditor}
+        title="Edit text (E)"
         style={{
-          position: "fixed", bottom: 20, right: 24, zIndex: 150,
-          background: editMode ? "rgba(2,143,170,0.85)" : "rgba(0,0,0,0.28)",
+          position: "fixed", bottom: 20, right: editorOpen ? 284 : 24, zIndex: 350,
+          background: editorOpen ? "rgba(2,143,170,0.85)" : "rgba(0,0,0,0.28)",
           backdropFilter: "blur(8px)",
-          border: editMode ? "1px solid rgba(77,186,214,0.7)" : "1px solid rgba(255,255,255,0.1)",
+          border: editorOpen ? "1px solid rgba(77,186,214,0.7)" : "1px solid rgba(255,255,255,0.1)",
           borderRadius: 5, padding: "6px 13px",
           cursor: "pointer", display: "flex", alignItems: "center", gap: 7,
-          transition: "background 0.2s ease, border-color 0.2s ease",
+          transition: "background 0.2s ease, right 0.3s ease, border-color 0.2s ease",
         }}
       >
         <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
           <path d="M9 1.5L11.5 4L4.5 11H2V8.5L9 1.5Z"
-            stroke={editMode ? "#fff" : "rgba(255,255,255,0.55)"}
+            stroke={editorOpen ? "#fff" : "rgba(255,255,255,0.55)"}
             strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
         <span style={{
           fontFamily: font, fontSize: 9, letterSpacing: "0.18em",
-          color: editMode ? "#fff" : "rgba(255,255,255,0.45)",
+          color: editorOpen ? "#fff" : "rgba(255,255,255,0.45)",
           textTransform: "lowercase",
         }}>
-          {editMode ? "editing" : "edit"}
+          {editorOpen ? "close editor" : "edit text"}
         </span>
       </button>
 
-      {editMode && (
-        <div style={{
-          position: "fixed", top: 16, left: "50%", transform: "translateX(-50%)",
-          zIndex: 200, background: "rgba(2,143,170,0.9)", backdropFilter: "blur(8px)",
-          border: "1px solid rgba(77,186,214,0.5)",
-          borderRadius: 4, padding: "5px 14px",
-          fontFamily: font, fontSize: 9, color: "#fff",
-          letterSpacing: "0.18em", textTransform: "lowercase",
-          pointerEvents: "none",
-        }}>
-          click any text to edit · e to exit · esc to cancel
-        </div>
-      )}
+      <AnimatePresence>
+        {drawerOpen && (
+          <SlideDrawer
+            index={index}
+            go={go}
+            onClose={() => setDrawerOpen(false)}
+            onOpenEditor={() => { setDrawerOpen(false); openEditor(); }}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Editor panel — right side */}
+      <EditorPanel
+        slideKey={currentSlideKey}
+        open={editorOpen}
+        onClose={closeEditor}
+      />
     </div>
   );
 }
