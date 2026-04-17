@@ -63,9 +63,21 @@ export function IntroSlide() {
               ],
               ease: ["easeOut", "linear", "easeIn", "easeIn"],
             }}
-            style={{ position: "absolute", overflow: "hidden", ...img.style }}
+            style={{
+              position: "absolute", overflow: "hidden", borderRadius: 30,
+              boxShadow: "0 8px 32px rgba(0,0,0,0.45), inset 0 0 0 1px rgba(255,255,255,0.12)",
+              backdropFilter: "blur(2px)",
+              ...img.style,
+            }}
           >
             <img src={img.src} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+            {/* glass sheen overlay */}
+            <div style={{
+              position: "absolute", inset: 0,
+              background: "linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 40%, transparent 70%)",
+              borderRadius: 30,
+              pointerEvents: "none",
+            }} />
           </motion.div>
         );
       })}
