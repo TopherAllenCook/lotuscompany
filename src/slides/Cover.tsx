@@ -50,7 +50,7 @@ export function CoverSlide() {
       </motion.div>
 
       {/* Eyebrow — floated up, white */}
-      <motion.div {...lift(0.4)} style={{ position: "absolute", top: "36%", left: 72, right: 72, display: "flex", alignItems: "center", gap: 16 }}>
+      <motion.div {...lift(0.4)} style={{ position: "absolute", top: "14%", left: 72, right: 72, display: "flex", alignItems: "center", gap: 16 }}>
         <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.4, duration: 0.5, ease: "easeOut" }}
           style={{ width: 52, height: 1.5, background: theme.turquoise, transformOrigin: "left" }} />
         <span style={{ fontSize: 13, fontWeight: 400, letterSpacing: "0.36em", color: "#fff", textTransform: "lowercase" }}>
