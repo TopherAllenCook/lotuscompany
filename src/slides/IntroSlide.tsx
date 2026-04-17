@@ -46,7 +46,7 @@ export function IntroSlide() {
   return (
     <div style={{
       position: "absolute", inset: 0,
-      background: theme.darkBg,
+      background: theme.darkGray,
       fontFamily: font,
       overflow: "hidden",
     }}>
@@ -82,7 +82,7 @@ export function IntroSlide() {
       {/* Radial depth glow — dark turquoise at center, creates stage depth */}
       <div style={{
         position: "absolute", inset: 0,
-        background: `radial-gradient(ellipse 58% 52% at 50% 50%, rgba(2,143,170,0.09) 0%, rgba(5,10,12,0.88) 55%, rgba(5,10,12,1) 100%)`,
+        background: `radial-gradient(ellipse 58% 52% at 50% 50%, rgba(2,143,170,0.09) 0%, rgba(66,66,66,0.88) 55%, rgba(66,66,66,1) 100%)`,
         pointerEvents: "none",
       }} />
 
