@@ -34,12 +34,13 @@ function Sub({ children }: { children: React.ReactNode }) {
   );
 }
 
-function Body({ children }: { children: React.ReactNode }) {
+function Body({ children, style }: { children: React.ReactNode; style?: React.CSSProperties }) {
   return (
     <p style={{
       margin: "0 0 6px", fontFamily: font, fontWeight: 400,
       fontSize: "clamp(9px, 0.78vw, 11.5px)", color: BODY,
       letterSpacing: "0.02em", textTransform: "lowercase", lineHeight: 1.7,
+      ...style,
     }}>{children}</p>
   );
 }
