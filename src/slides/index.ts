@@ -17,6 +17,7 @@
 
 import React from "react";
 import { IntroSlide }         from "./IntroSlide";
+import { BeliefSlide }        from "./BeliefSlide";
 import { CoverSlide }         from "./CoverSlide";
 import { ImpactSlide }        from "./ImpactSlide";
 import { CommunitySlide }     from "./CommunitySlide";
@@ -27,6 +28,7 @@ import { ImpactProfileSlide } from "./ImpactProfileSlide";
 
 export const SLIDE_REGISTRY = [
   { key: "intro",          component: IntroSlide,          title: "Intro" },
+  { key: "belief",         component: BeliefSlide,         title: "Belief" },
   { key: "cover",          component: CoverSlide,          title: "Steelton Village" },
   { key: "impact",         component: ImpactSlide,         title: "Impact" },
   { key: "community",      component: CommunitySlide,      title: "Community" },
