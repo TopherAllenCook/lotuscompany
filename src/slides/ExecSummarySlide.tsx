@@ -2,43 +2,49 @@
 import { motion } from "framer-motion";
 import { theme, font, EASE_OUT } from "@/lib/theme";
 
-// Brand colors per lotus_brand_guide / slide_03_executive_summary.html
-const BG           = "#ffffff";
-const DARK         = "#424242";                  // body text, title
-const DARK_TQ      = "#028faa";                  // stats, col headers, kicker, subtitle emph
-const TQ           = theme.turquoise;            // #4dbad6 — col rule underline, kicker line
-const LIGHT_BLUE   = "#cee8ee";                  // borders, rule dividers
-const BODY         = "rgba(66,66,66,0.86)";      // column body lines
-const STAT_LABEL   = "rgba(66,66,66,0.65)";
+// Brand colors — per slide_03_executive_summary.html
+const BG        = "#ffffff";
+const DARK      = "#424242";
+const DARK_TQ   = "#028faa";
+const TQ        = theme.turquoise;   // #4dbad6
+const LB        = "#cee8ee";
+const BODY      = "rgba(66,66,66,0.86)";
+const STAT_LBL  = "rgba(66,66,66,0.62)";
+
+// 8pt spacing scale tokens
+const S = {
+  "1": 8,   "2": 16,  "3": 24,  "4": 32,
+  "5": 40,  "6": 48,  "7": 56,  "8": 64,
+  "9": 72,  "10": 80,
+} as const;
 
 const fade = (delay: number) => ({
-  initial: { opacity: 0, y: 6 },
+  initial: { opacity: 0, y: 8 },
   animate: { opacity: 1, y: 0 },
   transition: { delay, duration: 0.45, ease: EASE_OUT },
 });
 
 function ColHeader({ children }: { children: React.ReactNode }) {
   return (
-    <>
+    <div style={{ marginBottom: S[2] }}>
       <p style={{
-        margin: "0 0 6px", fontFamily: font, fontWeight: 500,
-        fontSize: "clamp(8px, 0.72vw, 10.5px)", color: DARK_TQ,
+        margin: `0 0 ${S[1]}px`, fontFamily: font, fontWeight: 500,
+        fontSize: "clamp(9px, 0.72vw, 11px)", color: DARK_TQ,
         letterSpacing: "0.22em", textTransform: "lowercase", lineHeight: 1,
       }}>{children}</p>
-      <div style={{ width: 22, height: 1, background: TQ, marginBottom: 14 }} />
-    </>
+      <div style={{ width: 22, height: 1, background: TQ }} />
+    </div>
   );
 }
 
-function Line({ label, children, italic }: { label?: string; children: React.ReactNode; italic?: boolean }) {
+function Line({ label, children }: { label?: string; children: React.ReactNode }) {
   return (
     <p style={{
-      margin: "0 0 4px", fontFamily: font, fontWeight: 400,
-      fontSize: "clamp(9px, 0.78vw, 13px)", color: BODY,
-      letterSpacing: "0.01em", textTransform: "lowercase", lineHeight: 1.6,
-      fontStyle: italic ? "italic" : undefined,
+      margin: `0 0 ${S[1] / 2}px`, fontFamily: font, fontWeight: 400,
+      fontSize: "clamp(10px, 0.82vw, 13px)", color: BODY,
+      letterSpacing: "0.01em", textTransform: "lowercase", lineHeight: 1.65,
     }}>
-      {label && <span style={{ fontWeight: 500, color: DARK, fontStyle: "normal" }}>{label} </span>}
+      {label && <span style={{ fontWeight: 500, color: DARK }}>{label} </span>}
       {children}
     </p>
   );
@@ -50,20 +56,20 @@ export function ExecSummarySlide() {
       position: "absolute", inset: 0, background: BG,
       fontFamily: font, overflow: "hidden",
       display: "flex", flexDirection: "column",
-      padding: "clamp(28px, 3.5vw, 56px) clamp(32px, 5vw, 80px) clamp(24px, 3vw, 50px)",
+      // 8pt grid: 56px top, 80px sides, 48px bottom
+      padding: `${S[7]}px ${S[10]}px ${S[6]}px`,
     }}>
 
       {/* ── TITLE BAR ── */}
       <motion.div {...fade(0.05)} style={{
-        flexShrink: 0, display: "flex",
-        justifyContent: "space-between", alignItems: "flex-end",
-        paddingBottom: 14,
-        borderBottom: `1px solid ${LIGHT_BLUE}`,
-        marginBottom: "clamp(14px, 1.8vw, 22px)",
+        flexShrink: 0,
+        display: "flex", justifyContent: "space-between", alignItems: "flex-end",
+        paddingBottom: S[2],
+        borderBottom: `1px solid ${LB}`,
+        marginBottom: S[3],
       }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-          {/* Lotus mark — small inline */}
-          <svg width="26" height="26" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: S[2] }}>
+          <svg width="24" height="24" viewBox="0 0 40 40" style={{ flexShrink: 0 }}>
             <g fill="none" stroke={DARK_TQ} strokeWidth="1.3" strokeLinecap="round">
               <ellipse cx="20" cy="24" rx="3" ry="12" transform="rotate(-60 20 24)"/>
               <ellipse cx="20" cy="24" rx="3" ry="12" transform="rotate(-30 20 24)"/>
@@ -74,7 +80,7 @@ export function ExecSummarySlide() {
           </svg>
           <h1 style={{
             margin: 0, fontFamily: font, fontWeight: 500,
-            fontSize: "clamp(11px, 1.1vw, 16px)", color: DARK,
+            fontSize: "clamp(12px, 1.0vw, 16px)", color: DARK,
             letterSpacing: "0.01em", textTransform: "lowercase", lineHeight: 1,
           }}>
             executive summary. lotus impact initiative.
@@ -82,7 +88,7 @@ export function ExecSummarySlide() {
         </div>
         <span style={{
           fontFamily: font, fontWeight: 400,
-          fontSize: "clamp(8px, 0.65vw, 10px)", color: "#a9c7cd",
+          fontSize: "clamp(8px, 0.6vw, 10px)", color: "#a9c7cd",
           letterSpacing: "0.22em", textTransform: "lowercase",
         }}>
           03. executive summary.
@@ -90,13 +96,15 @@ export function ExecSummarySlide() {
       </motion.div>
 
       {/* ── SUBTITLE ── */}
-      <motion.div {...fade(0.08)} style={{ flexShrink: 0, marginBottom: "clamp(12px, 1.6vw, 18px)" }}>
+      <motion.div {...fade(0.08)} style={{ flexShrink: 0, marginBottom: S[2] }}>
         <p style={{
           margin: 0, fontFamily: font, fontWeight: 400,
-          fontSize: "clamp(13px, 1.5vw, 22px)", color: DARK,
+          fontSize: "clamp(14px, 1.45vw, 22px)", color: DARK,
           letterSpacing: "-0.005em", lineHeight: 1.35,
         }}>
-          <span style={{ color: DARK_TQ, fontWeight: 500 }}>dignified housing, built to one standard.</span>{" "}
+          <span style={{ color: DARK_TQ, fontWeight: 500 }}>
+            dignified housing, built to one standard.
+          </span>{" "}
           market-rate and affordable, indistinguishable by design.
         </p>
       </motion.div>
@@ -105,45 +113,53 @@ export function ExecSummarySlide() {
       <motion.div {...fade(0.14)} style={{
         flexShrink: 0,
         background: "linear-gradient(180deg, rgba(206,232,238,0.55) 0%, rgba(206,232,238,0.15) 100%)",
-        padding: "clamp(14px, 2vw, 30px) clamp(12px, 1.5vw, 24px)",
-        display: "flex", justifyContent: "space-between", alignItems: "center",
-        marginBottom: "clamp(16px, 2.2vw, 32px)",
         borderRadius: 3,
+        padding: `${S[4]}px ${S[3]}px`,
+        display: "flex", alignItems: "center",
+        marginBottom: S[4],
       }}>
         {([
-          { num: "800",              pct: null,  small: null,  label: "units delivered each year" },
-          { num: "2,000",            pct: null,  small: null,  label: "residents served annually" },
-          { num: "13 to 15",         pct: "%",   small: null,  label: "target irr per project" },
-          { num: "$300",             pct: null,  small: "M",   label: "projected 25-year return" },
+          { num: "800",       suffix: null,  label: "units delivered\neach year" },
+          { num: "2,000",     suffix: null,  label: "residents served\nannually" },
+          { num: "13 to 15",  suffix: "%",   label: "target irr\nper project" },
+          { num: "$300",      suffix: "M",   label: "projected\n25-year return" },
         ] as const).map((stat, i) => (
           <div key={i} style={{
-            flex: 1, textAlign: "center", padding: "0 14px",
-            position: "relative",
-            ...(i > 0 ? {
-              borderLeft: `1px solid rgba(77,186,214,0.35)`,
-            } : {}),
+            flex: 1, textAlign: "center",
+            padding: `0 ${S[2]}px`,
+            borderLeft: i > 0 ? `1px solid rgba(77,186,214,0.30)` : "none",
           }}>
             <div style={{
               fontFamily: font, fontWeight: 600, color: DARK_TQ,
-              fontSize: "clamp(20px, 3.5vw, 56px)", lineHeight: 1,
-              marginBottom: 10, letterSpacing: "-0.015em", whiteSpace: "nowrap",
+              fontSize: "clamp(24px, 3.6vw, 56px)",
+              lineHeight: 1, marginBottom: S[1],
+              letterSpacing: "-0.015em", whiteSpace: "nowrap",
             }}>
               {stat.num}
-              {stat.pct && <span style={{ fontSize: "clamp(14px, 2.3vw, 36px)", fontWeight: 500 }}>{stat.pct}</span>}
-              {stat.small && <span style={{ fontSize: "clamp(14px, 2.3vw, 36px)", fontWeight: 500 }}>{stat.small}</span>}
+              {stat.suffix && (
+                <span style={{ fontSize: "clamp(16px, 2.3vw, 36px)", fontWeight: 500 }}>
+                  {stat.suffix}
+                </span>
+              )}
             </div>
             <div style={{
-              fontFamily: font, fontWeight: 400, color: STAT_LABEL,
-              fontSize: "clamp(8px, 0.68vw, 11px)", letterSpacing: "0.05em",
-              textTransform: "lowercase", lineHeight: 1.4,
-            }}>{stat.label}</div>
+              fontFamily: font, fontWeight: 400, color: STAT_LBL,
+              fontSize: "clamp(9px, 0.65vw, 11px)",
+              letterSpacing: "0.05em", textTransform: "lowercase",
+              lineHeight: 1.45, whiteSpace: "pre-line",
+            }}>
+              {stat.label}
+            </div>
           </div>
         ))}
       </motion.div>
 
       {/* ── THREE COLUMNS ── */}
-      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "clamp(24px, 3.5vw, 56px)", minHeight: 0 }}>
-
+      <div style={{
+        flex: 1, minHeight: 0,
+        display: "grid", gridTemplateColumns: "1fr 1fr 1fr",
+        gap: `0 ${S[7]}px`,
+      }}>
         <motion.div {...fade(0.20)}>
           <ColHeader>the initiative</ColHeader>
           <Line label="goal.">8 projects per year, phase one.</Line>
@@ -167,38 +183,40 @@ export function ExecSummarySlide() {
           <Line label="return.">13 to 15% irr, 2x to 3x moic.</Line>
           <Line label="reporting.">quarterly kpis, annual summit.</Line>
         </motion.div>
-
       </div>
 
       {/* ── KICKER ── */}
-      <motion.div {...fade(0.42)} style={{
-        flexShrink: 0, marginTop: "clamp(14px, 2vw, 24px)",
-        paddingTop: "clamp(10px, 1.4vw, 16px)",
-        borderTop: `1px solid ${LIGHT_BLUE}`,
-        display: "flex", alignItems: "center", gap: 20,
+      <motion.div {...fade(0.44)} style={{
+        flexShrink: 0,
+        marginTop: S[3],
+        paddingTop: S[2],
+        borderTop: `1px solid ${LB}`,
+        display: "flex", alignItems: "center", gap: S[3],
       }}>
         <p style={{
           margin: 0, fontFamily: font, fontWeight: 500,
-          fontSize: "clamp(10px, 1.1vw, 18px)", color: DARK_TQ,
+          fontSize: "clamp(11px, 1.1vw, 18px)", color: DARK_TQ,
           letterSpacing: "0.01em", textTransform: "lowercase", whiteSpace: "nowrap",
         }}>
           this is more than impact investing. this is legacy building.
         </p>
-        <div style={{ flex: 1, display: "flex", alignItems: "center", gap: 10, marginLeft: 20 }}>
+        <div style={{ flex: 1, display: "flex", alignItems: "center", gap: S[1] }}>
           <div style={{
             flex: 1, height: 1,
-            background: `linear-gradient(90deg, ${TQ} 0%, ${LIGHT_BLUE} 60%, transparent 100%)`,
+            background: `linear-gradient(90deg, ${TQ} 0%, ${LB} 60%, transparent 100%)`,
           }} />
-          <div style={{ width: 9, height: 9, borderRadius: "50%", background: TQ, flexShrink: 0 }} />
+          <div style={{
+            width: 9, height: 9, borderRadius: "50%",
+            background: TQ, flexShrink: 0,
+          }} />
         </div>
       </motion.div>
 
       {/* Watermark */}
-      <svg
-        viewBox="0 0 200 200"
-        xmlns="http://www.w3.org/2000/svg"
-        style={{ position: "absolute", right: -70, bottom: -70, width: 360, height: 360, opacity: 0.035, pointerEvents: "none" }}
-      >
+      <svg viewBox="0 0 200 200" style={{
+        position: "absolute", right: -64, bottom: -64,
+        width: 320, height: 320, opacity: 0.04, pointerEvents: "none",
+      }}>
         <g fill="none" stroke={DARK_TQ} strokeWidth="1.2">
           <ellipse cx="100" cy="120" rx="18" ry="58" transform="rotate(-60 100 120)"/>
           <ellipse cx="100" cy="120" rx="18" ry="58" transform="rotate(-30 100 120)"/>
@@ -207,7 +225,6 @@ export function ExecSummarySlide() {
           <ellipse cx="100" cy="120" rx="18" ry="58" transform="rotate(60 100 120)"/>
         </g>
       </svg>
-
     </div>
   );
 }
