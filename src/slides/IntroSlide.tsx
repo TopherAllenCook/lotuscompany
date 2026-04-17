@@ -3,17 +3,27 @@ import { motion } from "framer-motion";
 import { LotusMark } from "@/components/LotusMark";
 import { theme, font, EASE_OUT } from "@/lib/theme";
 
-// Scattered card positions — each card has a fixed rotation and pixel size,
-// positioned by left/top % so they cluster in the viewport center.
+// Scattered card positions — swap src to change any image.
+// Add images to public/intro/ then update src here.
+//
+// Slot guide:
+//   0 — far left,  tall portrait    → community / people shot
+//   1 — left,      portrait         → building exterior
+//   2 — top center, large portrait  → hero Nova shot
+//   3 — top right, landscape        → aerial / overview
+//   4 — right,     portrait         → aerial detail
+//   5 — center,    tall portrait    → interior / amenity
+//   6 — right mid, landscape        → steelton rendering
+//   7 — lower left, portrait        → highlight / event
 const CARDS = [
-  { src: "/intro/nova-56.jpg", left: "18%", top: "22%",  w: 300, h: 400, rot: -14 },
-  { src: "/intro/nova-1.jpg",  left: "30%", top: "20%",  w: 255, h: 335, rot:  -8 },
-  { src: "/intro/nova-14.jpg", left: "41%", top:  "9%",  w: 315, h: 395, rot:   4 },
-  { src: "/intro/nova-70.jpg", left: "52%", top: "11%",  w: 240, h: 300, rot:   2 },
-  { src: "/intro/nova-22.jpg", left: "56%", top: "16%",  w: 260, h: 320, rot:  -3 },
-  { src: "/intro/nova-45.jpg", left: "43%", top: "34%",  w: 300, h: 380, rot:  -6 },
-  { src: "/intro/nova-30.jpg", left: "60%", top: "27%",  w: 240, h: 300, rot:   7 },
-  { src: "/intro/nova-38.jpg", left: "26%", top: "35%",  w: 260, h: 340, rot:  12 },
+  { src: "/intro/highlights-1.jpg",                              left: "18%", top: "22%", w: 300, h: 400, rot: -14 }, // 0
+  { src: "/intro/nova-1.jpg",                                    left: "30%", top: "20%", w: 255, h: 335, rot:  -8 }, // 1
+  { src: "/intro/nova-14.jpg",                                   left: "41%", top:  "9%", w: 315, h: 395, rot:   4 }, // 2
+  { src: "/intro/aerial-1.jpg",                                  left: "52%", top: "11%", w: 260, h: 195, rot:   2 }, // 3 landscape
+  { src: "/intro/aerial-2.jpg",                                  left: "56%", top: "26%", w: 260, h: 195, rot:  -3 }, // 4 landscape
+  { src: "/intro/nova-45.jpg",                                   left: "43%", top: "34%", w: 300, h: 380, rot:  -6 }, // 5
+  { src: "/steelton-village/Steelton I_Pedestrian Promenade_2026.03.10.jpg", left: "60%", top: "40%", w: 260, h: 175, rot: 7 }, // 6 rendering
+  { src: "/intro/highlights-2.jpg",                              left: "26%", top: "37%", w: 260, h: 340, rot:  12 }, // 7
 ];
 
 // Deal order: spread outward from center cards first
