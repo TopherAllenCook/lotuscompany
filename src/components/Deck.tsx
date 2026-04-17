@@ -1,7 +1,8 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { EASE_OUT, theme } from "@/lib/theme";
+import { EASE_OUT, theme, font } from "@/lib/theme";
+import { SLIDE_REGISTRY } from "@/slides";
 
 interface DeckProps {
   slides: React.ReactNode[];
@@ -72,6 +73,74 @@ function NavArrow({
   );
 }
 
+function DotNav({ index, total, go }: { index: number; total: number; go: (n: number) => void }) {
+  const [hoveredDot, setHoveredDot] = useState<number | null>(null);
+
+  return (
+    <div style={{
+      position: "fixed",
+      bottom: 20,
+      left: "50%",
+      transform: "translateX(-50%)",
+      zIndex: 100,
+      display: "flex",
+      alignItems: "center",
+      gap: 10,
+    }}>
+      {SLIDE_REGISTRY.map((slide, i) => {
+        const isActive = i === index;
+        const isHovered = hoveredDot === i;
+
+        return (
+          <div key={slide.key} style={{ position: "relative", display: "flex", flexDirection: "column", alignItems: "center" }}>
+            {/* Tooltip */}
+            <div style={{
+              position: "absolute",
+              bottom: "calc(100% + 10px)",
+              left: "50%",
+              transform: "translateX(-50%)",
+              background: "rgba(10,10,10,0.82)",
+              backdropFilter: "blur(6px)",
+              color: "#fff",
+              fontSize: 10,
+              fontFamily: font,
+              fontWeight: 400,
+              letterSpacing: "0.18em",
+              textTransform: "lowercase",
+              whiteSpace: "nowrap",
+              padding: "5px 10px",
+              borderRadius: 3,
+              pointerEvents: "none",
+              opacity: isHovered ? 1 : 0,
+              transition: "opacity 0.18s ease",
+            }}>
+              {slide.title.toLowerCase()}
+            </div>
+
+            {/* Dot */}
+            <button
+              onClick={() => go(i)}
+              onMouseEnter={() => setHoveredDot(i)}
+              onMouseLeave={() => setHoveredDot(null)}
+              aria-label={`Go to ${slide.title}`}
+              style={{
+                width: isActive ? 20 : 6,
+                height: 6,
+                borderRadius: 3,
+                background: isActive ? theme.turquoise : "rgba(255,255,255,0.45)",
+                border: "none",
+                cursor: "pointer",
+                padding: 0,
+                transition: "width 0.3s ease, background 0.3s ease",
+              }}
+            />
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 export function Deck({ slides }: DeckProps) {
   const [[index], setPage] = useState([0, 0]);
 
@@ -123,14 +192,7 @@ export function Deck({ slides }: DeckProps) {
       <NavArrow direction="prev" onClick={() => go(index - 1)} visible={index > 0} />
       <NavArrow direction="next" onClick={() => go(index + 1)} visible={index < slides.length - 1} />
 
-      {/* Progress bar */}
-      <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, height: 2, background: "rgba(255,255,255,0.06)", zIndex: 100 }}>
-        <motion.div
-          animate={{ scaleX: slides.length > 1 ? index / (slides.length - 1) : 1 }}
-          transition={{ duration: 0.5, ease: EASE_OUT }}
-          style={{ position: "absolute", inset: 0, background: theme.turquoise, transformOrigin: "left", scaleX: 0 }}
-        />
-      </div>
+      <DotNav index={index} total={slides.length} go={go} />
     </div>
   );
 }
