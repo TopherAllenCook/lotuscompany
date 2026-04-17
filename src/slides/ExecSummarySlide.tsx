@@ -147,7 +147,7 @@ export function ExecSummarySlide() {
           fontSize: 11, fontWeight: 400, color: "rgba(66,66,66,0.35)",
           letterSpacing: "0.22em", fontFamily: font,
         }}
-      >03</motion.span>
+      >03 — executive summary</motion.span>
 
     </div>
   );
