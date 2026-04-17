@@ -2,25 +2,16 @@
 import { motion } from "framer-motion";
 import { LotusMark } from "@/components/LotusMark";
 import { theme, font, EASE_OUT } from "@/lib/theme";
-import { asset } from "@/lib/storage";
 
 const FRAME_IMAGES = [
-  { src: asset("/nova/Commercial 2025-07-07 Lotus-Nova-1.jpg"),
-    style: { top: 0, left: 0, width: "33.5%", height: "30%" } },
-  { src: asset("/steelton-village/Steelton I_Pedestrian Promenade_2026.03.10.jpg"),
-    style: { top: 0, left: "33.5%", width: "33%", height: "30%" } },
-  { src: asset("/nova/Commercial 2025-07-07 Lotus-Nova-14.jpg"),
-    style: { top: 0, right: 0, width: "33.5%", height: "30%" } },
-  { src: asset("/republic/highlights/_DSC1121.jpg"),
-    style: { top: "30%", left: 0, width: "20%", height: "40%" } },
-  { src: asset("/republic/aerials/Arial.jpg"),
-    style: { top: "30%", right: 0, width: "20%", height: "40%" } },
-  { src: asset("/nova/Commercial 2025-07-07 Lotus-Nova-30.jpg"),
-    style: { bottom: 0, left: 0, width: "33.5%", height: "30%" } },
-  { src: asset("/steelton-village/Steelton I_Clubhouse_2026.03.10.jpg"),
-    style: { bottom: 0, left: "33.5%", width: "33%", height: "30%" } },
-  { src: asset("/steelton-village/Steelton I_North Park_2026.03.10.jpg"),
-    style: { bottom: 0, right: 0, width: "33.5%", height: "30%" } },
+  { src: "/intro/nova-1.jpg",  style: { top: 0, left: 0, width: "33.5%", height: "30%" } },
+  { src: "/intro/nova-14.jpg", style: { top: 0, left: "33.5%", width: "33%", height: "30%" } },
+  { src: "/intro/nova-22.jpg", style: { top: 0, right: 0, width: "33.5%", height: "30%" } },
+  { src: "/intro/nova-38.jpg", style: { top: "30%", left: 0, width: "20%", height: "40%" } },
+  { src: "/intro/nova-45.jpg", style: { top: "30%", right: 0, width: "20%", height: "40%" } },
+  { src: "/intro/nova-30.jpg", style: { bottom: 0, left: 0, width: "33.5%", height: "30%" } },
+  { src: "/intro/nova-56.jpg", style: { bottom: 0, left: "33.5%", width: "33%", height: "30%" } },
+  { src: "/intro/nova-70.jpg", style: { bottom: 0, right: 0, width: "33.5%", height: "30%" } },
 ];
 
 // Corners first, then top/bottom center, then sides
