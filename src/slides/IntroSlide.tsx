@@ -82,7 +82,7 @@ export function IntroSlide() {
       {/* Radial depth glow — dark turquoise at center, creates stage depth */}
       <div style={{
         position: "absolute", inset: 0,
-        background: `radial-gradient(ellipse 58% 52% at 50% 50%, rgba(2,143,170,0.09) 0%, rgba(66,66,66,0.88) 55%, rgba(66,66,66,1) 100%)`,
+        background: `radial-gradient(ellipse 60% 55% at 50% 50%, rgba(77,186,214,0.13) 0%, rgba(77,186,214,0.04) 40%, transparent 70%)`,
         pointerEvents: "none",
       }} />
 
@@ -114,9 +114,9 @@ export function IntroSlide() {
               {...reveal(LOGO_AT + 0.1)}
               style={{
                 display: "inline-block",
-                fontSize: "clamp(18px, 2.2vw, 38px)",
+                fontSize: "clamp(24px, 2.8vw, 48px)",
                 fontWeight: 400,
-                color: "rgba(206,232,238,0.55)",
+                color: "#fff",
                 letterSpacing: "0.42em",
                 textTransform: "lowercase",
               }}
@@ -150,9 +150,9 @@ export function IntroSlide() {
             transition={{ delay: LOGO_AT + 0.52, duration: 0.55, ease: EASE_OUT }}
             style={{
               marginTop: 20,
-              fontSize: "clamp(11px, 1.1vw, 14px)",
+              fontSize: "clamp(15px, 1.5vw, 20px)",
               fontWeight: 400,
-              color: "rgba(206,232,238,0.38)",
+              color: "#fff",
               letterSpacing: "0.32em",
               textTransform: "lowercase",
               textAlign: "center",
@@ -184,9 +184,9 @@ export function IntroSlide() {
               <div style={{ width: 3, height: 3, borderRadius: "50%", background: "#028faa", flexShrink: 0 }} />
             )}
             <span style={{
-              fontSize: "clamp(9px, 0.85vw, 11px)",
+              fontSize: "clamp(12px, 1.1vw, 15px)",
               fontWeight: 400,
-              color: "rgba(206,232,238,0.28)",
+              color: "#fff",
               letterSpacing: "0.26em",
               textTransform: "lowercase",
               whiteSpace: "nowrap",
