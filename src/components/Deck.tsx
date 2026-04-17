@@ -47,7 +47,7 @@ export function Deck({ slides }: DeckProps) {
 
   return (
     <div style={{ position: "fixed", inset: 0, overflow: "hidden", background: "#000" }}>
-      <AnimatePresence initial={false} mode="wait">
+      <AnimatePresence mode="wait">
         <motion.div
           key={index}
           variants={VARIANTS}
