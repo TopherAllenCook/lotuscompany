@@ -142,8 +142,8 @@ export function LotusHousingProblemSlide() {
                   as="p"
                   style={{
                     fontSize: "15px",
-                    color: theme.lightBlue,
-                    fontWeight: 300,
+                    color: "rgba(255,255,255,0.88)",
+                    fontWeight: 400,
                     letterSpacing: "0.04em",
                     fontFamily: font,
                     lineHeight: 1.7,
@@ -217,8 +217,8 @@ export function LotusHousingProblemSlide() {
                   as="p"
                   style={{
                     fontSize: "11px",
-                    color: theme.lightBlue,
-                    fontWeight: 300,
+                    color: "rgba(255,255,255,0.88)",
+                    fontWeight: 400,
                     letterSpacing: "0.1em",
                     fontFamily: font,
                     margin: 0,

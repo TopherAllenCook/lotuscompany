@@ -79,8 +79,8 @@ export default function CapitalEngineSlide() {
               as="div"
               style={{
                 fontSize: "14px",
-                color: theme.lightBlue,
-                fontWeight: 300,
+                color: "rgba(255,255,255,0.88)",
+                fontWeight: 400,
                 fontFamily: font,
                 lineHeight: 1.7,
                 textTransform: "lowercase",
@@ -94,8 +94,8 @@ export default function CapitalEngineSlide() {
               as="div"
               style={{
                 fontSize: "14px",
-                color: theme.lightBlue,
-                fontWeight: 300,
+                color: "rgba(255,255,255,0.88)",
+                fontWeight: 400,
                 fontFamily: font,
                 lineHeight: 1.7,
                 textTransform: "lowercase",
@@ -109,8 +109,8 @@ export default function CapitalEngineSlide() {
               as="div"
               style={{
                 fontSize: "14px",
-                color: theme.lightBlue,
-                fontWeight: 300,
+                color: "rgba(255,255,255,0.88)",
+                fontWeight: 400,
                 fontFamily: font,
                 lineHeight: 1.7,
                 textTransform: "lowercase",
@@ -124,8 +124,8 @@ export default function CapitalEngineSlide() {
               as="div"
               style={{
                 fontSize: "14px",
-                color: theme.lightBlue,
-                fontWeight: 300,
+                color: "rgba(255,255,255,0.88)",
+                fontWeight: 400,
                 fontFamily: font,
                 lineHeight: 1.7,
                 textTransform: "lowercase",
@@ -139,8 +139,8 @@ export default function CapitalEngineSlide() {
               as="div"
               style={{
                 fontSize: "14px",
-                color: theme.lightBlue,
-                fontWeight: 300,
+                color: "rgba(255,255,255,0.88)",
+                fontWeight: 400,
                 fontFamily: font,
                 lineHeight: 1.7,
                 textTransform: "lowercase",

@@ -113,8 +113,8 @@ export function LotusOpening() {
             as="p"
             style={{
               fontSize: "16px",
-              color: theme.lightBlue,
-              fontWeight: 300,
+              color: "rgba(255,255,255,0.88)",
+              fontWeight: 400,
               letterSpacing: "0.12em",
               fontFamily: font,
               margin: "0 0 32px 0",
@@ -141,7 +141,7 @@ export function LotusOpening() {
             style={{
               fontSize: "13px",
               color: "rgba(255,255,255,0.5)",
-              fontWeight: 300,
+              fontWeight: 400,
               letterSpacing: "0.06em",
               fontFamily: font,
               margin: 0,
@@ -156,7 +156,7 @@ export function LotusOpening() {
             style={{
               fontSize: "13px",
               color: "rgba(255,255,255,0.5)",
-              fontWeight: 300,
+              fontWeight: 400,
               letterSpacing: "0.06em",
               fontFamily: font,
               margin: 0,
@@ -171,7 +171,7 @@ export function LotusOpening() {
             style={{
               fontSize: "13px",
               color: "rgba(255,255,255,0.5)",
-              fontWeight: 300,
+              fontWeight: 400,
               letterSpacing: "0.06em",
               fontFamily: font,
               margin: 0,

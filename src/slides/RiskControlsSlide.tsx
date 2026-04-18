@@ -153,7 +153,7 @@ export function RiskControlsSlide() {
               <td
                 style={{
                   fontSize: "13px",
-                  color: "rgba(255,255,255,0.7)",
+                  color: "rgba(255,255,255,0.92)",
                   fontFamily: font,
                   fontWeight: 400,
                   padding: "12px 20px",
@@ -165,7 +165,7 @@ export function RiskControlsSlide() {
                   as="span"
                   style={{
                     fontSize: "13px",
-                    color: "rgba(255,255,255,0.7)",
+                    color: "rgba(255,255,255,0.92)",
                     fontFamily: font,
                     fontWeight: 400,
                   }}
@@ -202,7 +202,7 @@ export function RiskControlsSlide() {
               <td
                 style={{
                   fontSize: "13px",
-                  color: "rgba(255,255,255,0.7)",
+                  color: "rgba(255,255,255,0.92)",
                   fontFamily: font,
                   fontWeight: 400,
                   padding: "12px 20px",
@@ -214,7 +214,7 @@ export function RiskControlsSlide() {
                   as="span"
                   style={{
                     fontSize: "13px",
-                    color: "rgba(255,255,255,0.7)",
+                    color: "rgba(255,255,255,0.92)",
                     fontFamily: font,
                     fontWeight: 400,
                   }}
@@ -251,7 +251,7 @@ export function RiskControlsSlide() {
               <td
                 style={{
                   fontSize: "13px",
-                  color: "rgba(255,255,255,0.7)",
+                  color: "rgba(255,255,255,0.92)",
                   fontFamily: font,
                   fontWeight: 400,
                   padding: "12px 20px",
@@ -263,7 +263,7 @@ export function RiskControlsSlide() {
                   as="span"
                   style={{
                     fontSize: "13px",
-                    color: "rgba(255,255,255,0.7)",
+                    color: "rgba(255,255,255,0.92)",
                     fontFamily: font,
                     fontWeight: 400,
                   }}
@@ -300,7 +300,7 @@ export function RiskControlsSlide() {
               <td
                 style={{
                   fontSize: "13px",
-                  color: "rgba(255,255,255,0.7)",
+                  color: "rgba(255,255,255,0.92)",
                   fontFamily: font,
                   fontWeight: 400,
                   padding: "12px 20px",
@@ -312,7 +312,7 @@ export function RiskControlsSlide() {
                   as="span"
                   style={{
                     fontSize: "13px",
-                    color: "rgba(255,255,255,0.7)",
+                    color: "rgba(255,255,255,0.92)",
                     fontFamily: font,
                     fontWeight: 400,
                   }}
@@ -349,7 +349,7 @@ export function RiskControlsSlide() {
               <td
                 style={{
                   fontSize: "13px",
-                  color: "rgba(255,255,255,0.7)",
+                  color: "rgba(255,255,255,0.92)",
                   fontFamily: font,
                   fontWeight: 400,
                   padding: "12px 20px",
@@ -361,7 +361,7 @@ export function RiskControlsSlide() {
                   as="span"
                   style={{
                     fontSize: "13px",
-                    color: "rgba(255,255,255,0.7)",
+                    color: "rgba(255,255,255,0.92)",
                     fontFamily: font,
                     fontWeight: 400,
                   }}

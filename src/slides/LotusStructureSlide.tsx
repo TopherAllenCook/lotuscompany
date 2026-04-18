@@ -108,8 +108,8 @@ export function LotusStructureSlide() {
           as="p"
           style={{
             fontSize: "13px",
-            color: theme.lightBlue,
-            fontWeight: 300,
+            color: "rgba(255,255,255,0.88)",
+            fontWeight: 400,
             letterSpacing: "0.04em",
             fontFamily: font,
             fontStyle: "italic",
@@ -261,8 +261,8 @@ export function LotusStructureSlide() {
                     style={{
                       padding: "10px 16px",
                       fontSize: "13px",
-                      fontWeight: 300,
-                      color: "rgba(255,255,255,0.55)",
+                      fontWeight: 400,
+                      color: "rgba(255,255,255,0.80)",
                       textTransform: "lowercase",
                     }}
                   >
@@ -278,8 +278,8 @@ export function LotusStructureSlide() {
                     style={{
                       padding: "10px 16px",
                       fontSize: "13px",
-                      fontWeight: 300,
-                      color: "rgba(255,255,255,0.55)",
+                      fontWeight: 400,
+                      color: "rgba(255,255,255,0.80)",
                       textTransform: "lowercase",
                     }}
                   >
@@ -295,7 +295,7 @@ export function LotusStructureSlide() {
                     style={{
                       padding: "10px 16px",
                       fontSize: "13px",
-                      fontWeight: 300,
+                      fontWeight: 400,
                       color: "#fff",
                       textTransform: "lowercase",
                     }}

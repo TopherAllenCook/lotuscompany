@@ -266,7 +266,7 @@ export function ExecSummarySlide() {
           <EditableText id="exec-summary:stat-label-units" as="div" style={{
             fontFamily: font, fontWeight: 400,
             fontSize: "clamp(8px, 0.6vw, 10px)",
-            color: "rgba(255,255,255,0.55)",
+            color: "rgba(255,255,255,0.80)",
             letterSpacing: "0.18em", textTransform: "lowercase", marginTop: 4,
           }}>
             units per year
@@ -286,7 +286,7 @@ export function ExecSummarySlide() {
           <EditableText id="exec-summary:stat-label-residents" as="div" style={{
             fontFamily: font, fontWeight: 400,
             fontSize: "clamp(8px, 0.6vw, 10px)",
-            color: "rgba(255,255,255,0.55)",
+            color: "rgba(255,255,255,0.80)",
             letterSpacing: "0.18em", textTransform: "lowercase", marginTop: 4,
           }}>
             residents annually
