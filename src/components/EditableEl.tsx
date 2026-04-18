@@ -88,6 +88,34 @@ export function EditableEl({ id, label, type = "shape", style, className, childr
           }}
         />
       )}
+      {/* Card corner handle — small clickable tab so cards are selectable without blocking children */}
+      {type === "card" && (
+        <div
+          onMouseDown={handleMouseDown}
+          title={resolvedLabel}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: 28,
+            height: 28,
+            zIndex: 9000,
+            cursor: isActive ? "move" : "crosshair",
+            background: isActive ? "rgba(2,143,170,0.55)" : "rgba(2,143,170,0.28)",
+            borderBottomRightRadius: 8,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style={{ pointerEvents: "none" }}>
+            <circle cx="3" cy="3" r="1.2" fill="rgba(255,255,255,0.9)" />
+            <circle cx="9" cy="3" r="1.2" fill="rgba(255,255,255,0.9)" />
+            <circle cx="3" cy="9" r="1.2" fill="rgba(255,255,255,0.9)" />
+            <circle cx="9" cy="9" r="1.2" fill="rgba(255,255,255,0.9)" />
+          </svg>
+        </div>
+      )}
     </div>
   );
 }
