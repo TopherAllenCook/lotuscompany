@@ -3,7 +3,11 @@ import {
   createContext, useContext, useState, useRef, useEffect,
   useCallback, type ReactNode, type CSSProperties,
 } from "react";
-import { loadOverrides, saveOverrides, type ElementOverride, type OverridesMap } from "@/lib/textOverrides";
+import {
+  loadOverrides, saveOverrides, type ElementOverride, type OverridesMap,
+  loadDynamicElements, saveDynamicElements, fetchSavedState,
+  type DynamicElementDef, type DynamicElementsMap,
+} from "@/lib/textOverrides";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -30,6 +34,10 @@ interface EditCtx {
   setGridSize: (n: number) => void;
   setSnapToGrid: (b: boolean) => void;
   setShowGrid: (b: boolean) => void;
+  // dynamic elements
+  dynamicElements: DynamicElementsMap;
+  addDynamicElement: (slideKey: string, type: "text" | "bar" | "shape") => string;
+  removeDynamicElement: (id: string) => void;
 }
 
 const Ctx = createContext<EditCtx | null>(null);
@@ -42,11 +50,20 @@ export function EditModeProvider({ children }: { children: ReactNode }) {
   const [gridSize, setGridSize] = useState(8);
   const [snapToGrid, setSnapToGrid] = useState(true);
   const [showGrid, setShowGrid] = useState(false);
+  const [dynamicElements, setDynamicElements] = useState<DynamicElementsMap>({});
   const elMap = useRef<Record<string, HTMLElement | null>>({});
   const historyRef = useRef<OverridesMap[]>([]);
   const futureRef  = useRef<OverridesMap[]>([]);
 
-  useEffect(() => { setOverrides(loadOverrides()); }, []);
+  // Load from committed file first, then overlay localStorage (live edits on top)
+  useEffect(() => {
+    const fromLocal = loadOverrides();
+    const dynLocal  = loadDynamicElements();
+    fetchSavedState().then(({ overrides: fromFile, dynamic: dynFile }) => {
+      setOverrides({ ...fromFile, ...fromLocal });
+      setDynamicElements({ ...dynFile, ...dynLocal });
+    });
+  }, []);
 
   const setOverride = useCallback((id: string, patch: Partial<ElementOverride>) => {
     setOverrides(prev => {
@@ -102,11 +119,44 @@ export function EditModeProvider({ children }: { children: ReactNode }) {
 
   const getEl = useCallback((id: string) => elMap.current[id] ?? null, []);
 
+  const addDynamicElement = useCallback((slideKey: string, type: "text" | "bar" | "shape"): string => {
+    const id = `${slideKey}:dyn-${Date.now()}`;
+    const def: DynamicElementDef = {
+      id, slideKey, type,
+      x: 300, y: 300,
+      content:    "new text",
+      color:      "#ffffff",
+      fontSize:   24,
+      fontWeight: 300,
+      width:      type === "bar" ? 200 : 120,
+      height:     type === "bar" ? 2   : type === "shape" ? 80 : 30,
+      background: type === "bar" ? "#4dbad6" : "rgba(77,186,214,0.15)",
+      opacity:    1,
+    };
+    setDynamicElements(prev => {
+      const next = { ...prev, [id]: def };
+      saveDynamicElements(next);
+      return next;
+    });
+    return id;
+  }, []);
+
+  const removeDynamicElement = useCallback((id: string) => {
+    setDynamicElements(prev => {
+      const next = { ...prev };
+      delete next[id];
+      saveDynamicElements(next);
+      return next;
+    });
+    clearOverride(id);
+  }, [clearOverride]);
+
   return (
     <Ctx.Provider value={{
       editMode, setEditMode, overrides, setOverride, clearOverride, undo, redo,
       activeId, setActiveId, registerEl, getEl, registeredList,
       gridSize, snapToGrid, showGrid, setGridSize, setSnapToGrid, setShowGrid,
+      dynamicElements, addDynamicElement, removeDynamicElement,
     }}>
       {children}
     </Ctx.Provider>
@@ -243,7 +293,6 @@ export function EditableText<T extends keyof React.JSX.IntrinsicElements = "div"
       }}
     >
       {displayChildren}
-      {/* Overlay — gives a larger hit area and handles drag without needing a precise click on the element */}
       <span
         onMouseDown={handleMouseDown}
         style={{

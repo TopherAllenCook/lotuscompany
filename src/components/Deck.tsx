@@ -8,6 +8,7 @@ import { LotusMark } from "@/components/LotusMark";
 import { EditModeProvider, useEditMode } from "@/components/EditableText";
 import { EditorPanel } from "@/components/EditorPanel";
 import { GridOverlay } from "@/components/GridOverlay";
+import { DynamicLayer } from "@/components/DynamicLayer";
 
 interface DeckProps {
   slides: React.ReactNode[];
@@ -198,6 +199,30 @@ function SlideDrawer({ index, go, onClose, onOpenEditor }: {
           </span>
         </button>
 
+        {/* Print link */}
+        <a
+          href="/print"
+          style={{
+            display: "flex", alignItems: "center", gap: 12,
+            width: "100%", padding: "14px 28px",
+            background: "transparent", border: "none",
+            cursor: "pointer", textDecoration: "none",
+          }}
+        >
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" style={{ flexShrink: 0 }}>
+            <rect x="2" y="4" width="9" height="6" rx="1" stroke="rgba(2,143,170,0.7)" strokeWidth="1.2" />
+            <path d="M4 4V2h5v2" stroke="rgba(2,143,170,0.7)" strokeWidth="1.2" strokeLinecap="round" />
+            <path d="M4 8h5M4 10h3" stroke="rgba(2,143,170,0.7)" strokeWidth="1.2" strokeLinecap="round" />
+          </svg>
+          <span style={{
+            fontSize: 11, fontFamily: font, fontWeight: 400,
+            color: "rgba(2,143,170,0.8)",
+            letterSpacing: "0.1em", textTransform: "lowercase",
+          }}>
+            print / export pdf
+          </span>
+        </a>
+
         {/* Footer label */}
         <div style={{ padding: "8px 28px 0" }}>
           <span style={{
@@ -328,6 +353,7 @@ function DeckInner({ slides, initialIndex = 0 }: DeckProps) {
           style={{ position: "absolute", inset: 0 }}
         >
           {slides[index]}
+          <DynamicLayer slideKey={currentSlideKey} />
           <GridOverlay size={gridSize} visible={editMode && showGrid} />
         </motion.div>
       </AnimatePresence>

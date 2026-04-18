@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { font, EASE_OUT } from "@/lib/theme";
 import { useEditMode } from "@/components/EditableText";
 import type { ElementOverride } from "@/lib/textOverrides";
+import { pushSavedState } from "@/lib/textOverrides";
 
 const TEXT_SLIDERS = [
   { key: "fontSize",      label: "font size",      min: 6,    max: 120,  step: 0.5,  suffix: "px" },
@@ -67,12 +68,14 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
     overrides, setOverride, clearOverride,
     activeId, setActiveId, getEl, setEditMode, registeredList,
     gridSize, snapToGrid, showGrid, setGridSize, setSnapToGrid, setShowGrid,
+    dynamicElements, addDynamicElement, removeDynamicElement,
   } = useEditMode();
 
   const editables = registeredList.filter(e => e.id.startsWith(slideKey + ":"));
   const activeEntry = registeredList.find(e => e.id === activeId);
   const activeType = activeEntry?.type ?? "text";
   const isTextType = activeType === "text";
+  const isActiveDynamic = activeId != null && dynamicElements[activeId] != null;
 
   const [vals, setVals] = useState<Record<string, number>>({
     fontSize: 16, translateX: 0, translateY: 0, letterSpacing: 0, lineHeight: 1.5,
@@ -81,6 +84,7 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
   const [contentText, setContentText] = useState("");
   const [colorHex, setColorHex] = useState("#ffffff");
   const [bgHex, setBgHex] = useState("#4dbad6");
+  const [saveState, setSaveState] = useState<"idle" | "saving" | "saved" | "error">("idle");
   const prevActiveId = useRef<string | null>(null);
 
   useEffect(() => {
@@ -151,6 +155,25 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
     }
   }, [activeId, clearOverride, getEl, registeredList]);
 
+  const handleSave = useCallback(async () => {
+    setSaveState("saving");
+    const ok = await pushSavedState(overrides, dynamicElements);
+    setSaveState(ok ? "saved" : "error");
+    setTimeout(() => setSaveState("idle"), 2200);
+  }, [overrides, dynamicElements]);
+
+  const handleAddElement = useCallback((type: "text" | "bar" | "shape") => {
+    const id = addDynamicElement(slideKey, type);
+    // Give the element a moment to mount, then select it
+    setTimeout(() => setActiveId(id), 80);
+  }, [slideKey, addDynamicElement, setActiveId]);
+
+  const handleDeleteElement = useCallback(() => {
+    if (!activeId || !isActiveDynamic) return;
+    removeDynamicElement(activeId);
+    setActiveId(null);
+  }, [activeId, isActiveDynamic, removeDynamicElement, setActiveId]);
+
   const handleClose = () => {
     setEditMode(false);
     setActiveId(null);
@@ -167,6 +190,23 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
     if (t === "image") return "image";
     if (t === "shape") return "shape";
     return "text";
+  };
+
+  const saveBtnStyle = {
+    background: saveState === "saved"  ? "rgba(2,143,170,0.25)"  :
+                saveState === "error"  ? "rgba(255,80,80,0.15)"  :
+                saveState === "saving" ? "rgba(255,255,255,0.05)" : "rgba(2,143,170,0.12)",
+    border: `1px solid ${
+      saveState === "saved"  ? "#028faa" :
+      saveState === "error"  ? "rgba(255,80,80,0.4)" :
+      saveState === "saving" ? "rgba(255,255,255,0.1)" : "rgba(2,143,170,0.35)"
+    }`,
+    borderRadius: 4, padding: "4px 10px",
+    color: saveState === "saved"  ? "#4dbad6" :
+           saveState === "error"  ? "rgba(255,100,100,0.8)" : "rgba(2,143,170,0.8)",
+    fontSize: 9, letterSpacing: "0.12em", textTransform: "lowercase" as const,
+    cursor: saveState === "saving" ? "default" : "pointer", fontFamily: font,
+    transition: "all 0.2s ease",
   };
 
   return (
@@ -202,7 +242,10 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
                 {slideKey.replace(/-/g, " ")}
               </p>
             </div>
-            <div style={{ display: "flex", gap: 6 }}>
+            <div style={{ display: "flex", gap: 5, alignItems: "center" }}>
+              <button onClick={handleSave} disabled={saveState === "saving"} style={saveBtnStyle}>
+                {saveState === "saving" ? "saving…" : saveState === "saved" ? "saved ✓" : saveState === "error" ? "error" : "save"}
+              </button>
               <button
                 onClick={handleResetSlide}
                 title="Clear all overrides for this slide"
@@ -284,6 +327,7 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
             {editables.map(({ id, label, type }) => {
               const isActive = activeId === id;
               const hasOverride = !!overrides[id];
+              const isDynamic = !!dynamicElements[id];
               return (
                 <button
                   key={id}
@@ -302,7 +346,7 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
                       fontSize: 8, color: type === "text" ? "rgba(77,186,214,0.5)" : "rgba(255,186,77,0.6)",
                       letterSpacing: "0.1em", textTransform: "lowercase",
                       border: "1px solid currentColor", borderRadius: 2, padding: "1px 4px", flexShrink: 0,
-                    }}>{typeLabel(type)}</span>
+                    }}>{typeLabel(type)}{isDynamic ? " +" : ""}</span>
                     <span style={{ fontSize: 11, color: isActive ? "#fff" : "rgba(255,255,255,0.5)", letterSpacing: "0.06em", textTransform: "lowercase" }}>
                       {label}
                     </span>
@@ -327,18 +371,30 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
                   <p style={{ margin: 0, fontSize: 9, color: "#028faa", letterSpacing: "0.18em", textTransform: "lowercase" }}>
                     {typeLabel(activeType)} properties
                   </p>
-                  <button
-                    onClick={handleReset}
-                    style={{
-                      background: "none", border: "1px solid rgba(255,255,255,0.1)",
-                      borderRadius: 3, padding: "3px 9px",
-                      color: "rgba(255,255,255,0.3)", fontSize: 9,
-                      letterSpacing: "0.12em", textTransform: "lowercase",
-                      cursor: "pointer", fontFamily: font,
-                    }}
-                  >
-                    reset
-                  </button>
+                  <div style={{ display: "flex", gap: 5 }}>
+                    {isActiveDynamic && (
+                      <button
+                        onClick={handleDeleteElement}
+                        style={{
+                          background: "none", border: "1px solid rgba(255,80,80,0.3)",
+                          borderRadius: 3, padding: "3px 9px",
+                          color: "rgba(255,100,100,0.6)", fontSize: 9,
+                          letterSpacing: "0.12em", textTransform: "lowercase",
+                          cursor: "pointer", fontFamily: font,
+                        }}
+                      >delete</button>
+                    )}
+                    <button
+                      onClick={handleReset}
+                      style={{
+                        background: "none", border: "1px solid rgba(255,255,255,0.1)",
+                        borderRadius: 3, padding: "3px 9px",
+                        color: "rgba(255,255,255,0.3)", fontSize: 9,
+                        letterSpacing: "0.12em", textTransform: "lowercase",
+                        cursor: "pointer", fontFamily: font,
+                      }}
+                    >reset</button>
+                  </div>
                 </div>
 
                 <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
@@ -458,10 +514,37 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
             )}
           </div>
 
+          {/* Add element */}
+          <div style={{
+            flexShrink: 0, padding: "12px 20px",
+            borderTop: "1px solid rgba(255,255,255,0.07)",
+          }}>
+            <p style={{ margin: "0 0 8px", fontSize: 9, color: "rgba(255,255,255,0.25)", letterSpacing: "0.18em", textTransform: "lowercase" }}>
+              add element
+            </p>
+            <div style={{ display: "flex", gap: 5 }}>
+              {(["text", "bar", "shape"] as const).map(t => (
+                <button
+                  key={t}
+                  onClick={() => handleAddElement(t)}
+                  style={{
+                    flex: 1, padding: "6px 0",
+                    background: "rgba(2,143,170,0.08)",
+                    border: "1px solid rgba(2,143,170,0.25)",
+                    borderRadius: 3,
+                    color: "rgba(2,143,170,0.7)",
+                    fontSize: 9, letterSpacing: "0.1em", textTransform: "lowercase",
+                    cursor: "pointer", fontFamily: font,
+                  }}
+                >+ {t}</button>
+              ))}
+            </div>
+          </div>
+
           {/* Footer */}
-          <div style={{ flexShrink: 0, padding: "12px 20px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+          <div style={{ flexShrink: 0, padding: "10px 20px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
             <p style={{ margin: 0, fontSize: 9, color: "rgba(255,255,255,0.18)", letterSpacing: "0.1em", textTransform: "lowercase", lineHeight: 1.6 }}>
-              changes save automatically · blue dot = modified · drag to reposition · esc to close
+              auto-saved locally · click save to commit · blue dot = modified
             </p>
           </div>
         </motion.div>
