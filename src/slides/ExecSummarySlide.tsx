@@ -1,9 +1,9 @@
 "use client";
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
 import { theme, font, EASE_OUT } from "@/lib/theme";
 import { asset } from "@/lib/storage";
-import { EditableText } from "@/components/EditableText";
+import { EditableText, useEditMode, useDragToMove } from "@/components/EditableText";
 import { EditableEl } from "@/components/EditableEl";
 
 const DARK_TQ  = "#028faa";
@@ -79,6 +79,52 @@ function FloatStat({
       }}>
         {label}
       </EditableText>
+    </motion.div>
+  );
+}
+
+function DraggableCard({ id, label, animDelay, style, children }: {
+  id: string; label: string; animDelay: number;
+  style?: CSSProperties; children: ReactNode;
+}) {
+  const { editMode, overrides, activeId, setActiveId, registerEl, setOverride, gridSize, snapToGrid } = useEditMode();
+  const ref = useRef<HTMLDivElement>(null);
+  const override = overrides[id] ?? {};
+  const overrideRef = useRef(override);
+  overrideRef.current = override;
+
+  useEffect(() => {
+    registerEl(id, label, "shape", ref.current as HTMLElement | null);
+    return () => registerEl(id, label, "shape", null);
+  }, [id, label, registerEl]);
+
+  const tx = override.translateX ?? 0;
+  const ty = override.translateY ?? 0;
+  const hasTx = override.translateX != null || override.translateY != null;
+  const ovr: CSSProperties = hasTx ? { transform: `translate(${tx}px, ${ty}px)` } : {};
+  const isActive = editMode && activeId === id;
+
+  const handleMouseDown = useDragToMove(
+    id, editMode, setActiveId, setOverride, overrideRef,
+    ref as React.RefObject<HTMLElement | null>, "", gridSize, snapToGrid,
+  );
+
+  return (
+    <motion.div
+      ref={ref}
+      {...lift(animDelay)}
+      onMouseDown={editMode ? handleMouseDown : undefined}
+      style={{
+        ...style,
+        ...ovr,
+        ...(editMode ? {
+          outline: isActive ? "2px solid #028faa" : "1px dashed rgba(2,143,170,0.45)",
+          outlineOffset: 3,
+          cursor: isActive ? "move" : "default",
+        } : {}),
+      }}
+    >
+      {children}
     </motion.div>
   );
 }
@@ -270,7 +316,7 @@ export function ExecSummarySlide() {
             ],
           },
         ]).map((card, i) => (
-          <motion.div key={card.id} {...lift(0.62 + i * 0.09)} style={{
+          <DraggableCard key={card.id} id={`exec-summary:card-${card.id}`} label={card.header} animDelay={0.62 + i * 0.09} style={{
             flex: 1,
             background: CARD_BG,
             backdropFilter: "blur(16px)",
@@ -312,7 +358,7 @@ export function ExecSummarySlide() {
                 {line}
               </EditableText>
             ))}
-          </motion.div>
+          </DraggableCard>
         ))}
       </div>
 

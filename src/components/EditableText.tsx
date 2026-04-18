@@ -17,6 +17,8 @@ interface EditCtx {
   overrides: OverridesMap;
   setOverride: (id: string, patch: Partial<ElementOverride>) => void;
   clearOverride: (id: string) => void;
+  undo: () => void;
+  redo: () => void;
   activeId: string | null;
   setActiveId: (id: string | null) => void;
   registerEl: (id: string, label: string, type: ElementType, el: HTMLElement | null) => void;
@@ -41,11 +43,15 @@ export function EditModeProvider({ children }: { children: ReactNode }) {
   const [snapToGrid, setSnapToGrid] = useState(true);
   const [showGrid, setShowGrid] = useState(false);
   const elMap = useRef<Record<string, HTMLElement | null>>({});
+  const historyRef = useRef<OverridesMap[]>([]);
+  const futureRef  = useRef<OverridesMap[]>([]);
 
   useEffect(() => { setOverrides(loadOverrides()); }, []);
 
   const setOverride = useCallback((id: string, patch: Partial<ElementOverride>) => {
     setOverrides(prev => {
+      historyRef.current = [...historyRef.current, prev];
+      futureRef.current  = [];
       const next = { ...prev, [id]: { ...prev[id], ...patch } };
       saveOverrides(next);
       return next;
@@ -54,8 +60,30 @@ export function EditModeProvider({ children }: { children: ReactNode }) {
 
   const clearOverride = useCallback((id: string) => {
     setOverrides(prev => {
+      historyRef.current = [...historyRef.current, prev];
+      futureRef.current  = [];
       const next = { ...prev };
       delete next[id];
+      saveOverrides(next);
+      return next;
+    });
+  }, []);
+
+  const undo = useCallback(() => {
+    const prev = historyRef.current.pop();
+    if (prev === undefined) return;
+    setOverrides(cur => {
+      futureRef.current = [...futureRef.current, cur];
+      saveOverrides(prev);
+      return prev;
+    });
+  }, []);
+
+  const redo = useCallback(() => {
+    const next = futureRef.current.pop();
+    if (next === undefined) return;
+    setOverrides(cur => {
+      historyRef.current = [...historyRef.current, cur];
       saveOverrides(next);
       return next;
     });
@@ -76,7 +104,7 @@ export function EditModeProvider({ children }: { children: ReactNode }) {
 
   return (
     <Ctx.Provider value={{
-      editMode, setEditMode, overrides, setOverride, clearOverride,
+      editMode, setEditMode, overrides, setOverride, clearOverride, undo, redo,
       activeId, setActiveId, registerEl, getEl, registeredList,
       gridSize, snapToGrid, showGrid, setGridSize, setSnapToGrid, setShowGrid,
     }}>

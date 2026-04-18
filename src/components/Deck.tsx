@@ -217,7 +217,7 @@ function DeckInner({ slides, initialIndex = 0 }: DeckProps) {
   const [[index], setPage] = useState([initialIndex, 0]);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [editorOpen, setEditorOpen] = useState(false);
-  const { editMode, setEditMode, setActiveId, gridSize, showGrid } = useEditMode();
+  const { editMode, setEditMode, setActiveId, gridSize, showGrid, undo, redo, overrides, setOverride, clearOverride, activeId } = useEditMode();
 
   const currentSlideKey = SLIDE_REGISTRY[index].key;
 
@@ -241,23 +241,55 @@ function DeckInner({ slides, initialIndex = 0 }: DeckProps) {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
+      const inInput = ["INPUT", "TEXTAREA"].includes((e.target as Element).tagName);
+      const ctrl = e.ctrlKey || e.metaKey;
+
+      // Undo / redo
+      if (ctrl && e.key === "z" && !e.shiftKey) { e.preventDefault(); undo(); return; }
+      if (ctrl && (e.key === "y" || (e.key === "z" && e.shiftKey))) { e.preventDefault(); redo(); return; }
+
       if (e.key === "Escape") {
         setDrawerOpen(false);
         if (editorOpen) { closeEditor(); return; }
+        setActiveId(null);
         return;
       }
-      if ((e.key === "e" || e.key === "E") && !["INPUT", "TEXTAREA"].includes((e.target as Element).tagName)) {
+      if ((e.key === "e" || e.key === "E") && !inInput) {
         if (editorOpen) closeEditor();
         else openEditor();
         return;
       }
+
+      // Edit-mode shortcuts — only when editor is open and nothing is focused in an input
+      if (editMode && !inInput) {
+        // Delete / Backspace — clear overrides on selected element
+        if ((e.key === "Delete" || e.key === "Backspace") && activeId) {
+          e.preventDefault();
+          clearOverride(activeId);
+          return;
+        }
+        // Arrow nudge — move selected element 1px (or 8px with Shift)
+        if (activeId && ["ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].includes(e.key)) {
+          e.preventDefault();
+          const step = e.shiftKey ? 8 : 1;
+          const ov = overrides[activeId] ?? {};
+          const tx = ov.translateX ?? 0;
+          const ty = ov.translateY ?? 0;
+          if (e.key === "ArrowLeft")  setOverride(activeId, { translateX: tx - step, translateY: ty });
+          if (e.key === "ArrowRight") setOverride(activeId, { translateX: tx + step, translateY: ty });
+          if (e.key === "ArrowUp")    setOverride(activeId, { translateX: tx, translateY: ty - step });
+          if (e.key === "ArrowDown")  setOverride(activeId, { translateX: tx, translateY: ty + step });
+          return;
+        }
+      }
+
       if (drawerOpen || editorOpen) return;
       if (e.key === "ArrowRight" || e.key === " ") go(index + 1);
       if (e.key === "ArrowLeft") go(index - 1);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [index, go, drawerOpen, editorOpen, openEditor, closeEditor]);
+  }, [index, go, drawerOpen, editorOpen, openEditor, closeEditor, editMode, activeId, overrides, undo, redo, setOverride, clearOverride, setActiveId]);
 
   useEffect(() => {
     let startX = 0;
