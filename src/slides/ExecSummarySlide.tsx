@@ -98,10 +98,22 @@ function DraggableCard({ id, label, animDelay, style, children }: {
     return () => registerEl(id, label, "shape", null);
   }, [id, label, registerEl]);
 
-  const tx = override.translateX ?? 0;
-  const ty = override.translateY ?? 0;
-  const hasTx = override.translateX != null || override.translateY != null;
-  const ovr: CSSProperties = hasTx ? { transform: `translate(${tx}px, ${ty}px)` } : {};
+  const ovr: CSSProperties = {};
+  if (override.width      != null) ovr.width      = `${override.width}px`;
+  if (override.height     != null) ovr.height     = `${override.height}px`;
+  if (override.background != null) ovr.background = override.background;
+  if (override.opacity    != null) ovr.opacity    = override.opacity;
+  const tx  = override.translateX ?? 0;
+  const ty  = override.translateY ?? 0;
+  const rot = override.rotate ?? 0;
+  const hasTx  = override.translateX != null || override.translateY != null;
+  const hasRot = override.rotate     != null;
+  if (hasTx || hasRot) {
+    const parts: string[] = [];
+    if (hasTx)  parts.push(`translate(${tx}px, ${ty}px)`);
+    if (hasRot) parts.push(`rotate(${rot}deg)`);
+    ovr.transform = parts.join(" ");
+  }
   const isActive = editMode && activeId === id;
 
   const handleMouseDown = useDragToMove(

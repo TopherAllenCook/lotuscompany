@@ -49,8 +49,10 @@ export function ImpactProfileSlide() {
       </motion.div>
 
       {/* Slide number */}
-      <motion.div {...lift(0.1)} style={{ position: "absolute", top: 64, left: "50%", transform: "translateX(-50%)", fontSize: 11, fontWeight: 400, letterSpacing: "0.44em", color: "rgba(206,232,238,0.22)", textTransform: "lowercase" }}>
-        07 / steelton village
+      <motion.div {...lift(0.1)} style={{ position: "absolute", top: 64, left: "50%", transform: "translateX(-50%)" }}>
+        <EditableText id="impact-profile:slide-num" as="span" style={{ fontSize: 11, fontWeight: 400, letterSpacing: "0.44em", color: "rgba(206,232,238,0.22)", textTransform: "lowercase" }}>
+          07 / steelton village
+        </EditableText>
       </motion.div>
 
       {/* Eyebrow */}
@@ -110,10 +112,10 @@ export function ImpactProfileSlide() {
               {seg.label}
             </EditableText>
             <div style={{ display: "flex", alignItems: "baseline", gap: 10 }}>
-              <span style={{ fontSize: "clamp(36px,4vw,64px)", fontWeight: 300, color: "#fff", lineHeight: 1, letterSpacing: "-0.025em" }}>{seg.units}</span>
-              <span style={{ fontSize: 12, fontWeight: 400, color: seg.color, letterSpacing: "0.12em", textTransform: "lowercase" }}>units</span>
+              <EditableText id={`impact-profile:seg-units-${i}`} label={`audience units — ${seg.label}`} as="span" style={{ fontSize: "clamp(36px,4vw,64px)", fontWeight: 300, color: "#fff", lineHeight: 1, letterSpacing: "-0.025em" }}>{seg.units}</EditableText>
+              <EditableText id={`impact-profile:seg-units-label-${i}`} label={`audience units label — ${seg.label}`} as="span" style={{ fontSize: 12, fontWeight: 400, color: seg.color, letterSpacing: "0.12em", textTransform: "lowercase" }}>units</EditableText>
             </div>
-            <div style={{ fontSize: 12, fontWeight: 300, color: "rgba(206,232,238,0.40)", marginTop: 5, letterSpacing: "0.04em" }}>{seg.pct} of total</div>
+            <EditableText id={`impact-profile:seg-pct-${i}`} label={`audience pct — ${seg.label}`} as="div" style={{ fontSize: 12, fontWeight: 300, color: "rgba(206,232,238,0.40)", marginTop: 5, letterSpacing: "0.04em" }}>{seg.pct} of total</EditableText>
           </motion.div>
         ))}
       </div>

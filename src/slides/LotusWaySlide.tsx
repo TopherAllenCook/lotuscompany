@@ -53,8 +53,10 @@ export function LotusWaySlide() {
       <motion.div {...lift(0)} style={{ position: "absolute", top: 56, left: 72 }}>
         <LotusMark width={180} onDark />
       </motion.div>
-      <motion.div {...lift(0.1)} style={{ position: "absolute", top: 64, left: "50%", transform: "translateX(-50%)", fontSize: 11, fontWeight: 400, letterSpacing: "0.44em", color: "rgba(206,232,238,0.22)", textTransform: "lowercase" }}>
-        06 / steelton village
+      <motion.div {...lift(0.1)} style={{ position: "absolute", top: 64, left: "50%", transform: "translateX(-50%)" }}>
+        <EditableText id="lotus-way:slide-num" as="span" style={{ fontSize: 11, fontWeight: 400, letterSpacing: "0.44em", color: "rgba(206,232,238,0.22)", textTransform: "lowercase" }}>
+          06 / steelton village
+        </EditableText>
       </motion.div>
 
       {/* Bottom content */}

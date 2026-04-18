@@ -7,17 +7,17 @@ import type { ElementOverride } from "@/lib/textOverrides";
 
 const TEXT_SLIDERS = [
   { key: "fontSize",      label: "font size",      min: 6,    max: 120,  step: 0.5,  suffix: "px" },
-  { key: "translateX",    label: "move x",         min: -400, max: 400,  step: 1,    suffix: "px" },
-  { key: "translateY",    label: "move y",         min: -400, max: 400,  step: 1,    suffix: "px" },
+  { key: "translateX",    label: "move x",         min: -800, max: 800,  step: 1,    suffix: "px" },
+  { key: "translateY",    label: "move y",         min: -800, max: 800,  step: 1,    suffix: "px" },
   { key: "letterSpacing", label: "letter spacing", min: -0.1, max: 0.6,  step: 0.01, suffix: "em" },
   { key: "lineHeight",    label: "line height",    min: 0.8,  max: 3.5,  step: 0.05, suffix: "" },
 ] as const;
 
 const SHAPE_SLIDERS = [
-  { key: "translateX", label: "move x",  min: -400, max: 400, step: 1,   suffix: "px" },
-  { key: "translateY", label: "move y",  min: -400, max: 400, step: 1,   suffix: "px" },
-  { key: "width",      label: "width",   min: 0,    max: 1200, step: 1,  suffix: "px" },
-  { key: "height",     label: "height",  min: 0,    max: 400,  step: 0.5, suffix: "px" },
+  { key: "translateX", label: "move x",  min: -800, max: 800,  step: 1,   suffix: "px" },
+  { key: "translateY", label: "move y",  min: -800, max: 800,  step: 1,   suffix: "px" },
+  { key: "width",      label: "width",   min: 0,    max: 2000, step: 1,   suffix: "px" },
+  { key: "height",     label: "height",  min: 0,    max: 1200, step: 1,   suffix: "px" },
   { key: "opacity",    label: "opacity", min: 0,    max: 1,    step: 0.01, suffix: "" },
   { key: "rotate",     label: "rotate",  min: -180, max: 180,  step: 0.5, suffix: "°" },
 ] as const;
