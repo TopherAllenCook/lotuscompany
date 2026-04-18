@@ -28,6 +28,12 @@ const CARD_SLIDERS = [
   { key: "opacity", label: "opacity", min: 0, max: 100, step: 1, suffix: "%" },
 ] as const;
 
+const SVG_NODE_SLIDERS = [
+  { key: "width",   label: "width",   min: 20,  max: 400, step: 1,   suffix: "px" },
+  { key: "height",  label: "height",  min: 10,  max: 300, step: 1,   suffix: "px" },
+  { key: "opacity", label: "opacity", min: 0,   max: 100, step: 1,   suffix: "%" },
+] as const;
+
 const WEIGHTS = [300, 400, 500, 600, 700] as const;
 const GRID_SIZES = [4, 8, 16, 32] as const;
 
@@ -82,6 +88,7 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
   const activeType = activeEntry?.type ?? "text";
   const isTextType = activeType === "text";
   const isCardType = activeType === "card";
+  const isSvgNodeType = activeType === "svgnode";
   const isActiveDynamic = activeId != null && dynamicElements[activeId] != null;
 
   const [vals, setVals] = useState<Record<string, number>>({
@@ -104,6 +111,18 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
 
     if (type === "card") {
       setVals({ opacity: override.opacity ?? 100 });
+      return;
+    }
+
+    if (type === "svgnode") {
+      const svgEl = getEl(activeId) as unknown as SVGGElement | null;
+      let w = override.width ?? 0;
+      let h = override.height ?? 0;
+      if ((!w || !h) && svgEl?.getBBox) {
+        try { const b = svgEl.getBBox(); w = w || Math.round(b.width); h = h || Math.round(b.height); } catch {}
+      }
+      setVals({ width: w, height: h, opacity: override.opacity ?? 100 });
+      setBgHex(override.background ?? "#4dbad6");
       return;
     }
 
@@ -197,7 +216,7 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
   };
 
   const activeOverride = activeId ? overrides[activeId] ?? {} : {};
-  const sliders = isCardType ? CARD_SLIDERS : isTextType ? TEXT_SLIDERS : SHAPE_SLIDERS;
+  const sliders = isCardType ? CARD_SLIDERS : isSvgNodeType ? SVG_NODE_SLIDERS : isTextType ? TEXT_SLIDERS : SHAPE_SLIDERS;
 
   const typeLabel = (t: string) => {
     if (t === "bar") return "bar";
@@ -206,6 +225,7 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
     if (t === "image") return "image";
     if (t === "shape") return "shape";
     if (t === "card") return "card";
+    if (t === "svgnode") return "node";
     return "text";
   };
 

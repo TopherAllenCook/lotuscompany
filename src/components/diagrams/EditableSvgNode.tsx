@@ -44,13 +44,15 @@ export function EditableSvgNode({
   const isActive = editMode && activeId === id;
 
   useEffect(() => {
-    registerEl(id, label ?? id, "card", gRef.current as unknown as HTMLElement);
-    return () => registerEl(id, label ?? id, "card", null);
+    registerEl(id, label ?? id, "svgnode", gRef.current as unknown as HTMLElement);
+    return () => registerEl(id, label ?? id, "svgnode", null);
   }, [id, label, registerEl]);
 
   const hasOpacityOverride = override.opacity != null;
   const resolvedFill = override.background ?? (hasOpacityOverride ? toSolidFill(fill) : fill);
   const resolvedOpacity = hasOpacityOverride ? override.opacity! / 100 : undefined;
+  const resolvedWidth = override.width ?? width;
+  const resolvedHeight = override.height ?? height;
 
   return (
     <>
@@ -58,7 +60,7 @@ export function EditableSvgNode({
       <g ref={gRef} opacity={resolvedOpacity}>
         <rect
           x={x} y={y}
-          width={width} height={height}
+          width={resolvedWidth} height={resolvedHeight}
           rx={rx}
           fill={resolvedFill}
           stroke={stroke}
@@ -69,7 +71,7 @@ export function EditableSvgNode({
           <>
             <rect
               x={x} y={y}
-              width={width} height={height}
+              width={resolvedWidth} height={resolvedHeight}
               rx={rx}
               fill="none"
               stroke={isActive ? "#028faa" : "rgba(2,143,170,0.45)"}
@@ -89,7 +91,7 @@ export function EditableSvgNode({
       </g>
 
       {/* Text label — separate from the rect so opacity/color are independent */}
-      <foreignObject x={x + 4} y={y + 4} width={width - 8} height={height - 8}>
+      <foreignObject x={x + 4} y={y + 4} width={resolvedWidth - 8} height={resolvedHeight - 8}>
         <div
           style={{
             width: "100%",
