@@ -37,7 +37,7 @@ export function LotusOpening() {
             height: "100%",
             objectFit: "cover",
             objectPosition: "center 60%",
-            opacity: 0.07,
+            opacity: 0.25,
           }}
         />
       </div>

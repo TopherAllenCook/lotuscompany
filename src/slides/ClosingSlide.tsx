@@ -37,7 +37,7 @@ export function ClosingSlide() {
             height: "100%",
             objectFit: "cover",
             objectPosition: "center",
-            opacity: 0.06,
+            opacity: 0.22,
           }}
         />
       </div>

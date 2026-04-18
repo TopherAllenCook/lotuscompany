@@ -17,6 +17,16 @@ export default function CapitalEngineSlide() {
         background: theme.darkBg,
       }}
     >
+      {/* Background photo */}
+      <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
+        <img
+          src="/republic/aerials/DJI_20250821112542_0507_D_0000.jpg"
+          alt=""
+          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 50%", opacity: 0.18 }}
+        />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(5,10,12,0.75) 0%, rgba(5,10,12,0.45) 100%)" }} />
+      </div>
+
       <StatusChip status="READY" />
 
       <div style={{ display: "flex", height: "100%", padding: "80px 64px" }}>

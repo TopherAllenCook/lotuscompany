@@ -141,7 +141,7 @@ export function ImpactDashboardSlide() {
               {/* Image strip */}
               <div
                 style={{
-                  height: "80px",
+                  height: "120px",
                   overflow: "hidden",
                   borderRadius: "3px",
                   marginBottom: "14px",

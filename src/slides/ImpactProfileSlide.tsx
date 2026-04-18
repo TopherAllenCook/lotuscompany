@@ -43,6 +43,16 @@ export function ImpactProfileSlide() {
   return (
     <div style={{ position: "absolute", inset: 0, background: theme.darkBg, fontFamily: font, overflow: "hidden" }}>
 
+      {/* Background photo */}
+      <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
+        <img
+          src="/steelton-village/Steelton I_North Park_2026.03.10.jpg"
+          alt=""
+          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 40%", opacity: 0.16 }}
+        />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(5,10,12,0.78) 0%, rgba(5,10,12,0.48) 100%)" }} />
+      </div>
+
       {/* Logo */}
       <motion.div {...lift(0)} style={{ position: "absolute", top: 56, left: 72, zIndex: 10 }}>
         <LotusMark width={180} onDark />
