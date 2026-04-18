@@ -48,24 +48,47 @@ export function EditableSvgNode({
     return () => registerEl(id, label ?? id, "card", null);
   }, [id, label, registerEl]);
 
-  // When opacity is overridden, use a solid fill so the <g> opacity is the sole
-  // control over transparency (fill alpha would otherwise multiply with it).
   const hasOpacityOverride = override.opacity != null;
   const resolvedFill = override.background ?? (hasOpacityOverride ? toSolidFill(fill) : fill);
   const resolvedOpacity = hasOpacityOverride ? override.opacity! / 100 : undefined;
 
   return (
-    <g ref={gRef} opacity={resolvedOpacity}>
-      <rect
-        x={x} y={y}
-        width={width} height={height}
-        rx={rx}
-        fill={resolvedFill}
-        stroke={stroke}
-        strokeWidth={strokeWidth}
-      />
+    <>
+      {/* Background rect — has its own opacity so text stays independent */}
+      <g ref={gRef} opacity={resolvedOpacity}>
+        <rect
+          x={x} y={y}
+          width={width} height={height}
+          rx={rx}
+          fill={resolvedFill}
+          stroke={stroke}
+          strokeWidth={strokeWidth}
+        />
 
-      {/* Editable label via foreignObject */}
+        {editMode && (
+          <>
+            <rect
+              x={x} y={y}
+              width={width} height={height}
+              rx={rx}
+              fill="none"
+              stroke={isActive ? "#028faa" : "rgba(2,143,170,0.45)"}
+              strokeWidth={isActive ? 2 : 1}
+              strokeDasharray={isActive ? undefined : "3 3"}
+              style={{ pointerEvents: "none" }}
+            />
+            <rect
+              x={x} y={y}
+              width={16} height={16}
+              fill={isActive ? "rgba(2,143,170,0.55)" : "rgba(2,143,170,0.28)"}
+              style={{ cursor: "crosshair" }}
+              onMouseDown={(e) => { e.stopPropagation(); setActiveId(id); }}
+            />
+          </>
+        )}
+      </g>
+
+      {/* Text label — separate from the rect so opacity/color are independent */}
       <foreignObject x={x + 4} y={y + 4} width={width - 8} height={height - 8}>
         <div
           style={{
@@ -97,29 +120,6 @@ export function EditableSvgNode({
           </EditableText>
         </div>
       </foreignObject>
-
-      {/* Edit-mode: dashed selection border + corner handle */}
-      {editMode && (
-        <>
-          <rect
-            x={x} y={y}
-            width={width} height={height}
-            rx={rx}
-            fill="none"
-            stroke={isActive ? "#028faa" : "rgba(2,143,170,0.45)"}
-            strokeWidth={isActive ? 2 : 1}
-            strokeDasharray={isActive ? undefined : "3 3"}
-            style={{ pointerEvents: "none" }}
-          />
-          <rect
-            x={x} y={y}
-            width={16} height={16}
-            fill={isActive ? "rgba(2,143,170,0.55)" : "rgba(2,143,170,0.28)"}
-            style={{ cursor: "crosshair" }}
-            onMouseDown={(e) => { e.stopPropagation(); setActiveId(id); }}
-          />
-        </>
-      )}
-    </g>
+    </>
   );
 }
