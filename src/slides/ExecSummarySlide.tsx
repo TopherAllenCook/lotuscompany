@@ -219,8 +219,8 @@ export function ExecSummarySlide() {
 
       {/* ── BOTTOM CARDS ── */}
       <div style={{
-        position: "absolute", bottom: 36, left: 52, right: 52,
-        display: "flex", gap: 14,
+        position: "absolute", bottom: 72, left: 52, right: 52,
+        display: "flex", gap: 16,
       }}>
         {([
           {
@@ -259,14 +259,14 @@ export function ExecSummarySlide() {
             border: `1px solid ${CARD_BORDER}`,
             borderRadius: 6,
             boxShadow: CARD_SHADOW,
-            padding: "18px 20px 16px",
+            padding: "26px 28px 24px",
           }}>
             <div style={{
               display: "flex", justifyContent: "space-between",
               alignItems: "flex-start", marginBottom: 8,
             }}>
               <EditableText id={`exec-summary:col-header-${card.id}`} as="p" style={{
-                margin: 0, fontSize: 9, fontWeight: 500,
+                margin: 0, fontSize: 11, fontWeight: 500,
                 color: DARK_TQ, letterSpacing: "0.22em", textTransform: "lowercase",
               }}>
                 {card.header}
@@ -286,9 +286,9 @@ export function ExecSummarySlide() {
             />
             {card.lines.map((line, li) => (
               <EditableText key={li} id={`exec-summary:col-${card.id}-line-${li}`} as="p" style={{
-                margin: "0 0 5px", fontFamily: font, fontWeight: 400, color: BODY,
-                fontSize: "clamp(9px, 0.78vw, 12px)",
-                letterSpacing: "0.01em", textTransform: "lowercase", lineHeight: 1.6,
+                margin: "0 0 8px", fontFamily: font, fontWeight: 400, color: BODY,
+                fontSize: "clamp(12px, 1.05vw, 16px)",
+                letterSpacing: "0.01em", textTransform: "lowercase", lineHeight: 1.65,
               }}>
                 {line}
               </EditableText>
