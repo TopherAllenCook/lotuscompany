@@ -1,5 +1,6 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useTransform, animate } from "framer-motion";
+import { useEffect } from "react";
 import { theme, font, EASE_OUT } from "@/lib/theme";
 import { asset } from "@/lib/storage";
 import { EditableText } from "@/components/EditableText";
@@ -27,12 +28,32 @@ const fadeIn = (delay: number) => ({
   transition: { delay, duration: 0.5, ease: EASE_OUT },
 });
 
+function Counter({ to, delay, prefix = "", suffix = "" }: {
+  to: number; delay: number; prefix?: string; suffix?: string;
+}) {
+  const val = useMotionValue(0);
+  useEffect(() => {
+    const c = animate(val, to, { delay, duration: 1.6, ease: "easeOut" });
+    return c.stop;
+  }, []);
+  const display = useTransform(val, (v) =>
+    `${prefix}${Math.round(v).toLocaleString("en-US")}${suffix}`
+  );
+  return <motion.span>{display}</motion.span>;
+}
+
 // Floating stat — lives directly on the photo
 function FloatStat({
-  id, num, suffix, label, delay, align = "left",
+  id, counterTo, prefix, suffix, staticNum, label, delay, align = "left",
 }: {
-  id: string; num: string; suffix?: string; label: string;
-  delay: number; align?: "left" | "right";
+  id: string;
+  counterTo?: number;
+  prefix?: string;
+  suffix?: string;
+  staticNum?: string;
+  label: string;
+  delay: number;
+  align?: "left" | "right";
 }) {
   return (
     <motion.div {...lift(delay)} style={{ textAlign: align }}>
@@ -43,12 +64,10 @@ function FloatStat({
         letterSpacing: "-0.025em", whiteSpace: "nowrap",
         textShadow: "0 2px 12px rgba(0,0,0,0.35)",
       }}>
-        {num}
-        {suffix && (
-          <span style={{ fontSize: "clamp(18px, 2.4vw, 38px)", fontWeight: 500 }}>
-            {suffix}
-          </span>
-        )}
+        {counterTo !== undefined
+          ? <Counter to={counterTo} delay={delay} prefix={prefix} suffix={suffix} />
+          : staticNum
+        }
       </EditableText>
       <EditableText id={`exec-summary:stat-label-${id}`} as="div" style={{
         fontFamily: font, fontWeight: 400,
@@ -164,8 +183,8 @@ export function ExecSummarySlide() {
         width: "38%",
       }}>
         {/* Hero financial metrics — larger */}
-        <FloatStat id="irr"    num="13–15" suffix="%" label="target irr"           delay={0.32} />
-        <FloatStat id="return" num="$300"  suffix="M" label="25-yr projected return" delay={0.40} align="right" />
+        <FloatStat id="irr"    counterTo={13} suffix="–15%" label="target irr"           delay={0.32} />
+        <FloatStat id="return" counterTo={300} prefix="$" suffix="M"        label="25-yr projected return" delay={0.40} align="right" />
 
         {/* Thin divider spanning both columns */}
         <motion.div {...fadeIn(0.48)} style={{
@@ -184,7 +203,7 @@ export function ExecSummarySlide() {
             letterSpacing: "-0.02em", whiteSpace: "nowrap",
             textShadow: "0 2px 10px rgba(0,0,0,0.3)",
           }}>
-            800
+            <Counter to={800} delay={0.5} />
           </EditableText>
           <EditableText id="exec-summary:stat-label-units" as="div" style={{
             fontFamily: font, fontWeight: 400,
@@ -204,7 +223,7 @@ export function ExecSummarySlide() {
             letterSpacing: "-0.02em", whiteSpace: "nowrap",
             textShadow: "0 2px 10px rgba(0,0,0,0.3)",
           }}>
-            2,000
+            <Counter to={2000} delay={0.56} />
           </EditableText>
           <EditableText id="exec-summary:stat-label-residents" as="div" style={{
             fontFamily: font, fontWeight: 400,
