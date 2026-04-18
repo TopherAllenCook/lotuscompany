@@ -16,11 +16,33 @@ export function RiskControlsSlide() {
         background: theme.darkBg,
       }}
     >
+      {/* Background photo — muted building */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          overflow: "hidden",
+          pointerEvents: "none",
+        }}
+      >
+        <img
+          src="/steelton-village/Steelton I_Updated Lobby_2026.04.02.jpg"
+          alt=""
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "center 30%",
+            opacity: 0.05,
+          }}
+        />
+      </div>
+
       <StatusChip status="READY" />
 
       <div style={{ display: "flex", flexDirection: "column", height: "100%", padding: "80px 64px 72px 64px" }}>
         {/* Headline Section */}
-        <div style={{ marginBottom: "40px" }}>
+        <div className="anim-fade-in-up" style={{ marginBottom: "40px" }}>
           <EditableText
             id="risk-controls:eyebrow"
             as="div"
@@ -51,7 +73,7 @@ export function RiskControlsSlide() {
               marginBottom: "0",
             }}
           >
-            mission alignment does not remove execution risk, so the structure must price it.
+            mission does not remove risk. we price it in.
           </EditableText>
         </div>
 

@@ -63,7 +63,7 @@ export default function MembershipSlide() {
               marginBottom: "24px",
             }}
           >
-            a curated collective should feel selective, structured, and durable.
+            small by design. built to last.
           </EditableText>
 
           <div
@@ -148,7 +148,7 @@ export default function MembershipSlide() {
               textTransform: "lowercase",
             }}
           >
-            culture fit matters as much as capital size.
+            the right fit matters more than the largest check.
           </EditableText>
         </div>
 

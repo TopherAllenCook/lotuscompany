@@ -76,7 +76,7 @@ export default function DualDirectivesSlide() {
                 textTransform: "lowercase",
               }}
             >
-              the investment directive is fixed for the year and defines target returns, risk limits, and recycling rules.
+              the investment directive holds for the year: target returns, risk limits, recycling rules.
             </EditableText>
 
             <EditableText
@@ -91,7 +91,7 @@ export default function DualDirectivesSlide() {
                 textTransform: "lowercase",
               }}
             >
-              the impact directive evolves annually and defines units, affordability depth, and service priorities.
+              the impact directive evolves annually: units, affordability depth, service priorities.
             </EditableText>
 
             <EditableText
@@ -106,7 +106,7 @@ export default function DualDirectivesSlide() {
                 textTransform: "lowercase",
               }}
             >
-              impact can scale with capital, but only inside explicit guardrails.
+              impact goals scale with the capital base, but only inside explicit guardrails.
             </EditableText>
 
             <EditableText
@@ -121,7 +121,7 @@ export default function DualDirectivesSlide() {
                 textTransform: "lowercase",
               }}
             >
-              the annual directive reset updates both without destabilizing the platform.
+              the annual reset refreshes both without destabilizing the platform.
             </EditableText>
           </div>
         </div>

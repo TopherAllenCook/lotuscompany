@@ -77,7 +77,7 @@ export default function CollectiveModelSlide() {
               marginBottom: "24px",
             }}
           >
-            partners participate in decisions and stay connected to outcomes.
+            partners stay close to the work.
           </EditableText>
 
           <div
@@ -162,7 +162,7 @@ export default function CollectiveModelSlide() {
               textTransform: "lowercase",
             }}
           >
-            shared identity around stewardship, not optics.
+            this is not a blind pool.
           </EditableText>
         </div>
 

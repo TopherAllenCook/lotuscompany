@@ -52,7 +52,7 @@ export default function LIHTCSlide() {
               marginBottom: "24px",
             }}
           >
-            lihtc is the operating backbone, not just a backdrop.
+            lihtc is the backbone.
           </EditableText>
 
           <div

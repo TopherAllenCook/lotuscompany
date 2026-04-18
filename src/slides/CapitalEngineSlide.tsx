@@ -52,7 +52,7 @@ export default function CapitalEngineSlide() {
               marginBottom: "24px",
             }}
           >
-            capital is advanced early, repaid at closing, and retained through gp economics.
+            capital goes in early. it comes back at closing. it goes back to work.
           </EditableText>
 
           <div

@@ -16,11 +16,36 @@ export function EconomicsSlide() {
         background: theme.darkBg,
       }}
     >
+      {/* Background photo — right side accent */}
+      <div
+        style={{
+          position: "absolute",
+          right: 0,
+          top: 0,
+          width: "45%",
+          height: "100%",
+          overflow: "hidden",
+          pointerEvents: "none",
+        }}
+      >
+        <img
+          src="/nova/Commercial 2025-07-07 Lotus-Nova-3.jpg"
+          alt=""
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "center",
+            opacity: 0.06,
+          }}
+        />
+      </div>
+
       <StatusChip status="DRAFT" />
 
       <div style={{ display: "flex", height: "100%", padding: "80px 64px" }}>
         {/* Left Content */}
-        <div style={{ flex: "0 0 55%", display: "flex", flexDirection: "column", justifyContent: "flex-start", paddingRight: "40px" }}>
+        <div className="anim-fade-in-up" style={{ flex: "0 0 55%", display: "flex", flexDirection: "column", justifyContent: "flex-start", paddingRight: "40px" }}>
           <EditableText
             id="economics:eyebrow"
             as="div"
@@ -51,7 +76,7 @@ export function EconomicsSlide() {
               marginBottom: "24px",
             }}
           >
-            returns are earned through structure, not through market timing.
+            returns come from structure.
           </EditableText>
 
           <div
@@ -63,20 +88,42 @@ export function EconomicsSlide() {
           />
 
           <div style={{ display: "flex", flexDirection: "column", gap: "12px", marginBottom: "40px" }}>
-            <EditableText
-              id="economics:bullet-1"
-              as="div"
+            <div
               style={{
-                fontSize: "14px",
-                color: theme.lightBlue,
-                fontWeight: 300,
-                fontFamily: font,
-                lineHeight: 1.7,
-                textTransform: "lowercase",
+                background: "rgba(77,186,214,0.07)",
+                border: "1px solid rgba(77,186,214,0.22)",
+                borderRadius: "3px",
+                padding: "14px 16px",
               }}
             >
-              use 13 to 15 percent net irr as a portfolio target range, not a guaranteed per-deal result.
-            </EditableText>
+              <div
+                style={{
+                  fontSize: "clamp(28px, 3vw, 42px)",
+                  color: "#fff",
+                  fontFamily: font,
+                  fontWeight: 300,
+                  letterSpacing: "-0.02em",
+                  lineHeight: 1,
+                  marginBottom: "6px",
+                }}
+              >
+                13–15%
+              </div>
+              <EditableText
+                id="economics:bullet-1"
+                as="div"
+                style={{
+                  fontSize: "12px",
+                  color: theme.lightBlue,
+                  fontWeight: 300,
+                  fontFamily: font,
+                  lineHeight: 1.5,
+                  textTransform: "lowercase",
+                }}
+              >
+                net irr portfolio target range, not a per-deal guarantee.
+              </EditableText>
+            </div>
 
             <EditableText
               id="economics:bullet-2"
@@ -105,7 +152,7 @@ export function EconomicsSlide() {
                 textTransform: "lowercase",
               }}
             >
-              the value of recycling is throughput and retained exposure, not just nominal yield.
+              recycling creates throughput and retained exposure, not just nominal yield.
             </EditableText>
 
             <EditableText
@@ -120,7 +167,7 @@ export function EconomicsSlide() {
                 textTransform: "lowercase",
               }}
             >
-              describe returns as repeatable capital recycling, not infinite reinvestment.
+              this is repeatable capital recycling, not infinite reinvestment.
             </EditableText>
           </div>
 

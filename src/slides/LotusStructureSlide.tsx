@@ -89,7 +89,7 @@ export function LotusStructureSlide() {
             textTransform: "lowercase",
           }}
         >
-          traditional models separate capital, control, and impact.
+          most models trade capital, control, or impact. we won't.
         </EditableText>
 
         {/* Caption */}
@@ -107,7 +107,7 @@ export function LotusStructureSlide() {
             textTransform: "lowercase",
           }}
         >
-          lotus impact initiative is designed as a middle path: purpose with process.
+          purpose with process.
         </EditableText>
       </div>
 
@@ -211,7 +211,7 @@ export function LotusStructureSlide() {
                     as="span"
                     style={{}}
                   >
-                    curated collective
+                    the lotus collective
                   </EditableText>
                 </th>
               </tr>

@@ -51,7 +51,7 @@ export function PipelineSlide() {
               marginBottom: "24px",
             }}
           >
-            this is an execution platform with a live pipeline, not a concept in search of deals.
+            a live pipeline. not a concept.
           </EditableText>
 
           <div

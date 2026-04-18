@@ -17,11 +17,36 @@ export function ClosingSlide() {
         background: theme.darkBg,
       }}
     >
+      {/* Background photo — muted building strip right */}
+      <div
+        style={{
+          position: "absolute",
+          right: 0,
+          top: 0,
+          width: "50%",
+          height: "100%",
+          overflow: "hidden",
+          pointerEvents: "none",
+        }}
+      >
+        <img
+          src="/steelton-village/Steelton I_4-corners_2026.03.26.jpg"
+          alt=""
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "center",
+            opacity: 0.06,
+          }}
+        />
+      </div>
+
       <StatusChip status="READY" />
 
       <div style={{ display: "flex", height: "100%", padding: "80px 64px" }}>
         {/* Left Content */}
-        <div style={{ flex: "0 0 50%", display: "flex", flexDirection: "column", justifyContent: "center", paddingRight: "40px" }}>
+        <div className="anim-fade-in-up" style={{ flex: "0 0 50%", display: "flex", flexDirection: "column", justifyContent: "center", paddingRight: "40px" }}>
           <EditableText
             id="closing:eyebrow"
             as="div"
@@ -52,7 +77,7 @@ export function ClosingSlide() {
               marginBottom: "24px",
             }}
           >
-            build homes. recycle capital. stay accountable to both mission and money.
+            build homes. recycle capital. stay accountable.
           </EditableText>
 
           <div

@@ -1,5 +1,29 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes pillarIn {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+@keyframes statPulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.6; }
+}
+.anim-fade-in-up  { animation: fadeInUp  0.55s ease-out both; }
+.anim-fade-in     { animation: fadeIn    0.55s ease-out both; }
+.anim-pillar-1    { animation: pillarIn  0.5s  ease-out 0.08s  both; }
+.anim-pillar-2    { animation: pillarIn  0.5s  ease-out 0.22s  both; }
+.anim-pillar-3    { animation: pillarIn  0.5s  ease-out 0.36s  both; }
+.anim-pillar-4    { animation: pillarIn  0.5s  ease-out 0.50s  both; }
+.anim-stat-pulse  { animation: statPulse 2.8s  ease-in-out infinite; }
+
 html, body {
   width: 100%;
   height: 100%;

@@ -21,6 +21,27 @@ export function LotusOpening() {
         justifyContent: "center",
       }}
     >
+      {/* Background photo — muted aerial */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          overflow: "hidden",
+        }}
+      >
+        <img
+          src="/republic/aerials/DJI_20250821112542_0507_D_0000.jpg"
+          alt=""
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "center 60%",
+            opacity: 0.07,
+          }}
+        />
+      </div>
+
       {/* Background radial gradient glow */}
       <div
         style={{
@@ -126,7 +147,7 @@ export function LotusOpening() {
               textTransform: "lowercase",
             }}
           >
-            lotus-led private capital collective
+            built by lotus, for a small circle of partners
           </EditableText>
           <EditableText
             id="lotus-opening:desc-2"

@@ -18,10 +18,10 @@ const bulletVariants = {
 
 export function LotusWhyLotusSlide() {
   const bullets = [
-    "proven development capability, not a theoretical platform.",
-    "deep underwriting discipline tied to real feasibility gates.",
-    "relationships across agencies, lenders, syndicators, and local partners.",
-    "pipeline control and local pattern recognition.",
+    "we've built affordable housing. we know how it fails.",
+    "our underwriting is tied to real feasibility gates, not projections.",
+    "our relationships span agencies, lenders, syndicators, and local partners.",
+    "we control the pipeline and recognize local patterns before others do.",
   ];
 
   return (
@@ -83,7 +83,7 @@ export function LotusWhyLotusSlide() {
             textTransform: "lowercase",
           }}
         >
-          the model only works if the operator is trusted to execute.
+          trust is earned in the work.
         </EditableText>
 
         {/* Rule */}
@@ -157,7 +157,7 @@ export function LotusWhyLotusSlide() {
             textTransform: "lowercase",
           }}
         >
-          the lotus way is an operating standard, not a branding slogan.
+          the lotus way is an operating standard.
         </EditableText>
       </div>
 

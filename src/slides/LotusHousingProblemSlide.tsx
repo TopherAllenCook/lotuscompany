@@ -97,7 +97,7 @@ export function LotusHousingProblemSlide() {
             textTransform: "lowercase",
           }}
         >
-          the housing problem is large, persistent, and measurable.
+          the shortage is structural. the numbers are clear.
         </EditableText>
 
         {/* Bullets */}
