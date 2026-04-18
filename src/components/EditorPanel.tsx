@@ -12,6 +12,7 @@ const TEXT_SLIDERS = [
   { key: "translateY",    label: "move y",         min: -800, max: 800,  step: 1,    suffix: "px" },
   { key: "letterSpacing", label: "letter spacing", min: -0.1, max: 0.6,  step: 0.01, suffix: "em" },
   { key: "lineHeight",    label: "line height",    min: 0.8,  max: 3.5,  step: 0.05, suffix: "" },
+  { key: "opacity",       label: "opacity",        min: 0,    max: 1,    step: 0.01, suffix: "" },
 ] as const;
 
 const SHAPE_SLIDERS = [
@@ -36,6 +37,7 @@ function readTextValues(el: HTMLElement, override: ElementOverride): Record<stri
     translateY:    override.translateY    ?? 0,
     letterSpacing: override.letterSpacing ?? 0,
     lineHeight:    override.lineHeight    ?? (isNaN(baseLineHeight) ? 1.5 : +(baseLineHeight / baseFontSize).toFixed(2)),
+    opacity:       override.opacity       ?? 1,
   };
 }
 
