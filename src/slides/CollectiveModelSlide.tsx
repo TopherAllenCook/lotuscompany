@@ -49,7 +49,7 @@ export default function CollectiveModelSlide() {
           alt=""
           style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 40%", opacity: 0.30 }}
         />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(5,10,12,0.72) 0%, rgba(5,10,12,0.40) 45%, rgba(5,10,12,0.05) 100%)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(5,10,12,0.42) 0%, rgba(5,10,12,0.22) 45%, rgba(5,10,12,0.05) 100%)" }} />
       </div>
 
       <StatusChip status="READY" />
