@@ -63,41 +63,34 @@ export function BeliefSlide() {
         </motion.span>
 
         {/* Headline */}
-        <div style={{ position: "absolute", top: 58, left: 52 }}>
-          <div style={{ overflow: "hidden", marginBottom: 6 }}>
-            <motion.span
-              initial={{ opacity: 0, y: "1em" }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.45, ease: EASE_OUT }}
-              style={{ display: "block" }}
-            >
-              <EditableText id="belief:headline-1" label="headline line 1" as="span" style={{
-                display: "block",
-                fontSize: "clamp(56px, 8.5vw, 140px)",
-                fontWeight: 300, color: "#fff",
-                letterSpacing: "0.01em", textTransform: "lowercase", lineHeight: 1.0,
-              }}>
-                mindfully creating
-              </EditableText>
-            </motion.span>
-          </div>
-          <div style={{ overflow: "hidden" }}>
-            <motion.span
-              initial={{ opacity: 0, y: "1em" }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.48, duration: 0.45, ease: EASE_OUT }}
-              style={{ display: "block" }}
-            >
-              <EditableText id="belief:headline-2" label="headline line 2" as="span" style={{
-                display: "block",
-                fontSize: "clamp(56px, 8.5vw, 140px)",
-                fontWeight: 300, color: "#fff",
-                letterSpacing: "0.01em", textTransform: "lowercase", lineHeight: 1.0,
-              }}>
-                beautiful affordable housing
-              </EditableText>
-            </motion.span>
-          </div>
+        <div style={{ position: "absolute", top: 58, left: 0, right: 0, padding: "0 52px" }}>
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.5, ease: EASE_OUT }}
+            style={{ marginBottom: 4 }}
+          >
+            <EditableText id="belief:headline-1" label="headline line 1" as="div" style={{
+              fontSize: "clamp(36px, 5vw, 64px)",
+              fontWeight: 300, color: "#fff",
+              letterSpacing: "0.01em", textTransform: "lowercase", lineHeight: 1.0,
+            }}>
+              mindfully creating
+            </EditableText>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.48, duration: 0.5, ease: EASE_OUT }}
+          >
+            <EditableText id="belief:headline-2" label="headline line 2" as="div" style={{
+              fontSize: "clamp(36px, 5vw, 64px)",
+              fontWeight: 300, color: "#fff",
+              letterSpacing: "0.01em", textTransform: "lowercase", lineHeight: 1.0,
+            }}>
+              beautiful affordable housing
+            </EditableText>
+          </motion.div>
         </div>
       </div>
 

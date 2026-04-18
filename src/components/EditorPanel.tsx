@@ -127,6 +127,11 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
     if (activeId) setOverride(activeId, { fontWeight: w });
   }, [activeId, setOverride]);
 
+  const handleResetSlide = useCallback(() => {
+    editables.forEach(({ id }) => clearOverride(id));
+    setActiveId(null);
+  }, [editables, clearOverride, setActiveId]);
+
   const handleReset = useCallback(() => {
     if (!activeId) return;
     clearOverride(activeId);
@@ -197,16 +202,29 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
                 {slideKey.replace(/-/g, " ")}
               </p>
             </div>
-            <button
-              onClick={handleClose}
-              aria-label="Close editor"
-              style={{
-                background: "none", border: "1px solid rgba(255,255,255,0.1)",
-                borderRadius: 4, padding: "4px 9px",
-                color: "rgba(255,255,255,0.35)", fontSize: 14,
-                cursor: "pointer", lineHeight: 1,
-              }}
-            >×</button>
+            <div style={{ display: "flex", gap: 6 }}>
+              <button
+                onClick={handleResetSlide}
+                title="Clear all overrides for this slide"
+                style={{
+                  background: "none", border: "1px solid rgba(255,80,80,0.2)",
+                  borderRadius: 4, padding: "4px 9px",
+                  color: "rgba(255,100,100,0.5)", fontSize: 9,
+                  letterSpacing: "0.1em", textTransform: "lowercase",
+                  cursor: "pointer", fontFamily: font,
+                }}
+              >reset slide</button>
+              <button
+                onClick={handleClose}
+                aria-label="Close editor"
+                style={{
+                  background: "none", border: "1px solid rgba(255,255,255,0.1)",
+                  borderRadius: 4, padding: "4px 9px",
+                  color: "rgba(255,255,255,0.35)", fontSize: 14,
+                  cursor: "pointer", lineHeight: 1,
+                }}
+              >×</button>
+            </div>
           </div>
 
           {/* Grid controls */}

@@ -56,7 +56,7 @@ function DotNav({ index, go }: { index: number; go: (n: number) => void }) {
 
   return (
     <div style={{
-      position: "fixed", bottom: 20, left: "50%", transform: "translateX(-50%)",
+      position: "absolute", bottom: 20, left: "50%", transform: "translateX(-50%)",
       zIndex: 100, display: "flex", alignItems: "center", gap: 10,
     }}>
       {SLIDE_REGISTRY.map((slide, i) => {
@@ -275,8 +275,15 @@ function DeckInner({ slides, initialIndex = 0 }: DeckProps) {
     };
   }, [index, go, editorOpen]);
 
+  const PANEL_W = 280;
+
   return (
-    <div style={{ position: "fixed", inset: 0, overflow: "hidden", background: "#000" }}>
+    <div style={{
+      position: "fixed", top: 0, bottom: 0, left: 0,
+      right: editorOpen ? PANEL_W : 0,
+      overflow: "hidden", background: "#000",
+      transition: "right 0.35s ease",
+    }}>
       <AnimatePresence mode="wait">
         <motion.div
           key={index}
@@ -303,7 +310,7 @@ function DeckInner({ slides, initialIndex = 0 }: DeckProps) {
         onClick={() => setDrawerOpen(true)}
         aria-label="Open slide menu"
         style={{
-          position: "fixed", top: 20, left: 24, zIndex: 150,
+          position: "absolute", top: 20, left: 24, zIndex: 150,
           background: "rgba(0,0,0,0.28)", backdropFilter: "blur(8px)",
           border: "1px solid rgba(255,255,255,0.1)",
           borderRadius: 6, padding: "7px 12px",
@@ -311,34 +318,6 @@ function DeckInner({ slides, initialIndex = 0 }: DeckProps) {
         }}
       >
         <LotusMark width={64} onDark />
-      </button>
-
-      {/* Edit button — bottom right */}
-      <button
-        onClick={editorOpen ? closeEditor : openEditor}
-        title="Edit text (E)"
-        style={{
-          position: "fixed", bottom: 20, right: editorOpen ? 284 : 24, zIndex: 350,
-          background: editorOpen ? "rgba(2,143,170,0.85)" : "rgba(0,0,0,0.28)",
-          backdropFilter: "blur(8px)",
-          border: editorOpen ? "1px solid rgba(77,186,214,0.7)" : "1px solid rgba(255,255,255,0.1)",
-          borderRadius: 5, padding: "6px 13px",
-          cursor: "pointer", display: "flex", alignItems: "center", gap: 7,
-          transition: "background 0.2s ease, right 0.3s ease, border-color 0.2s ease",
-        }}
-      >
-        <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-          <path d="M9 1.5L11.5 4L4.5 11H2V8.5L9 1.5Z"
-            stroke={editorOpen ? "#fff" : "rgba(255,255,255,0.55)"}
-            strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-        <span style={{
-          fontFamily: font, fontSize: 9, letterSpacing: "0.18em",
-          color: editorOpen ? "#fff" : "rgba(255,255,255,0.45)",
-          textTransform: "lowercase",
-        }}>
-          {editorOpen ? "close editor" : "edit"}
-        </span>
       </button>
 
       <AnimatePresence>
