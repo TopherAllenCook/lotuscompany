@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { font, theme } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
+import { EditableEl } from "@/components/EditableEl";
 import { SlideFooter } from "@/components/SlideFooter";
 import { StatusChip } from "@/components/StatusChip";
 
@@ -137,10 +138,7 @@ export function LotusStructureSlide() {
           justifyContent: "center",
         }}
       >
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.6 }}
+        <EditableEl id="structure:card" label="glass card" type="card"
           style={{
             background: "rgba(5,10,12,0.52)",
             backdropFilter: "blur(28px) saturate(200%)",
@@ -150,6 +148,11 @@ export function LotusStructureSlide() {
             boxShadow: "0 8px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.14)",
             overflow: "hidden",
           }}
+        >
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.6 }}
         >
           <table
             style={{
@@ -325,6 +328,7 @@ export function LotusStructureSlide() {
             </tbody>
           </table>
         </motion.div>
+        </EditableEl>
       </div>
 
       <SlideFooter

@@ -4,6 +4,7 @@ import { font, theme } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
 import { SlideFooter } from "@/components/SlideFooter";
 import { StatusChip } from "@/components/StatusChip";
+import { EditableEl } from "@/components/EditableEl";
 
 export function RiskControlsSlide() {
   return (
@@ -79,7 +80,7 @@ export function RiskControlsSlide() {
         </div>
 
         {/* Risk Matrix Table */}
-        <div
+        <EditableEl id="risk-controls:card" label="glass card" type="card"
           style={{
             flex: 1,
             background: "rgba(5,10,12,0.52)",
@@ -405,7 +406,7 @@ export function RiskControlsSlide() {
             </tr>
           </tbody>
         </table>
-        </div>
+        </EditableEl>
       </div>
 
       <SlideFooter slideKey="risk-controls" slideNum="12" sectionLabel="risk" />

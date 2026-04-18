@@ -4,6 +4,7 @@ import { font, theme } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
 import { SlideFooter } from "@/components/SlideFooter";
 import { StatusChip, PlaceholderTag } from "@/components/StatusChip";
+import { EditableEl } from "@/components/EditableEl";
 
 export function PipelineSlide() {
   return (
@@ -30,7 +31,7 @@ export function PipelineSlide() {
 
       <div style={{ position: "relative", display: "flex", height: "100%", padding: "80px 64px" }}>
         {/* Left Content */}
-        <div style={{
+        <EditableEl id="pipeline:card" label="glass card" type="card" style={{
           flex: "0 0 50%",
           display: "flex",
           flexDirection: "column",
@@ -169,7 +170,7 @@ export function PipelineSlide() {
               lotus investment committee gates every deal before member consent.
             </EditableText>
           </div>
-        </div>
+        </EditableEl>
 
         {/* Right Pipeline Funnel */}
         <div style={{ flex: "0 0 50%", display: "flex", alignItems: "center", justifyContent: "center" }}>

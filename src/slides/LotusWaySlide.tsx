@@ -60,7 +60,7 @@ export function LotusWaySlide() {
       </motion.div>
 
       {/* Bottom content */}
-      <div style={{
+      <EditableEl id="lotus-way:card" label="glass card" type="card" style={{
         position: "absolute", bottom: 48, left: 72, right: 72,
         background: "rgba(5,10,12,0.42)",
         backdropFilter: "blur(24px) saturate(180%)",
@@ -123,7 +123,7 @@ export function LotusWaySlide() {
             </motion.div>
           ))}
         </div>
-      </div>
+      </EditableEl>
 
       {/* Tagline */}
       <motion.div {...lift(1.6)} style={{ position: "absolute", bottom: 16, right: 72 }}>

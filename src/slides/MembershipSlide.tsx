@@ -4,6 +4,7 @@ import { font, theme } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
 import { SlideFooter } from "@/components/SlideFooter";
 import { StatusChip } from "@/components/StatusChip";
+import { EditableEl } from "@/components/EditableEl";
 
 export default function MembershipSlide() {
   const steps = [
@@ -42,7 +43,7 @@ export default function MembershipSlide() {
 
       <div style={{ position: "relative", display: "flex", height: "100%", padding: "80px 64px" }}>
         {/* Left Content */}
-        <div style={{
+        <EditableEl id="membership:card" label="glass card" type="card" style={{
           flex: "0 0 55%",
           display: "flex",
           flexDirection: "column",
@@ -173,7 +174,7 @@ export default function MembershipSlide() {
           >
             the right fit matters more than the largest check.
           </EditableText>
-        </div>
+        </EditableEl>
 
         {/* Right Diagram - Membership Flow */}
         <div style={{ flex: "0 0 45%", display: "flex", alignItems: "center", justifyContent: "center" }}>

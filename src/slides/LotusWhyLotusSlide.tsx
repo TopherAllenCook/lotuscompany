@@ -6,6 +6,7 @@ import { EditableText } from "@/components/EditableText";
 import { SlideFooter } from "@/components/SlideFooter";
 import { StatusChip } from "@/components/StatusChip";
 import { LotusTrustStack } from "@/components/diagrams/LotusTrustStack";
+import { EditableEl } from "@/components/EditableEl";
 
 const bulletVariants = {
   hidden: { opacity: 0, y: 8 },
@@ -49,7 +50,7 @@ export function LotusWhyLotusSlide() {
       <StatusChip status="READY" />
 
       {/* Left content (55%) */}
-      <div
+      <EditableEl id="why-lotus:card" label="glass card" type="card"
         style={{
           flex: "0 0 55%",
           position: "relative",
@@ -174,7 +175,7 @@ export function LotusWhyLotusSlide() {
         >
           the lotus way is an operating standard.
         </EditableText>
-      </div>
+      </EditableEl>
 
       {/* Right diagram (45%) */}
       <div

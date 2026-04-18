@@ -5,6 +5,7 @@ import { EditableText } from "@/components/EditableText";
 import { SlideFooter } from "@/components/SlideFooter";
 import { StatusChip } from "@/components/StatusChip";
 import { LIHTCTimeline } from "@/components/diagrams/LIHTCTimeline";
+import { EditableEl } from "@/components/EditableEl";
 
 export default function LIHTCSlide() {
   return (
@@ -31,7 +32,7 @@ export default function LIHTCSlide() {
 
       <div style={{ position: "relative", display: "flex", height: "100%", padding: "80px 64px" }}>
         {/* Left Content */}
-        <div style={{ flex: "0 0 55%", display: "flex", flexDirection: "column", justifyContent: "center", padding: "36px 40px 36px 36px", background: "rgba(5,10,12,0.52)", backdropFilter: "blur(28px) saturate(200%)", WebkitBackdropFilter: "blur(28px) saturate(200%)", borderRadius: "16px", border: "1px solid rgba(255,255,255,0.15)", boxShadow: "0 8px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.14)" }}>
+        <EditableEl id="lihtc:card" label="glass card" type="card" style={{ flex: "0 0 55%", display: "flex", flexDirection: "column", justifyContent: "center", padding: "36px 40px 36px 36px", background: "rgba(5,10,12,0.52)", backdropFilter: "blur(28px) saturate(200%)", WebkitBackdropFilter: "blur(28px) saturate(200%)", borderRadius: "16px", border: "1px solid rgba(255,255,255,0.15)", boxShadow: "0 8px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.14)" }}>
           <EditableText
             id="lihtc:eyebrow"
             as="div"
@@ -134,7 +135,7 @@ export default function LIHTCSlide() {
               state housing agencies allocate, test feasibility, and monitor compliance.
             </EditableText>
           </div>
-        </div>
+        </EditableEl>
 
         {/* Right Diagram */}
         <div style={{ flex: "0 0 45%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>

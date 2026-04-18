@@ -12,7 +12,7 @@ const TEXT_SLIDERS = [
   { key: "translateY",    label: "move y",         min: -800, max: 800,  step: 1,    suffix: "px" },
   { key: "letterSpacing", label: "letter spacing", min: -0.1, max: 0.6,  step: 0.01, suffix: "em" },
   { key: "lineHeight",    label: "line height",    min: 0.8,  max: 3.5,  step: 0.05, suffix: "" },
-  { key: "opacity",       label: "opacity",        min: 0,    max: 1,    step: 0.01, suffix: "" },
+  { key: "opacity",       label: "opacity",        min: 0,    max: 100,  step: 1,    suffix: "%" },
 ] as const;
 
 const SHAPE_SLIDERS = [
@@ -20,8 +20,12 @@ const SHAPE_SLIDERS = [
   { key: "translateY", label: "move y",  min: -800, max: 800,  step: 1,   suffix: "px" },
   { key: "width",      label: "width",   min: 0,    max: 2000, step: 1,   suffix: "px" },
   { key: "height",     label: "height",  min: 0,    max: 1200, step: 1,   suffix: "px" },
-  { key: "opacity",    label: "opacity", min: 0,    max: 1,    step: 0.01, suffix: "" },
+  { key: "opacity",    label: "opacity", min: 0,    max: 100,  step: 1,   suffix: "%" },
   { key: "rotate",     label: "rotate",  min: -180, max: 180,  step: 0.5, suffix: "°" },
+] as const;
+
+const CARD_SLIDERS = [
+  { key: "opacity", label: "opacity", min: 0, max: 100, step: 1, suffix: "%" },
 ] as const;
 
 const WEIGHTS = [300, 400, 500, 600, 700] as const;
@@ -37,7 +41,7 @@ function readTextValues(el: HTMLElement, override: ElementOverride): Record<stri
     translateY:    override.translateY    ?? 0,
     letterSpacing: override.letterSpacing ?? 0,
     lineHeight:    override.lineHeight    ?? (isNaN(baseLineHeight) ? 1.5 : +(baseLineHeight / baseFontSize).toFixed(2)),
-    opacity:       override.opacity       ?? 1,
+    opacity:       override.opacity       ?? 100,
   };
 }
 
@@ -48,7 +52,7 @@ function readShapeValues(el: HTMLElement, override: ElementOverride): Record<str
     translateY: override.translateY ?? 0,
     width:      (override.width      ?? parseFloat(cs.width))  || 0,
     height:     (override.height     ?? parseFloat(cs.height)) || 0,
-    opacity:    override.opacity    ?? 1,
+    opacity:    override.opacity    ?? 100,
     rotate:     override.rotate     ?? 0,
   };
 }
@@ -77,11 +81,12 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
   const activeEntry = registeredList.find(e => e.id === activeId);
   const activeType = activeEntry?.type ?? "text";
   const isTextType = activeType === "text";
+  const isCardType = activeType === "card";
   const isActiveDynamic = activeId != null && dynamicElements[activeId] != null;
 
   const [vals, setVals] = useState<Record<string, number>>({
     fontSize: 16, translateX: 0, translateY: 0, letterSpacing: 0, lineHeight: 1.5,
-    width: 0, height: 0, opacity: 1, rotate: 0,
+    width: 0, height: 0, opacity: 100, rotate: 0,
   });
   // null = show formatted val; string = user is typing
   const [inputDrafts, setInputDrafts] = useState<Record<string, string | null>>({});
@@ -103,6 +108,8 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
       setVals(readTextValues(el, override));
       setContentText(override.content ?? el.innerText ?? "");
       setColorHex(override.color ?? rgbToHex(window.getComputedStyle(el).color) ?? "#ffffff");
+    } else if (type === "card") {
+      setVals({ opacity: override.opacity ?? 100 });
     } else {
       setVals(readShapeValues(el, override));
       const cs = window.getComputedStyle(el);
@@ -186,7 +193,7 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
   };
 
   const activeOverride = activeId ? overrides[activeId] ?? {} : {};
-  const sliders = isTextType ? TEXT_SLIDERS : SHAPE_SLIDERS;
+  const sliders = isCardType ? CARD_SLIDERS : isTextType ? TEXT_SLIDERS : SHAPE_SLIDERS;
 
   const typeLabel = (t: string) => {
     if (t === "bar") return "bar";
@@ -194,6 +201,7 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
     if (t === "gradient") return "gradient";
     if (t === "image") return "image";
     if (t === "shape") return "shape";
+    if (t === "card") return "card";
     return "text";
   };
 

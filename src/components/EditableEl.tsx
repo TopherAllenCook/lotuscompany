@@ -28,7 +28,7 @@ export function EditableEl({ id, label, type = "shape", style, className, childr
   if (override.width != null)      ovr.width      = `${override.width}px`;
   if (override.height != null)     ovr.height     = `${override.height}px`;
   if (override.background != null) ovr.background = override.background;
-  if (override.opacity != null)    ovr.opacity    = override.opacity;
+  if (override.opacity != null)    ovr.opacity    = override.opacity / 100;
 
   const baseTransform = (style?.transform as string) ?? "";
   const tx = override.translateX ?? 0;
@@ -76,16 +76,18 @@ export function EditableEl({ id, label, type = "shape", style, className, childr
       }}
     >
       {children}
-      {/* Expanded transparent hit area — ensures thin bars (1–2 px) are easily clickable */}
-      <div
-        onMouseDown={handleMouseDown}
-        style={{
-          position: "absolute",
-          inset: -10,
-          cursor: isActive ? "move" : "crosshair",
-          zIndex: 9000,
-        }}
-      />
+      {/* Expanded transparent hit area — skipped for card type to avoid blocking child elements */}
+      {type !== "card" && (
+        <div
+          onMouseDown={handleMouseDown}
+          style={{
+            position: "absolute",
+            inset: -10,
+            cursor: isActive ? "move" : "crosshair",
+            zIndex: 9000,
+          }}
+        />
+      )}
     </div>
   );
 }

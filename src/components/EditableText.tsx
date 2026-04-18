@@ -11,7 +11,7 @@ import {
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
-export type ElementType = "text" | "bar" | "shape" | "dot" | "image" | "gradient";
+export type ElementType = "text" | "bar" | "shape" | "dot" | "image" | "gradient" | "card";
 
 // ─── Context ─────────────────────────────────────────────────────────────────
 
@@ -256,7 +256,7 @@ export function EditableText<T extends keyof React.JSX.IntrinsicElements = "div"
   if (override.lineHeight != null)    ovr.lineHeight    = override.lineHeight;
   if (override.color != null)         ovr.color         = override.color;
   if (override.fontWeight != null)    ovr.fontWeight    = override.fontWeight;
-  if (override.opacity != null)       ovr.opacity       = override.opacity;
+  if (override.opacity != null)       ovr.opacity       = override.opacity / 100;
   if (override.translateX != null || override.translateY != null) {
     const base = (style?.transform as string) ?? "";
     const shift = `translate(${override.translateX ?? 0}px, ${override.translateY ?? 0}px)`;

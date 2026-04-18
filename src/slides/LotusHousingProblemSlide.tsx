@@ -5,6 +5,7 @@ import { font, theme } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
 import { SlideFooter } from "@/components/SlideFooter";
 import { StatusChip } from "@/components/StatusChip";
+import { EditableEl } from "@/components/EditableEl";
 
 const bulletVariants = {
   hidden: { opacity: 0, y: 8 },
@@ -64,7 +65,7 @@ export function LotusHousingProblemSlide() {
       <StatusChip status="READY" />
 
       {/* Upper content (55%) */}
-      <div
+      <EditableEl id="housing-problem:card-top" label="glass card top" type="card"
         style={{
           flex: "0 0 55%",
           position: "relative",
@@ -163,10 +164,10 @@ export function LotusHousingProblemSlide() {
             </motion.div>
           ))}
         </div>
-      </div>
+      </EditableEl>
 
       {/* Lower data scoreboard (45%) */}
-      <div
+      <EditableEl id="housing-problem:card-bottom" label="glass card bottom" type="card"
         style={{
           flex: "0 0 45%",
           position: "relative",
@@ -261,7 +262,7 @@ export function LotusHousingProblemSlide() {
         >
           sources: nlihc, hud, harvard jchs. as of 2025 data releases.
         </EditableText>
-      </div>
+      </EditableEl>
 
       <SlideFooter slideKey="housing-problem" slideNum="03" sectionLabel="problem" />
     </div>

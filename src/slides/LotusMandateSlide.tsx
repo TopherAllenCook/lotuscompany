@@ -6,6 +6,7 @@ import { EditableText } from "@/components/EditableText";
 import { SlideFooter } from "@/components/SlideFooter";
 import { StatusChip } from "@/components/StatusChip";
 import { CapitalRecyclingLoop } from "@/components/diagrams/CapitalRecyclingLoop";
+import { EditableEl } from "@/components/EditableEl";
 
 const bulletVariants = {
   hidden: { opacity: 0, y: 8 },
@@ -49,7 +50,7 @@ export function LotusMandateSlide() {
       <StatusChip status="READY" />
 
       {/* Left content (55%) */}
-      <div
+      <EditableEl id="mandate:card" label="glass card" type="card"
         style={{
           flex: "0 0 55%",
           position: "relative",
@@ -157,7 +158,7 @@ export function LotusMandateSlide() {
             </motion.div>
           ))}
         </div>
-      </div>
+      </EditableEl>
 
       {/* Right diagram (45%) */}
       <div
