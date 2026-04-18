@@ -50,7 +50,7 @@ export function ImpactProfileSlide() {
           alt=""
           style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 40%", opacity: 0.28 }}
         />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(5,10,12,0.25) 0%, rgba(5,10,12,0.05) 100%)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(5,10,12,0.72) 0%, rgba(5,10,12,0.40) 45%, rgba(5,10,12,0.05) 100%)" }} />
       </div>
 
       {/* Logo */}
