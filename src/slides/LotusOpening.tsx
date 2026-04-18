@@ -37,10 +37,10 @@ export function LotusOpening() {
             height: "100%",
             objectFit: "cover",
             objectPosition: "center 60%",
-            opacity: 0.25,
+            opacity: 0.50,
           }}
         />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(5,10,12,0.42) 0%, rgba(5,10,12,0.22) 45%, rgba(5,10,12,0.05) 100%)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(5,10,12,0.25) 0%, rgba(5,10,12,0.10) 50%, rgba(5,10,12,0.0) 100%)" }} />
       </div>
 
       {/* Background radial gradient glow */}

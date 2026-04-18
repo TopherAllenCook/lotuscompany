@@ -22,9 +22,9 @@ export default function DualDirectivesSlide() {
         <img
           src="/nova/Commercial 2025-07-07 Lotus-Nova-3.jpg"
           alt=""
-          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", opacity: 0.30 }}
+          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", opacity: 0.55 }}
         />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(5,10,12,0.42) 0%, rgba(5,10,12,0.22) 45%, rgba(5,10,12,0.05) 100%)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(5,10,12,0.25) 0%, rgba(5,10,12,0.10) 50%, rgba(5,10,12,0.0) 100%)" }} />
       </div>
 
       <StatusChip status="READY" />
