@@ -6,6 +6,7 @@ import { SlideFooter } from "@/components/SlideFooter";
 import { StatusChip } from "@/components/StatusChip";
 import { LIHTCTimeline } from "@/components/diagrams/LIHTCTimeline";
 import { EditableEl } from "@/components/EditableEl";
+import { EditableSvgNode } from "@/components/diagrams/EditableSvgNode";
 
 export default function LIHTCSlide() {
   return (
@@ -140,51 +141,21 @@ export default function LIHTCSlide() {
         {/* Right Diagram */}
         <div style={{ flex: "0 0 45%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
           <svg width="400" height="320" viewBox="0 0 400 320" style={{ marginBottom: "24px" }}>
-            {/* Boxes */}
-            <rect x="20" y="20" width="80" height="50" rx="3" fill="rgba(77, 186, 214, 0.08)" stroke="rgba(77, 186, 214, 0.3)" strokeWidth="1" />
-            <text x="60" y="52" textAnchor="middle" fill="#cee8ee" fontSize="11" fontFamily={font}>
-              state
-            </text>
-            <text x="60" y="64" textAnchor="middle" fill="#cee8ee" fontSize="11" fontFamily={font}>
-              agency
-            </text>
-
-            <rect x="160" y="20" width="80" height="50" rx="3" fill="rgba(77, 186, 214, 0.08)" stroke="rgba(77, 186, 214, 0.3)" strokeWidth="1" />
-            <text x="200" y="52" textAnchor="middle" fill="#cee8ee" fontSize="11" fontFamily={font}>
-              developer
-            </text>
-
-            <rect x="300" y="20" width="80" height="50" rx="3" fill="rgba(77, 186, 214, 0.08)" stroke="rgba(77, 186, 214, 0.3)" strokeWidth="1" />
-            <text x="340" y="52" textAnchor="middle" fill="#cee8ee" fontSize="11" fontFamily={font}>
-              lender
-            </text>
-
-            <rect x="50" y="180" width="100" height="50" rx="3" fill="rgba(77, 186, 214, 0.08)" stroke="rgba(77, 186, 214, 0.3)" strokeWidth="1" />
-            <text x="100" y="212" textAnchor="middle" fill="#cee8ee" fontSize="11" fontFamily={font}>
-              tax-credit
-            </text>
-            <text x="100" y="224" textAnchor="middle" fill="#cee8ee" fontSize="11" fontFamily={font}>
-              investor
-            </text>
-
-            <rect x="250" y="180" width="80" height="50" rx="3" fill="rgba(77, 186, 214, 0.08)" stroke="rgba(77, 186, 214, 0.3)" strokeWidth="1" />
-            <text x="290" y="212" textAnchor="middle" fill="#cee8ee" fontSize="11" fontFamily={font}>
-              manager
-            </text>
+            <EditableSvgNode id="lihtc:node-state"    textId="lihtc:text-state"    label="state agency"         x={20}  y={20}  width={80}  height={50} rx={3}>{`state\nagency`}</EditableSvgNode>
+            <EditableSvgNode id="lihtc:node-developer" textId="lihtc:text-developer" label="developer"          x={160} y={20}  width={80}  height={50} rx={3}>developer</EditableSvgNode>
+            <EditableSvgNode id="lihtc:node-lender"   textId="lihtc:text-lender"   label="lender"               x={300} y={20}  width={80}  height={50} rx={3}>lender</EditableSvgNode>
+            <EditableSvgNode id="lihtc:node-investor" textId="lihtc:text-investor" label="tax-credit investor"  x={50}  y={180} width={100} height={50} rx={3}>{`tax-credit\ninvestor`}</EditableSvgNode>
+            <EditableSvgNode id="lihtc:node-manager"  textId="lihtc:text-manager"  label="manager"              x={250} y={180} width={80}  height={50} rx={3}>manager</EditableSvgNode>
 
             {/* Arrows */}
             <line x1="100" y1="70" x2="100" y2="130" stroke="#4dbad6" strokeWidth="1" opacity="0.5" />
             <polygon points="100,140 95,130 105,130" fill="#4dbad6" opacity="0.5" />
-
             <line x1="200" y1="70" x2="200" y2="130" stroke="#4dbad6" strokeWidth="1" opacity="0.5" />
             <polygon points="200,140 195,130 205,130" fill="#4dbad6" opacity="0.5" />
-
             <line x1="300" y1="70" x2="300" y2="130" stroke="#4dbad6" strokeWidth="1" opacity="0.5" />
             <polygon points="300,140 295,130 305,130" fill="#4dbad6" opacity="0.5" />
-
             <line x1="160" y1="205" x2="150" y2="205" stroke="#4dbad6" strokeWidth="1" opacity="0.5" />
             <polygon points="140,205 150,200 150,210" fill="#4dbad6" opacity="0.5" />
-
             <line x1="240" y1="205" x2="250" y2="205" stroke="#4dbad6" strokeWidth="1" opacity="0.5" />
             <polygon points="260,205 250,200 250,210" fill="#4dbad6" opacity="0.5" />
           </svg>

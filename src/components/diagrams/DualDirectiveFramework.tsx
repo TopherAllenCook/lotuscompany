@@ -1,5 +1,26 @@
 "use client";
 
+import { EditableSvgNode } from "@/components/diagrams/EditableSvgNode";
+
+const nodes = [
+  { id: "dual-directive:node-root", textId: "dual-directive:text-root", label: "annual directive reset",    x: 320, y: 40,  isRoot: true,   text: "annual directive\nreset" },
+  { id: "dual-directive:node-inv",  textId: "dual-directive:text-inv",  label: "investment directive",      x: 180, y: 120, isBranch: true, text: "investment\ndirective" },
+  { id: "dual-directive:node-imp",  textId: "dual-directive:text-imp",  label: "impact directive",          x: 460, y: 120, isBranch: true, text: "impact\ndirective" },
+  { id: "dual-directive:node-inv1", textId: "dual-directive:text-inv1", label: "return target range",       x: 80,  y: 240, text: "return target\nrange" },
+  { id: "dual-directive:node-inv2", textId: "dual-directive:text-inv2", label: "risk limits",               x: 180, y: 240, text: "risk limits" },
+  { id: "dual-directive:node-inv3", textId: "dual-directive:text-inv3", label: "recycling cadence",         x: 280, y: 240, text: "recycling\ncadence" },
+  { id: "dual-directive:node-imp1", textId: "dual-directive:text-imp1", label: "units + ami targets",       x: 360, y: 240, text: "units + ami\ntargets" },
+  { id: "dual-directive:node-imp2", textId: "dual-directive:text-imp2", label: "service tier",              x: 460, y: 240, text: "service tier" },
+  { id: "dual-directive:node-imp3", textId: "dual-directive:text-imp3", label: "place-based priorities",    x: 560, y: 240, text: "place-based\npriorities" },
+  { id: "dual-directive:node-imp4", textId: "dual-directive:text-imp4", label: "guardrails",                x: 660, y: 240, text: "guardrails" },
+];
+
+const connections = [
+  { fromIdx: 0, toIdx: 1 }, { fromIdx: 0, toIdx: 2 },
+  { fromIdx: 1, toIdx: 3 }, { fromIdx: 1, toIdx: 4 }, { fromIdx: 1, toIdx: 5 },
+  { fromIdx: 2, toIdx: 6 }, { fromIdx: 2, toIdx: 7 }, { fromIdx: 2, toIdx: 8 }, { fromIdx: 2, toIdx: 9 },
+];
+
 export function DualDirectiveFramework({
   width = 640,
   height = 380,
@@ -7,97 +28,36 @@ export function DualDirectiveFramework({
   width?: number;
   height?: number;
 }) {
-  const nodes = [
-    // Root
-    { id: "root", label: "annual directive\nreset", x: 320, y: 40, isRoot: true },
-    // Branch level
-    { id: "inv", label: "investment\ndirective", x: 180, y: 120, isBranch: true },
-    { id: "imp", label: "impact\ndirective", x: 460, y: 120, isBranch: true },
-    // Sub-nodes under investment
-    { id: "inv1", label: "return target\nrange", x: 80, y: 240 },
-    { id: "inv2", label: "risk limits", x: 180, y: 240 },
-    { id: "inv3", label: "recycling\ncadence", x: 280, y: 240 },
-    // Sub-nodes under impact
-    { id: "imp1", label: "units + ami\ntargets", x: 360, y: 240 },
-    { id: "imp2", label: "service tier", x: 460, y: 240 },
-    { id: "imp3", label: "place-based\npriorities", x: 560, y: 240 },
-    { id: "imp4", label: "guardrails", x: 660, y: 240 },
-  ];
-
-  const connections = [
-    { from: "root", to: "inv" },
-    { from: "root", to: "imp" },
-    { from: "inv", to: "inv1" },
-    { from: "inv", to: "inv2" },
-    { from: "inv", to: "inv3" },
-    { from: "imp", to: "imp1" },
-    { from: "imp", to: "imp2" },
-    { from: "imp", to: "imp3" },
-    { from: "imp", to: "imp4" },
-  ];
-
-  const getNode = (id: string) => nodes.find((n) => n.id === id)!;
-
   return (
-    <svg
-      width={width}
-      height={height}
-      viewBox={`0 0 ${width} ${height}`}
-      style={{ overflow: "visible" }}
-    >
-      {/* Connector lines */}
+    <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} style={{ overflow: "visible" }}>
       {connections.map((conn, idx) => {
-        const fromNode = getNode(conn.from);
-        const toNode = getNode(conn.to);
+        const from = nodes[conn.fromIdx];
+        const to = nodes[conn.toIdx];
         return (
           <line
             key={`line-${idx}`}
-            x1={fromNode.x}
-            y1={fromNode.y + 24}
-            x2={toNode.x}
-            y2={toNode.y - 24}
-            stroke="#4dbad6"
-            strokeWidth="1"
-            opacity="0.4"
+            x1={from.x} y1={from.y + 24}
+            x2={to.x}   y2={to.y - 24}
+            stroke="#4dbad6" strokeWidth="1" opacity="0.4"
           />
         );
       })}
 
-      {/* Nodes */}
-      {nodes.map((node) => {
-        const isRoot = node.isRoot;
-        const isBranch = node.isBranch;
-        const baseFill = isRoot
-          ? "rgba(77,186,214,0.15)"
-          : "rgba(77,186,214,0.08)";
-
-        return (
-          <g key={`node-${node.id}`}>
-            <rect
-              x={node.x - 48}
-              y={node.y - 24}
-              width="96"
-              height="48"
-              rx="3"
-              fill={baseFill}
-              stroke="rgba(77,186,214,0.3)"
-              strokeWidth="1"
-            />
-            <text
-              x={node.x}
-              y={node.y}
-              textAnchor="middle"
-              dominantBaseline="middle"
-              fill="#cee8ee"
-              fontSize="10"
-              fontFamily="'Futura PT', sans-serif"
-              style={{ whiteSpace: "pre", textTransform: "lowercase" }}
-            >
-              {node.label}
-            </text>
-          </g>
-        );
-      })}
+      {nodes.map((node) => (
+        <EditableSvgNode
+          key={node.id}
+          id={node.id}
+          label={node.label}
+          textId={node.textId}
+          x={node.x - 48} y={node.y - 24}
+          width={96} height={48}
+          rx={3}
+          fill={node.isRoot ? "rgba(77,186,214,0.15)" : "rgba(77,186,214,0.08)"}
+          stroke="rgba(77,186,214,0.3)"
+        >
+          {node.text}
+        </EditableSvgNode>
+      ))}
     </svg>
   );
 }
