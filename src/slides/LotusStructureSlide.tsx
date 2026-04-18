@@ -98,6 +98,7 @@ export function LotusStructureSlide() {
             lineHeight: 1.25,
             marginBottom: "12px",
             textTransform: "lowercase",
+            textShadow: "0 1px 12px rgba(5,10,12,0.8)",
           }}
         >
           most models trade capital, control, or impact. we won't.
@@ -140,6 +141,14 @@ export function LotusStructureSlide() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
+          style={{
+            background: "rgba(5,10,12,0.62)",
+            backdropFilter: "blur(14px)",
+            WebkitBackdropFilter: "blur(14px)",
+            borderRadius: "8px",
+            border: "1px solid rgba(77,186,214,0.12)",
+            overflow: "hidden",
+          }}
         >
           <table
             style={{
