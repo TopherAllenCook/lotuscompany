@@ -142,11 +142,12 @@ export function LotusStructureSlide() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
           style={{
-            background: "rgba(5,10,12,0.62)",
-            backdropFilter: "blur(14px)",
-            WebkitBackdropFilter: "blur(14px)",
-            borderRadius: "8px",
-            border: "1px solid rgba(77,186,214,0.12)",
+            background: "rgba(5,10,12,0.36)",
+            backdropFilter: "blur(20px) saturate(160%)",
+            WebkitBackdropFilter: "blur(20px) saturate(160%)",
+            borderRadius: "14px",
+            border: "1px solid rgba(255,255,255,0.09)",
+            boxShadow: "0 8px 40px rgba(0,0,0,0.40), inset 0 1px 0 rgba(255,255,255,0.07)",
             overflow: "hidden",
           }}
         >

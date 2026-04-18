@@ -53,13 +53,17 @@ export function LotusWhyLotusSlide() {
         style={{
           flex: "0 0 55%",
           position: "relative",
-          paddingLeft: "64px",
-          paddingRight: "32px",
-          paddingTop: "80px",
-          paddingBottom: "72px",
+          margin: "40px 0 40px 64px",
+          padding: "40px 36px",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
+          background: "rgba(5,10,12,0.36)",
+          backdropFilter: "blur(20px) saturate(160%)",
+          WebkitBackdropFilter: "blur(20px) saturate(160%)",
+          borderRadius: "14px",
+          border: "1px solid rgba(255,255,255,0.09)",
+          boxShadow: "0 8px 40px rgba(0,0,0,0.40), inset 0 1px 0 rgba(255,255,255,0.07)",
         }}
       >
         {/* Eyebrow */}

@@ -79,11 +79,22 @@ export function RiskControlsSlide() {
         </div>
 
         {/* Risk Matrix Table */}
+        <div
+          style={{
+            flex: 1,
+            background: "rgba(5,10,12,0.36)",
+            backdropFilter: "blur(20px) saturate(160%)",
+            WebkitBackdropFilter: "blur(20px) saturate(160%)",
+            borderRadius: "14px",
+            border: "1px solid rgba(255,255,255,0.09)",
+            boxShadow: "0 8px 40px rgba(0,0,0,0.40), inset 0 1px 0 rgba(255,255,255,0.07)",
+            overflow: "hidden",
+          }}
+        >
         <table
           style={{
             width: "100%",
             borderCollapse: "collapse",
-            flex: 1,
           }}
         >
           <thead>
@@ -394,6 +405,7 @@ export function RiskControlsSlide() {
             </tr>
           </tbody>
         </table>
+        </div>
       </div>
 
       <SlideFooter slideKey="risk-controls" slideNum="12" sectionLabel="risk" />

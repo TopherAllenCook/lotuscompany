@@ -42,7 +42,20 @@ export default function MembershipSlide() {
 
       <div style={{ position: "relative", display: "flex", height: "100%", padding: "80px 64px" }}>
         {/* Left Content */}
-        <div style={{ flex: "0 0 55%", display: "flex", flexDirection: "column", justifyContent: "center", paddingRight: "40px" }}>
+        <div style={{
+          flex: "0 0 55%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          paddingRight: "40px",
+          padding: "36px 40px 36px 36px",
+          background: "rgba(5,10,12,0.36)",
+          backdropFilter: "blur(20px) saturate(160%)",
+          WebkitBackdropFilter: "blur(20px) saturate(160%)",
+          borderRadius: "14px",
+          border: "1px solid rgba(255,255,255,0.09)",
+          boxShadow: "0 8px 40px rgba(0,0,0,0.40), inset 0 1px 0 rgba(255,255,255,0.07)",
+        }}>
           <EditableText
             id="membership:eyebrow"
             as="div"
