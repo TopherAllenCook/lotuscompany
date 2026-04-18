@@ -100,9 +100,9 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
     if (!activeId || activeId === prevActiveId.current) return;
     prevActiveId.current = activeId;
     const el = getEl(activeId);
-    if (!el) return;
     const override = overrides[activeId] ?? {};
     const type = registeredList.find(e => e.id === activeId)?.type ?? "text";
+    if (!el && type !== "card") return;
 
     if (type === "text") {
       setVals(readTextValues(el, override));

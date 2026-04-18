@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useEditMode, EditableText } from "@/components/EditableText";
 
 interface Props {
@@ -22,6 +22,10 @@ interface Props {
   children: string;
 }
 
+function toSolidFill(fill: string): string {
+  return fill.replace(/rgba\(([^,]+,[^,]+,[^,]+),[^)]+\)/, "rgb($1)");
+}
+
 export function EditableSvgNode({
   id, label,
   x, y, width, height, rx = 3,
@@ -35,19 +39,23 @@ export function EditableSvgNode({
   children,
 }: Props) {
   const { editMode, overrides, activeId, setActiveId, registerEl } = useEditMode();
+  const gRef = useRef<SVGGElement>(null);
   const override = overrides[id] ?? {};
   const isActive = editMode && activeId === id;
 
   useEffect(() => {
-    registerEl(id, label ?? id, "card", null);
+    registerEl(id, label ?? id, "card", gRef.current as unknown as HTMLElement);
     return () => registerEl(id, label ?? id, "card", null);
   }, [id, label, registerEl]);
 
-  const resolvedFill = override.background ?? fill;
-  const resolvedOpacity = override.opacity != null ? override.opacity / 100 : 1;
+  // When opacity is overridden, use a solid fill so the <g> opacity is the sole
+  // control over transparency (fill alpha would otherwise multiply with it).
+  const hasOpacityOverride = override.opacity != null;
+  const resolvedFill = override.background ?? (hasOpacityOverride ? toSolidFill(fill) : fill);
+  const resolvedOpacity = hasOpacityOverride ? override.opacity! / 100 : undefined;
 
   return (
-    <g>
+    <g ref={gRef} opacity={resolvedOpacity}>
       <rect
         x={x} y={y}
         width={width} height={height}
@@ -55,7 +63,6 @@ export function EditableSvgNode({
         fill={resolvedFill}
         stroke={stroke}
         strokeWidth={strokeWidth}
-        opacity={resolvedOpacity}
       />
 
       {/* Editable label via foreignObject */}
