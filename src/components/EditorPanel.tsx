@@ -99,17 +99,21 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
   useEffect(() => {
     if (!activeId || activeId === prevActiveId.current) return;
     prevActiveId.current = activeId;
-    const el = getEl(activeId);
     const override = overrides[activeId] ?? {};
     const type = registeredList.find(e => e.id === activeId)?.type ?? "text";
-    if (!el && type !== "card") return;
+
+    if (type === "card") {
+      setVals({ opacity: override.opacity ?? 100 });
+      return;
+    }
+
+    const el = getEl(activeId);
+    if (!el) return;
 
     if (type === "text") {
       setVals(readTextValues(el, override));
       setContentText(override.content ?? el.innerText ?? "");
       setColorHex(override.color ?? rgbToHex(window.getComputedStyle(el).color) ?? "#ffffff");
-    } else if (type === "card") {
-      setVals({ opacity: override.opacity ?? 100 });
     } else {
       setVals(readShapeValues(el, override));
       const cs = window.getComputedStyle(el);
