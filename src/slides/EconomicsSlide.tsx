@@ -46,7 +46,7 @@ export function EconomicsSlide() {
 
       <div style={{ position: "relative", display: "flex", height: "100%", padding: "80px 64px" }}>
         {/* Left Content */}
-        <div className="anim-fade-in-up" style={{ flex: "0 0 55%", display: "flex", flexDirection: "column", justifyContent: "flex-start", paddingRight: "40px" }}>
+        <div className="anim-fade-in-up" style={{ flex: "0 0 55%", display: "flex", flexDirection: "column", justifyContent: "flex-start", padding: "36px 40px 36px 36px", background: "rgba(5,10,12,0.52)", backdropFilter: "blur(28px) saturate(200%)", WebkitBackdropFilter: "blur(28px) saturate(200%)", borderRadius: "16px", border: "1px solid rgba(255,255,255,0.15)", boxShadow: "0 8px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.14)" }}>
           <EditableText
             id="economics:eyebrow"
             as="div"
@@ -91,9 +91,9 @@ export function EconomicsSlide() {
           <div style={{ display: "flex", flexDirection: "column", gap: "12px", marginBottom: "40px" }}>
             <div
               style={{
-                background: "rgba(77,186,214,0.07)",
-                border: "1px solid rgba(77,186,214,0.22)",
-                borderRadius: "3px",
+                background: "rgba(77,186,214,0.10)",
+                border: "1px solid rgba(77,186,214,0.25)",
+                borderRadius: "10px",
                 padding: "14px 16px",
               }}
             >

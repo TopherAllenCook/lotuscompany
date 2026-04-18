@@ -68,12 +68,17 @@ export function LotusHousingProblemSlide() {
         style={{
           flex: "0 0 55%",
           position: "relative",
-          paddingLeft: "64px",
-          paddingRight: "64px",
-          paddingTop: "80px",
+          margin: "40px 64px 8px 64px",
+          padding: "36px 40px",
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-start",
+          background: "rgba(5,10,12,0.52)",
+          backdropFilter: "blur(28px) saturate(200%)",
+          WebkitBackdropFilter: "blur(28px) saturate(200%)",
+          borderRadius: "16px",
+          border: "1px solid rgba(255,255,255,0.15)",
+          boxShadow: "0 8px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.14)",
         }}
       >
         {/* Eyebrow */}
@@ -165,12 +170,17 @@ export function LotusHousingProblemSlide() {
         style={{
           flex: "0 0 45%",
           position: "relative",
-          paddingLeft: "64px",
-          paddingRight: "64px",
-          paddingBottom: "72px",
+          margin: "8px 64px 40px 64px",
+          padding: "28px 32px",
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-end",
+          background: "rgba(5,10,12,0.52)",
+          backdropFilter: "blur(28px) saturate(200%)",
+          WebkitBackdropFilter: "blur(28px) saturate(200%)",
+          borderRadius: "16px",
+          border: "1px solid rgba(255,255,255,0.15)",
+          boxShadow: "0 8px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.14)",
         }}
       >
         {/* Data boxes row */}
@@ -192,9 +202,9 @@ export function LotusHousingProblemSlide() {
             >
               <div
                 style={{
-                  background: "rgba(77,186,214,0.06)",
-                  border: "1px solid rgba(77,186,214,0.18)",
-                  borderRadius: "4px",
+                  background: "rgba(77,186,214,0.09)",
+                  border: "1px solid rgba(77,186,214,0.22)",
+                  borderRadius: "10px",
                   padding: "20px",
                   textAlign: "center",
                 }}

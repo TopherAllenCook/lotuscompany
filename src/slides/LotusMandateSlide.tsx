@@ -53,13 +53,17 @@ export function LotusMandateSlide() {
         style={{
           flex: "0 0 55%",
           position: "relative",
-          paddingLeft: "64px",
-          paddingRight: "32px",
-          paddingTop: "80px",
-          paddingBottom: "72px",
+          margin: "40px 0 40px 64px",
+          padding: "40px 36px",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
+          background: "rgba(5,10,12,0.52)",
+          backdropFilter: "blur(28px) saturate(200%)",
+          WebkitBackdropFilter: "blur(28px) saturate(200%)",
+          borderRadius: "16px",
+          border: "1px solid rgba(255,255,255,0.15)",
+          boxShadow: "0 8px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.14)",
         }}
       >
         {/* Eyebrow */}

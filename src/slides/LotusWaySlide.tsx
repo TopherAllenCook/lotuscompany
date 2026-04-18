@@ -60,7 +60,16 @@ export function LotusWaySlide() {
       </motion.div>
 
       {/* Bottom content */}
-      <div style={{ position: "absolute", bottom: 64, left: 72, right: 72 }}>
+      <div style={{
+        position: "absolute", bottom: 48, left: 72, right: 72,
+        background: "rgba(5,10,12,0.42)",
+        backdropFilter: "blur(24px) saturate(180%)",
+        WebkitBackdropFilter: "blur(24px) saturate(180%)",
+        borderRadius: "16px",
+        border: "1px solid rgba(255,255,255,0.10)",
+        boxShadow: "0 8px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.10)",
+        padding: "36px 40px 32px",
+      }}>
 
         {/* Eyebrow */}
         <motion.div {...lift(0.3)} style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 48 }}>

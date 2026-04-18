@@ -58,12 +58,12 @@ export function LotusWhyLotusSlide() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          background: "rgba(5,10,12,0.36)",
-          backdropFilter: "blur(20px) saturate(160%)",
-          WebkitBackdropFilter: "blur(20px) saturate(160%)",
-          borderRadius: "14px",
-          border: "1px solid rgba(255,255,255,0.09)",
-          boxShadow: "0 8px 40px rgba(0,0,0,0.40), inset 0 1px 0 rgba(255,255,255,0.07)",
+          background: "rgba(5,10,12,0.52)",
+          backdropFilter: "blur(28px) saturate(200%)",
+          WebkitBackdropFilter: "blur(28px) saturate(200%)",
+          borderRadius: "16px",
+          border: "1px solid rgba(255,255,255,0.15)",
+          boxShadow: "0 8px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.14)",
         }}
       >
         {/* Eyebrow */}
