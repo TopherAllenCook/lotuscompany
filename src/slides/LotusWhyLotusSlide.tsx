@@ -52,6 +52,7 @@ export function LotusWhyLotusSlide() {
       <div
         style={{
           flex: "0 0 55%",
+          position: "relative",
           paddingLeft: "64px",
           paddingRight: "32px",
           paddingTop: "80px",
@@ -175,6 +176,7 @@ export function LotusWhyLotusSlide() {
       <div
         style={{
           flex: "0 0 45%",
+          position: "relative",
           paddingRight: "64px",
           paddingTop: "80px",
           paddingBottom: "72px",

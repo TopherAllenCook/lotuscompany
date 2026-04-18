@@ -41,7 +41,7 @@ export function RiskControlsSlide() {
 
       <StatusChip status="READY" />
 
-      <div style={{ display: "flex", flexDirection: "column", height: "100%", padding: "80px 64px 72px 64px" }}>
+      <div style={{ position: "relative", display: "flex", flexDirection: "column", height: "100%", padding: "80px 64px 72px 64px" }}>
         {/* Headline Section */}
         <div className="anim-fade-in-up" style={{ marginBottom: "40px" }}>
           <EditableText

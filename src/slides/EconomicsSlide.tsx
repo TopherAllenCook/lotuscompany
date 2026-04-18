@@ -44,7 +44,7 @@ export function EconomicsSlide() {
 
       <StatusChip status="DRAFT" />
 
-      <div style={{ display: "flex", height: "100%", padding: "80px 64px" }}>
+      <div style={{ position: "relative", display: "flex", height: "100%", padding: "80px 64px" }}>
         {/* Left Content */}
         <div className="anim-fade-in-up" style={{ flex: "0 0 55%", display: "flex", flexDirection: "column", justifyContent: "flex-start", paddingRight: "40px" }}>
           <EditableText

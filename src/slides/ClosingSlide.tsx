@@ -45,7 +45,7 @@ export function ClosingSlide() {
 
       <StatusChip status="READY" />
 
-      <div style={{ display: "flex", height: "100%", padding: "80px 64px" }}>
+      <div style={{ position: "relative", display: "flex", height: "100%", padding: "80px 64px" }}>
         {/* Left Content */}
         <div className="anim-fade-in-up" style={{ flex: "0 0 50%", display: "flex", flexDirection: "column", justifyContent: "center", paddingRight: "40px" }}>
           <EditableText

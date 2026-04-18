@@ -67,6 +67,7 @@ export function LotusHousingProblemSlide() {
       <div
         style={{
           flex: "0 0 55%",
+          position: "relative",
           paddingLeft: "64px",
           paddingRight: "64px",
           paddingTop: "80px",
@@ -163,6 +164,7 @@ export function LotusHousingProblemSlide() {
       <div
         style={{
           flex: "0 0 45%",
+          position: "relative",
           paddingLeft: "64px",
           paddingRight: "64px",
           paddingBottom: "72px",

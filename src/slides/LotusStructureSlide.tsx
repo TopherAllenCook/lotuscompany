@@ -61,6 +61,7 @@ export function LotusStructureSlide() {
       {/* Header section */}
       <div
         style={{
+          position: "relative",
           paddingLeft: "64px",
           paddingRight: "64px",
           paddingTop: "80px",
@@ -124,6 +125,7 @@ export function LotusStructureSlide() {
       {/* Table */}
       <div
         style={{
+          position: "relative",
           flex: 1,
           paddingLeft: "64px",
           paddingRight: "64px",

@@ -29,7 +29,7 @@ export default function LIHTCSlide() {
 
       <StatusChip status="READY" />
 
-      <div style={{ display: "flex", height: "100%", padding: "80px 64px" }}>
+      <div style={{ position: "relative", display: "flex", height: "100%", padding: "80px 64px" }}>
         {/* Left Content */}
         <div style={{ flex: "0 0 55%", display: "flex", flexDirection: "column", justifyContent: "center", paddingRight: "40px" }}>
           <EditableText
