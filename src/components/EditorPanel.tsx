@@ -81,6 +81,8 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
     fontSize: 16, translateX: 0, translateY: 0, letterSpacing: 0, lineHeight: 1.5,
     width: 0, height: 0, opacity: 1, rotate: 0,
   });
+  // null = show formatted val; string = user is typing
+  const [inputDrafts, setInputDrafts] = useState<Record<string, string | null>>({});
   const [contentText, setContentText] = useState("");
   const [colorHex, setColorHex] = useState("#ffffff");
   const [bgHex, setBgHex] = useState("#4dbad6");
@@ -109,6 +111,7 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
 
   const handleChange = useCallback((field: string, value: number) => {
     setVals(prev => ({ ...prev, [field]: value }));
+    setInputDrafts(prev => ({ ...prev, [field]: null }));
     if (activeId) setOverride(activeId, { [field]: value } as Partial<ElementOverride>);
   }, [activeId, setOverride]);
 
@@ -491,15 +494,62 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
                   {/* Sliders (type-aware) */}
                   {sliders.map(({ key, label, min, max, step, suffix }) => {
                     const val = vals[key] ?? 0;
+                    const decimals = step < 1 ? 2 : 1;
+                    const draft = inputDrafts[key];
+                    const displayVal = draft !== null && draft !== undefined ? draft : val.toFixed(decimals);
+
+                    const commitDraft = () => {
+                      const parsed = parseFloat(String(draft));
+                      if (!isNaN(parsed)) {
+                        const clamped = Math.min(max, Math.max(min, parsed));
+                        handleChange(key, clamped);
+                      }
+                      setInputDrafts(prev => ({ ...prev, [key]: null }));
+                    };
+
                     return (
                       <div key={key}>
-                        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 7 }}>
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 7 }}>
                           <span style={{ fontSize: 10, color: "rgba(255,255,255,0.4)", letterSpacing: "0.1em", textTransform: "lowercase" }}>
                             {label}
                           </span>
-                          <span style={{ fontSize: 10, color: "#4dbad6", fontVariantNumeric: "tabular-nums" }}>
-                            {val.toFixed(step < 1 ? 2 : 1)}{suffix}
-                          </span>
+                          <div style={{ display: "flex", alignItems: "center", gap: 2 }}>
+                            <input
+                              type="text"
+                              value={displayVal}
+                              onChange={e => setInputDrafts(prev => ({ ...prev, [key]: e.target.value }))}
+                              onBlur={commitDraft}
+                              onKeyDown={e => {
+                                if (e.key === "Enter") { e.currentTarget.blur(); }
+                                if (e.key === "Escape") {
+                                  setInputDrafts(prev => ({ ...prev, [key]: null }));
+                                  e.currentTarget.blur();
+                                }
+                                if (e.key === "ArrowUp") {
+                                  e.preventDefault();
+                                  handleChange(key, Math.min(max, val + step));
+                                }
+                                if (e.key === "ArrowDown") {
+                                  e.preventDefault();
+                                  handleChange(key, Math.max(min, val - step));
+                                }
+                              }}
+                              style={{
+                                width: 52, textAlign: "right",
+                                background: "rgba(77,186,214,0.08)",
+                                border: "1px solid rgba(77,186,214,0.2)",
+                                borderRadius: 3, padding: "2px 5px",
+                                color: "#4dbad6", fontSize: 10,
+                                fontFamily: "monospace", fontVariantNumeric: "tabular-nums",
+                                outline: "none",
+                              }}
+                            />
+                            {suffix && (
+                              <span style={{ fontSize: 9, color: "rgba(77,186,214,0.5)", letterSpacing: "0.05em" }}>
+                                {suffix}
+                              </span>
+                            )}
+                          </div>
                         </div>
                         <input
                           type="range" min={min} max={max} step={step} value={val}
