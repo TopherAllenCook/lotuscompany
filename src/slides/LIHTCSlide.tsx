@@ -24,7 +24,6 @@ export default function LIHTCSlide() {
           alt=""
           style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 50%", opacity: 0.15 }}
         />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(5,10,12,0.80) 0%, rgba(5,10,12,0.50) 100%)" }} />
       </div>
 
       <StatusChip status="READY" />
