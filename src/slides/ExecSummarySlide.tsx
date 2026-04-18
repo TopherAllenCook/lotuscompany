@@ -5,248 +5,233 @@ import { asset } from "@/lib/storage";
 import { EditableText } from "@/components/EditableText";
 import { EditableEl } from "@/components/EditableEl";
 
-const BG       = "#ffffff";
-const DARK     = "#424242";
 const DARK_TQ  = "#028faa";
 const TQ       = theme.turquoise;
 const LB       = "#cee8ee";
-const BODY     = "rgba(66,66,66,0.86)";
-const STAT_LBL = "rgba(66,66,66,0.62)";
+const DARK     = "#424242";
+const BODY     = "rgba(66,66,66,0.82)";
+const STAT_LBL = "rgba(66,66,66,0.58)";
 
-const S = { "1": 8, "2": 16, "3": 24, "4": 32, "5": 40, "6": 48, "7": 56 } as const;
+const CARD_BG     = "rgba(255,255,255,0.93)";
+const CARD_BORDER = "rgba(255,255,255,0.55)";
 
-const fade = (delay: number) => ({
-  initial: { opacity: 0, y: 8 },
+const lift = (delay: number) => ({
+  initial: { opacity: 0, y: 16 },
   animate: { opacity: 1, y: 0 },
-  transition: { delay, duration: 0.45, ease: EASE_OUT },
+  transition: { delay, duration: 0.55, ease: EASE_OUT },
 });
-
-function ColHeader({ id, children }: { id: string; children: React.ReactNode }) {
-  return (
-    <div style={{ marginBottom: 10 }}>
-      <p style={{
-        margin: "0 0 6px", fontFamily: font, fontWeight: 500,
-        fontSize: "clamp(9px, 0.65vw, 10px)", color: DARK_TQ,
-        letterSpacing: "0.22em", textTransform: "lowercase", lineHeight: 1,
-      }}>{children}</p>
-      <EditableEl
-        id={id}
-        label={`col underline — ${typeof children === "string" ? children : id}`}
-        type="bar"
-        style={{ width: 22, height: 1, background: TQ }}
-      />
-    </div>
-  );
-}
-
-function Line({ label, children }: { label?: string; children: React.ReactNode }) {
-  return (
-    <p style={{
-      margin: "0 0 4px", fontFamily: font, fontWeight: 400,
-      fontSize: "clamp(9px, 0.75vw, 12px)", color: BODY,
-      letterSpacing: "0.01em", textTransform: "lowercase", lineHeight: 1.6,
-    }}>
-      {label && <span style={{ fontWeight: 500, color: DARK }}>{label} </span>}
-      {children}
-    </p>
-  );
-}
 
 export function ExecSummarySlide() {
   return (
-    <div style={{
-      position: "absolute", inset: 0,
-      fontFamily: font, overflow: "hidden",
-      display: "flex",
-    }}>
+    <div style={{ position: "absolute", inset: 0, fontFamily: font, overflow: "hidden" }}>
 
-      {/* ── LEFT: PHOTO PANEL (44%) ── */}
-      <div style={{ position: "relative", width: "44%", flexShrink: 0 }}>
-
-        <motion.img
-          src={asset("/steelton-village/Steelton I_Updated Lobby_2026.04.02.jpg")}
-          alt=""
-          initial={{ scale: 1.0 }}
-          animate={{ scale: 1.04 }}
-          transition={{ duration: 18, ease: "linear" }}
-          style={{
-            position: "absolute", inset: 0,
-            width: "100%", height: "100%",
-            objectFit: "cover", objectPosition: "50% 50%",
-          }}
-        />
-
-        <div style={{
+      {/* ── FULL-BLEED PHOTO ── */}
+      <motion.img
+        src={asset("/steelton-village/Steelton I_Updated Lobby_2026.04.02.jpg")}
+        alt=""
+        initial={{ scale: 1.0 }}
+        animate={{ scale: 1.05 }}
+        transition={{ duration: 20, ease: "linear" }}
+        style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.32) 55%, rgba(0,0,0,0.10) 100%)",
-          pointerEvents: "none",
-        }} />
+          width: "100%", height: "100%",
+          objectFit: "cover", objectPosition: "50% 45%",
+        }}
+      />
 
-        <div style={{
-          position: "absolute", bottom: 0, left: 0, right: 0,
-          padding: "0 36px 40px",
-        }}>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.18, duration: 0.65, ease: EASE_OUT }}
-          >
-            <EditableText id="exec-summary:photo-headline" as="div" style={{
-              fontFamily: font, fontWeight: 300,
-              fontSize: "clamp(22px, 2.7vw, 42px)",
-              color: "#fff", letterSpacing: "0.01em",
-              textTransform: "lowercase", lineHeight: 1.15,
-            }}>
-              a proven model for dignified affordable housing<span style={{ color: TQ }}>.</span>
-            </EditableText>
-          </motion.div>
-        </div>
+      {/* Gradient — dark top + bottom, lets middle breathe */}
+      <div style={{
+        position: "absolute", inset: 0,
+        background: [
+          "linear-gradient(to bottom, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.18) 38%, rgba(0,0,0,0.22) 62%, rgba(0,0,0,0.70) 100%)",
+        ].join(","),
+        pointerEvents: "none",
+      }} />
+
+      {/* ── /lotus tag + slide number ── */}
+      <motion.div
+        initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+        transition={{ delay: 0.1, duration: 0.5 }}
+        style={{
+          position: "absolute", top: 32, left: 52, right: 52,
+          display: "flex", justifyContent: "space-between", alignItems: "center",
+        }}
+      >
+        <span style={{
+          fontSize: 10, fontWeight: 400, color: "rgba(255,255,255,0.7)",
+          letterSpacing: "0.32em", textTransform: "lowercase",
+        }}>/lotus</span>
+        <span style={{
+          fontSize: 10, fontWeight: 400, color: "rgba(255,255,255,0.5)",
+          letterSpacing: "0.32em",
+        }}>03. executive summary.</span>
+      </motion.div>
+
+      {/* ── HEADLINE ── */}
+      <div style={{
+        position: "absolute", top: 68, left: 52, right: "36%",
+      }}>
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.22, duration: 0.65, ease: EASE_OUT }}
+        >
+          <EditableText id="exec-summary:headline" as="div" style={{
+            fontSize: "clamp(28px, 3.8vw, 60px)",
+            fontWeight: 300, color: "#fff",
+            letterSpacing: "0.01em", textTransform: "lowercase",
+            lineHeight: 1.1,
+          }}>
+            a proven model for<br />
+            dignified affordable housing<span style={{ color: TQ }}>.</span>
+          </EditableText>
+        </motion.div>
       </div>
 
-      {/* ── RIGHT: DATA PANEL (56%) ── */}
+      {/* ── BOTTOM CARD ROW ── */}
       <div style={{
-        flex: 1, background: BG,
-        display: "flex", flexDirection: "column",
-        padding: `${S[5]}px ${S[7]}px ${S[4]}px ${S[5]}px`,
-        overflow: "hidden",
+        position: "absolute", bottom: 40, left: 52, right: 52,
+        display: "flex", gap: 16, alignItems: "flex-end",
       }}>
 
-        {/* TITLE BAR */}
-        <motion.div {...fade(0.08)} style={{
-          flexShrink: 0,
-          display: "flex", justifyContent: "space-between", alignItems: "flex-end",
-          paddingBottom: S[2],
-          borderBottom: `1px solid ${LB}`,
-          marginBottom: S[3],
+        {/* LEFT: Stats card */}
+        <motion.div {...lift(0.30)} style={{
+          flex: "0 0 auto", width: "30%",
+          background: CARD_BG,
+          backdropFilter: "blur(14px)",
+          WebkitBackdropFilter: "blur(14px)",
+          border: `1px solid ${CARD_BORDER}`,
+          borderRadius: 6,
+          padding: "24px 24px 20px",
         }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <svg width="20" height="20" viewBox="0 0 40 40" style={{ flexShrink: 0 }}>
-              <g fill="none" stroke={DARK_TQ} strokeWidth="1.3" strokeLinecap="round">
-                <ellipse cx="20" cy="24" rx="3" ry="12" transform="rotate(-60 20 24)"/>
-                <ellipse cx="20" cy="24" rx="3" ry="12" transform="rotate(-30 20 24)"/>
-                <ellipse cx="20" cy="24" rx="3" ry="12"/>
-                <ellipse cx="20" cy="24" rx="3" ry="12" transform="rotate(30 20 24)"/>
-                <ellipse cx="20" cy="24" rx="3" ry="12" transform="rotate(60 20 24)"/>
-              </g>
-            </svg>
-            <EditableText id="exec-summary:title" as="h1" style={{
-              margin: 0, fontFamily: font, fontWeight: 500,
-              fontSize: "clamp(10px, 0.85vw, 14px)", color: DARK,
-              letterSpacing: "0.01em", textTransform: "lowercase", lineHeight: 1,
-            }}>
-              executive summary. lotus impact initiative.
-            </EditableText>
-          </div>
-          <span style={{
-            fontFamily: font, fontWeight: 400,
-            fontSize: "clamp(8px, 0.55vw, 9px)", color: "#a9c7cd",
-            letterSpacing: "0.22em", textTransform: "lowercase",
+          <EditableText id="exec-summary:card-eyebrow" as="p" style={{
+            margin: "0 0 14px", fontSize: 9, fontWeight: 500,
+            color: DARK_TQ, letterSpacing: "0.22em", textTransform: "lowercase",
           }}>
-            03. executive summary.
-          </span>
-        </motion.div>
-
-        {/* HERO STATS */}
-        <motion.div {...fade(0.16)} style={{
-          flexShrink: 0,
-          background: "linear-gradient(180deg, rgba(206,232,238,0.55) 0%, rgba(206,232,238,0.15) 100%)",
-          borderRadius: 3,
-          padding: `${S[3]}px ${S[2]}px`,
-          display: "flex", alignItems: "center",
-          marginBottom: S[3],
-        }}>
-          {([
-            { num: "800",    suffix: null, label: "units\nper year" },
-            { num: "2,000",  suffix: null, label: "residents\nannually" },
-            { num: "13–15",  suffix: "%",  label: "target\nirr" },
-            { num: "$300",   suffix: "M",  label: "projected\nreturn" },
-          ] as const).map((stat, i) => (
-            <div key={i} style={{
-              flex: 1, textAlign: "center",
-              padding: `0 ${S[1]}px`,
-              borderLeft: i > 0 ? "1px solid rgba(77,186,214,0.30)" : "none",
-            }}>
-              <EditableText id={`exec-summary:stat-num-${i}`} style={{
-                fontFamily: font, fontWeight: 600, color: DARK_TQ,
-                fontSize: "clamp(18px, 2.8vw, 44px)",
-                lineHeight: 1, marginBottom: 4,
-                letterSpacing: "-0.015em", whiteSpace: "nowrap",
-              }}>
-                {stat.num}
-                {stat.suffix && (
-                  <span style={{ fontSize: "clamp(12px, 1.8vw, 28px)", fontWeight: 500 }}>
-                    {stat.suffix}
-                  </span>
-                )}
-              </EditableText>
-              <EditableText id={`exec-summary:stat-label-${i}`} style={{
-                fontFamily: font, fontWeight: 400, color: STAT_LBL,
-                fontSize: "clamp(8px, 0.55vw, 9px)",
-                letterSpacing: "0.05em", textTransform: "lowercase",
-                lineHeight: 1.45, whiteSpace: "pre-line",
-              }}>
-                {stat.label}
-              </EditableText>
-            </div>
-          ))}
-        </motion.div>
-
-        {/* THREE COLUMNS */}
-        <div style={{
-          flex: 1, minHeight: 0,
-          display: "grid", gridTemplateColumns: "1fr 1fr 1fr",
-          gap: `0 ${S[5]}px`,
-        }}>
-          <motion.div {...fade(0.24)}>
-            <ColHeader id="exec-summary:col-underline-0">the initiative</ColHeader>
-            <Line label="goal.">8 projects per year, phase one.</Line>
-            <Line label="units.">800 annually, under 60% ami.</Line>
-            <Line label="residents.">2,000 per year. 5,000 over lifetime.</Line>
-            <Line label="vision.">lotus advantage communities.</Line>
-          </motion.div>
-
-          <motion.div {...fade(0.30)}>
-            <ColHeader id="exec-summary:col-underline-1">how it works</ColHeader>
-            <Line>gp conduit funds predevelopment + acquisition.</Line>
-            <Line>tax credit investors repay at construction closing.</Line>
-            <Line>impact partners earn gp interest after repayment.</Line>
-            <Line>capital recycles. no permanent lock-up.</Line>
-          </motion.div>
-
-          <motion.div {...fade(0.36)}>
-            <ColHeader id="exec-summary:col-underline-2">investment terms</ColHeader>
-            <Line label="commitment.">$16m to $20m, year one.</Line>
-            <Line label="hold.">18 years.</Line>
-            <Line label="return.">13–15% irr, 2x–3x moic.</Line>
-            <Line label="reporting.">quarterly kpis, annual summit.</Line>
-          </motion.div>
-        </div>
-
-        {/* KICKER */}
-        <motion.div {...fade(0.42)} style={{
-          flexShrink: 0,
-          marginTop: S[2],
-          paddingTop: S[2],
-          borderTop: `1px solid ${LB}`,
-          display: "flex", alignItems: "center", gap: S[3],
-        }}>
-          <EditableText id="exec-summary:kicker" as="p" style={{
-            margin: 0, fontFamily: font, fontWeight: 500,
-            fontSize: "clamp(9px, 0.9vw, 14px)", color: DARK_TQ,
-            letterSpacing: "0.01em", textTransform: "lowercase", whiteSpace: "nowrap",
-          }}>
-            this is more than impact investing. this is legacy building.
+            the numbers
           </EditableText>
-          <div style={{ flex: 1, display: "flex", alignItems: "center", gap: S[1] }}>
-            <EditableEl id="exec-summary:kicker-line" label="kicker gradient line" type="bar" style={{
-              flex: 1, height: 1,
-              background: `linear-gradient(90deg, ${TQ} 0%, ${LB} 60%, transparent 100%)`,
-            }} />
-            <EditableEl id="exec-summary:kicker-dot" label="kicker dot" type="dot"
-              style={{ width: 7, height: 7, borderRadius: "50%", background: TQ, flexShrink: 0 }} />
+          <EditableEl id="exec-summary:card-rule" label="card rule" type="bar"
+            style={{ width: 22, height: 1, background: TQ, marginBottom: 16 }} />
+
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px 8px" }}>
+            {([
+              { num: "800",    suffix: null, label: "units per year" },
+              { num: "2,000",  suffix: null, label: "residents annually" },
+              { num: "13–15",  suffix: "%",  label: "target irr" },
+              { num: "$300",   suffix: "M",  label: "25-yr projected return" },
+            ] as const).map((s, i) => (
+              <div key={i}>
+                <EditableText id={`exec-summary:stat-num-${i}`} style={{
+                  fontFamily: font, fontWeight: 600, color: DARK_TQ,
+                  fontSize: "clamp(20px, 2.4vw, 36px)",
+                  lineHeight: 1, letterSpacing: "-0.02em", whiteSpace: "nowrap",
+                }}>
+                  {s.num}
+                  {s.suffix && (
+                    <span style={{ fontSize: "clamp(13px, 1.5vw, 22px)", fontWeight: 500 }}>
+                      {s.suffix}
+                    </span>
+                  )}
+                </EditableText>
+                <EditableText id={`exec-summary:stat-label-${i}`} style={{
+                  fontFamily: font, fontWeight: 400, color: STAT_LBL,
+                  fontSize: "clamp(8px, 0.6vw, 10px)",
+                  letterSpacing: "0.05em", textTransform: "lowercase", lineHeight: 1.4,
+                }}>
+                  {s.label}
+                </EditableText>
+              </div>
+            ))}
           </div>
         </motion.div>
+
+        {/* RIGHT: Three numbered cards */}
+        <div style={{ flex: 1, display: "flex", gap: 12, alignItems: "flex-end" }}>
+          {([
+            {
+              num: "001", id: "initiative",
+              header: "the initiative",
+              lines: [
+                "8 projects per year, phase one.",
+                "800 units annually, under 60% ami.",
+                "lotus advantage communities on-site.",
+              ],
+            },
+            {
+              num: "002", id: "how-it-works",
+              header: "how it works",
+              lines: [
+                "gp conduit funds predevelopment + acquisition.",
+                "tax credit equity repays at construction closing.",
+                "partners earn gp interest. capital recycles.",
+              ],
+            },
+            {
+              num: "003", id: "terms",
+              header: "investment terms",
+              lines: [
+                "$16m–$20m commitment, year one.",
+                "13–15% irr, 2x–3x moic over 18 years.",
+                "quarterly kpis. annual summit.",
+              ],
+            },
+          ]).map((card, i) => (
+            <motion.div key={card.id} {...lift(0.38 + i * 0.08)} style={{
+              flex: 1,
+              background: CARD_BG,
+              backdropFilter: "blur(14px)",
+              WebkitBackdropFilter: "blur(14px)",
+              border: `1px solid ${CARD_BORDER}`,
+              borderRadius: 6,
+              padding: "20px 20px 18px",
+            }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 10 }}>
+                <EditableText id={`exec-summary:col-header-${card.id}`} as="p" style={{
+                  margin: 0, fontSize: 9, fontWeight: 500,
+                  color: DARK_TQ, letterSpacing: "0.22em", textTransform: "lowercase",
+                }}>
+                  {card.header}
+                </EditableText>
+                <span style={{
+                  fontSize: 9, fontWeight: 400, color: "rgba(2,143,170,0.35)",
+                  letterSpacing: "0.15em", lineHeight: 1,
+                }}>
+                  {card.num}
+                </span>
+              </div>
+              <EditableEl
+                id={`exec-summary:col-rule-${card.id}`}
+                label={`${card.header} rule`}
+                type="bar"
+                style={{ width: 22, height: 1, background: TQ, marginBottom: 12 }}
+              />
+              {card.lines.map((line, li) => (
+                <EditableText key={li} id={`exec-summary:col-${card.id}-line-${li}`} as="p" style={{
+                  margin: "0 0 5px", fontFamily: font, fontWeight: 400, color: BODY,
+                  fontSize: "clamp(9px, 0.78vw, 12px)",
+                  letterSpacing: "0.01em", textTransform: "lowercase", lineHeight: 1.6,
+                }}>
+                  {line}
+                </EditableText>
+              ))}
+            </motion.div>
+          ))}
+        </div>
       </div>
+
+      {/* Watermark */}
+      <svg viewBox="0 0 200 200" style={{
+        position: "absolute", right: -64, top: -64,
+        width: 300, height: 300, opacity: 0.06, pointerEvents: "none",
+      }}>
+        <g fill="none" stroke="#fff" strokeWidth="1.2">
+          <ellipse cx="100" cy="120" rx="18" ry="58" transform="rotate(-60 100 120)"/>
+          <ellipse cx="100" cy="120" rx="18" ry="58" transform="rotate(-30 100 120)"/>
+          <ellipse cx="100" cy="120" rx="18" ry="58"/>
+          <ellipse cx="100" cy="120" rx="18" ry="58" transform="rotate(30 100 120)"/>
+          <ellipse cx="100" cy="120" rx="18" ry="58" transform="rotate(60 100 120)"/>
+        </g>
+      </svg>
     </div>
   );
 }
