@@ -36,7 +36,7 @@ export function RiskControlsSlide() {
             opacity: 0.20,
           }}
         />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(5,10,12,0.45) 0%, rgba(5,10,12,0.20) 100%)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(5,10,12,0.25) 0%, rgba(5,10,12,0.05) 100%)" }} />
       </div>
 
       <StatusChip status="READY" />
