@@ -53,15 +53,23 @@ export function EditableSvgNode({
   const resolvedOpacity = hasOpacityOverride ? override.opacity! / 100 : undefined;
   const resolvedWidth = override.width ?? width;
   const resolvedHeight = override.height ?? height;
+  const resolvedRx = override.borderRadius ?? rx;
+  const tx = override.translateX ?? 0;
+  const ty = override.translateY ?? 0;
+  const hasTranslate = tx !== 0 || ty !== 0;
 
   return (
     <>
       {/* Background rect — has its own opacity so text stays independent */}
-      <g ref={gRef} opacity={resolvedOpacity}>
+      <g
+        ref={gRef}
+        opacity={resolvedOpacity}
+        transform={hasTranslate ? `translate(${tx},${ty})` : undefined}
+      >
         <rect
           x={x} y={y}
           width={resolvedWidth} height={resolvedHeight}
-          rx={rx}
+          rx={resolvedRx}
           fill={resolvedFill}
           stroke={stroke}
           strokeWidth={strokeWidth}
@@ -72,7 +80,7 @@ export function EditableSvgNode({
             <rect
               x={x} y={y}
               width={resolvedWidth} height={resolvedHeight}
-              rx={rx}
+              rx={resolvedRx}
               fill="none"
               stroke={isActive ? "#028faa" : "rgba(2,143,170,0.45)"}
               strokeWidth={isActive ? 2 : 1}
@@ -91,7 +99,10 @@ export function EditableSvgNode({
       </g>
 
       {/* Text label — separate from the rect so opacity/color are independent */}
-      <foreignObject x={x + 4} y={y + 4} width={resolvedWidth - 8} height={resolvedHeight - 8}>
+      <foreignObject
+        x={x + 4 + tx} y={y + 4 + ty}
+        width={resolvedWidth - 8} height={resolvedHeight - 8}
+      >
         <div
           style={{
             width: "100%",

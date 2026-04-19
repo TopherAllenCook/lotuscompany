@@ -7,6 +7,7 @@ import { StatusChip } from "@/components/StatusChip";
 import { LIHTCTimeline } from "@/components/diagrams/LIHTCTimeline";
 import { EditableEl } from "@/components/EditableEl";
 import { EditableSvgNode } from "@/components/diagrams/EditableSvgNode";
+import { EditableBgImage } from "@/components/EditableBgImage";
 
 export default function LIHTCSlide() {
   return (
@@ -21,10 +22,11 @@ export default function LIHTCSlide() {
     >
       {/* Background photo */}
       <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
-        <img
+        <EditableBgImage
+          id="lihtc:bg-photo"
+          label="background photo"
           src="/steelton-village/Steelton I_Unit Rendering_2026.03.10.jpg"
-          alt=""
-          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 50%", opacity: 0.55 }}
+          style={{ width: "100%", height: "100%", opacity: 0.55 }}
         />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(5,10,12,0.25) 0%, rgba(5,10,12,0.10) 50%, rgba(5,10,12,0.0) 100%)" }} />
       </div>

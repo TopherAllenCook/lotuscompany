@@ -5,6 +5,7 @@ import { EditableText } from "@/components/EditableText";
 import { SlideFooter } from "@/components/SlideFooter";
 import { StatusChip } from "@/components/StatusChip";
 import { CapitalRecyclingLoop } from "@/components/diagrams/CapitalRecyclingLoop";
+import { EditableBgImage } from "@/components/EditableBgImage";
 
 export function ClosingSlide() {
   return (
@@ -29,9 +30,10 @@ export function ClosingSlide() {
           pointerEvents: "none",
         }}
       >
-        <img
+        <EditableBgImage
+          id="closing:bg-photo"
+          label="background photo"
           src="/steelton-village/Steelton I_4-corners_2026.03.26.jpg"
-          alt=""
           style={{
             width: "100%",
             height: "100%",

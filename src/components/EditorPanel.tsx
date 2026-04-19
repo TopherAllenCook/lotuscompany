@@ -25,13 +25,28 @@ const SHAPE_SLIDERS = [
 ] as const;
 
 const CARD_SLIDERS = [
-  { key: "opacity", label: "opacity", min: 0, max: 100, step: 1, suffix: "%" },
+  { key: "translateX",   label: "move x",       min: -800, max: 800,  step: 1,   suffix: "px" },
+  { key: "translateY",   label: "move y",       min: -800, max: 800,  step: 1,   suffix: "px" },
+  { key: "width",        label: "width",        min: 0,    max: 2000, step: 1,   suffix: "px" },
+  { key: "height",       label: "height",       min: 0,    max: 1200, step: 1,   suffix: "px" },
+  { key: "opacity",      label: "opacity",      min: 0,    max: 100,  step: 1,   suffix: "%" },
+  { key: "borderRadius", label: "corner radius", min: 0,   max: 80,   step: 1,   suffix: "px" },
+  { key: "blurAmount",   label: "blur",         min: 0,    max: 40,   step: 0.5, suffix: "px" },
 ] as const;
 
 const SVG_NODE_SLIDERS = [
-  { key: "width",   label: "width",   min: 20,  max: 400, step: 1,   suffix: "px" },
-  { key: "height",  label: "height",  min: 10,  max: 300, step: 1,   suffix: "px" },
-  { key: "opacity", label: "opacity", min: 0,   max: 100, step: 1,   suffix: "%" },
+  { key: "translateX",   label: "move x",        min: -800, max: 800, step: 1,   suffix: "px" },
+  { key: "translateY",   label: "move y",        min: -800, max: 800, step: 1,   suffix: "px" },
+  { key: "width",        label: "width",         min: 20,   max: 400, step: 1,   suffix: "px" },
+  { key: "height",       label: "height",        min: 10,   max: 300, step: 1,   suffix: "px" },
+  { key: "opacity",      label: "opacity",       min: 0,    max: 100, step: 1,   suffix: "%" },
+  { key: "borderRadius", label: "corner radius", min: 0,    max: 40,  step: 1,   suffix: "px" },
+] as const;
+
+const BG_IMAGE_SLIDERS = [
+  { key: "opacity",         label: "opacity",   min: 0,  max: 100, step: 1, suffix: "%" },
+  { key: "objectPositionX", label: "position x", min: 0, max: 100, step: 1, suffix: "%" },
+  { key: "objectPositionY", label: "position y", min: 0, max: 100, step: 1, suffix: "%" },
 ] as const;
 
 const WEIGHTS = [300, 400, 500, 600, 700] as const;
@@ -89,6 +104,7 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
   const isTextType = activeType === "text";
   const isCardType = activeType === "card";
   const isSvgNodeType = activeType === "svgnode";
+  const isBgImageType = activeType === "bgimage";
   const isActiveDynamic = activeId != null && dynamicElements[activeId] != null;
 
   const [vals, setVals] = useState<Record<string, number>>({
@@ -109,8 +125,32 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
     const override = overrides[activeId] ?? {};
     const type = registeredList.find(e => e.id === activeId)?.type ?? "text";
 
+    if (type === "bgimage") {
+      setVals({
+        opacity: override.opacity ?? 100,
+        objectPositionX: override.objectPositionX ?? 50,
+        objectPositionY: override.objectPositionY ?? 50,
+      });
+      return;
+    }
+
     if (type === "card") {
-      setVals({ opacity: override.opacity ?? 100 });
+      const cardEl = getEl(activeId);
+      let w = override.width ?? 0;
+      let h = override.height ?? 0;
+      if ((!w || !h) && cardEl) {
+        const rect = cardEl.getBoundingClientRect();
+        w = w || Math.round(rect.width);
+        h = h || Math.round(rect.height);
+      }
+      setVals({
+        translateX: override.translateX ?? 0,
+        translateY: override.translateY ?? 0,
+        width: w, height: h,
+        opacity: override.opacity ?? 100,
+        borderRadius: override.borderRadius ?? 0,
+        blurAmount: override.blurAmount ?? 0,
+      });
       return;
     }
 
@@ -121,7 +161,13 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
       if ((!w || !h) && svgEl?.getBBox) {
         try { const b = svgEl.getBBox(); w = w || Math.round(b.width); h = h || Math.round(b.height); } catch {}
       }
-      setVals({ width: w, height: h, opacity: override.opacity ?? 100 });
+      setVals({
+        translateX: override.translateX ?? 0,
+        translateY: override.translateY ?? 0,
+        width: w, height: h,
+        opacity: override.opacity ?? 100,
+        borderRadius: override.borderRadius ?? 0,
+      });
       setBgHex(override.background ?? "#4dbad6");
       return;
     }
@@ -216,7 +262,7 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
   };
 
   const activeOverride = activeId ? overrides[activeId] ?? {} : {};
-  const sliders = isCardType ? CARD_SLIDERS : isSvgNodeType ? SVG_NODE_SLIDERS : isTextType ? TEXT_SLIDERS : SHAPE_SLIDERS;
+  const sliders = isBgImageType ? BG_IMAGE_SLIDERS : isCardType ? CARD_SLIDERS : isSvgNodeType ? SVG_NODE_SLIDERS : isTextType ? TEXT_SLIDERS : SHAPE_SLIDERS;
 
   const typeLabel = (t: string) => {
     if (t === "bar") return "bar";
@@ -226,6 +272,7 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
     if (t === "shape") return "shape";
     if (t === "card") return "card";
     if (t === "svgnode") return "node";
+    if (t === "bgimage") return "bg image";
     return "text";
   };
 
@@ -504,7 +551,7 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
                   )}
 
                   {/* Shape-only: background color */}
-                  {!isTextType && (
+                  {!isTextType && !isBgImageType && (
                     <div>
                       <label style={{ display: "block", marginBottom: 6, fontSize: 10, color: "rgba(255,255,255,0.4)", letterSpacing: "0.1em", textTransform: "lowercase" }}>
                         background

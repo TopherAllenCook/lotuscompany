@@ -7,6 +7,7 @@ import { SlideFooter } from "@/components/SlideFooter";
 import { StatusChip } from "@/components/StatusChip";
 import { LotusTrustStack } from "@/components/diagrams/LotusTrustStack";
 import { EditableEl } from "@/components/EditableEl";
+import { EditableBgImage } from "@/components/EditableBgImage";
 
 const bulletVariants = {
   hidden: { opacity: 0, y: 8 },
@@ -39,10 +40,11 @@ export function LotusWhyLotusSlide() {
     >
       {/* Background photo */}
       <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
-        <img
+        <EditableBgImage
+          id="why-lotus:bg-photo"
+          label="background photo"
           src="/steelton-village/Steelton I_Clubhouse_2026.03.10.jpg"
-          alt=""
-          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 30%", opacity: 0.55 }}
+          style={{ width: "100%", height: "100%", opacity: 0.55 }}
         />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(5,10,12,0.25) 0%, rgba(5,10,12,0.10) 50%, rgba(5,10,12,0.0) 100%)" }} />
       </div>

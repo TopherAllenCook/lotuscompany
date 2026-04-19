@@ -6,6 +6,7 @@ import { SlideFooter } from "@/components/SlideFooter";
 import { StatusChip } from "@/components/StatusChip";
 import { DualDirectiveFramework } from "@/components/diagrams/DualDirectiveFramework";
 import { EditableEl } from "@/components/EditableEl";
+import { EditableBgImage } from "@/components/EditableBgImage";
 
 export default function DualDirectivesSlide() {
   return (
@@ -20,10 +21,11 @@ export default function DualDirectivesSlide() {
     >
       {/* Background photo */}
       <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
-        <img
+        <EditableBgImage
+          id="dual-directives:bg-photo"
+          label="background photo"
           src="/nova/Commercial 2025-07-07 Lotus-Nova-3.jpg"
-          alt=""
-          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", opacity: 0.55 }}
+          style={{ width: "100%", height: "100%", opacity: 0.55 }}
         />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(5,10,12,0.25) 0%, rgba(5,10,12,0.10) 50%, rgba(5,10,12,0.0) 100%)" }} />
       </div>

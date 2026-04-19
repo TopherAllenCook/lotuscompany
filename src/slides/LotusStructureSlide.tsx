@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { font, theme } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
 import { EditableEl } from "@/components/EditableEl";
+import { EditableBgImage } from "@/components/EditableBgImage";
 import { SlideFooter } from "@/components/SlideFooter";
 import { StatusChip } from "@/components/StatusChip";
 
@@ -49,10 +50,11 @@ export function LotusStructureSlide() {
     >
       {/* Background photo */}
       <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
-        <img
+        <EditableBgImage
+          id="lotus-structure:bg-photo"
+          label="background photo"
           src="/steelton-village/Steelton I_4-corners_2026.03.26.jpg"
-          alt=""
-          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", opacity: 0.55 }}
+          style={{ width: "100%", height: "100%", opacity: 0.55 }}
         />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(5,10,12,0.25) 0%, rgba(5,10,12,0.10) 50%, rgba(5,10,12,0.0) 100%)" }} />
       </div>

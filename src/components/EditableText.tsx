@@ -11,7 +11,7 @@ import {
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
-export type ElementType = "text" | "bar" | "shape" | "dot" | "image" | "gradient" | "card" | "svgnode";
+export type ElementType = "text" | "bar" | "shape" | "dot" | "image" | "gradient" | "card" | "svgnode" | "bgimage";
 
 // ─── Context ─────────────────────────────────────────────────────────────────
 

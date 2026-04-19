@@ -5,6 +5,7 @@ import { EditableText } from "@/components/EditableText";
 import { SlideFooter } from "@/components/SlideFooter";
 import { StatusChip, DataTag } from "@/components/StatusChip";
 import { EditableEl } from "@/components/EditableEl";
+import { EditableBgImage } from "@/components/EditableBgImage";
 
 export function EconomicsSlide() {
   return (
@@ -29,16 +30,11 @@ export function EconomicsSlide() {
           pointerEvents: "none",
         }}
       >
-        <img
+        <EditableBgImage
+          id="economics:bg-photo"
+          label="background photo"
           src="/nova/Commercial 2025-07-07 Lotus-Nova-3.jpg"
-          alt=""
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            objectPosition: "center",
-            opacity: 0.50,
-          }}
+          style={{ width: "100%", height: "100%", opacity: 0.50 }}
         />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(5,10,12,0.25) 0%, rgba(5,10,12,0.10) 50%, rgba(5,10,12,0.0) 100%)" }} />
       </div>

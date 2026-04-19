@@ -25,10 +25,15 @@ export function EditableEl({ id, label, type = "shape", style, className, childr
   }, [id, resolvedLabel, type, registerEl]);
 
   const ovr: CSSProperties = {};
-  if (override.width != null)      ovr.width      = `${override.width}px`;
-  if (override.height != null)     ovr.height     = `${override.height}px`;
-  if (override.background != null) ovr.background = override.background;
-  if (override.opacity != null)    ovr.opacity    = override.opacity / 100;
+  if (override.width != null)        ovr.width          = `${override.width}px`;
+  if (override.height != null)       ovr.height         = `${override.height}px`;
+  if (override.background != null)   ovr.background     = override.background;
+  if (override.opacity != null)      ovr.opacity        = override.opacity / 100;
+  if (override.borderRadius != null) ovr.borderRadius   = `${override.borderRadius}px`;
+  if (override.blurAmount != null) {
+    ovr.backdropFilter = `blur(${override.blurAmount}px)`;
+    (ovr as Record<string, unknown>).WebkitBackdropFilter = `blur(${override.blurAmount}px)`;
+  }
 
   const baseTransform = (style?.transform as string) ?? "";
   const tx = override.translateX ?? 0;

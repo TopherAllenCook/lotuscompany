@@ -7,6 +7,7 @@ import { SlideFooter } from "@/components/SlideFooter";
 import { StatusChip } from "@/components/StatusChip";
 import { CapitalRecyclingLoop } from "@/components/diagrams/CapitalRecyclingLoop";
 import { EditableEl } from "@/components/EditableEl";
+import { EditableBgImage } from "@/components/EditableBgImage";
 
 const bulletVariants = {
   hidden: { opacity: 0, y: 8 },
@@ -39,10 +40,11 @@ export function LotusMandateSlide() {
     >
       {/* Background photo */}
       <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
-        <img
+        <EditableBgImage
+          id="mandate:bg-photo"
+          label="background photo"
           src="/republic/aerials/DJI_20250821112542_0507_D_0000.jpg"
-          alt=""
-          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 40%", opacity: 0.55 }}
+          style={{ width: "100%", height: "100%", opacity: 0.55 }}
         />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(5,10,12,0.25) 0%, rgba(5,10,12,0.10) 50%, rgba(5,10,12,0.0) 100%)" }} />
       </div>

@@ -16,6 +16,10 @@ export interface ElementOverride {
   background?: string;
   opacity?: number;
   rotate?: number;  // degrees
+  borderRadius?: number;  // px
+  blurAmount?: number;    // px — backdropFilter blur
+  objectPositionX?: number; // 0–100 %
+  objectPositionY?: number; // 0–100 %
 }
 
 export type TextOverride = ElementOverride;
