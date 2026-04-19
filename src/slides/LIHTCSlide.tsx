@@ -132,14 +132,14 @@ export default function LIHTCSlide() {
             <EditableText
               id="lihtc:infographic-title"
               as="div"
-              style={{ fontSize: "20px", color: "#fff", fontFamily: font, fontWeight: 600, textTransform: "lowercase", letterSpacing: "-0.01em" }}
+              style={{ fontSize: "14px", color: "#fff", fontFamily: font, fontWeight: 600, textTransform: "lowercase", letterSpacing: "-0.01em" }}
             >
               what is lihtc?
             </EditableText>
             <EditableText
               id="lihtc:infographic-sub"
               as="div"
-              style={{ fontSize: "20px", color: "rgba(255,255,255,0.45)", fontFamily: font, fontStyle: "italic", fontWeight: 300, textTransform: "lowercase", marginTop: "3px" }}
+              style={{ fontSize: "12px", color: "rgba(255,255,255,0.45)", fontFamily: font, fontStyle: "italic", fontWeight: 300, textTransform: "lowercase", marginTop: "3px" }}
             >
               how affordable housing is financed in the u.s.
             </EditableText>
@@ -161,7 +161,7 @@ export default function LIHTCSlide() {
                   key={i}
                   id={`lihtc:flow-label-${i}`}
                   as="div"
-                  style={{ flex: 1, textAlign: "center", fontSize: "20px", color: theme.turquoise, fontFamily: font, fontWeight: 400, textTransform: "lowercase", letterSpacing: "0.04em", lineHeight: 1.3, paddingRight: i === 0 ? "8px" : 0 }}
+                  style={{ flex: 1, textAlign: "center", fontSize: "10px", color: theme.turquoise, fontFamily: font, fontWeight: 400, textTransform: "lowercase", letterSpacing: "0.04em", lineHeight: 1.3, paddingRight: i === 0 ? "8px" : 0 }}
                 >
                   {label}
                 </EditableText>
@@ -185,14 +185,14 @@ export default function LIHTCSlide() {
                     <EditableText
                       id={`lihtc:flow-step-${i}-title`}
                       as="div"
-                      style={{ fontSize: "20px", color: "#fff", fontFamily: font, fontWeight: 600, textTransform: "lowercase", lineHeight: 1.3, marginBottom: "3px" }}
+                      style={{ fontSize: "13px", color: "#fff", fontFamily: font, fontWeight: 600, textTransform: "lowercase", lineHeight: 1.3, marginBottom: "3px" }}
                     >
                       {step.title}
                     </EditableText>
                     <EditableText
                       id={`lihtc:flow-step-${i}-sub`}
                       as="div"
-                      style={{ fontSize: "20px", color: "rgba(255,255,255,0.45)", fontFamily: font, fontWeight: 300, textTransform: "lowercase" }}
+                      style={{ fontSize: "11px", color: "rgba(255,255,255,0.45)", fontFamily: font, fontWeight: 300, textTransform: "lowercase" }}
                     >
                       {step.sub}
                     </EditableText>
@@ -245,7 +245,7 @@ export default function LIHTCSlide() {
                   <EditableText
                     id={`lihtc:dev-bullet-${i}`}
                     as="div"
-                    style={{ fontSize: "20px", color: "rgba(255,255,255,0.75)", fontFamily: font, fontWeight: 300, textTransform: "lowercase", lineHeight: 1.4 }}
+                    style={{ fontSize: "12px", color: "rgba(255,255,255,0.75)", fontFamily: font, fontWeight: 300, textTransform: "lowercase", lineHeight: 1.4 }}
                   >
                     {b}
                   </EditableText>

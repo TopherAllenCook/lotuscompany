@@ -66,7 +66,7 @@ export default function CollectiveModelSlide() {
             style={{
               fontSize: "20px",
               color: theme.turquoise,
-              letterSpacing: "0.28em",
+              letterSpacing: "0.12em",
               textTransform: "lowercase",
               fontFamily: font,
               fontWeight: 300,

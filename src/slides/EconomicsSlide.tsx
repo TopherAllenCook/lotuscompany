@@ -189,14 +189,14 @@ export function EconomicsSlide() {
 
         {/* Right Waterfall Chart */}
         <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <svg width={380} height={280} viewBox="0 0 380 280" style={{ overflow: "hidden" }}>
+          <svg width={460} height={280} viewBox="0 0 460 280" style={{ overflow: "visible" }}>
             {/* Title */}
             <text
-              x={190}
+              x={230}
               y={20}
               textAnchor="middle"
               style={{
-                fontSize: "20px",
+                fontSize: "13px",
                 fill: "rgba(206,232,238,0.4)",
                 fontFamily: font,
                 letterSpacing: "0.16em",
@@ -207,25 +207,24 @@ export function EconomicsSlide() {
             </text>
 
             {/* Bar 1: Capital Turn */}
-            <rect x={50} y={50} width={240} height={40} fill="rgba(77,186,214,0.25)" />
+            <rect x={185} y={50} width={200} height={40} fill="rgba(77,186,214,0.25)" />
             <text
-              x={50}
+              x={178}
               y={75}
+              textAnchor="end"
               style={{
-                fontSize: "20px",
+                fontSize: "13px",
                 fill: theme.lightBlue,
                 fontFamily: font,
-                textAnchor: "end",
-                marginRight: "8px",
               }}
             >
               capital turn
             </text>
             <text
-              x={300}
+              x={392}
               y={75}
               style={{
-                fontSize: "20px",
+                fontSize: "13px",
                 fill: theme.turquoise,
                 fontFamily: font,
                 fontWeight: 300,
@@ -235,24 +234,24 @@ export function EconomicsSlide() {
             </text>
 
             {/* Bar 2: Fee Participation */}
-            <rect x={50} y={110} width={180} height={40} fill="rgba(77,186,214,0.35)" />
+            <rect x={185} y={110} width={150} height={40} fill="rgba(77,186,214,0.35)" />
             <text
-              x={50}
+              x={178}
               y={135}
+              textAnchor="end"
               style={{
-                fontSize: "20px",
+                fontSize: "13px",
                 fill: theme.lightBlue,
                 fontFamily: font,
-                textAnchor: "end",
               }}
             >
               fee participation
             </text>
             <text
-              x={245}
+              x={342}
               y={135}
               style={{
-                fontSize: "20px",
+                fontSize: "13px",
                 fill: theme.turquoise,
                 fontFamily: font,
                 fontWeight: 300,
@@ -262,24 +261,24 @@ export function EconomicsSlide() {
             </text>
 
             {/* Bar 3: Operations */}
-            <rect x={50} y={170} width={120} height={40} fill="rgba(77,186,214,0.45)" />
+            <rect x={185} y={170} width={100} height={40} fill="rgba(77,186,214,0.45)" />
             <text
-              x={50}
+              x={178}
               y={195}
+              textAnchor="end"
               style={{
-                fontSize: "20px",
+                fontSize: "13px",
                 fill: theme.lightBlue,
                 fontFamily: font,
-                textAnchor: "end",
               }}
             >
               operations
             </text>
             <text
-              x={185}
+              x={292}
               y={195}
               style={{
-                fontSize: "20px",
+                fontSize: "13px",
                 fill: theme.turquoise,
                 fontFamily: font,
                 fontWeight: 300,
@@ -289,24 +288,24 @@ export function EconomicsSlide() {
             </text>
 
             {/* Bar 4: Residual */}
-            <rect x={50} y={230} width={60} height={40} fill="rgba(77,186,214,0.6)" />
+            <rect x={185} y={230} width={50} height={40} fill="rgba(77,186,214,0.6)" />
             <text
-              x={50}
+              x={178}
               y={255}
+              textAnchor="end"
               style={{
-                fontSize: "20px",
+                fontSize: "13px",
                 fill: theme.lightBlue,
                 fontFamily: font,
-                textAnchor: "end",
               }}
             >
               residual
             </text>
             <text
-              x={125}
+              x={242}
               y={255}
               style={{
-                fontSize: "20px",
+                fontSize: "13px",
                 fill: theme.turquoise,
                 fontFamily: font,
                 fontWeight: 300,

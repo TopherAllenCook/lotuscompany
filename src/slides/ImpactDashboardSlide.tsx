@@ -116,10 +116,10 @@ export function ImpactDashboardSlide() {
                   position: "absolute",
                   bottom: "10px",
                   left: "12px",
-                  fontSize: "20px",
+                  fontSize: "11px",
                   color: theme.turquoise,
                   fontFamily: font,
-                  letterSpacing: "0.2em",
+                  letterSpacing: "0.12em",
                   textTransform: "uppercase",
                   fontWeight: 400,
                   lineHeight: 1.4,
@@ -209,10 +209,10 @@ export function ImpactDashboardSlide() {
                 {/* Pillar label cell */}
                 <div
                   style={{
-                    flex: "0 0 118px",
+                    flex: "0 0 130px",
                     display: "flex",
                     alignItems: "center",
-                    padding: "0 12px",
+                    padding: "0 10px",
                     background: "rgba(77,186,214,0.04)",
                     border: "1px solid rgba(77,186,214,0.10)",
                     borderRadius: "3px",
@@ -222,10 +222,10 @@ export function ImpactDashboardSlide() {
                     id={`impact-dashboard:pillar-${pillar.key}`}
                     as="div"
                     style={{
-                      fontSize: "20px",
+                      fontSize: "11px",
                       color: theme.turquoise,
                       fontFamily: font,
-                      letterSpacing: "0.2em",
+                      letterSpacing: "0.12em",
                       textTransform: "uppercase",
                       fontWeight: 400,
                       lineHeight: 1.5,
@@ -254,10 +254,10 @@ export function ImpactDashboardSlide() {
                       id={`impact-dashboard:${tile.id}-label`}
                       as="div"
                       style={{
-                        fontSize: "20px",
+                        fontSize: "11px",
                         color: theme.turquoise,
                         fontFamily: font,
-                        letterSpacing: "0.16em",
+                        letterSpacing: "0.10em",
                         textTransform: "uppercase",
                         marginBottom: "4px",
                       }}

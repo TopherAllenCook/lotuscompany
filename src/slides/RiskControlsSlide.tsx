@@ -105,7 +105,7 @@ export function RiskControlsSlide() {
                   fontFamily: font,
                   fontWeight: 400,
                   textAlign: "left",
-                  padding: "12px 20px",
+                  padding: "14px 28px",
                   width: "35%",
                   borderBottom: "1px solid rgba(77,186,214,0.1)",
                 }}
@@ -164,7 +164,7 @@ export function RiskControlsSlide() {
                   color: "rgba(255,255,255,0.92)",
                   fontFamily: font,
                   fontWeight: 400,
-                  padding: "12px 20px",
+                  padding: "22px 28px",
                   width: "35%",
                 }}
               >
@@ -187,7 +187,7 @@ export function RiskControlsSlide() {
                   color: theme.lightBlue,
                   fontFamily: font,
                   fontWeight: 300,
-                  padding: "12px 20px",
+                  padding: "22px 28px",
                 }}
               >
                 <EditableText
@@ -236,7 +236,7 @@ export function RiskControlsSlide() {
                   color: theme.lightBlue,
                   fontFamily: font,
                   fontWeight: 300,
-                  padding: "12px 20px",
+                  padding: "22px 28px",
                 }}
               >
                 <EditableText
@@ -285,7 +285,7 @@ export function RiskControlsSlide() {
                   color: theme.lightBlue,
                   fontFamily: font,
                   fontWeight: 300,
-                  padding: "12px 20px",
+                  padding: "22px 28px",
                 }}
               >
                 <EditableText
@@ -334,7 +334,7 @@ export function RiskControlsSlide() {
                   color: theme.lightBlue,
                   fontFamily: font,
                   fontWeight: 300,
-                  padding: "12px 20px",
+                  padding: "22px 28px",
                 }}
               >
                 <EditableText
@@ -383,7 +383,7 @@ export function RiskControlsSlide() {
                   color: theme.lightBlue,
                   fontFamily: font,
                   fontWeight: 300,
-                  padding: "12px 20px",
+                  padding: "22px 28px",
                 }}
               >
                 <EditableText
