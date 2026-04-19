@@ -12,7 +12,7 @@ const PILLARS = [
     img: "/steelton-village/Steelton I_Unit Rendering_2026.03.10.jpg",
     animClass: "anim-pillar-1",
     tiles: [
-      { id: "tile-shelter-1", label: "total units",        value: "—",   def: "units created or preserved"         },
+      { id: "tile-shelter-1", label: "total units",        value: "788", def: "units created or preserved"         },
       { id: "tile-shelter-2", label: "avg ami depth",      value: "—%",  def: "weighted average ami served"        },
       { id: "tile-shelter-3", label: "est. rent savings",  value: "$—",  def: "annual savings vs. market rate"     },
     ],
@@ -23,7 +23,7 @@ const PILLARS = [
     img: "/steelton-village/Steelton I_Clubhouse_2026.03.10.jpg",
     animClass: "anim-pillar-2",
     tiles: [
-      { id: "tile-knowledge-1", label: "residents served",      value: "—",  def: "estimated residents housed"           },
+      { id: "tile-knowledge-1", label: "residents served",      value: "1,977", def: "estimated residents housed"           },
       { id: "tile-knowledge-2", label: "service utilization",   value: "—%", def: "residents using on-site services"     },
       { id: "tile-knowledge-3", label: "program reach",         value: "—",  def: "education and job program enrollments" },
     ],
@@ -150,6 +150,7 @@ export function ImpactDashboardSlide() {
             gridTemplateColumns: "repeat(4, 1fr)",
             gap: "0",
             flex: 1,
+            minHeight: 0,
             overflow: "hidden",
           }}
         >
@@ -296,6 +297,76 @@ export function ImpactDashboardSlide() {
                   </div>
                 ))}
               </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom stat block */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: "12px",
+            marginTop: "14px",
+            flexShrink: 0,
+          }}
+        >
+          {[
+            { value: "$3,000", label: "per resident impacted", sub: "first year commitment" },
+            { value: "$300",   label: "per resident impacted", sub: "10-years of capital recommitment" },
+            { value: "50,000", label: "lives impacted",        sub: "with 10-years of capital recommitment" },
+          ].map((stat, i) => (
+            <div
+              key={i}
+              style={{
+                background: "rgba(77,186,214,0.05)",
+                border: "1px solid rgba(77,186,214,0.15)",
+                borderRadius: "3px",
+                padding: "12px 16px",
+                display: "flex",
+                flexDirection: "column",
+                gap: "3px",
+              }}
+            >
+              <EditableText
+                id={`impact-dashboard:bottom-stat-${i}-value`}
+                as="div"
+                style={{
+                  fontSize: "clamp(20px, 2vw, 28px)",
+                  color: "#fff",
+                  fontFamily: font,
+                  fontWeight: 300,
+                  lineHeight: 1,
+                }}
+              >
+                {stat.value}
+              </EditableText>
+              <EditableText
+                id={`impact-dashboard:bottom-stat-${i}-label`}
+                as="div"
+                style={{
+                  fontSize: "8px",
+                  color: theme.turquoise,
+                  fontFamily: font,
+                  letterSpacing: "0.18em",
+                  textTransform: "uppercase",
+                }}
+              >
+                {stat.label}
+              </EditableText>
+              <EditableText
+                id={`impact-dashboard:bottom-stat-${i}-sub`}
+                as="div"
+                style={{
+                  fontSize: "9px",
+                  color: "rgba(206,232,238,0.45)",
+                  fontFamily: font,
+                  lineHeight: 1.4,
+                  textTransform: "lowercase",
+                }}
+              >
+                {stat.sub}
+              </EditableText>
             </div>
           ))}
         </div>
