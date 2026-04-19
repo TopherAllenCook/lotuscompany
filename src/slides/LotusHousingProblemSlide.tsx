@@ -32,6 +32,7 @@ export function LotusHousingProblemSlide() {
     "only 35 such homes exist for every 100 extremely low-income renter households.",
     "hud reports 8.46 million worst-case housing needs.",
     "renter cost burdens remain at record highs.",
+    "median rents have outpaced wage growth in 44 of the 50 largest u.s. metros from 2019 to 2023.",
   ];
 
   const dataBoxes = [
@@ -116,7 +117,7 @@ export function LotusHousingProblemSlide() {
             textTransform: "lowercase",
           }}
         >
-          the shortage is structural. the numbers are clear.
+          the housing problem is large, persistent, and measurable.
         </EditableText>
 
         {/* Bullets */}

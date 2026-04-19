@@ -104,7 +104,7 @@ export function ImpactDashboardSlide() {
               textTransform: "lowercase",
             }}
           >
-            impact is measured. impact is managed.
+            impact is reported like an operating business, not a slogan.
           </EditableText>
         </div>
 
@@ -112,9 +112,36 @@ export function ImpactDashboardSlide() {
           style={{
             height: "1px",
             background: "rgba(77,186,214,0.18)",
-            marginBottom: "24px",
+            marginBottom: "14px",
           }}
         />
+
+        {/* 5 metric categories */}
+        <div style={{ display: "flex", gap: "32px", marginBottom: "16px", flexWrap: "wrap" }}>
+          {[
+            "housing creation and preservation.",
+            "ami mix and affordability depth.",
+            "residents served and estimated rent savings.",
+            "resident service utilization and outcomes.",
+            "design, quality, and operating stability metrics.",
+          ].map((bullet, i) => (
+            <EditableText
+              key={i}
+              id={`impact-dashboard:category-${i}`}
+              as="div"
+              style={{
+                fontSize: "11px",
+                color: "rgba(255,255,255,0.65)",
+                fontFamily: font,
+                fontWeight: 300,
+                letterSpacing: "0.04em",
+                textTransform: "lowercase",
+              }}
+            >
+              {bullet}
+            </EditableText>
+          ))}
+        </div>
 
         {/* 4-column botanical pillar grid */}
         <div

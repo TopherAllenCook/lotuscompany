@@ -20,10 +20,10 @@ const bulletVariants = {
 
 export function LotusMandateSlide() {
   const bullets = [
-    "capital is deployed at the point of highest fragility.",
-    "the same capital base funds multiple developments over time.",
-    "partners stay close to the work instead of becoming passive investors.",
-    "dignified housing at scale, held to a luxury standard.",
+    "capital is deployed where projects are most fragile and most catalytic.",
+    "the same capital base is recycled into multiple developments.",
+    "partners stay close to the work rather than becoming passive lps.",
+    "the goal is durable housing creation with disciplined stewardship.",
   ];
 
   return (
@@ -101,7 +101,7 @@ export function LotusMandateSlide() {
             textTransform: "lowercase",
           }}
         >
-          we move real homes from concept to construction.
+          a small group can move real housing from concept to construction.
         </EditableText>
 
         {/* Rule */}

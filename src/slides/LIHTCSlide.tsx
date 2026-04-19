@@ -66,7 +66,7 @@ export default function LIHTCSlide() {
               marginBottom: "24px",
             }}
           >
-            lihtc is the backbone.
+            lihtc is the operating backbone, not just a backdrop.
           </EditableText>
 
           <div
@@ -120,7 +120,7 @@ export default function LIHTCSlide() {
                 textTransform: "lowercase",
               }}
             >
-              compliance runs for 15 years, with longer affordability often favored in allocations.
+              compliance runs for 15 years, and longer affordability is often favored in allocations.
             </EditableText>
 
             <EditableText
@@ -135,7 +135,7 @@ export default function LIHTCSlide() {
                 textTransform: "lowercase",
               }}
             >
-              state housing agencies allocate, test feasibility, and monitor compliance.
+              state housing agencies allocate the credits, test feasibility, and monitor compliance.
             </EditableText>
           </div>
         </EditableEl>

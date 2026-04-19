@@ -89,7 +89,7 @@ export default function MembershipSlide() {
               marginBottom: "24px",
             }}
           >
-            small by design. built to last.
+            impact partners collectively share in the gp alongside lotus.
           </EditableText>
 
           <div
@@ -113,7 +113,7 @@ export default function MembershipSlide() {
                 textTransform: "lowercase",
               }}
             >
-              target partner count: 10 to 30 households.
+              allocation percentages are fixed at deal approval, capturing membership composition and capital commitments at that point.
             </EditableText>
 
             <EditableText
@@ -128,7 +128,7 @@ export default function MembershipSlide() {
                 textTransform: "lowercase",
               }}
             >
-              annual recommit, redeem, or resize election.
+              future membership changes do not retroactively affect previously approved deal allocations.
             </EditableText>
 
             <EditableText
@@ -143,7 +143,7 @@ export default function MembershipSlide() {
                 textTransform: "lowercase",
               }}
             >
-              each partner sees the same reporting spine and directive memo.
+              each deal stands independently with its own snapshot, ensuring predictable member economics.
             </EditableText>
 
             <EditableText
@@ -158,7 +158,7 @@ export default function MembershipSlide() {
                 textTransform: "lowercase",
               }}
             >
-              prior deals are not restated when the member base changes.
+              this structure delivers institutional transparency, removes allocation disputes, and enables clear participation tracking.
             </EditableText>
           </div>
 
@@ -178,68 +178,73 @@ export default function MembershipSlide() {
           </EditableText>
         </EditableEl>
 
-        {/* Right Diagram - Membership Flow */}
-        <div style={{ flex: "0 0 45%", display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <svg width="320" height="260" viewBox="0 0 320 260">
-            {/* Connecting lines */}
-            {steps.map((_, idx) => {
-              if (idx < steps.length - 1) {
-                const x1 = spacing * (idx + 1) + nodeRadius;
-                const x2 = spacing * (idx + 2) - nodeRadius;
-                return (
-                  <line
-                    key={`line-${idx}`}
-                    x1={x1}
-                    y1={nodeYPos}
-                    x2={x2}
-                    y2={nodeYPos}
-                    stroke="rgba(77, 186, 214, 0.3)"
-                    strokeWidth="1"
-                  />
-                );
-              }
-              return null;
-            })}
-
-            {/* Nodes and labels */}
-            {steps.map((step) => {
-              const xPos = spacing * (step.index + 1);
-              return (
-                <g key={`node-${step.index}`}>
-                  {/* Node circle */}
-                  <circle cx={xPos} cy={nodeYPos} r={nodeRadius} fill="rgba(77, 186, 214, 0.1)" stroke="#4dbad6" strokeWidth="1" />
-
-                  {/* Number text in node */}
-                  <text
-                    x={xPos}
-                    y={nodeYPos}
-                    textAnchor="middle"
-                    dominantBaseline="middle"
-                    fill="#cee8ee"
-                    fontSize="11"
-                    fontFamily={font}
-                    fontWeight="300"
-                  >
-                    {step.index + 1}
-                  </text>
-
-                  {/* Label below node */}
-                  <text
-                    x={xPos}
-                    y={nodeYPos + 40}
-                    textAnchor="middle"
-                    dominantBaseline="text-before-edge"
-                    fill="#cee8ee"
-                    fontSize="10"
-                    fontFamily={font}
-                    fontWeight="300"
-                  >
-                    {step.label}
-                  </text>
-                </g>
-              );
-            })}
-          </svg>
+        {/* Right — Stat callouts */}
+        <div style={{ flex: "0 0 45%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "20px", paddingLeft: "40px" }}>
+          {[
+            { number: "15%+", label: "target irr", sub: "over 15 to 18 year hold period" },
+            { number: "2 to 3x", label: "equity multiple", sub: "on invested capital" },
+            { number: "5 to 19%", label: "gp membership participation", sub: "alongside lotus" },
+          ].map((stat, i) => (
+            <EditableEl
+              key={i}
+              id={`membership:stat-${i}`}
+              label={`stat — ${stat.label}`}
+              type="card"
+              style={{
+                width: "100%",
+                background: "rgba(77,186,214,0.07)",
+                border: "1px solid rgba(77,186,214,0.2)",
+                borderRadius: "12px",
+                padding: "20px 24px",
+                textAlign: "center",
+              }}
+            >
+              <EditableText
+                id={`membership:stat-number-${i}`}
+                as="div"
+                style={{
+                  fontSize: "clamp(28px, 3vw, 42px)",
+                  color: "#fff",
+                  fontWeight: 300,
+                  letterSpacing: "-0.02em",
+                  fontFamily: font,
+                  marginBottom: "6px",
+                  textTransform: "lowercase",
+                }}
+              >
+                {stat.number}
+              </EditableText>
+              <EditableText
+                id={`membership:stat-label-${i}`}
+                as="div"
+                style={{
+                  fontSize: "11px",
+                  color: theme.turquoise,
+                  fontWeight: 400,
+                  letterSpacing: "0.1em",
+                  fontFamily: font,
+                  marginBottom: "4px",
+                  textTransform: "lowercase",
+                }}
+              >
+                {stat.label}
+              </EditableText>
+              <EditableText
+                id={`membership:stat-sub-${i}`}
+                as="div"
+                style={{
+                  fontSize: "10px",
+                  color: "rgba(255,255,255,0.45)",
+                  fontWeight: 300,
+                  letterSpacing: "0.06em",
+                  fontFamily: font,
+                  textTransform: "lowercase",
+                }}
+              >
+                {stat.sub}
+              </EditableText>
+            </EditableEl>
+          ))}
         </div>
       </div>
 

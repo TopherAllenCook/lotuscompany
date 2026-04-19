@@ -80,87 +80,56 @@ export default function CollectiveModelSlide() {
             id="collective-model:headline"
             as="h1"
             style={{
-              fontSize: "clamp(28px, 3vw, 44px)",
+              fontSize: "clamp(24px, 2.5vw, 38px)",
               color: "#fff",
               fontWeight: 300,
               fontFamily: font,
               lineHeight: 1.2,
               letterSpacing: "-0.02em",
               textTransform: "lowercase",
-              marginBottom: "24px",
+              marginBottom: "16px",
             }}
           >
-            partners stay close to the work.
+            partners participate in decisions and stay connected to outcomes.
           </EditableText>
 
           <div
             style={{
               height: "1px",
               background: "rgba(77, 186, 214, 0.18)",
-              marginBottom: "24px",
+              marginBottom: "16px",
             }}
           />
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "16px", marginBottom: "32px" }}>
-            <EditableText
-              id="collective-model:bullet-1"
-              as="div"
-              style={{
-                fontSize: "14px",
-                color: "rgba(255,255,255,0.88)",
-                fontWeight: 400,
-                fontFamily: font,
-                lineHeight: 1.7,
-                textTransform: "lowercase",
-              }}
-            >
-              curated partner base rather than broad fundraising.
-            </EditableText>
-
-            <EditableText
-              id="collective-model:bullet-2"
-              as="div"
-              style={{
-                fontSize: "14px",
-                color: "rgba(255,255,255,0.88)",
-                fontWeight: 400,
-                fontFamily: font,
-                lineHeight: 1.7,
-                textTransform: "lowercase",
-              }}
-            >
-              deal-level consent within clear rules.
-            </EditableText>
-
-            <EditableText
-              id="collective-model:bullet-3"
-              as="div"
-              style={{
-                fontSize: "14px",
-                color: "rgba(255,255,255,0.88)",
-                fontWeight: 400,
-                fontFamily: font,
-                lineHeight: 1.7,
-                textTransform: "lowercase",
-              }}
-            >
-              quarterly reporting and annual in-person review.
-            </EditableText>
-
-            <EditableText
-              id="collective-model:bullet-4"
-              as="div"
-              style={{
-                fontSize: "14px",
-                color: "rgba(255,255,255,0.88)",
-                fontWeight: 400,
-                fontFamily: font,
-                lineHeight: 1.7,
-                textTransform: "lowercase",
-              }}
-            >
-              optional site visits and project milestone participation.
-            </EditableText>
+          <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "20px" }}>
+            {[
+              "curated partner base rather than broad fundraising.",
+              "target impact partner count: 1 to 5.",
+              "deal-level consent within clear rules.",
+              "quarterly reporting and an annual in-person review.",
+              "optional site visits and project milestone participation.",
+              "shared identity rooted in stewardship, not optics.",
+              "culture fit matters as much as capital size.",
+              "annual recommit, redeem, or resize election.",
+              "every partner sees the same reporting spine and directive memo.",
+              "prior deals are not restated when the member base changes.",
+            ].map((bullet, i) => (
+              <EditableText
+                key={i}
+                id={`collective-model:bullet-${i}`}
+                as="div"
+                style={{
+                  fontSize: "13px",
+                  color: "rgba(255,255,255,0.88)",
+                  fontWeight: 400,
+                  fontFamily: font,
+                  lineHeight: 1.6,
+                  textTransform: "lowercase",
+                }}
+              >
+                {bullet}
+              </EditableText>
+            ))}
           </div>
 
           <EditableText
@@ -175,7 +144,7 @@ export default function CollectiveModelSlide() {
               textTransform: "lowercase",
             }}
           >
-            this is not a blind pool.
+            a curated collective should feel selective, structured, and durable.
           </EditableText>
         </EditableEl>
 
