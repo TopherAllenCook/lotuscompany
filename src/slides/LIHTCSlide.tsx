@@ -4,10 +4,29 @@ import { font, theme } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
 import { SlideFooter } from "@/components/SlideFooter";
 import { StatusChip } from "@/components/StatusChip";
-import { LIHTCTimeline } from "@/components/diagrams/LIHTCTimeline";
-import { EditableEl } from "@/components/EditableEl";
-import { EditableSvgNode } from "@/components/diagrams/EditableSvgNode";
-import { EditableBgImage } from "@/components/EditableBgImage";
+
+const STEPS = [
+  {
+    num: "1",
+    title: "federal and state housing agencies",
+    desc: "allocate tax credits",
+  },
+  {
+    num: "2",
+    title: "lihtc allocation",
+    desc: "competitive awards",
+  },
+  {
+    num: "3",
+    title: "institutional investors",
+    desc: "provide equity for credits",
+  },
+  {
+    num: "4",
+    title: "affordable housing development",
+    desc: "rent restricted housing",
+  },
+];
 
 export default function LIHTCSlide() {
   return (
@@ -18,152 +37,250 @@ export default function LIHTCSlide() {
         height: "100%",
         overflow: "hidden",
         background: theme.darkBg,
+        display: "flex",
+        flexDirection: "column",
+        padding: "52px 72px 72px",
       }}
     >
-      {/* Background photo */}
-      <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
-        <EditableBgImage
-          id="lihtc:bg-photo"
-          label="background photo"
-          src="/steelton-village/Steelton I_Unit Rendering_2026.03.10.jpg"
-          style={{ width: "100%", height: "100%", opacity: 0.55 }}
-        />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(5,10,12,0.25) 0%, rgba(5,10,12,0.10) 50%, rgba(5,10,12,0.0) 100%)" }} />
-      </div>
-
       <StatusChip status="READY" />
 
-      <div style={{ position: "relative", display: "flex", alignItems: "center", height: "100%", padding: "56px 64px 72px", gap: 32 }}>
-        {/* Left Content */}
-        <EditableEl id="lihtc:card" label="glass card" type="card" style={{ flex: "0 0 46%", display: "flex", flexDirection: "column", padding: "44px 48px", background: "rgba(5,10,12,0.52)", backdropFilter: "blur(28px) saturate(200%)", WebkitBackdropFilter: "blur(28px) saturate(200%)", borderRadius: "16px", border: "1px solid rgba(255,255,255,0.15)", boxShadow: "0 8px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.14)" }}>
+      {/* Eyebrow */}
+      <EditableText
+        id="lihtc:eyebrow"
+        as="div"
+        style={{
+          fontSize: "10px",
+          color: theme.turquoise,
+          letterSpacing: "0.28em",
+          textTransform: "lowercase",
+          fontFamily: font,
+          fontWeight: 300,
+          marginBottom: "10px",
+        }}
+      >
+        policy
+      </EditableText>
+
+      {/* Headline */}
+      <EditableText
+        id="lihtc:headline"
+        as="h1"
+        style={{
+          fontSize: "clamp(32px, 4vw, 58px)",
+          color: theme.turquoise,
+          fontWeight: 700,
+          fontFamily: font,
+          lineHeight: 1.1,
+          letterSpacing: "-0.02em",
+          textTransform: "lowercase",
+          margin: "0 0 8px",
+        }}
+      >
+        what is lihtc
+      </EditableText>
+
+      {/* Subtitle */}
+      <EditableText
+        id="lihtc:subtitle"
+        as="div"
+        style={{
+          fontSize: "16px",
+          color: "rgba(255,255,255,0.65)",
+          fontFamily: font,
+          fontStyle: "italic",
+          fontWeight: 300,
+          letterSpacing: "0.01em",
+          textTransform: "lowercase",
+          marginBottom: "32px",
+        }}
+      >
+        how affordable housing is financed in the united states
+      </EditableText>
+
+      {/* Divider */}
+      <div style={{ height: "1px", background: "rgba(77,186,214,0.2)", marginBottom: "36px" }} />
+
+      {/* 4-step flow */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(4, 1fr)",
+          gap: "0",
+          flex: 1,
+          alignItems: "start",
+        }}
+      >
+        {STEPS.map((step, i) => (
+          <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 0 }}>
+            {/* Step content */}
+            <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", paddingRight: i < 3 ? "16px" : 0 }}>
+              {/* Numbered circle */}
+              <div
+                style={{
+                  width: "52px",
+                  height: "52px",
+                  borderRadius: "50%",
+                  border: `2px solid ${theme.turquoise}`,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginBottom: "20px",
+                  background: "rgba(77,186,214,0.08)",
+                  flexShrink: 0,
+                }}
+              >
+                <span style={{ fontSize: "22px", color: theme.turquoise, fontFamily: font, fontWeight: 300 }}>
+                  {step.num}
+                </span>
+              </div>
+
+              <EditableText
+                id={`lihtc:step-${i}-title`}
+                as="div"
+                style={{
+                  fontSize: "15px",
+                  color: "#fff",
+                  fontFamily: font,
+                  fontWeight: 600,
+                  textTransform: "lowercase",
+                  lineHeight: 1.35,
+                  marginBottom: "8px",
+                }}
+              >
+                {step.title}
+              </EditableText>
+
+              <EditableText
+                id={`lihtc:step-${i}-desc`}
+                as="div"
+                style={{
+                  fontSize: "12px",
+                  color: "rgba(255,255,255,0.5)",
+                  fontFamily: font,
+                  fontWeight: 300,
+                  textTransform: "lowercase",
+                  lineHeight: 1.5,
+                }}
+              >
+                {step.desc}
+              </EditableText>
+            </div>
+
+            {/* Arrow between steps */}
+            {i < 3 && (
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  paddingTop: "14px",
+                  flexShrink: 0,
+                }}
+              >
+                <svg width="32" height="16" viewBox="0 0 32 16" fill="none">
+                  <line x1="0" y1="8" x2="24" y2="8" stroke={theme.turquoise} strokeWidth="1.5" />
+                  <polygon points="24,4 32,8 24,12" fill={theme.turquoise} />
+                </svg>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      {/* Lotus Company bar */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "18px 28px",
+          background: "rgba(77,186,214,0.10)",
+          border: `1px solid ${theme.turquoise}`,
+          borderRadius: "6px",
+          marginBottom: "18px",
+        }}
+      >
+        <div>
           <EditableText
-            id="lihtc:eyebrow"
+            id="lihtc:company-label"
             as="div"
             style={{
               fontSize: "10px",
               color: theme.turquoise,
-              letterSpacing: "0.28em",
-              textTransform: "lowercase",
               fontFamily: font,
-              fontWeight: 300,
-              marginBottom: "10px",
+              fontWeight: 600,
+              letterSpacing: "0.12em",
+              textTransform: "lowercase",
+              marginBottom: "4px",
             }}
           >
-            what lihtc is
+            developer and operator
           </EditableText>
-
           <EditableText
-            id="lihtc:headline"
-            as="h1"
+            id="lihtc:company-name"
+            as="div"
             style={{
-              fontSize: "clamp(28px, 3vw, 44px)",
+              fontSize: "22px",
               color: "#fff",
-              fontWeight: 300,
               fontFamily: font,
-              lineHeight: 1.2,
-              letterSpacing: "-0.02em",
+              fontWeight: 300,
               textTransform: "lowercase",
-              marginBottom: "20px",
+              letterSpacing: "-0.01em",
             }}
           >
-            lihtc is the operating backbone, not just a backdrop.
+            lotus company
           </EditableText>
-
-          <div
-            style={{
-              height: "1px",
-              background: "rgba(77, 186, 214, 0.18)",
-              marginBottom: "24px",
-            }}
-          />
-
-          <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-            <EditableText
-              id="lihtc:bullet-1"
-              as="div"
-              style={{
-                fontSize: "14px",
-                color: "rgba(255,255,255,0.88)",
-                fontWeight: 400,
-                fontFamily: font,
-                lineHeight: 1.7,
-                textTransform: "lowercase",
-              }}
-            >
-              hud describes lihtc as the primary federal production tool for affordable rental housing.
-            </EditableText>
-
-            <EditableText
-              id="lihtc:bullet-2"
-              as="div"
-              style={{
-                fontSize: "14px",
-                color: "rgba(255,255,255,0.88)",
-                fontWeight: 400,
-                fontFamily: font,
-                lineHeight: 1.7,
-                textTransform: "lowercase",
-              }}
-            >
-              credits are claimed over a 10-year credit period.
-            </EditableText>
-
-            <EditableText
-              id="lihtc:bullet-3"
-              as="div"
-              style={{
-                fontSize: "14px",
-                color: "rgba(255,255,255,0.88)",
-                fontWeight: 400,
-                fontFamily: font,
-                lineHeight: 1.7,
-                textTransform: "lowercase",
-              }}
-            >
-              compliance runs for 15 years, and longer affordability is often favored in allocations.
-            </EditableText>
-
-            <EditableText
-              id="lihtc:bullet-4"
-              as="div"
-              style={{
-                fontSize: "14px",
-                color: "rgba(255,255,255,0.88)",
-                fontWeight: 400,
-                fontFamily: font,
-                lineHeight: 1.7,
-                textTransform: "lowercase",
-              }}
-            >
-              state housing agencies allocate the credits, test feasibility, and monitor compliance.
-            </EditableText>
-          </div>
-        </EditableEl>
-
-        {/* Right Diagram */}
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
-          <svg width="400" height="320" viewBox="0 0 400 320" style={{ marginBottom: "24px" }}>
-            <EditableSvgNode id="lihtc:node-state"    textId="lihtc:text-state"    label="state agency"         x={20}  y={20}  width={80}  height={50} rx={3}>{`state\nagency`}</EditableSvgNode>
-            <EditableSvgNode id="lihtc:node-developer" textId="lihtc:text-developer" label="developer"          x={160} y={20}  width={80}  height={50} rx={3}>developer</EditableSvgNode>
-            <EditableSvgNode id="lihtc:node-lender"   textId="lihtc:text-lender"   label="lender"               x={300} y={20}  width={80}  height={50} rx={3}>lender</EditableSvgNode>
-            <EditableSvgNode id="lihtc:node-investor" textId="lihtc:text-investor" label="tax-credit investor"  x={50}  y={180} width={100} height={50} rx={3}>{`tax-credit\ninvestor`}</EditableSvgNode>
-            <EditableSvgNode id="lihtc:node-manager"  textId="lihtc:text-manager"  label="manager"              x={250} y={180} width={80}  height={50} rx={3}>manager</EditableSvgNode>
-
-            {/* Arrows */}
-            <line x1="100" y1="70" x2="100" y2="130" stroke="#4dbad6" strokeWidth="1" opacity="0.5" />
-            <polygon points="100,140 95,130 105,130" fill="#4dbad6" opacity="0.5" />
-            <line x1="200" y1="70" x2="200" y2="130" stroke="#4dbad6" strokeWidth="1" opacity="0.5" />
-            <polygon points="200,140 195,130 205,130" fill="#4dbad6" opacity="0.5" />
-            <line x1="300" y1="70" x2="300" y2="130" stroke="#4dbad6" strokeWidth="1" opacity="0.5" />
-            <polygon points="300,140 295,130 305,130" fill="#4dbad6" opacity="0.5" />
-            <line x1="160" y1="205" x2="150" y2="205" stroke="#4dbad6" strokeWidth="1" opacity="0.5" />
-            <polygon points="140,205 150,200 150,210" fill="#4dbad6" opacity="0.5" />
-            <line x1="240" y1="205" x2="250" y2="205" stroke="#4dbad6" strokeWidth="1" opacity="0.5" />
-            <polygon points="260,205 250,200 250,210" fill="#4dbad6" opacity="0.5" />
-          </svg>
-
-          <LIHTCTimeline width={380} height={80} />
         </div>
+
+        <div style={{ textAlign: "right" }}>
+          <EditableText
+            id="lihtc:role-label"
+            as="div"
+            style={{
+              fontSize: "10px",
+              color: theme.turquoise,
+              fontFamily: font,
+              fontWeight: 600,
+              letterSpacing: "0.12em",
+              textTransform: "lowercase",
+              marginBottom: "4px",
+            }}
+          >
+            role
+          </EditableText>
+          <EditableText
+            id="lihtc:role-value"
+            as="div"
+            style={{
+              fontSize: "16px",
+              color: "rgba(255,255,255,0.85)",
+              fontFamily: font,
+              fontStyle: "italic",
+              fontWeight: 300,
+              textTransform: "lowercase",
+            }}
+          >
+            sources, structures, executes, owns
+          </EditableText>
+        </div>
+      </div>
+
+      {/* Closing line */}
+      <div style={{ textAlign: "center" }}>
+        <EditableText
+          id="lihtc:closing"
+          as="div"
+          style={{
+            fontSize: "13px",
+            color: theme.turquoise,
+            fontFamily: font,
+            fontStyle: "italic",
+            fontWeight: 300,
+            textTransform: "lowercase",
+            letterSpacing: "0.02em",
+          }}
+        >
+          lihtc converts government tax credits into private equity for affordable housing
+        </EditableText>
       </div>
 
       <SlideFooter slideKey="lihtc" slideNum="06" sectionLabel="mechanism" />
