@@ -94,7 +94,7 @@ export function ImpactProfileSlide() {
             transition={{ delay: 0.35 + i * 0.14, duration: 0.7, ease: EASE_OUT }}
             style={{ flex: 1 }}
           >
-            <div style={{ fontSize: "clamp(52px,6vw,96px)", fontWeight: 300, color: "#fff", lineHeight: 0.9, letterSpacing: "-0.03em" }}>
+            <div style={{ fontSize: "38px", fontWeight: 300, color: "#fff", lineHeight: 0.9, letterSpacing: "-0.03em" }}>
               {m.prefix}<Counter to={m.value} delay={0.6 + i * 0.12} />{m.suffix}
             </div>
             <EditableText id={`impact-profile:metric-label-${i}`} label={`metric label — ${m.label}`} as="div" style={{ fontSize: 11, fontWeight: 400, color: "rgba(206,232,238,0.45)", letterSpacing: "0.14em", textTransform: "lowercase", marginTop: 10 }}>
@@ -124,7 +124,7 @@ export function ImpactProfileSlide() {
               {seg.label}
             </EditableText>
             <div style={{ display: "flex", alignItems: "baseline", gap: 10 }}>
-              <EditableText id={`impact-profile:seg-units-${i}`} label={`audience units — ${seg.label}`} as="span" style={{ fontSize: "clamp(36px,4vw,64px)", fontWeight: 300, color: "#fff", lineHeight: 1, letterSpacing: "-0.025em" }}>{seg.units}</EditableText>
+              <EditableText id={`impact-profile:seg-units-${i}`} label={`audience units — ${seg.label}`} as="span" style={{ fontSize: "38px", fontWeight: 300, color: "#fff", lineHeight: 1, letterSpacing: "-0.025em" }}>{seg.units}</EditableText>
               <EditableText id={`impact-profile:seg-units-label-${i}`} label={`audience units label — ${seg.label}`} as="span" style={{ fontSize: 12, fontWeight: 400, color: seg.color, letterSpacing: "0.12em", textTransform: "lowercase" }}>units</EditableText>
             </div>
             <EditableText id={`impact-profile:seg-pct-${i}`} label={`audience pct — ${seg.label}`} as="div" style={{ fontSize: 12, fontWeight: 300, color: "rgba(206,232,238,0.40)", marginTop: 5, letterSpacing: "0.04em" }}>{seg.pct} of total</EditableText>

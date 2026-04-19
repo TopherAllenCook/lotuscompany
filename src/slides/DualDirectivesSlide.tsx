@@ -38,7 +38,7 @@ export default function DualDirectivesSlide() {
             id="dual-directives:eyebrow"
             as="div"
             style={{
-              fontSize: "10px",
+              fontSize: "20px",
               color: theme.turquoise,
               letterSpacing: "0.28em",
               textTransform: "lowercase",
@@ -54,7 +54,7 @@ export default function DualDirectivesSlide() {
             id="dual-directives:headline"
             as="h1"
             style={{
-              fontSize: "clamp(24px, 2.6vw, 40px)",
+              fontSize: "38px",
               color: "#fff",
               fontWeight: 300,
               fontFamily: font,
@@ -80,7 +80,7 @@ export default function DualDirectivesSlide() {
               id="dual-directives:bullet-1"
               as="div"
               style={{
-                fontSize: "14px",
+                fontSize: "20px",
                 color: "rgba(255,255,255,0.88)",
                 fontWeight: 400,
                 fontFamily: font,
@@ -95,7 +95,7 @@ export default function DualDirectivesSlide() {
               id="dual-directives:bullet-2"
               as="div"
               style={{
-                fontSize: "14px",
+                fontSize: "20px",
                 color: "rgba(255,255,255,0.88)",
                 fontWeight: 400,
                 fontFamily: font,
@@ -110,7 +110,7 @@ export default function DualDirectivesSlide() {
               id="dual-directives:bullet-3"
               as="div"
               style={{
-                fontSize: "14px",
+                fontSize: "20px",
                 color: "rgba(255,255,255,0.88)",
                 fontWeight: 400,
                 fontFamily: font,
@@ -125,7 +125,7 @@ export default function DualDirectivesSlide() {
               id="dual-directives:bullet-4"
               as="div"
               style={{
-                fontSize: "14px",
+                fontSize: "20px",
                 color: "rgba(255,255,255,0.88)",
                 fontWeight: 400,
                 fontFamily: font,

@@ -53,7 +53,7 @@ export function ProjectLotusWaySlide({ project }: { project: ProjectConfig }) {
             id={`${k}-lotus-way:headline`}
             as="h1"
             style={{
-              fontSize: "clamp(22px, 2.4vw, 36px)",
+              fontSize: "38px",
               color: "#fff",
               fontWeight: 300,
               fontFamily: font,
@@ -156,7 +156,7 @@ export function ProjectLotusWaySlide({ project }: { project: ProjectConfig }) {
                   id={`${k}-lotus-way:pillar-heading-${i}`}
                   as="div"
                   style={{
-                    fontSize: "clamp(14px, 1.4vw, 18px)",
+                    fontSize: "28px",
                     color: "#fff",
                     fontFamily: font,
                     fontWeight: 300,
@@ -172,7 +172,7 @@ export function ProjectLotusWaySlide({ project }: { project: ProjectConfig }) {
                   id={`${k}-lotus-way:pillar-body-${i}`}
                   as="div"
                   style={{
-                    fontSize: "clamp(11px, 1.1vw, 13px)",
+                    fontSize: "20px",
                     color: "rgba(206,232,238,0.65)",
                     fontFamily: font,
                     fontWeight: 300,

@@ -57,7 +57,7 @@ export function LIHTCRentsSlide() {
             id="lihtc-rents:headline"
             as="h1"
             style={{
-              fontSize: "clamp(20px, 2.2vw, 32px)",
+              fontSize: "32px",
               color: "#fff",
               fontWeight: 300,
               fontFamily: font,
@@ -81,7 +81,7 @@ export function LIHTCRentsSlide() {
               id="lihtc-rents:desc"
               as="div"
               style={{
-                fontSize: "clamp(12px, 1.2vw, 14px)",
+                fontSize: "20px",
                 color: "rgba(206,232,238,0.75)",
                 fontFamily: font,
                 fontWeight: 300,
@@ -132,7 +132,7 @@ export function LIHTCRentsSlide() {
                   id={`lihtc-rents:step-${i}`}
                   as="div"
                   style={{
-                    fontSize: "clamp(10px, 1.0vw, 12px)",
+                    fontSize: "20px",
                     color: "rgba(206,232,238,0.60)",
                     fontFamily: font,
                     fontWeight: 300,
@@ -184,7 +184,7 @@ export function LIHTCRentsSlide() {
               <EditableText
                 id="lihtc-rents:market-val"
                 as="div"
-                style={{ fontSize: "clamp(16px, 1.6vw, 22px)", color: "rgba(206,232,238,0.55)", fontFamily: font, fontWeight: 300 }}
+                style={{ fontSize: "28px", color: "rgba(206,232,238,0.55)", fontFamily: font, fontWeight: 300 }}
               >
                 ${marketRent.toLocaleString()} / mo
               </EditableText>
@@ -208,7 +208,7 @@ export function LIHTCRentsSlide() {
                         <EditableText
                           id={`lihtc-rents:tier-rent-${i}`}
                           as="div"
-                          style={{ fontSize: "clamp(14px, 1.4vw, 18px)", color: "#fff", fontFamily: font, fontWeight: 300 }}
+                          style={{ fontSize: "28px", color: "#fff", fontFamily: font, fontWeight: 300 }}
                         >
                           ${tier.rent.toLocaleString()}
                         </EditableText>
@@ -264,7 +264,7 @@ export function LIHTCRentsSlide() {
                     id={`lihtc-rents:summary-val-${i}`}
                     as="div"
                     style={{
-                      fontSize: "clamp(16px, 1.6vw, 22px)",
+                      fontSize: "28px",
                       color: "#fff",
                       fontFamily: font,
                       fontWeight: 300,

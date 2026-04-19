@@ -68,7 +68,7 @@ export function ProjectCommitmentSlide({ project }: { project: ProjectConfig }) 
             id={`${k}-commitment:headline`}
             as="h1"
             style={{
-              fontSize: "clamp(20px, 2.2vw, 32px)",
+              fontSize: "32px",
               color: "#fff",
               fontWeight: 300,
               fontFamily: font,
@@ -115,7 +115,7 @@ export function ProjectCommitmentSlide({ project }: { project: ProjectConfig }) 
               id={`${k}-commitment:amount-val`}
               as="div"
               style={{
-                fontSize: "clamp(32px, 3.5vw, 52px)",
+                fontSize: "38px",
                 color: "#fff",
                 fontFamily: font,
                 fontWeight: 300,
@@ -145,7 +145,7 @@ export function ProjectCommitmentSlide({ project }: { project: ProjectConfig }) 
               <EditableText
                 id={`${k}-commitment:quick-val-${i}`}
                 as="div"
-                style={{ fontSize: "clamp(16px, 1.6vw, 22px)", color: "#fff", fontFamily: font, fontWeight: 300 }}
+                style={{ fontSize: "28px", color: "#fff", fontFamily: font, fontWeight: 300 }}
               >
                 {s.value}
               </EditableText>
@@ -195,7 +195,7 @@ export function ProjectCommitmentSlide({ project }: { project: ProjectConfig }) 
                       as="div"
                       style={{
                         padding: "8px 12px",
-                        fontSize: "clamp(10px, 1.0vw, 12px)",
+                        fontSize: "20px",
                         color: i === useOfFunds.length - 1 ? "#fff" : "rgba(206,232,238,0.65)",
                         fontFamily: font,
                         textTransform: "lowercase",
@@ -249,7 +249,7 @@ export function ProjectCommitmentSlide({ project }: { project: ProjectConfig }) 
                       as="div"
                       style={{
                         padding: "8px 12px",
-                        fontSize: "clamp(10px, 1.0vw, 12px)",
+                        fontSize: "20px",
                         color: "rgba(206,232,238,0.65)",
                         fontFamily: font,
                         textTransform: "lowercase",

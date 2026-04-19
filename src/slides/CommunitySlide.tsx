@@ -74,7 +74,7 @@ export function CommunitySlide() {
         </motion.div>
 
         {/* Editorial statement */}
-        <div style={{ fontSize: "clamp(44px,5.5vw,88px)", fontWeight: 300, color: "#fff", lineHeight: 1.0, letterSpacing: "-0.02em", textTransform: "lowercase", marginBottom: 40 }}>
+        <div style={{ fontSize: "38px", fontWeight: 300, color: "#fff", lineHeight: 1.0, letterSpacing: "-0.02em", textTransform: "lowercase", marginBottom: 40 }}>
           {EDITORIAL_LINES.map((line, i) => (
             <div key={i} style={{ overflow: "hidden", paddingBottom: 6 }}>
               <motion.span

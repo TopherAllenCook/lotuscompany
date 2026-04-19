@@ -60,7 +60,7 @@ export function PartnersSlide() {
             id="partners:headline"
             as="h1"
             style={{
-              fontSize: "clamp(20px, 2.2vw, 32px)",
+              fontSize: "32px",
               color: "#fff",
               fontWeight: 300,
               fontFamily: font,
@@ -135,7 +135,7 @@ export function PartnersSlide() {
                   id={`partners:name-${i}`}
                   as="div"
                   style={{
-                    fontSize: "clamp(10px, 1.0vw, 13px)",
+                    fontSize: "20px",
                     color: "#fff",
                     fontFamily: font,
                     fontWeight: 300,

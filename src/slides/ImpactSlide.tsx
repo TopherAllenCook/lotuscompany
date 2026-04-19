@@ -69,7 +69,7 @@ export function ImpactSlide() {
         </motion.div>
 
         {/* Title */}
-        <div style={{ fontSize: "clamp(64px,8vw,128px)", fontWeight: 300, color: "#fff", lineHeight: 0.92, letterSpacing: "-0.025em", textTransform: "lowercase" }}>
+        <div style={{ fontSize: "38px", fontWeight: 300, color: "#fff", lineHeight: 0.92, letterSpacing: "-0.025em", textTransform: "lowercase" }}>
           {TITLE_WORDS.map((word, i) => (
             <div key={word} style={{ overflow: "hidden", paddingBottom: 10 }}>
               <motion.span {...reveal(0.5 + i * 0.15)} style={{ display: "inline-block" }}>

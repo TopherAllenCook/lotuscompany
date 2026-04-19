@@ -53,7 +53,7 @@ export function ProjectTeamSlide({ project }: { project: ProjectConfig }) {
             id={`${k}-team:headline`}
             as="h1"
             style={{
-              fontSize: "clamp(20px, 2.2vw, 32px)",
+              fontSize: "32px",
               color: "#fff",
               fontWeight: 300,
               fontFamily: font,
@@ -116,7 +116,7 @@ export function ProjectTeamSlide({ project }: { project: ProjectConfig }) {
                 >
                   <div
                     style={{
-                      fontSize: "clamp(24px, 2.4vw, 36px)",
+                      fontSize: "38px",
                       color: "rgba(77,186,214,0.30)",
                       fontFamily: font,
                       fontWeight: 300,
@@ -157,7 +157,7 @@ export function ProjectTeamSlide({ project }: { project: ProjectConfig }) {
                   id={`${k}-team:name-${i}`}
                   as="div"
                   style={{
-                    fontSize: "clamp(18px, 1.9vw, 26px)",
+                    fontSize: "32px",
                     color: "#fff",
                     fontFamily: font,
                     fontWeight: 300,
@@ -193,7 +193,7 @@ export function ProjectTeamSlide({ project }: { project: ProjectConfig }) {
                   id={`${k}-team:bio-${i}`}
                   as="div"
                   style={{
-                    fontSize: "clamp(11px, 1.1vw, 13px)",
+                    fontSize: "20px",
                     color: "rgba(206,232,238,0.55)",
                     fontFamily: font,
                     fontWeight: 300,

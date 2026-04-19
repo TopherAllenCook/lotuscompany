@@ -116,7 +116,7 @@ export function ImpactDashboardSlide() {
                   position: "absolute",
                   bottom: "10px",
                   left: "12px",
-                  fontSize: "7px",
+                  fontSize: "20px",
                   color: theme.turquoise,
                   fontFamily: font,
                   letterSpacing: "0.2em",
@@ -147,7 +147,7 @@ export function ImpactDashboardSlide() {
               id="impact-dashboard:eyebrow"
               as="div"
               style={{
-                fontSize: "10px",
+                fontSize: "20px",
                 color: theme.turquoise,
                 letterSpacing: "0.28em",
                 textTransform: "lowercase",
@@ -163,7 +163,7 @@ export function ImpactDashboardSlide() {
               id="impact-dashboard:headline"
               as="h1"
               style={{
-                fontSize: "clamp(22px, 2.2vw, 34px)",
+                fontSize: "38px",
                 color: "#fff",
                 fontWeight: 300,
                 fontFamily: font,
@@ -222,7 +222,7 @@ export function ImpactDashboardSlide() {
                     id={`impact-dashboard:pillar-${pillar.key}`}
                     as="div"
                     style={{
-                      fontSize: "7px",
+                      fontSize: "20px",
                       color: theme.turquoise,
                       fontFamily: font,
                       letterSpacing: "0.2em",
@@ -254,7 +254,7 @@ export function ImpactDashboardSlide() {
                       id={`impact-dashboard:${tile.id}-label`}
                       as="div"
                       style={{
-                        fontSize: "7px",
+                        fontSize: "20px",
                         color: theme.turquoise,
                         fontFamily: font,
                         letterSpacing: "0.16em",
@@ -273,7 +273,7 @@ export function ImpactDashboardSlide() {
                         id={`impact-dashboard:${tile.id}-value`}
                         as="div"
                         style={{
-                          fontSize: "clamp(16px, 1.8vw, 26px)",
+                          fontSize: "32px",
                           color: "#fff",
                           fontFamily: font,
                           fontWeight: 300,
@@ -288,7 +288,7 @@ export function ImpactDashboardSlide() {
                       id={`impact-dashboard:${tile.id}-def`}
                       as="div"
                       style={{
-                        fontSize: "8px",
+                        fontSize: "20px",
                         color: "rgba(206,232,238,0.4)",
                         fontFamily: font,
                         lineHeight: 1.3,
@@ -330,7 +330,7 @@ export function ImpactDashboardSlide() {
                   id={`impact-dashboard:bottom-stat-${i}-value`}
                   as="div"
                   style={{
-                    fontSize: "clamp(18px, 1.8vw, 26px)",
+                    fontSize: "32px",
                     color: "#fff",
                     fontFamily: font,
                     fontWeight: 300,
@@ -343,7 +343,7 @@ export function ImpactDashboardSlide() {
                   id={`impact-dashboard:bottom-stat-${i}-label`}
                   as="div"
                   style={{
-                    fontSize: "7px",
+                    fontSize: "20px",
                     color: theme.turquoise,
                     fontFamily: font,
                     letterSpacing: "0.16em",
@@ -356,7 +356,7 @@ export function ImpactDashboardSlide() {
                   id={`impact-dashboard:bottom-stat-${i}-sub`}
                   as="div"
                   style={{
-                    fontSize: "8px",
+                    fontSize: "20px",
                     color: "rgba(206,232,238,0.4)",
                     fontFamily: font,
                     lineHeight: 1.3,

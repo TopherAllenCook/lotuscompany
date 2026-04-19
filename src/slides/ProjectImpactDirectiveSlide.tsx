@@ -16,7 +16,7 @@ const cell = (content: ReactNode, accent = false, right = false) => (
       alignItems: "center",
       justifyContent: right ? "flex-end" : "flex-start",
       color: accent ? "#fff" : "rgba(206,232,238,0.65)",
-      fontSize: "clamp(10px, 1.1vw, 13px)",
+      fontSize: "20px",
       fontFamily: font,
       fontWeight: accent ? 300 : 300,
       textTransform: "lowercase",
@@ -73,7 +73,7 @@ export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfi
             id={`${k}-impact:headline`}
             as="h1"
             style={{
-              fontSize: "clamp(20px, 2.2vw, 32px)",
+              fontSize: "32px",
               color: "#fff",
               fontWeight: 300,
               fontFamily: font,
@@ -214,7 +214,7 @@ export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfi
                       id={`${k}-impact:profile-val-${i}`}
                       as="div"
                       style={{
-                        fontSize: "clamp(16px, 1.6vw, 22px)",
+                        fontSize: "28px",
                         color: "#fff",
                         fontFamily: font,
                         fontWeight: 300,
@@ -299,7 +299,7 @@ export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfi
                   <EditableText
                     id={`${k}-impact:row-target-${i}`}
                     as="div"
-                    style={{ fontSize: "clamp(14px, 1.4vw, 18px)", color: "#fff", fontFamily: font, fontWeight: 300 }}
+                    style={{ fontSize: "28px", color: "#fff", fontFamily: font, fontWeight: 300 }}
                   >
                     {row.target}
                   </EditableText>
@@ -352,7 +352,7 @@ export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfi
                       id={`${k}-impact:tenyear-val-${i}`}
                       as="div"
                       style={{
-                        fontSize: "clamp(18px, 1.8vw, 26px)",
+                        fontSize: "32px",
                         color: "#fff",
                         fontFamily: font,
                         fontWeight: 300,

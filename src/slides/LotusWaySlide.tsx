@@ -97,7 +97,7 @@ export function LotusWaySlide() {
               style={{ flex: 1, paddingRight: 48 }}
             >
               {/* Number (Counter — not wrappable) */}
-              <div style={{ fontSize: "clamp(56px,6.5vw,104px)", fontWeight: 300, color: "#fff", lineHeight: 0.9, letterSpacing: "-0.03em" }}>
+              <div style={{ fontSize: "38px", fontWeight: 300, color: "#fff", lineHeight: 0.9, letterSpacing: "-0.03em" }}>
                 <Counter to={stat.value} delay={0.8 + i * 0.15} prefix={stat.prefix} suffix={stat.suffix} />
               </div>
 

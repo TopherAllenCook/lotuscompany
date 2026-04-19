@@ -75,7 +75,7 @@ export function ProjectPartnershipTermsSlide({ project }: { project: ProjectConf
             id={`${k}-partnership:headline`}
             as="h1"
             style={{
-              fontSize: "clamp(20px, 2.2vw, 32px)",
+              fontSize: "32px",
               color: "#fff",
               fontWeight: 300,
               fontFamily: font,
@@ -126,7 +126,7 @@ export function ProjectPartnershipTermsSlide({ project }: { project: ProjectConf
                     as="div"
                     style={{
                       padding: "9px 14px",
-                      fontSize: "clamp(9px, 0.9vw, 11px)",
+                      fontSize: "20px",
                       color: "rgba(206,232,238,0.45)",
                       fontFamily: font,
                       textTransform: "lowercase",
@@ -140,7 +140,7 @@ export function ProjectPartnershipTermsSlide({ project }: { project: ProjectConf
                     as="div"
                     style={{
                       padding: "9px 14px",
-                      fontSize: "clamp(10px, 1.0vw, 13px)",
+                      fontSize: "20px",
                       color: "rgba(206,232,238,0.80)",
                       fontFamily: font,
                       textTransform: "lowercase",
@@ -186,7 +186,7 @@ export function ProjectPartnershipTermsSlide({ project }: { project: ProjectConf
                     as="div"
                     style={{
                       padding: "9px 14px",
-                      fontSize: "clamp(9px, 0.9vw, 11px)",
+                      fontSize: "20px",
                       color: "rgba(206,232,238,0.45)",
                       fontFamily: font,
                       textTransform: "lowercase",
@@ -200,7 +200,7 @@ export function ProjectPartnershipTermsSlide({ project }: { project: ProjectConf
                     as="div"
                     style={{
                       padding: "9px 14px",
-                      fontSize: "clamp(10px, 1.0vw, 13px)",
+                      fontSize: "20px",
                       color: "#fff",
                       fontFamily: font,
                       fontWeight: 300,

@@ -62,7 +62,7 @@ export function ProjectInvestmentDirectiveSlide({ project }: { project: ProjectC
             id={`${k}-investment:headline`}
             as="h1"
             style={{
-              fontSize: "clamp(20px, 2.2vw, 32px)",
+              fontSize: "32px",
               color: "#fff",
               fontWeight: 300,
               fontFamily: font,
@@ -128,7 +128,7 @@ export function ProjectInvestmentDirectiveSlide({ project }: { project: ProjectC
                     id={`${k}-investment:target-val-${i}`}
                     as="div"
                     style={{
-                      fontSize: "clamp(15px, 1.5vw, 20px)",
+                      fontSize: "28px",
                       color: "#fff",
                       fontFamily: font,
                       fontWeight: 300,
@@ -148,7 +148,7 @@ export function ProjectInvestmentDirectiveSlide({ project }: { project: ProjectC
               id={`${k}-investment:desc`}
               as="div"
               style={{
-                fontSize: "clamp(13px, 1.3vw, 15px)",
+                fontSize: "20px",
                 color: "rgba(206,232,238,0.75)",
                 fontFamily: font,
                 fontWeight: 300,
@@ -233,7 +233,7 @@ export function ProjectInvestmentDirectiveSlide({ project }: { project: ProjectC
                       as="div"
                       style={{
                         padding: "8px 12px",
-                        fontSize: "clamp(10px, 1.0vw, 12px)",
+                        fontSize: "20px",
                         color: j === 2 ? "#fff" : "rgba(206,232,238,0.65)",
                         fontFamily: font,
                         fontWeight: 300,

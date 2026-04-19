@@ -71,7 +71,7 @@ export function BeliefSlide() {
             style={{ marginBottom: 4 }}
           >
             <EditableText id="belief:headline-1" label="headline line 1" as="div" style={{
-              fontSize: "clamp(36px, 5vw, 64px)",
+              fontSize: "38px",
               fontWeight: 300, color: "#fff",
               letterSpacing: "0.01em", textTransform: "lowercase", lineHeight: 1.0,
             }}>
@@ -84,7 +84,7 @@ export function BeliefSlide() {
             transition={{ delay: 0.48, duration: 0.5, ease: EASE_OUT }}
           >
             <EditableText id="belief:headline-2" label="headline line 2" as="div" style={{
-              fontSize: "clamp(36px, 5vw, 64px)",
+              fontSize: "38px",
               fontWeight: 300, color: "#fff",
               letterSpacing: "0.01em", textTransform: "lowercase", lineHeight: 1.0,
             }}>
@@ -114,7 +114,7 @@ export function BeliefSlide() {
         >
           <EditableText id="belief:col1-header" label="col 1 header — the initiative" as="p" style={{
             margin: "0 0 8px",
-            fontSize: "clamp(11px, 1.05vw, 14px)",
+            fontSize: "20px",
             fontWeight: 600, color: theme.turquoise,
             letterSpacing: "0.18em", textTransform: "lowercase",
           }}>
@@ -122,7 +122,7 @@ export function BeliefSlide() {
           </EditableText>
           <EditableText id="belief:col1-body" label="col 1 body" as="p" style={{
             margin: 0,
-            fontSize: "clamp(14px, 1.45vw, 20px)",
+            fontSize: "28px",
             fontWeight: 400, color: "#424242",
             letterSpacing: "0.02em", textTransform: "lowercase",
             lineHeight: 1.7,
@@ -145,7 +145,7 @@ export function BeliefSlide() {
         >
           <EditableText id="belief:col2-header" label="col 2 header — the structure" as="p" style={{
             margin: "0 0 8px",
-            fontSize: "clamp(11px, 1.05vw, 14px)",
+            fontSize: "20px",
             fontWeight: 600, color: theme.turquoise,
             letterSpacing: "0.18em", textTransform: "lowercase",
           }}>
@@ -153,7 +153,7 @@ export function BeliefSlide() {
           </EditableText>
           <EditableText id="belief:col2-body" label="col 2 body" as="p" style={{
             margin: 0,
-            fontSize: "clamp(14px, 1.45vw, 20px)",
+            fontSize: "28px",
             fontWeight: 400, color: "#424242",
             letterSpacing: "0.02em", textTransform: "lowercase",
             lineHeight: 1.7,
@@ -185,7 +185,7 @@ export function BeliefSlide() {
           </motion.div>
           <EditableText id="belief:kicker" label="kicker" as="p" style={{
             margin: 0,
-            fontSize: "clamp(16px, 1.7vw, 24px)",
+            fontSize: "32px",
             fontWeight: 400, color: "#028faa",
             letterSpacing: "0.03em", textTransform: "lowercase",
             lineHeight: 1.65,

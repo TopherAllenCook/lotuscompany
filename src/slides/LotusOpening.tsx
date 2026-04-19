@@ -74,7 +74,7 @@ export function LotusOpening() {
             id="lotus-opening:headline"
             as="h1"
             style={{
-              fontSize: "clamp(48px, 5.5vw, 80px)",
+              fontSize: "38px",
               fontWeight: 300,
               color: "#fff",
               letterSpacing: "-0.025em",
@@ -108,7 +108,7 @@ export function LotusOpening() {
             id="lotus-opening:subheading"
             as="p"
             style={{
-              fontSize: "16px",
+              fontSize: "28px",
               color: "rgba(255,255,255,0.88)",
               fontWeight: 400,
               letterSpacing: "0.12em",
@@ -135,7 +135,7 @@ export function LotusOpening() {
             id="lotus-opening:desc-1"
             as="p"
             style={{
-              fontSize: "13px",
+              fontSize: "20px",
               color: "rgba(255,255,255,0.5)",
               fontWeight: 400,
               letterSpacing: "0.06em",
@@ -150,7 +150,7 @@ export function LotusOpening() {
             id="lotus-opening:desc-2"
             as="p"
             style={{
-              fontSize: "13px",
+              fontSize: "20px",
               color: "rgba(255,255,255,0.5)",
               fontWeight: 400,
               letterSpacing: "0.06em",
@@ -165,7 +165,7 @@ export function LotusOpening() {
             id="lotus-opening:desc-3"
             as="p"
             style={{
-              fontSize: "13px",
+              fontSize: "20px",
               color: "rgba(255,255,255,0.5)",
               fontWeight: 400,
               letterSpacing: "0.06em",
@@ -191,7 +191,7 @@ export function LotusOpening() {
           id="lotus-opening:watermark"
           as="span"
           style={{
-            fontSize: "11px",
+            fontSize: "20px",
             color: theme.turquoise,
             fontWeight: 300,
             letterSpacing: "0.1em",

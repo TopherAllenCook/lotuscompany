@@ -64,7 +64,7 @@ export default function CollectiveModelSlide() {
             id="collective-model:eyebrow"
             as="div"
             style={{
-              fontSize: "10px",
+              fontSize: "20px",
               color: theme.turquoise,
               letterSpacing: "0.28em",
               textTransform: "lowercase",
@@ -80,7 +80,7 @@ export default function CollectiveModelSlide() {
             id="collective-model:headline"
             as="h1"
             style={{
-              fontSize: "clamp(24px, 2.5vw, 38px)",
+              fontSize: "38px",
               color: "#fff",
               fontWeight: 300,
               fontFamily: font,
@@ -119,7 +119,7 @@ export default function CollectiveModelSlide() {
                 id={`collective-model:bullet-${i}`}
                 as="div"
                 style={{
-                  fontSize: "13px",
+                  fontSize: "20px",
                   color: "rgba(255,255,255,0.88)",
                   fontWeight: 400,
                   fontFamily: font,
@@ -136,7 +136,7 @@ export default function CollectiveModelSlide() {
             id="collective-model:closing"
             as="div"
             style={{
-              fontSize: "13px",
+              fontSize: "20px",
               color: theme.turquoise,
               fontWeight: 300,
               fontFamily: font,

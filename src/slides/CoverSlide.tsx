@@ -70,7 +70,7 @@ export function CoverSlide() {
       <div style={{ position: "absolute", bottom: 96, left: 72, right: 72 }}>
 
         {/* Title */}
-        <div style={{ fontSize: "clamp(64px,7vw,108px)", fontWeight: 300, color: "#fff", lineHeight: 0.92, letterSpacing: "-0.02em", textTransform: "lowercase", marginBottom: 36 }}>
+        <div style={{ fontSize: "38px", fontWeight: 300, color: "#fff", lineHeight: 0.92, letterSpacing: "-0.02em", textTransform: "lowercase", marginBottom: 36 }}>
           <div style={{ overflow: "hidden", paddingBottom: 10 }}>
             <motion.span {...reveal(0.55)} style={{ display: "inline-block" }}>
               <EditableText id="cover:title-1" label="title — steelton" as="span">steelton</EditableText>

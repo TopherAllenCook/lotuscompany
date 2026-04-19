@@ -110,7 +110,7 @@ export function ProjectCoverSlide({ project }: { project: ProjectConfig }) {
           id={`${k}-cover:headline`}
           as="h1"
           style={{
-            fontSize: "clamp(36px, 4.5vw, 68px)",
+            fontSize: "38px",
             color: "#fff",
             fontWeight: 300,
             fontFamily: font,
@@ -136,7 +136,7 @@ export function ProjectCoverSlide({ project }: { project: ProjectConfig }) {
                 id={`${k}-cover:stat-val-${i}`}
                 as="div"
                 style={{
-                  fontSize: "clamp(20px, 2.2vw, 30px)",
+                  fontSize: "32px",
                   color: "#fff",
                   fontFamily: font,
                   fontWeight: 300,

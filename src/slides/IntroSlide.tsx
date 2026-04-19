@@ -66,7 +66,7 @@ export function IntroSlide() {
           <div style={{ overflow: "hidden", paddingBottom: 4, marginBottom: 4 }}>
             <motion.span {...reveal(0.55)} style={{ display: "inline-block" }}>
               <EditableText id="intro:the-lotus" label="the lotus" as="span" style={{
-                fontSize: "clamp(24px, 2.8vw, 48px)",
+                fontSize: "38px",
                 fontWeight: 400, color: "#fff",
                 letterSpacing: "0.42em", textTransform: "lowercase",
               }}>
@@ -78,7 +78,7 @@ export function IntroSlide() {
           <div style={{ overflow: "hidden", paddingBottom: 10 }}>
             <motion.span {...reveal(0.72)} style={{ display: "inline-block" }}>
               <EditableText id="intro:tagline" label="impact initiative." as="span" style={{
-                fontSize: "clamp(52px, 7.5vw, 128px)",
+                fontSize: "38px",
                 fontWeight: 300, color: theme.turquoise,
                 letterSpacing: "-0.02em", textTransform: "lowercase", lineHeight: 0.92,
               }}>
@@ -95,7 +95,7 @@ export function IntroSlide() {
             <EditableText id="intro:mindfully" label="mindfully creating." as="span" style={{
               display: "inline-block",
               marginTop: 20,
-              fontSize: "clamp(15px, 1.5vw, 20px)", fontWeight: 400,
+              fontSize: "28px", fontWeight: 400,
               color: "#fff", letterSpacing: "0.32em", textTransform: "lowercase",
             }}>
               mindfully creating.
@@ -125,7 +125,7 @@ export function IntroSlide() {
               <EditableEl id={`intro:dot-${i}`} label={`pillar dot ${i}`} type="dot" style={{ width: 3, height: 3, borderRadius: "50%", background: "#028faa", flexShrink: 0 }} />
             )}
             <EditableText id={`intro:pillar-${i}`} label={`pillar — ${pillar}`} as="span" style={{
-              fontSize: "clamp(12px, 1.1vw, 15px)", fontWeight: 400,
+              fontSize: "20px", fontWeight: 400,
               color: "#fff", letterSpacing: "0.26em",
               textTransform: "lowercase", whiteSpace: "nowrap",
             }}>

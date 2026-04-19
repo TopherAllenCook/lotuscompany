@@ -69,7 +69,7 @@ export function LotusMandateSlide() {
           id="mandate:eyebrow"
           as="div"
           style={{
-            fontSize: "10px",
+            fontSize: "20px",
             color: theme.turquoise,
             fontWeight: 300,
             letterSpacing: "0.28em",
@@ -86,7 +86,7 @@ export function LotusMandateSlide() {
           id="mandate:headline"
           as="h2"
           style={{
-            fontSize: "clamp(30px, 3.2vw, 46px)",
+            fontSize: "38px",
             color: "#fff",
             fontWeight: 300,
             letterSpacing: "-0.02em",
@@ -139,7 +139,7 @@ export function LotusMandateSlide() {
                   id={`mandate:bullet-${i}`}
                   as="p"
                   style={{
-                    fontSize: "15px",
+                    fontSize: "20px",
                     color: "rgba(255,255,255,0.88)",
                     fontWeight: 400,
                     letterSpacing: "0.04em",

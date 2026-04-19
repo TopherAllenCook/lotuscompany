@@ -49,7 +49,7 @@ export function PipelineSlide() {
             id="pipeline:eyebrow"
             as="div"
             style={{
-              fontSize: "10px",
+              fontSize: "20px",
               color: theme.turquoise,
               letterSpacing: "0.28em",
               textTransform: "lowercase",
@@ -65,7 +65,7 @@ export function PipelineSlide() {
             id="pipeline:headline"
             as="h1"
             style={{
-              fontSize: "clamp(26px, 2.8vw, 42px)",
+              fontSize: "38px",
               color: "#fff",
               fontWeight: 300,
               fontFamily: font,
@@ -91,7 +91,7 @@ export function PipelineSlide() {
               id="pipeline:bullet-1"
               as="div"
               style={{
-                fontSize: "14px",
+                fontSize: "20px",
                 color: "rgba(255,255,255,0.88)",
                 fontWeight: 400,
                 fontFamily: font,
@@ -109,7 +109,7 @@ export function PipelineSlide() {
               id="pipeline:bullet-2"
               as="div"
               style={{
-                fontSize: "14px",
+                fontSize: "20px",
                 color: "rgba(255,255,255,0.88)",
                 fontWeight: 400,
                 fontFamily: font,
@@ -127,7 +127,7 @@ export function PipelineSlide() {
               id="pipeline:bullet-3"
               as="div"
               style={{
-                fontSize: "14px",
+                fontSize: "20px",
                 color: "rgba(255,255,255,0.88)",
                 fontWeight: 400,
                 fontFamily: font,
@@ -145,7 +145,7 @@ export function PipelineSlide() {
               id="pipeline:bullet-4"
               as="div"
               style={{
-                fontSize: "14px",
+                fontSize: "20px",
                 color: "rgba(255,255,255,0.88)",
                 fontWeight: 400,
                 fontFamily: font,
@@ -160,7 +160,7 @@ export function PipelineSlide() {
               id="pipeline:bullet-5"
               as="div"
               style={{
-                fontSize: "14px",
+                fontSize: "20px",
                 color: "rgba(255,255,255,0.88)",
                 fontWeight: 400,
                 fontFamily: font,
@@ -189,7 +189,7 @@ export function PipelineSlide() {
                 y={40}
                 textAnchor="middle"
                 style={{
-                  fontSize: "12px",
+                  fontSize: "20px",
                   fill: theme.lightBlue,
                   fontFamily: font,
                 }}
@@ -201,7 +201,7 @@ export function PipelineSlide() {
                 y={85}
                 textAnchor="middle"
                 style={{
-                  fontSize: "20px",
+                  fontSize: "28px",
                   fill: "#fff",
                   fontFamily: font,
                   fontWeight: 300,
@@ -222,7 +222,7 @@ export function PipelineSlide() {
                 y={120}
                 textAnchor="middle"
                 style={{
-                  fontSize: "12px",
+                  fontSize: "20px",
                   fill: theme.lightBlue,
                   fontFamily: font,
                 }}
@@ -234,7 +234,7 @@ export function PipelineSlide() {
                 y={165}
                 textAnchor="middle"
                 style={{
-                  fontSize: "20px",
+                  fontSize: "28px",
                   fill: "#fff",
                   fontFamily: font,
                   fontWeight: 300,
@@ -255,7 +255,7 @@ export function PipelineSlide() {
                 y={205}
                 textAnchor="middle"
                 style={{
-                  fontSize: "12px",
+                  fontSize: "20px",
                   fill: theme.lightBlue,
                   fontFamily: font,
                 }}
@@ -267,7 +267,7 @@ export function PipelineSlide() {
                 y={240}
                 textAnchor="middle"
                 style={{
-                  fontSize: "20px",
+                  fontSize: "28px",
                   fill: "#fff",
                   fontFamily: font,
                   fontWeight: 300,
@@ -288,7 +288,7 @@ export function PipelineSlide() {
                 y={275}
                 textAnchor="middle"
                 style={{
-                  fontSize: "12px",
+                  fontSize: "20px",
                   fill: theme.lightBlue,
                   fontFamily: font,
                 }}
@@ -300,7 +300,7 @@ export function PipelineSlide() {
                 y={305}
                 textAnchor="middle"
                 style={{
-                  fontSize: "20px",
+                  fontSize: "28px",
                   fill: "#fff",
                   fontFamily: font,
                   fontWeight: 300,
@@ -324,7 +324,7 @@ export function PipelineSlide() {
                 id="pipeline:target-states"
                 as="span"
                 style={{
-                  fontSize: "9px",
+                  fontSize: "20px",
                   color: "rgba(255,255,255,0.3)",
                   fontFamily: font,
                   textTransform: "lowercase",
