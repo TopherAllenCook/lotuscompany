@@ -22,17 +22,22 @@ export function EditableBgImage({ id, label, src, alt = "", className, style }: 
     return () => registerEl(id, resolvedLabel, "bgimage", null);
   }, [id, resolvedLabel, registerEl]);
 
-  const ovr: CSSProperties = {};
-  if (override.opacity != null) ovr.opacity = override.opacity / 100;
+  const imgOvr: CSSProperties = {};
+  if (override.opacity != null) imgOvr.opacity = override.opacity / 100;
+  if (override.scale != null)   imgOvr.transform = `scale(${override.scale / 100})`;
 
   const px = override.objectPositionX ?? 50;
   const py = override.objectPositionY ?? 50;
-  ovr.objectPosition = `${px}% ${py}%`;
+  imgOvr.objectPosition = `${px}% ${py}%`;
+
+  const containerOvr: CSSProperties = {};
+  if (override.width  != null) containerOvr.width  = `${override.width}px`;
+  if (override.height != null) containerOvr.height = `${override.height}px`;
 
   const isActive = editMode && activeId === id;
 
   return (
-    <div style={{ position: "relative", ...style }} className={className}>
+    <div style={{ position: "relative", ...style, ...containerOvr }} className={className}>
       <img
         ref={ref}
         src={src}
@@ -42,7 +47,8 @@ export function EditableBgImage({ id, label, src, alt = "", className, style }: 
           height: "100%",
           objectFit: "cover",
           display: "block",
-          ...ovr,
+          transformOrigin: "center center",
+          ...imgOvr,
         }}
       />
       {editMode && (

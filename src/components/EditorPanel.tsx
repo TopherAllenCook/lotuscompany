@@ -44,9 +44,12 @@ const SVG_NODE_SLIDERS = [
 ] as const;
 
 const BG_IMAGE_SLIDERS = [
-  { key: "opacity",         label: "opacity",   min: 0,  max: 100, step: 1, suffix: "%" },
-  { key: "objectPositionX", label: "position x", min: 0, max: 100, step: 1, suffix: "%" },
-  { key: "objectPositionY", label: "position y", min: 0, max: 100, step: 1, suffix: "%" },
+  { key: "opacity",         label: "opacity",    min: 0,   max: 100,  step: 1,   suffix: "%" },
+  { key: "scale",           label: "zoom",       min: 50,  max: 200,  step: 1,   suffix: "%" },
+  { key: "objectPositionX", label: "position x", min: 0,   max: 100,  step: 1,   suffix: "%" },
+  { key: "objectPositionY", label: "position y", min: 0,   max: 100,  step: 1,   suffix: "%" },
+  { key: "width",           label: "width",      min: 0,   max: 2000, step: 1,   suffix: "px" },
+  { key: "height",          label: "height",     min: 0,   max: 1200, step: 1,   suffix: "px" },
 ] as const;
 
 const WEIGHTS = [300, 400, 500, 600, 700] as const;
@@ -127,10 +130,21 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
     const type = registeredList.find(e => e.id === activeId)?.type ?? "text";
 
     if (type === "bgimage") {
+      const bgEl = getEl(activeId);
+      let w = override.width ?? 0;
+      let h = override.height ?? 0;
+      if ((!w || !h) && bgEl) {
+        const rect = bgEl.getBoundingClientRect();
+        w = w || Math.round(rect.width);
+        h = h || Math.round(rect.height);
+      }
       setVals({
         opacity: override.opacity ?? 100,
+        scale: override.scale ?? 100,
         objectPositionX: override.objectPositionX ?? 50,
         objectPositionY: override.objectPositionY ?? 50,
+        width: w,
+        height: h,
       });
       return;
     }
