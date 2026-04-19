@@ -31,7 +31,7 @@ export function LotusWhyLotusSlide() {
         overflow: "hidden",
         background: "#424242",
       }}
-
+    >
       <StatusChip status="READY" />
 
       {/* Top-left title block */}
