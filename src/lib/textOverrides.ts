@@ -45,7 +45,13 @@ export type DynamicElementsMap = Record<string, DynamicElementDef>;
 
 const KEY     = "lotus-text-overrides";
 const DYN_KEY = "lotus-dynamic-elements";
-const SAVE_FILE = "/lotus-overrides.json";
+
+function getStorageUrl() {
+  const base = typeof process !== "undefined" && process.env.NEXT_PUBLIC_SUPABASE_URL;
+  return base
+    ? `${base}/storage/v1/object/public/lotus-assets/config/lotus-overrides.json`
+    : "/lotus-overrides.json";
+}
 
 export function loadOverrides(): OverridesMap {
   if (typeof window === "undefined") return {};
@@ -69,7 +75,7 @@ export function saveDynamicElements(map: DynamicElementsMap) {
 
 export async function fetchSavedState(): Promise<{ overrides: OverridesMap; dynamic: DynamicElementsMap }> {
   try {
-    const r = await fetch(SAVE_FILE + "?t=" + Date.now());
+    const r = await fetch(getStorageUrl() + "?t=" + Date.now());
     if (!r.ok) return { overrides: {}, dynamic: {} };
     return await r.json();
   } catch {
