@@ -41,20 +41,20 @@ export function EconomicsSlide() {
 
       <StatusChip status="DRAFT" />
 
-      <div style={{ position: "relative", display: "flex", height: "100%", padding: "80px 64px" }}>
+      <div style={{ position: "relative", display: "flex", alignItems: "center", height: "100%", padding: "56px 64px 72px", gap: 32 }}>
         {/* Left Content */}
-        <EditableEl id="economics:card" label="glass card" type="card" className="anim-fade-in-up" style={{ flex: "0 0 55%", display: "flex", flexDirection: "column", justifyContent: "flex-start", padding: "36px 40px 36px 36px", background: "rgba(5,10,12,0.52)", backdropFilter: "blur(28px) saturate(200%)", WebkitBackdropFilter: "blur(28px) saturate(200%)", borderRadius: "16px", border: "1px solid rgba(255,255,255,0.15)", boxShadow: "0 8px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.14)" }}>
+        <EditableEl id="economics:card" label="glass card" type="card" className="anim-fade-in-up" style={{ flex: "0 0 46%", display: "flex", flexDirection: "column", padding: "44px 48px", background: "rgba(5,10,12,0.52)", backdropFilter: "blur(28px) saturate(200%)", WebkitBackdropFilter: "blur(28px) saturate(200%)", borderRadius: "16px", border: "1px solid rgba(255,255,255,0.15)", boxShadow: "0 8px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.14)" }}>
           <EditableText
             id="economics:eyebrow"
             as="div"
             style={{
               fontSize: "10px",
               color: theme.turquoise,
-              letterSpacing: "0.2em",
+              letterSpacing: "0.28em",
               textTransform: "lowercase",
               fontFamily: font,
               fontWeight: 300,
-              marginBottom: "16px",
+              marginBottom: "10px",
             }}
           >
             economics
@@ -71,7 +71,7 @@ export function EconomicsSlide() {
               lineHeight: 1.2,
               letterSpacing: "-0.02em",
               textTransform: "lowercase",
-              marginBottom: "24px",
+              marginBottom: "20px",
             }}
           >
             returns come from structure.
@@ -85,7 +85,7 @@ export function EconomicsSlide() {
             }}
           />
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "12px", marginBottom: "40px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "20px", marginBottom: "20px" }}>
             <div
               style={{
                 background: "rgba(77,186,214,0.10)",
@@ -174,8 +174,8 @@ export function EconomicsSlide() {
             id="economics:footnote"
             as="div"
             style={{
-              fontSize: "9px",
-              color: "rgba(255,255,255,0.3)",
+              fontSize: "11px",
+              color: "rgba(255,255,255,0.45)",
               fontFamily: font,
               fontWeight: 300,
               lineHeight: 1.5,
@@ -188,8 +188,8 @@ export function EconomicsSlide() {
         </EditableEl>
 
         {/* Right Waterfall Chart */}
-        <div style={{ flex: "0 0 45%", display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <svg width={380} height={280} viewBox="0 0 380 280" style={{ overflow: "visible" }}>
+        <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <svg width={380} height={280} viewBox="0 0 380 280" style={{ overflow: "hidden" }}>
             {/* Title */}
             <text
               x={190}

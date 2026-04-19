@@ -57,20 +57,20 @@ export default function CollectiveModelSlide() {
 
       <StatusChip status="READY" />
 
-      <div style={{ position: "relative", display: "flex", height: "100%", padding: "80px 64px" }}>
+      <div style={{ position: "relative", display: "flex", alignItems: "center", height: "100%", padding: "56px 64px 72px", gap: 32 }}>
         {/* Left Content */}
-        <EditableEl id="collective-model:card" label="glass card" type="card" style={{ flex: "0 0 55%", display: "flex", flexDirection: "column", justifyContent: "center", padding: "36px 40px 36px 36px", background: "rgba(5,10,12,0.52)", backdropFilter: "blur(28px) saturate(200%)", WebkitBackdropFilter: "blur(28px) saturate(200%)", borderRadius: "16px", border: "1px solid rgba(255,255,255,0.15)", boxShadow: "0 8px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.14)" }}>
+        <EditableEl id="collective-model:card" label="glass card" type="card" style={{ flex: "0 0 46%", display: "flex", flexDirection: "column", padding: "44px 48px", background: "rgba(5,10,12,0.52)", backdropFilter: "blur(28px) saturate(200%)", WebkitBackdropFilter: "blur(28px) saturate(200%)", borderRadius: "16px", border: "1px solid rgba(255,255,255,0.15)", boxShadow: "0 8px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.14)" }}>
           <EditableText
             id="collective-model:eyebrow"
             as="div"
             style={{
               fontSize: "10px",
               color: theme.turquoise,
-              letterSpacing: "0.2em",
+              letterSpacing: "0.28em",
               textTransform: "lowercase",
               fontFamily: font,
               fontWeight: 300,
-              marginBottom: "24px",
+              marginBottom: "10px",
             }}
           >
             why the collective model fits this audience
@@ -87,7 +87,7 @@ export default function CollectiveModelSlide() {
               lineHeight: 1.2,
               letterSpacing: "-0.02em",
               textTransform: "lowercase",
-              marginBottom: "16px",
+              marginBottom: "20px",
             }}
           >
             partners participate in decisions and stay connected to outcomes.
@@ -136,7 +136,7 @@ export default function CollectiveModelSlide() {
             id="collective-model:closing"
             as="div"
             style={{
-              fontSize: "12px",
+              fontSize: "13px",
               color: theme.turquoise,
               fontWeight: 300,
               fontFamily: font,
@@ -149,7 +149,7 @@ export default function CollectiveModelSlide() {
         </EditableEl>
 
         {/* Right Diagram - Participation Ladder */}
-        <div style={{ flex: "0 0 45%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
           <svg width="280" height={svgHeight} viewBox={`0 0 280 ${svgHeight}`}>
             {participationLevels.map((level, idx) => {
               const yPos = svgHeight - (idx + 1) * rungHeight;

@@ -149,7 +149,7 @@ export function ImpactDashboardSlide() {
               style={{
                 fontSize: "10px",
                 color: theme.turquoise,
-                letterSpacing: "0.2em",
+                letterSpacing: "0.28em",
                 textTransform: "lowercase",
                 fontFamily: font,
                 fontWeight: 300,

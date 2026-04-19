@@ -35,8 +35,6 @@ export function LotusWhyLotusSlide() {
         height: "100%",
         overflow: "hidden",
         background: theme.darkBg,
-        display: "flex",
-        flexDirection: "row",
       }}
     >
       {/* Background photo */}
@@ -52,16 +50,14 @@ export function LotusWhyLotusSlide() {
 
       <StatusChip status="READY" />
 
-      {/* Left content (55%) */}
+      <div style={{ position: "relative", display: "flex", alignItems: "center", height: "100%", padding: "56px 64px 72px", gap: 32 }}>
+      {/* Left content */}
       <EditableEl id="why-lotus:card" label="glass card" type="card"
         style={{
-          flex: "0 0 55%",
-          position: "relative",
-          margin: "40px 0 40px 64px",
-          padding: "40px 36px",
+          flex: "0 0 46%",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
+          padding: "44px 48px",
           background: "rgba(5,10,12,0.52)",
           backdropFilter: "blur(28px) saturate(200%)",
           WebkitBackdropFilter: "blur(28px) saturate(200%)",
@@ -78,9 +74,9 @@ export function LotusWhyLotusSlide() {
             fontSize: "10px",
             color: theme.turquoise,
             fontWeight: 300,
-            letterSpacing: "0.2em",
+            letterSpacing: "0.28em",
             fontFamily: font,
-            marginBottom: "16px",
+            marginBottom: "10px",
             textTransform: "lowercase",
           }}
         >
@@ -115,7 +111,7 @@ export function LotusWhyLotusSlide() {
         />
 
         {/* Bullets */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "12px", marginBottom: "28px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "20px", marginBottom: "20px" }}>
           {bullets.map((bullet, i) => (
             <motion.div
               key={i}
@@ -167,7 +163,7 @@ export function LotusWhyLotusSlide() {
           id="why-lotus:tagline"
           as="p"
           style={{
-            fontSize: "12px",
+            fontSize: "13px",
             color: "rgba(77,186,214,0.8)",
             fontWeight: 300,
             letterSpacing: "0.08em",
@@ -180,14 +176,10 @@ export function LotusWhyLotusSlide() {
         </EditableText>
       </EditableEl>
 
-      {/* Right diagram (45%) */}
+      {/* Right diagram */}
       <div
         style={{
-          flex: "0 0 45%",
-          position: "relative",
-          paddingRight: "64px",
-          paddingTop: "80px",
-          paddingBottom: "72px",
+          flex: 1,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -200,6 +192,7 @@ export function LotusWhyLotusSlide() {
         >
           <LotusTrustStack width={340} height={320} />
         </motion.div>
+      </div>
       </div>
 
       <SlideFooter slideKey="why-lotus" slideNum="05" sectionLabel="trust" />

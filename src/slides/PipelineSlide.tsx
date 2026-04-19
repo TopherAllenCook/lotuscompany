@@ -31,14 +31,13 @@ export function PipelineSlide() {
 
       <StatusChip status="PLACEHOLDER" />
 
-      <div style={{ position: "relative", display: "flex", height: "100%", padding: "80px 64px" }}>
+      <div style={{ position: "relative", display: "flex", alignItems: "center", height: "100%", padding: "56px 64px 72px", gap: 32 }}>
         {/* Left Content */}
         <EditableEl id="pipeline:card" label="glass card" type="card" style={{
-          flex: "0 0 50%",
+          flex: "0 0 46%",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "flex-start",
-          padding: "36px 40px 36px 36px",
+          padding: "44px 48px",
           background: "rgba(5,10,12,0.52)",
           backdropFilter: "blur(28px) saturate(200%)",
           WebkitBackdropFilter: "blur(28px) saturate(200%)",
@@ -52,11 +51,11 @@ export function PipelineSlide() {
             style={{
               fontSize: "10px",
               color: theme.turquoise,
-              letterSpacing: "0.2em",
+              letterSpacing: "0.28em",
               textTransform: "lowercase",
               fontFamily: font,
               fontWeight: 300,
-              marginBottom: "16px",
+              marginBottom: "10px",
             }}
           >
             pipeline + readiness
@@ -73,7 +72,7 @@ export function PipelineSlide() {
               lineHeight: 1.2,
               letterSpacing: "-0.02em",
               textTransform: "lowercase",
-              marginBottom: "24px",
+              marginBottom: "20px",
             }}
           >
             a live pipeline. not a concept.
@@ -87,7 +86,7 @@ export function PipelineSlide() {
             }}
           />
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
             <EditableText
               id="pipeline:bullet-1"
               as="div"
@@ -175,7 +174,7 @@ export function PipelineSlide() {
         </EditableEl>
 
         {/* Right Pipeline Funnel */}
-        <div style={{ flex: "0 0 50%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
           <div style={{ position: "relative", width: "100%", display: "flex", flexDirection: "column", alignItems: "center", gap: "16px" }}>
             <svg width={320} height={340} viewBox="0 0 320 340" style={{ overflow: "visible" }}>
               {/* Stage 1: Sourced */}

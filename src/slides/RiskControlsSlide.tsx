@@ -38,20 +38,20 @@ export function RiskControlsSlide() {
 
       <StatusChip status="READY" />
 
-      <div style={{ position: "relative", display: "flex", flexDirection: "column", height: "100%", padding: "80px 64px 72px 64px" }}>
+      <div style={{ position: "relative", display: "flex", flexDirection: "column", height: "100%", padding: "56px 64px 72px" }}>
         {/* Headline Section */}
-        <div className="anim-fade-in-up" style={{ marginBottom: "40px" }}>
+        <div className="anim-fade-in-up" style={{ marginBottom: "32px" }}>
           <EditableText
             id="risk-controls:eyebrow"
             as="div"
             style={{
               fontSize: "10px",
               color: theme.turquoise,
-              letterSpacing: "0.2em",
+              letterSpacing: "0.28em",
               textTransform: "lowercase",
               fontFamily: font,
               fontWeight: 300,
-              marginBottom: "16px",
+              marginBottom: "10px",
             }}
           >
             risk controls

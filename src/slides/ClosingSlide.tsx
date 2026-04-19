@@ -47,20 +47,20 @@ export function ClosingSlide() {
 
       <StatusChip status="READY" />
 
-      <div style={{ position: "relative", display: "flex", height: "100%", padding: "80px 64px" }}>
+      <div style={{ position: "relative", display: "flex", alignItems: "center", height: "100%", padding: "56px 64px 72px", gap: 32 }}>
         {/* Left Content */}
-        <div className="anim-fade-in-up" style={{ flex: "0 0 50%", display: "flex", flexDirection: "column", justifyContent: "center", paddingRight: "40px" }}>
+        <div className="anim-fade-in-up" style={{ flex: "0 0 46%", display: "flex", flexDirection: "column" }}>
           <EditableText
             id="closing:eyebrow"
             as="div"
             style={{
               fontSize: "10px",
               color: theme.turquoise,
-              letterSpacing: "0.2em",
+              letterSpacing: "0.28em",
               textTransform: "lowercase",
               fontFamily: font,
               fontWeight: 300,
-              marginBottom: "16px",
+              marginBottom: "10px",
             }}
           >
             closing
@@ -77,7 +77,7 @@ export function ClosingSlide() {
               lineHeight: 1.2,
               letterSpacing: "-0.02em",
               textTransform: "lowercase",
-              marginBottom: "24px",
+              marginBottom: "20px",
             }}
           >
             build homes. recycle capital. stay accountable.
@@ -237,7 +237,7 @@ export function ClosingSlide() {
         {/* Right Diagram with Glow */}
         <div
           style={{
-            flex: "0 0 50%",
+            flex: 1,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",

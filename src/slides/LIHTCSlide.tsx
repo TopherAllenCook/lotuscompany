@@ -33,20 +33,20 @@ export default function LIHTCSlide() {
 
       <StatusChip status="READY" />
 
-      <div style={{ position: "relative", display: "flex", height: "100%", padding: "80px 64px" }}>
+      <div style={{ position: "relative", display: "flex", alignItems: "center", height: "100%", padding: "56px 64px 72px", gap: 32 }}>
         {/* Left Content */}
-        <EditableEl id="lihtc:card" label="glass card" type="card" style={{ flex: "0 0 55%", display: "flex", flexDirection: "column", justifyContent: "center", padding: "36px 40px 36px 36px", background: "rgba(5,10,12,0.52)", backdropFilter: "blur(28px) saturate(200%)", WebkitBackdropFilter: "blur(28px) saturate(200%)", borderRadius: "16px", border: "1px solid rgba(255,255,255,0.15)", boxShadow: "0 8px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.14)" }}>
+        <EditableEl id="lihtc:card" label="glass card" type="card" style={{ flex: "0 0 46%", display: "flex", flexDirection: "column", padding: "44px 48px", background: "rgba(5,10,12,0.52)", backdropFilter: "blur(28px) saturate(200%)", WebkitBackdropFilter: "blur(28px) saturate(200%)", borderRadius: "16px", border: "1px solid rgba(255,255,255,0.15)", boxShadow: "0 8px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.14)" }}>
           <EditableText
             id="lihtc:eyebrow"
             as="div"
             style={{
               fontSize: "10px",
               color: theme.turquoise,
-              letterSpacing: "0.2em",
+              letterSpacing: "0.28em",
               textTransform: "lowercase",
               fontFamily: font,
               fontWeight: 300,
-              marginBottom: "24px",
+              marginBottom: "10px",
             }}
           >
             what lihtc is
@@ -63,7 +63,7 @@ export default function LIHTCSlide() {
               lineHeight: 1.2,
               letterSpacing: "-0.02em",
               textTransform: "lowercase",
-              marginBottom: "24px",
+              marginBottom: "20px",
             }}
           >
             lihtc is the operating backbone, not just a backdrop.
@@ -77,7 +77,7 @@ export default function LIHTCSlide() {
             }}
           />
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
             <EditableText
               id="lihtc:bullet-1"
               as="div"
@@ -141,7 +141,7 @@ export default function LIHTCSlide() {
         </EditableEl>
 
         {/* Right Diagram */}
-        <div style={{ flex: "0 0 45%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
           <svg width="400" height="320" viewBox="0 0 400 320" style={{ marginBottom: "24px" }}>
             <EditableSvgNode id="lihtc:node-state"    textId="lihtc:text-state"    label="state agency"         x={20}  y={20}  width={80}  height={50} rx={3}>{`state\nagency`}</EditableSvgNode>
             <EditableSvgNode id="lihtc:node-developer" textId="lihtc:text-developer" label="developer"          x={160} y={20}  width={80}  height={50} rx={3}>developer</EditableSvgNode>

@@ -67,7 +67,7 @@ export function LotusStructureSlide() {
           position: "relative",
           paddingLeft: "64px",
           paddingRight: "64px",
-          paddingTop: "80px",
+          paddingTop: "56px",
           paddingBottom: "32px",
         }}
       >
@@ -79,9 +79,9 @@ export function LotusStructureSlide() {
             fontSize: "10px",
             color: theme.turquoise,
             fontWeight: 300,
-            letterSpacing: "0.2em",
+            letterSpacing: "0.28em",
             fontFamily: font,
-            marginBottom: "16px",
+            marginBottom: "10px",
             textTransform: "lowercase",
           }}
         >

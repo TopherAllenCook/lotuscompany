@@ -72,7 +72,7 @@ export function LotusHousingProblemSlide() {
         style={{
           flex: "0 0 55%",
           position: "relative",
-          margin: "40px 64px 8px 64px",
+          margin: "56px 64px 8px 64px",
           padding: "36px 40px",
           display: "flex",
           flexDirection: "column",
@@ -93,9 +93,9 @@ export function LotusHousingProblemSlide() {
             fontSize: "10px",
             color: theme.turquoise,
             fontWeight: 300,
-            letterSpacing: "0.2em",
+            letterSpacing: "0.28em",
             fontFamily: font,
-            marginBottom: "16px",
+            marginBottom: "10px",
             textTransform: "lowercase",
           }}
         >
@@ -174,7 +174,7 @@ export function LotusHousingProblemSlide() {
         style={{
           flex: "0 0 45%",
           position: "relative",
-          margin: "8px 64px 40px 64px",
+          margin: "8px 64px 72px 64px",
           padding: "28px 32px",
           display: "flex",
           flexDirection: "column",
@@ -257,8 +257,8 @@ export function LotusHousingProblemSlide() {
           id="housing-problem:source"
           as="p"
           style={{
-            fontSize: "9px",
-            color: "rgba(255,255,255,0.25)",
+            fontSize: "11px",
+            color: "rgba(255,255,255,0.45)",
             fontWeight: 300,
             letterSpacing: "0.06em",
             fontFamily: font,
