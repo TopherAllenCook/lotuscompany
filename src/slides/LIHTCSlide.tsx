@@ -2,6 +2,7 @@
 
 import { font, theme } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
+import { EditableEl } from "@/components/EditableEl";
 import { SlideFooter } from "@/components/SlideFooter";
 import { StatusChip } from "@/components/StatusChip";
 
@@ -187,7 +188,7 @@ export default function LIHTCSlide() {
       </div>
 
       {/* Lotus Company bar */}
-      <div
+      <EditableEl id="lihtc:company-bar" label="lotus company bar" type="card"
         style={{
           display: "flex",
           alignItems: "center",
@@ -262,10 +263,10 @@ export default function LIHTCSlide() {
             sources, structures, executes, owns
           </EditableText>
         </div>
-      </div>
+      </EditableEl>
 
       {/* Closing line */}
-      <div style={{ textAlign: "center" }}>
+      <EditableEl id="lihtc:closing-wrapper" label="closing line" type="text" style={{ textAlign: "center" }}>
         <EditableText
           id="lihtc:closing"
           as="div"
@@ -281,7 +282,7 @@ export default function LIHTCSlide() {
         >
           lihtc converts government tax credits into private equity for affordable housing
         </EditableText>
-      </div>
+      </EditableEl>
 
       <SlideFooter slideKey="lihtc" slideNum="06" sectionLabel="mechanism" />
     </div>
