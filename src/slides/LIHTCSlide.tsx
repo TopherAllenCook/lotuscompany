@@ -118,7 +118,7 @@ export default function LIHTCSlide() {
             <EditableBgImage
               id="lihtc:card-photo"
               label="card photo"
-              src="/lotus-photos/aerials/Arial.jpg"
+              src="/lotus-photos/nova/Commercial 2025-07-07 Lotus-Nova-5.jpg"
               style={{ width: "100%", height: "100%", opacity: 0.75 }}
             />
           </div>
