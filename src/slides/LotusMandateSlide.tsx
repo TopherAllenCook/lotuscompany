@@ -5,7 +5,6 @@ import { font, theme } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
 import { SlideFooter } from "@/components/SlideFooter";
 import { StatusChip } from "@/components/StatusChip";
-import { CapitalRecyclingLoop } from "@/components/diagrams/CapitalRecyclingLoop";
 import { EditableEl } from "@/components/EditableEl";
 import { EditableBgImage } from "@/components/EditableBgImage";
 
@@ -172,7 +171,11 @@ export function LotusMandateSlide() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.3, duration: 0.6 }}
         >
-          <CapitalRecyclingLoop width={420} height={260} />
+          <img
+            src="/slides/mission-driven-investment.png"
+            alt="Mission Driven Investment and Reinvestment — The Capital Cycle"
+            style={{ width: "100%", height: "100%", objectFit: "contain", borderRadius: "12px" }}
+          />
         </motion.div>
       </div>
       </div>
