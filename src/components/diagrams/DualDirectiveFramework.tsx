@@ -29,7 +29,7 @@ export function DualDirectiveFramework({
   height?: number;
 }) {
   return (
-    <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} style={{ overflow: "visible" }}>
+    <svg width={width} height={height} viewBox="0 0 760 320" preserveAspectRatio="xMidYMid meet" style={{ overflow: "hidden" }}>
       {connections.map((conn, idx) => {
         const from = nodes[conn.fromIdx];
         const to = nodes[conn.toIdx];

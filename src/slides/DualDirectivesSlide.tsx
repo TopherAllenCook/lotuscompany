@@ -32,9 +32,9 @@ export default function DualDirectivesSlide() {
 
       <StatusChip status="READY" />
 
-      <div style={{ position: "relative", display: "flex", height: "100%", padding: "56px 64px 72px" }}>
+      <div style={{ position: "relative", display: "flex", alignItems: "center", height: "100%", padding: "56px 64px 72px", gap: 32 }}>
         {/* Left Content */}
-        <EditableEl id="dual-directives:card" label="glass card" type="card" style={{ flex: "0 0 50%", display: "flex", flexDirection: "column", justifyContent: "center", padding: "44px 48px", background: "rgba(5,10,12,0.52)", backdropFilter: "blur(28px) saturate(200%)", WebkitBackdropFilter: "blur(28px) saturate(200%)", borderRadius: "16px", border: "1px solid rgba(255,255,255,0.15)", boxShadow: "0 8px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.14)" }}>
+        <EditableEl id="dual-directives:card" label="glass card" type="card" style={{ flex: "0 0 46%", display: "flex", flexDirection: "column", padding: "44px 48px", background: "rgba(5,10,12,0.52)", backdropFilter: "blur(28px) saturate(200%)", WebkitBackdropFilter: "blur(28px) saturate(200%)", borderRadius: "16px", border: "1px solid rgba(255,255,255,0.15)", boxShadow: "0 8px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.14)" }}>
           <EditableText
             id="dual-directives:eyebrow"
             as="div"
@@ -140,8 +140,8 @@ export default function DualDirectivesSlide() {
         </EditableEl>
 
         {/* Right Diagram */}
-        <div style={{ flex: "0 0 50%", display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <DualDirectiveFramework width={540} height={400} />
+        <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <DualDirectiveFramework width={660} height={280} />
         </div>
       </div>
 
