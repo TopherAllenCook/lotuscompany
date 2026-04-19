@@ -3,7 +3,7 @@
 import { font, theme } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
 import { SlideFooter } from "@/components/SlideFooter";
-import { StatusChip, PlaceholderTag } from "@/components/StatusChip";
+import { StatusChip } from "@/components/StatusChip";
 
 const PILLARS = [
   {
@@ -267,12 +267,7 @@ export function ImpactDashboardSlide() {
 
                     <div
                       className="anim-stat-pulse"
-                      style={{
-                        display: "flex",
-                        alignItems: "baseline",
-                        gap: "5px",
-                        marginBottom: "4px",
-                      }}
+                      style={{ marginBottom: "4px" }}
                     >
                       <EditableText
                         id={`impact-dashboard:${tile.id}-value`}
@@ -287,7 +282,6 @@ export function ImpactDashboardSlide() {
                       >
                         {tile.value}
                       </EditableText>
-                      <PlaceholderTag />
                     </div>
 
                     <EditableText
