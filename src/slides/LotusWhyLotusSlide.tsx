@@ -5,7 +5,6 @@ import { font, theme } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
 import { SlideFooter } from "@/components/SlideFooter";
 import { StatusChip } from "@/components/StatusChip";
-import { EditableBgImage } from "@/components/EditableBgImage";
 
 const PILLARS = [
   {
@@ -30,19 +29,8 @@ export function LotusWhyLotusSlide() {
         width: "100%",
         height: "100%",
         overflow: "hidden",
-        background: theme.darkBg,
+        background: "#424242",
       }}
-    >
-      {/* Background photo */}
-      <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
-        <EditableBgImage
-          id="why-lotus:bg-photo"
-          label="background photo"
-          src="/steelton-village/Steelton I_Clubhouse_2026.03.10.jpg"
-          style={{ width: "100%", height: "100%", opacity: 0.45 }}
-        />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(5,10,12,0.45) 0%, rgba(5,10,12,0.15) 45%, rgba(5,10,12,0.55) 100%)" }} />
-      </div>
 
       <StatusChip status="READY" />
 
