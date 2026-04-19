@@ -36,10 +36,10 @@ import { STEELTON, FORGE, UPARKWAY, LOTUS_VALE } from "./projectData";
 export const SLIDE_REGISTRY = [
   // Platform — intro
   { key: "cover",            component: LotusOpening,             title: "Cover"                       },
+  { key: "why-lotus",        component: LotusWhyLotusSlide,       title: "Why Lotus"                   },
   { key: "mandate",          component: LotusMandateSlide,        title: "The Mandate"                 },
   { key: "housing-problem",  component: LotusHousingProblemSlide, title: "Why Housing Needs This"      },
   { key: "structure",        component: LotusStructureSlide,      title: "Why This Structure Exists"   },
-  { key: "why-lotus",        component: LotusWhyLotusSlide,       title: "Why Lotus"                   },
   { key: "lotus-way",        component: LotusWaySlide,            title: "The Lotus Way"               },
 
   // Platform — capital mechanics

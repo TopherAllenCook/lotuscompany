@@ -5,28 +5,24 @@ import { font, theme } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
 import { SlideFooter } from "@/components/SlideFooter";
 import { StatusChip } from "@/components/StatusChip";
-import { LotusTrustStack } from "@/components/diagrams/LotusTrustStack";
-import { EditableEl } from "@/components/EditableEl";
 import { EditableBgImage } from "@/components/EditableBgImage";
 
-const bulletVariants = {
-  hidden: { opacity: 0, y: 8 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: 0.4 + i * 0.06, duration: 0.5 },
-  }),
-};
+const PILLARS = [
+  {
+    title: "lotus led private capital collective",
+    body: "investors partner directly with the team deploying the capital.",
+  },
+  {
+    title: "recyclable capital for scalable housing impact",
+    body: "capital deploys, returns through low-income housing tax credit equity, and redeploys into the next community.",
+  },
+  {
+    title: "direct participation, disciplined stewardship, measurable outcomes",
+    body: "partners retain ownership and cash flow in every asset, measured by both return and community result.",
+  },
+];
 
 export function LotusWhyLotusSlide() {
-  const bullets = [
-    "track record: proven development capability, not a theoretical platform.",
-    "underwriting discipline: deep underwriting tied to real feasibility gates.",
-    "relationships: long-standing trust across agencies, lenders, syndicators, and local partners.",
-    "pipeline control: active pipeline and local pattern recognition.",
-    "cultural alignment: the lotus way is an operating standard, not a branding slogan.",
-  ];
-
   return (
     <div
       style={{
@@ -43,159 +39,235 @@ export function LotusWhyLotusSlide() {
           id="why-lotus:bg-photo"
           label="background photo"
           src="/steelton-village/Steelton I_Clubhouse_2026.03.10.jpg"
-          style={{ width: "100%", height: "100%", opacity: 0.55 }}
+          style={{ width: "100%", height: "100%", opacity: 0.45 }}
         />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(5,10,12,0.25) 0%, rgba(5,10,12,0.10) 50%, rgba(5,10,12,0.0) 100%)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(5,10,12,0.45) 0%, rgba(5,10,12,0.15) 45%, rgba(5,10,12,0.55) 100%)" }} />
       </div>
 
       <StatusChip status="READY" />
 
-      <div style={{ position: "relative", display: "flex", alignItems: "center", height: "100%", padding: "56px 64px 72px", gap: 32 }}>
-      {/* Left content */}
-      <EditableEl id="why-lotus:card" label="glass card" type="card"
-        style={{
-          flex: "0 0 46%",
-          display: "flex",
-          flexDirection: "column",
-          padding: "44px 48px",
-          background: "rgba(5,10,12,0.52)",
-          backdropFilter: "blur(28px) saturate(200%)",
-          WebkitBackdropFilter: "blur(28px) saturate(200%)",
-          borderRadius: "16px",
-          border: "1px solid rgba(255,255,255,0.15)",
-          boxShadow: "0 8px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.14)",
-        }}
-      >
-        {/* Eyebrow */}
+      {/* Top-left title block */}
+      <div style={{ position: "absolute", top: 48, left: 64 }}>
         <EditableText
-          id="why-lotus:eyebrow"
+          id="why-lotus:title"
+          as="div"
+          style={{
+            fontSize: "15px",
+            fontWeight: 700,
+            color: "#fff",
+            fontFamily: font,
+            letterSpacing: "0.01em",
+            textTransform: "lowercase",
+            lineHeight: 1,
+            marginBottom: "6px",
+          }}
+        >
+          the why
+        </EditableText>
+        <EditableText
+          id="why-lotus:subtitle"
           as="div"
           style={{
             fontSize: "10px",
+            fontWeight: 400,
             color: theme.turquoise,
-            fontWeight: 300,
-            letterSpacing: "0.28em",
             fontFamily: font,
-            marginBottom: "10px",
+            letterSpacing: "0.22em",
             textTransform: "lowercase",
+            lineHeight: 1,
           }}
         >
-          why lotus
+          lotus impact initiative
         </EditableText>
+      </div>
 
-        {/* Headline */}
-        <EditableText
-          id="why-lotus:headline"
-          as="h2"
-          style={{
-            fontSize: "clamp(28px, 3vw, 44px)",
-            color: "#fff",
-            fontWeight: 300,
-            letterSpacing: "-0.02em",
-            fontFamily: font,
-            lineHeight: 1.25,
-            marginBottom: "20px",
-            textTransform: "lowercase",
-          }}
+      {/* Main content column */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "96px 88px 72px",
+          gap: 0,
+        }}
+      >
+        {/* Hero */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          style={{ textAlign: "center", marginBottom: "18px" }}
         >
-          the model only works if the operator is trusted to execute.
-        </EditableText>
+          <EditableText
+            id="why-lotus:hero"
+            as="h1"
+            style={{
+              fontSize: "clamp(26px, 3.2vw, 48px)",
+              fontWeight: 700,
+              color: "#fff",
+              fontFamily: font,
+              letterSpacing: "-0.02em",
+              textTransform: "lowercase",
+              lineHeight: 1.2,
+              margin: 0,
+            }}
+          >
+            access to dignified housing should not be out of reach.
+          </EditableText>
+        </motion.div>
 
-        {/* Rule */}
+        {/* Body */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.35, duration: 0.6 }}
+          style={{ textAlign: "center", marginBottom: "22px" }}
+        >
+          <EditableText
+            id="why-lotus:body"
+            as="p"
+            style={{
+              fontSize: "14px",
+              fontWeight: 400,
+              color: "rgba(255,255,255,0.72)",
+              fontFamily: font,
+              letterSpacing: "0.02em",
+              textTransform: "lowercase",
+              lineHeight: 1.9,
+              margin: 0,
+              maxWidth: "58ch",
+            }}
+          >
+            we build homes with intention, for the families who deserve them.
+            every development is more than a building. it is a sanctuary, and a
+            platform where capital, community, and care compound together.
+          </EditableText>
+        </motion.div>
+
+        {/* Differentiator */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.6 }}
+          style={{ textAlign: "center", marginBottom: "28px" }}
+        >
+          <div style={{ height: "1px", width: "40px", background: theme.turquoise, margin: "0 auto 14px" }} />
+          <EditableText
+            id="why-lotus:differentiator"
+            as="p"
+            style={{
+              fontSize: "15px",
+              fontWeight: 500,
+              color: "#fff",
+              fontFamily: font,
+              letterSpacing: "0.01em",
+              textTransform: "lowercase",
+              lineHeight: 1.65,
+              margin: 0,
+              maxWidth: "54ch",
+            }}
+          >
+            not philanthropy. not a traditional fund. a disciplined system for
+            scaling impact, one investment across many communities.
+          </EditableText>
+        </motion.div>
+
+        {/* Pillar cards */}
         <div
           style={{
-            height: "1px",
-            background: "rgba(77,186,214,0.18)",
-            marginBottom: "24px",
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: "14px",
+            width: "100%",
+            marginBottom: "16px",
           }}
-        />
-
-        {/* Bullets */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "20px", marginBottom: "20px" }}>
-          {bullets.map((bullet, i) => (
+        >
+          {PILLARS.map((p, i) => (
             <motion.div
               key={i}
-              custom={i}
-              initial="hidden"
-              animate="visible"
-              variants={bulletVariants}
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.62 + i * 0.1, duration: 0.5 }}
             >
               <div
                 style={{
-                  display: "flex",
-                  gap: "12px",
-                  alignItems: "flex-start",
+                  padding: "20px 22px",
+                  background: "rgba(5,10,12,0.52)",
+                  backdropFilter: "blur(28px) saturate(200%)",
+                  WebkitBackdropFilter: "blur(28px) saturate(200%)",
+                  borderRadius: "10px",
+                  border: "1px solid rgba(255,255,255,0.12)",
+                  boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
                 }}
               >
-                <div
-                  style={{
-                    width: "6px",
-                    height: "6px",
-                    borderRadius: "50%",
-                    background: theme.turquoise,
-                    marginTop: "6px",
-                    flexShrink: 0,
-                  }}
-                />
+                <div style={{ width: "24px", height: "1px", background: theme.turquoise, marginBottom: "10px" }} />
                 <EditableText
-                  id={`why-lotus:bullet-${i}`}
-                  as="p"
+                  id={`why-lotus:pillar-${i}-title`}
+                  as="div"
                   style={{
-                    fontSize: "15px",
-                    color: "rgba(255,255,255,0.88)",
-                    fontWeight: 400,
-                    letterSpacing: "0.04em",
+                    fontSize: "12px",
+                    fontWeight: 500,
+                    color: "#fff",
                     fontFamily: font,
-                    lineHeight: 1.7,
-                    margin: 0,
+                    letterSpacing: "0.02em",
                     textTransform: "lowercase",
+                    lineHeight: 1.4,
+                    marginBottom: "8px",
                   }}
                 >
-                  {bullet}
+                  {p.title}
+                </EditableText>
+                <EditableText
+                  id={`why-lotus:pillar-${i}-body`}
+                  as="p"
+                  style={{
+                    fontSize: "12px",
+                    fontWeight: 400,
+                    color: "rgba(255,255,255,0.58)",
+                    fontFamily: font,
+                    letterSpacing: "0.02em",
+                    textTransform: "lowercase",
+                    lineHeight: 1.65,
+                    margin: 0,
+                  }}
+                >
+                  {p.body}
                 </EditableText>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Tagline */}
-        <EditableText
-          id="why-lotus:tagline"
-          as="p"
-          style={{
-            fontSize: "13px",
-            color: "rgba(77,186,214,0.8)",
-            fontWeight: 300,
-            letterSpacing: "0.08em",
-            fontFamily: font,
-            margin: 0,
-            textTransform: "lowercase",
-          }}
-        >
-          lotus brings operator discipline to a structural housing problem.
-        </EditableText>
-      </EditableEl>
-
-      {/* Right diagram */}
-      <div
-        style={{
-          flex: 1,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
+        {/* Closing line */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.3, duration: 0.6 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.95, duration: 0.5 }}
+          style={{ textAlign: "center" }}
         >
-          <LotusTrustStack width={340} height={320} />
+          <EditableText
+            id="why-lotus:closing"
+            as="p"
+            style={{
+              fontSize: "11px",
+              fontWeight: 400,
+              color: "rgba(77,186,214,0.7)",
+              fontFamily: font,
+              letterSpacing: "0.12em",
+              textTransform: "lowercase",
+              lineHeight: 1.5,
+              margin: 0,
+            }}
+          >
+            attractive risk-adjusted returns alongside sustained community outcomes.
+          </EditableText>
         </motion.div>
       </div>
-      </div>
 
-      <SlideFooter slideKey="why-lotus" slideNum="05" sectionLabel="trust" />
+      <SlideFooter slideKey="why-lotus" slideNum="02" sectionLabel="mission" />
     </div>
   );
 }
