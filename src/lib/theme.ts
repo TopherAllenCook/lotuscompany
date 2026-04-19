@@ -4,7 +4,7 @@ export const EASE_OUT: BezierDefinition  = [0.16, 1, 0.3, 1];
 export const EASE_SLIDE: BezierDefinition = [0.32, 0, 0.12, 1];
 
 export const theme = {
-  darkBg:    "#050a0c",
+  darkBg:    "#424242",
   darkGray:  "#424242",
   turquoise: "#4dbad6",
   lightBlue: "#cee8ee",

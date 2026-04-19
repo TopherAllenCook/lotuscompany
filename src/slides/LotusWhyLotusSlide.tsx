@@ -29,7 +29,7 @@ export function LotusWhyLotusSlide() {
         width: "100%",
         height: "100%",
         overflow: "hidden",
-        background: "#424242",
+        background: theme.darkBg,
       }}
     >
       <StatusChip status="READY" />
