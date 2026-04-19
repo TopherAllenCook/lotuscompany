@@ -20,6 +20,9 @@ export interface ElementOverride {
   blurAmount?: number;    // px — backdropFilter blur
   objectPositionX?: number; // 0–100 %
   objectPositionY?: number; // 0–100 %
+  scale?: number;           // 1–200 %
+  paddingX?: number;        // px horizontal
+  paddingY?: number;        // px vertical
 }
 
 export type TextOverride = ElementOverride;
