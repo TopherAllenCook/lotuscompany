@@ -300,7 +300,7 @@ export function EditableText<T extends keyof React.JSX.IntrinsicElements = "div"
           position: "absolute",
           inset: -8,
           display: "block",
-          cursor: isActive ? "move" : "default",
+          cursor: isActive ? "move" : "crosshair",
           zIndex: 9000,
         }}
       />

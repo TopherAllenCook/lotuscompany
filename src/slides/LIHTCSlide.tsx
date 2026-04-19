@@ -157,9 +157,14 @@ export default function LIHTCSlide() {
             {/* Label row above arrows */}
             <div style={{ display: "flex", alignItems: "flex-end", marginBottom: "8px", paddingLeft: "calc(33% + 12px)", gap: 0 }}>
               {FLOW_LABELS.map((label, i) => (
-                <div key={i} style={{ flex: 1, textAlign: "center", fontSize: "9px", color: theme.turquoise, fontFamily: font, fontWeight: 400, textTransform: "lowercase", letterSpacing: "0.04em", lineHeight: 1.3, paddingRight: i === 0 ? "8px" : 0 }}>
+                <EditableText
+                  key={i}
+                  id={`lihtc:flow-label-${i}`}
+                  as="div"
+                  style={{ flex: 1, textAlign: "center", fontSize: "9px", color: theme.turquoise, fontFamily: font, fontWeight: 400, textTransform: "lowercase", letterSpacing: "0.04em", lineHeight: 1.3, paddingRight: i === 0 ? "8px" : 0 }}
+                >
                   {label}
-                </div>
+                </EditableText>
               ))}
             </div>
 
@@ -177,12 +182,20 @@ export default function LIHTCSlide() {
                       border: "1px solid rgba(77,186,214,0.2)",
                     }}
                   >
-                    <div style={{ fontSize: "11px", color: "#fff", fontFamily: font, fontWeight: 600, textTransform: "lowercase", lineHeight: 1.3, marginBottom: "3px" }}>
+                    <EditableText
+                      id={`lihtc:flow-step-${i}-title`}
+                      as="div"
+                      style={{ fontSize: "11px", color: "#fff", fontFamily: font, fontWeight: 600, textTransform: "lowercase", lineHeight: 1.3, marginBottom: "3px" }}
+                    >
                       {step.title}
-                    </div>
-                    <div style={{ fontSize: "10px", color: "rgba(255,255,255,0.45)", fontFamily: font, fontWeight: 300, textTransform: "lowercase" }}>
+                    </EditableText>
+                    <EditableText
+                      id={`lihtc:flow-step-${i}-sub`}
+                      as="div"
+                      style={{ fontSize: "10px", color: "rgba(255,255,255,0.45)", fontFamily: font, fontWeight: 300, textTransform: "lowercase" }}
+                    >
                       {step.sub}
-                    </div>
+                    </EditableText>
                   </div>
                   {i < 2 && (
                     <div style={{ flexShrink: 0, padding: "0 6px" }}>
