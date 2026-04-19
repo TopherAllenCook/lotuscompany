@@ -117,6 +117,7 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
   const [colorHex, setColorHex] = useState("#ffffff");
   const [bgHex, setBgHex] = useState("#4dbad6");
   const [saveState, setSaveState] = useState<"idle" | "saving" | "saved" | "error">("idle");
+  const [saveError, setSaveError] = useState<string | null>(null);
   const prevActiveId = useRef<string | null>(null);
 
   useEffect(() => {
@@ -238,9 +239,11 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
 
   const handleSave = useCallback(async () => {
     setSaveState("saving");
-    const ok = await pushSavedState(overrides, dynamicElements);
-    setSaveState(ok ? "saved" : "error");
-    setTimeout(() => setSaveState("idle"), 2200);
+    setSaveError(null);
+    const result = await pushSavedState(overrides, dynamicElements);
+    setSaveState(result.ok ? "saved" : "error");
+    if (!result.ok) setSaveError(result.error ?? null);
+    setTimeout(() => setSaveState("idle"), 3500);
   }, [overrides, dynamicElements]);
 
   const handleAddElement = useCallback((type: "text" | "bar" | "shape") => {
@@ -327,9 +330,21 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
               </p>
             </div>
             <div style={{ display: "flex", gap: 5, alignItems: "center" }}>
-              <button onClick={handleSave} disabled={saveState === "saving"} style={saveBtnStyle}>
-                {saveState === "saving" ? "saving…" : saveState === "saved" ? "saved ✓" : saveState === "error" ? "error" : "save"}
-              </button>
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 2 }}>
+                <button onClick={handleSave} disabled={saveState === "saving"} style={saveBtnStyle}
+                  title={saveError ?? undefined}>
+                  {saveState === "saving" ? "saving…" : saveState === "saved" ? "saved ✓" : saveState === "error" ? "error ↑" : "save"}
+                </button>
+                {saveState === "error" && saveError && (
+                  <span style={{
+                    fontSize: 8, color: "rgba(255,100,100,0.65)",
+                    maxWidth: 130, textAlign: "right", lineHeight: 1.3,
+                    letterSpacing: "0.03em", fontFamily: font,
+                  }}>
+                    {saveError.slice(0, 80)}
+                  </span>
+                )}
+              </div>
               <button
                 onClick={handleResetSlide}
                 title="Clear all overrides for this slide"

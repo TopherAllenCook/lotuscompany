@@ -83,15 +83,23 @@ export async function fetchSavedState(): Promise<{ overrides: OverridesMap; dyna
   }
 }
 
-export async function pushSavedState(overrides: OverridesMap, dynamic: DynamicElementsMap): Promise<boolean> {
+export async function pushSavedState(overrides: OverridesMap, dynamic: DynamicElementsMap): Promise<{ ok: boolean; error?: string }> {
   try {
     const r = await fetch("/api/save-overrides", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ overrides, dynamic }),
     });
-    return r.ok;
-  } catch {
-    return false;
+    const body = await r.json().catch(() => ({}));
+    if (!r.ok) {
+      const msg = body?.error ?? `HTTP ${r.status}`;
+      console.error("[save-overrides]", msg, body);
+      return { ok: false, error: msg };
+    }
+    return { ok: true };
+  } catch (e) {
+    const msg = String(e);
+    console.error("[save-overrides]", msg);
+    return { ok: false, error: msg };
   }
 }
