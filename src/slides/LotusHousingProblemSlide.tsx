@@ -202,8 +202,12 @@ export function LotusHousingProblemSlide() {
               initial="hidden"
               animate="visible"
               variants={dataBoxVariants}
+              style={{ position: "relative" }}
             >
-              <div
+              <EditableEl
+                id={`housing-problem:stat-card-${i}`}
+                label={`stat card — ${box.label}`}
+                type="card"
                 style={{
                   background: "rgba(77,186,214,0.09)",
                   border: "1px solid rgba(77,186,214,0.22)",
@@ -242,7 +246,7 @@ export function LotusHousingProblemSlide() {
                 >
                   {box.label}
                 </EditableText>
-              </div>
+              </EditableEl>
             </motion.div>
           ))}
         </div>
