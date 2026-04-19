@@ -4,7 +4,6 @@ import { font, theme } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
 import { SlideFooter } from "@/components/SlideFooter";
 import { StatusChip } from "@/components/StatusChip";
-import { DualDirectiveFramework } from "@/components/diagrams/DualDirectiveFramework";
 import { EditableEl } from "@/components/EditableEl";
 import { EditableBgImage } from "@/components/EditableBgImage";
 
@@ -141,7 +140,11 @@ export default function DualDirectivesSlide() {
 
         {/* Right Diagram */}
         <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <DualDirectiveFramework width={660} height={280} />
+          <img
+            src="/slides/dual-directive-impact-initiative.png"
+            alt="Lotus Impact Initiative — Dual Directives"
+            style={{ width: "100%", height: "100%", objectFit: "contain", borderRadius: "12px" }}
+          />
         </div>
       </div>
 
