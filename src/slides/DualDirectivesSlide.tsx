@@ -32,20 +32,20 @@ export default function DualDirectivesSlide() {
 
       <StatusChip status="READY" />
 
-      <div style={{ position: "relative", display: "flex", height: "100%", padding: "80px 64px" }}>
+      <div style={{ position: "relative", display: "flex", height: "100%", padding: "56px 64px 72px" }}>
         {/* Left Content */}
-        <EditableEl id="dual-directives:card" label="glass card" type="card" style={{ flex: "0 0 50%", display: "flex", flexDirection: "column", justifyContent: "center", padding: "36px 40px 36px 36px", background: "rgba(5,10,12,0.52)", backdropFilter: "blur(28px) saturate(200%)", WebkitBackdropFilter: "blur(28px) saturate(200%)", borderRadius: "16px", border: "1px solid rgba(255,255,255,0.15)", boxShadow: "0 8px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.14)" }}>
+        <EditableEl id="dual-directives:card" label="glass card" type="card" style={{ flex: "0 0 50%", display: "flex", flexDirection: "column", justifyContent: "center", padding: "44px 48px", background: "rgba(5,10,12,0.52)", backdropFilter: "blur(28px) saturate(200%)", WebkitBackdropFilter: "blur(28px) saturate(200%)", borderRadius: "16px", border: "1px solid rgba(255,255,255,0.15)", boxShadow: "0 8px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.14)" }}>
           <EditableText
             id="dual-directives:eyebrow"
             as="div"
             style={{
               fontSize: "10px",
               color: theme.turquoise,
-              letterSpacing: "0.2em",
+              letterSpacing: "0.28em",
               textTransform: "lowercase",
               fontFamily: font,
               fontWeight: 300,
-              marginBottom: "24px",
+              marginBottom: "10px",
             }}
           >
             dual directives
@@ -55,14 +55,14 @@ export default function DualDirectivesSlide() {
             id="dual-directives:headline"
             as="h1"
             style={{
-              fontSize: "clamp(28px, 3vw, 44px)",
+              fontSize: "clamp(24px, 2.6vw, 40px)",
               color: "#fff",
               fontWeight: 300,
               fontFamily: font,
               lineHeight: 1.2,
               letterSpacing: "-0.02em",
               textTransform: "lowercase",
-              marginBottom: "24px",
+              marginBottom: "20px",
             }}
           >
             disciplined investment. evolving impact.
@@ -76,7 +76,7 @@ export default function DualDirectivesSlide() {
             }}
           />
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
             <EditableText
               id="dual-directives:bullet-1"
               as="div"
@@ -141,7 +141,7 @@ export default function DualDirectivesSlide() {
 
         {/* Right Diagram */}
         <div style={{ flex: "0 0 50%", display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <DualDirectiveFramework width={480} height={340} />
+          <DualDirectiveFramework width={540} height={400} />
         </div>
       </div>
 
