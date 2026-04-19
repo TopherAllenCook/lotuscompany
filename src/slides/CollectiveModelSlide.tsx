@@ -149,60 +149,48 @@ export default function CollectiveModelSlide() {
         </EditableEl>
 
         {/* Right Diagram - Participation Ladder */}
-        <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <svg width="280" height={svgHeight} viewBox={`0 0 280 ${svgHeight}`}>
-            {participationLevels.map((level, idx) => {
-              const yPos = svgHeight - (idx + 1) * rungHeight;
-              const widthPercent = 0.4 + idx * 0.15;
-              const width = 280 * widthPercent;
-              const x = (280 - width) / 2;
-              const fillOpacity = 0.06 + idx * 0.05;
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 0, padding: "0 16px" }}>
+          {/* Ladder label */}
+          <div style={{ marginBottom: 20, textAlign: "center" }}>
+            <div style={{ fontSize: "20px", color: theme.turquoise, fontFamily: font, fontWeight: 300, letterSpacing: "0.18em", textTransform: "lowercase" }}>
+              participation levels
+            </div>
+          </div>
 
+          {/* Rungs — rendered top (shaping) → bottom (informed) */}
+          <div style={{ display: "flex", flexDirection: "column", gap: 10, width: "100%", alignItems: "center" }}>
+            {[...participationLevels].reverse().map((level, idx) => {
+              const widths = ["58%", "72%", "86%", "100%"];
+              const opacities = [0.22, 0.15, 0.10, 0.06];
               return (
-                <g key={idx}>
-                  {/* Rung */}
-                  <rect
-                    x={x}
-                    y={yPos + 20}
-                    width={width}
-                    height="40"
-                    rx="4"
-                    fill={`rgba(77, 186, 214, ${fillOpacity})`}
-                    stroke="rgba(77, 186, 214, 0.3)"
-                    strokeWidth="1"
-                  />
-
-                  {/* Label */}
-                  <text
-                    x={140}
-                    y={yPos + 40}
-                    textAnchor="middle"
-                    dominantBaseline="middle"
-                    fill="#fff"
-                    fontSize="12"
-                    fontFamily={font}
-                    fontWeight="300"
-                  >
+                <div
+                  key={level.index}
+                  style={{
+                    width: widths[idx],
+                    padding: "14px 20px",
+                    background: `rgba(77,186,214,${opacities[idx]})`,
+                    border: "1px solid rgba(77,186,214,0.35)",
+                    borderRadius: 8,
+                    textAlign: "center",
+                  }}
+                >
+                  <div style={{ fontSize: "20px", color: "#fff", fontFamily: font, fontWeight: 400, textTransform: "lowercase", lineHeight: 1.2 }}>
                     {level.label}
-                  </text>
-
-                  {/* Sub-label */}
-                  <text
-                    x={140}
-                    y={yPos + 55}
-                    textAnchor="middle"
-                    dominantBaseline="middle"
-                    fill="rgba(206, 232, 238, 0.6)"
-                    fontSize="10"
-                    fontFamily={font}
-                    fontWeight="300"
-                  >
+                  </div>
+                  <div style={{ fontSize: "20px", color: "rgba(206,232,238,0.6)", fontFamily: font, fontWeight: 300, textTransform: "lowercase", marginTop: 4 }}>
                     {level.sublabel}
-                  </text>
-                </g>
+                  </div>
+                </div>
               );
             })}
-          </svg>
+          </div>
+
+          {/* Bottom label */}
+          <div style={{ marginTop: 16, textAlign: "center" }}>
+            <div style={{ fontSize: "20px", color: "rgba(255,255,255,0.35)", fontFamily: font, fontWeight: 300, textTransform: "lowercase", fontStyle: "italic" }}>
+              all partners receive base reporting
+            </div>
+          </div>
         </div>
       </div>
 
