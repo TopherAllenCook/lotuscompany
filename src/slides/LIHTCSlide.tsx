@@ -3,6 +3,7 @@
 import { font, theme } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
 import { EditableEl } from "@/components/EditableEl";
+import { EditableBgImage } from "@/components/EditableBgImage";
 import { SlideFooter } from "@/components/SlideFooter";
 import { StatusChip } from "@/components/StatusChip";
 
@@ -110,6 +111,16 @@ export default function LIHTCSlide() {
                 </EditableText>
               </div>
             ))}
+          </div>
+
+          {/* Photo strip at card bottom */}
+          <div style={{ margin: "20px -40px -36px", borderRadius: "0 0 14px 14px", overflow: "hidden", height: "120px", flexShrink: 0 }}>
+            <EditableBgImage
+              id="lihtc:card-photo"
+              label="card photo"
+              src="/lotus-photos/aerials/Arial.jpg"
+              style={{ width: "100%", height: "100%", opacity: 0.75 }}
+            />
           </div>
         </EditableEl>
 
