@@ -112,6 +112,12 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
   const isActiveDynamic = activeId != null && dynamicElements[activeId] != null;
 
   const [historyOpen, setHistoryOpen] = useState(false);
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  // Move focus into the panel when it opens so keyboard nav works immediately
+  useEffect(() => {
+    if (open) setTimeout(() => panelRef.current?.focus(), 50);
+  }, [open]);
 
   const [vals, setVals] = useState<Record<string, number>>({
     fontSize: 16, translateX: 0, translateY: 0, letterSpacing: 0, lineHeight: 1.5,
@@ -370,6 +376,10 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
       {open && (
         <motion.div
           key="editor-panel"
+          ref={panelRef}
+          role="complementary"
+          aria-label="Element editor"
+          tabIndex={-1}
           initial={{ x: "100%" }}
           animate={{ x: 0 }}
           exit={{ x: "100%" }}
@@ -381,6 +391,7 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
             borderLeft: "1px solid rgba(77,186,214,0.18)",
             display: "flex", flexDirection: "column",
             fontFamily: font,
+            outline: "none",
           }}
         >
           {/* Header */}
@@ -400,14 +411,16 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
             </div>
             <div style={{ display: "flex", gap: 5, alignItems: "center" }}>
               <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 2 }}>
-                <div style={{ display: "flex", gap: 4 }}>
+                <div role="status" aria-live="polite" aria-atomic="true" style={{ display: "flex", gap: 4 }}>
                   <button onClick={saveDraftNow} disabled={saveState === "saving"} style={draftBtnStyle}
+                    aria-label={saveState === "error" ? `Save failed — click to retry. ${saveError ?? ""}` : "save draft"}
                     title={saveError ?? "save draft"}>
-                    {saveState === "saving" ? "saving…" : saveState === "saved" ? "draft ✓" : saveState === "error" ? "error ↑" : "save draft"}
+                    {saveState === "saving" ? "saving…" : saveState === "saved" ? "draft ✓" : saveState === "error" ? "retry save" : "save draft"}
                   </button>
                   <button onClick={publishNow} disabled={publishState === "publishing"} style={publishBtnStyle}
+                    aria-label={publishState === "error" ? `Publish failed — click to retry. ${publishError ?? ""}` : "publish — makes changes live"}
                     title={publishError ?? "publish — makes changes live"}>
-                    {publishState === "publishing" ? "publishing…" : publishState === "published" ? "live ✓" : publishState === "error" ? "error ↑" : "publish"}
+                    {publishState === "publishing" ? "publishing…" : publishState === "published" ? "live ✓" : publishState === "error" ? "retry publish" : "publish"}
                   </button>
                 </div>
                 {saveState === "error" && saveError && (
@@ -431,6 +444,7 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
               </div>
               <button
                 onClick={handleResetSlide}
+                aria-label={`Reset all overrides for ${slideKey.replace(/-/g, " ")} slide`}
                 title="Clear all overrides for this slide"
                 style={{
                   background: "none", border: "1px solid rgba(255,80,80,0.2)",
@@ -514,6 +528,8 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
               return (
                 <button
                   key={id}
+                  aria-pressed={isActive}
+                  aria-label={`${label} (${typeLabel(type)})${hasOverride ? " — modified" : ""}`}
                   onClick={() => setActiveId(isActive ? null : id)}
                   style={{
                     display: "flex", alignItems: "center", justifyContent: "space-between",
@@ -678,6 +694,8 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
                     const decimals = step < 1 ? 2 : 1;
                     const draft = inputDrafts[key];
                     const displayVal = draft !== null && draft !== undefined ? draft : val.toFixed(decimals);
+                    const draftNum = draft != null ? parseFloat(draft) : NaN;
+                    const isOutOfRange = draft != null && !isNaN(draftNum) && (draftNum < min || draftNum > max);
 
                     const commitDraft = () => {
                       const parsed = parseFloat(String(draft));
@@ -697,6 +715,8 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
                           <div style={{ display: "flex", alignItems: "center", gap: 2 }}>
                             <input
                               type="text"
+                              aria-label={`${label} value${suffix ? ` in ${suffix}` : ""}`}
+                              aria-invalid={isOutOfRange}
                               value={displayVal}
                               onChange={e => setInputDrafts(prev => ({ ...prev, [key]: e.target.value }))}
                               onBlur={commitDraft}
@@ -717,10 +737,11 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
                               }}
                               style={{
                                 width: 52, textAlign: "right",
-                                background: "rgba(77,186,214,0.08)",
-                                border: "1px solid rgba(77,186,214,0.2)",
+                                background: isOutOfRange ? "rgba(255,80,80,0.08)" : "rgba(77,186,214,0.08)",
+                                border: `1px solid ${isOutOfRange ? "rgba(255,80,80,0.5)" : "rgba(77,186,214,0.2)"}`,
                                 borderRadius: 3, padding: "2px 5px",
-                                color: "#4dbad6", fontSize: 10,
+                                color: isOutOfRange ? "rgba(255,120,120,0.9)" : "#4dbad6",
+                                fontSize: 10,
                                 fontFamily: "monospace", fontVariantNumeric: "tabular-nums",
                                 outline: "none",
                               }}
@@ -734,6 +755,7 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
                         </div>
                         <input
                           type="range" min={min} max={max} step={step} value={val}
+                          aria-label={label}
                           onChange={e => handleChange(key, parseFloat(e.target.value))}
                           style={{ width: "100%", accentColor: "#028faa", cursor: "pointer" }}
                         />

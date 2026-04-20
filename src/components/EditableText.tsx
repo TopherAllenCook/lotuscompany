@@ -141,14 +141,19 @@ export function EditModeProvider({ children }: { children: ReactNode }) {
     });
   }, []);
 
-  // Autosave draft 2 s after the last change while in edit mode
+  // Autosave draft 2 s after the last change while in edit mode.
+  // On failure, retries once after 3 s before surfacing the error.
   useEffect(() => {
     if (!editMode) return;
     if (autosaveTimer.current) clearTimeout(autosaveTimer.current);
     autosaveTimer.current = setTimeout(async () => {
       setSaveState("saving");
       setSaveError(null);
-      const result = await saveDraft(overrides, dynamicElements);
+      let result = await saveDraft(overrides, dynamicElements);
+      if (!result.ok) {
+        await new Promise(r => setTimeout(r, 3000));
+        result = await saveDraft(overrides, dynamicElements);
+      }
       setSaveState(result.ok ? "saved" : "error");
       if (!result.ok) setSaveError(result.error ?? null);
       setTimeout(() => setSaveState(s => s === "saved" ? "idle" : s), 3500);
@@ -160,7 +165,12 @@ export function EditModeProvider({ children }: { children: ReactNode }) {
     if (autosaveTimer.current) clearTimeout(autosaveTimer.current);
     setSaveState("saving");
     setSaveError(null);
-    const result = await saveDraft(overrides, dynamicElements);
+    let result = await saveDraft(overrides, dynamicElements);
+    if (!result.ok) {
+      // One automatic retry before surfacing the error
+      await new Promise(r => setTimeout(r, 1500));
+      result = await saveDraft(overrides, dynamicElements);
+    }
     setSaveState(result.ok ? "saved" : "error");
     if (!result.ok) setSaveError(result.error ?? null);
     setTimeout(() => setSaveState(s => s === "saved" ? "idle" : s), 3500);
