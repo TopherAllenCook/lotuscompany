@@ -76,12 +76,12 @@ export function LotusStructureSlide() {
           id="structure:eyebrow"
           as="div"
           style={{
-            fontSize: "24px",
+            fontSize: "13px",
             color: theme.turquoise,
             fontWeight: 300,
             letterSpacing: "0.28em",
             fontFamily: font,
-            marginBottom: "10px",
+            marginBottom: "8px",
             textTransform: "lowercase",
           }}
         >
@@ -93,13 +93,13 @@ export function LotusStructureSlide() {
           id="structure:headline"
           as="h2"
           style={{
-            fontSize: "46px",
+            fontSize: "38px",
             color: "#fff",
             fontWeight: 300,
             letterSpacing: "-0.02em",
             fontFamily: font,
-            lineHeight: 1.25,
-            marginBottom: "12px",
+            lineHeight: 1.2,
+            marginBottom: "10px",
             textTransform: "lowercase",
             textShadow: "0 1px 12px rgba(5,10,12,0.8)",
           }}
@@ -112,7 +112,7 @@ export function LotusStructureSlide() {
           id="structure:caption"
           as="p"
           style={{
-            fontSize: "24px",
+            fontSize: "17px",
             color: "rgba(255,255,255,0.88)",
             fontWeight: 400,
             letterSpacing: "0.04em",
@@ -134,7 +134,7 @@ export function LotusStructureSlide() {
           paddingLeft: "64px",
           paddingRight: "64px",
           paddingBottom: "72px",
-          overflowY: "auto",
+          overflowY: "hidden",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -169,8 +169,8 @@ export function LotusStructureSlide() {
                   style={{
                     padding: "10px 16px",
                     textAlign: "left",
-                    fontSize: "24px",
-                    fontWeight: 400,
+                    fontSize: "12px",
+                    fontWeight: 500,
                     color: theme.turquoise,
                     letterSpacing: "0.14em",
                     textTransform: "uppercase",
@@ -188,8 +188,8 @@ export function LotusStructureSlide() {
                   style={{
                     padding: "10px 16px",
                     textAlign: "left",
-                    fontSize: "24px",
-                    fontWeight: 400,
+                    fontSize: "12px",
+                    fontWeight: 500,
                     color: theme.turquoise,
                     letterSpacing: "0.14em",
                     textTransform: "uppercase",
@@ -207,8 +207,8 @@ export function LotusStructureSlide() {
                   style={{
                     padding: "10px 16px",
                     textAlign: "left",
-                    fontSize: "24px",
-                    fontWeight: 400,
+                    fontSize: "12px",
+                    fontWeight: 500,
                     color: theme.turquoise,
                     letterSpacing: "0.14em",
                     textTransform: "uppercase",
@@ -226,8 +226,8 @@ export function LotusStructureSlide() {
                   style={{
                     padding: "10px 16px",
                     textAlign: "left",
-                    fontSize: "24px",
-                    fontWeight: 400,
+                    fontSize: "12px",
+                    fontWeight: 500,
                     color: theme.turquoise,
                     letterSpacing: "0.14em",
                     textTransform: "uppercase",
@@ -259,10 +259,10 @@ export function LotusStructureSlide() {
                   <td
                     style={{
                       padding: "10px 16px",
-                      fontSize: "24px",
+                      fontSize: "15px",
                       fontWeight: 300,
                       color: "rgba(77,186,214,0.8)",
-                      letterSpacing: "0.12em",
+                      letterSpacing: "0.08em",
                       textTransform: "lowercase",
                     }}
                   >
@@ -277,7 +277,7 @@ export function LotusStructureSlide() {
                   <td
                     style={{
                       padding: "10px 16px",
-                      fontSize: "24px",
+                      fontSize: "16px",
                       fontWeight: 400,
                       color: "rgba(255,255,255,0.80)",
                       textTransform: "lowercase",
@@ -294,7 +294,7 @@ export function LotusStructureSlide() {
                   <td
                     style={{
                       padding: "10px 16px",
-                      fontSize: "24px",
+                      fontSize: "16px",
                       fontWeight: 400,
                       color: "rgba(255,255,255,0.80)",
                       textTransform: "lowercase",
@@ -311,7 +311,7 @@ export function LotusStructureSlide() {
                   <td
                     style={{
                       padding: "10px 16px",
-                      fontSize: "24px",
+                      fontSize: "16px",
                       fontWeight: 400,
                       color: "#fff",
                       textTransform: "lowercase",
