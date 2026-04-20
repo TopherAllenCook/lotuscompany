@@ -29,6 +29,7 @@ const bulletVariants = {
 const PERSONAS = [
   {
     initial: "M",
+    img: "/Resident headshots/maya.png",
     name: "maya, 32",
     role: "home health aide",
     stat: "7.2M",
@@ -36,6 +37,7 @@ const PERSONAS = [
   },
   {
     initial: "L",
+    img: "/Resident headshots/Letty.jpg",
     name: "letty, 41",
     role: "grocery cashier",
     stat: "1 in 2",
@@ -43,6 +45,7 @@ const PERSONAS = [
   },
   {
     initial: "M",
+    img: "/Resident headshots/marcus.png",
     name: "marcus, 29",
     role: "warehouse worker",
     stat: "8.46M",
@@ -188,23 +191,22 @@ export function LotusHousingProblemSlide() {
                   boxShadow: "0 4px 24px rgba(0,0,0,0.35)",
                 }}
               >
-                {/* Avatar — initial letter */}
+                {/* Avatar — headshot */}
                 <div
                   style={{
-                    width: "48px",
-                    height: "48px",
+                    width: "64px",
+                    height: "64px",
                     borderRadius: "50%",
                     border: `2px solid ${theme.turquoise}`,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
                     flexShrink: 0,
-                    background: "rgba(77,186,214,0.08)",
+                    overflow: "hidden",
                   }}
                 >
-                  <EditableText id={`housing-problem:persona-initial-${i}`} as="span" style={{ fontSize: "22px", color: theme.turquoise, fontFamily: font, fontWeight: 300 }}>
-                    {p.initial}
-                  </EditableText>
+                  <img
+                    src={p.img}
+                    alt={p.name}
+                    style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }}
+                  />
                 </div>
 
                 {/* Name + role */}
