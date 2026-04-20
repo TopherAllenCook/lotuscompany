@@ -14,6 +14,15 @@ const tiers = [
   { ami: "80% ami", pct: 80, rent: 1160, savings: marketRent - 1160, label: "moderate income"      },
 ];
 
+const MECHANIC_STEPS: { step: string; text: string; sub?: string }[] = [
+  { step: "01", text: "developer applies for lihtc allocation from the state housing finance agency." },
+  { step: "02", text: "in exchange for lowering rents to 60% of the area median income (ami) or lower, developments qualify for tax credits." },
+  { step: "03", text: "by restricting 100% of units to 60% ami, 100% of residential construction costs can be claimed as a 4% lihtc.", sub: "4% lihtcs generate 4% of your residential costs as a tax credit annually for ten years, effectively providing equity for 40% of the costs of the development." },
+  { step: "05", text: "then apply for 4% lihtc credits through the state housing finance agency and sell these 4% credits to institutional investors, typically banks." },
+  { step: "06", text: "lower rents equal less debt, reducing monthly debt service." },
+  { step: "07", text: "the permanent financing capital stack will then reflect a first mortgage, 4% lihtc investor equity, and deferred developer fee." },
+];
+
 export function LIHTCRentsSlide() {
   return (
     <div
@@ -110,12 +119,7 @@ export function LIHTCRentsSlide() {
               the mechanic
             </EditableText>
 
-            {[
-              { step: "01", text: "developer applies for 9% or 4% lihtc allocation from the state housing finance agency." },
-              { step: "02", text: "credits are sold to investors (typically banks) who provide equity in exchange for the tax credit stream." },
-              { step: "03", text: "equity replaces debt — the project carries less leverage, reducing monthly debt service." },
-              { step: "04", text: "rent is set as a percentage of area median income (ami), not market rate — families pay what they can afford." },
-            ].map((item, i) => (
+            {MECHANIC_STEPS.map((item, i) => (
               <div key={i} style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
                 <EditableText
                   id={`lihtc-rents:step-num-${i}`}
@@ -131,20 +135,42 @@ export function LIHTCRentsSlide() {
                 >
                   {item.step}
                 </EditableText>
-                <EditableText
-                  id={`lihtc-rents:step-${i}`}
-                  as="div"
-                  style={{
-                    fontSize: "24px",
-                    color: "rgba(206,232,238,0.60)",
-                    fontFamily: font,
-                    fontWeight: 300,
-                    lineHeight: 1.6,
-                    textTransform: "lowercase",
-                  }}
-                >
-                  {item.text}
-                </EditableText>
+                <div>
+                  <EditableText
+                    id={`lihtc-rents:step-${i}`}
+                    as="div"
+                    style={{
+                      fontSize: "13px",
+                      color: "rgba(206,232,238,0.60)",
+                      fontFamily: font,
+                      fontWeight: 300,
+                      lineHeight: 1.6,
+                      textTransform: "lowercase",
+                    }}
+                  >
+                    {item.text}
+                  </EditableText>
+                  {item.sub && (
+                    <div style={{ display: "flex", gap: 10, marginTop: 5, paddingLeft: 2 }}>
+                      <div style={{ width: 2, background: "rgba(77,186,214,0.30)", borderRadius: 1, flexShrink: 0 }} />
+                      <EditableText
+                        id={`lihtc-rents:step-${i}-sub`}
+                        as="div"
+                        style={{
+                          fontSize: "12px",
+                          color: "rgba(206,232,238,0.40)",
+                          fontFamily: font,
+                          fontWeight: 300,
+                          lineHeight: 1.6,
+                          textTransform: "lowercase",
+                          fontStyle: "italic",
+                        }}
+                      >
+                        {item.sub}
+                      </EditableText>
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
           </div>
