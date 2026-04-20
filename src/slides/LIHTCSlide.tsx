@@ -7,9 +7,9 @@ import { EditableBgImage } from "@/components/EditableBgImage";
 import { SlideFooter } from "@/components/SlideFooter";
 import { StatusChip } from "@/components/StatusChip";
 
-const BG = "#F7F5F0";
-const INK = "#050a0c";
-const muted = (a: number) => `rgba(5,10,12,${a})`;
+const BG = "#424242";
+const INK = "#ffffff";
+const muted = (a: number) => `rgba(255,255,255,${a})`;
 const teal = (a: number) => `rgba(77,186,214,${a})`;
 
 const BULLETS = [
@@ -267,7 +267,7 @@ export default function LIHTCSlide() {
         </div>
       </div>
 
-      <SlideFooter slideKey="lihtc" slideNum="06" sectionLabel="mechanism" light />
+      <SlideFooter slideKey="lihtc" slideNum="06" sectionLabel="mechanism" />
     </div>
   );
 }
