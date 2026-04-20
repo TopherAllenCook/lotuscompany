@@ -197,22 +197,22 @@ export function ImpactDashboardSlide() {
                   >
                     {tile.label}
                   </EditableText>
-                  <EditableText
-                    id={`impact-dashboard:${tile.id}-value`}
-                    as="div"
-                    className="anim-stat-pulse"
-                    style={{
-                      fontSize: "32px",
-                      color: "#fff",
-                      fontFamily: font,
-                      fontWeight: 400,
-                      lineHeight: 1,
-                      marginBottom: "6px",
-                      letterSpacing: "-0.01em",
-                    }}
-                  >
-                    {tile.value}
-                  </EditableText>
+                  <div className="anim-stat-pulse" style={{ marginBottom: "6px" }}>
+                    <EditableText
+                      id={`impact-dashboard:${tile.id}-value`}
+                      as="div"
+                      style={{
+                        fontSize: "32px",
+                        color: "#fff",
+                        fontFamily: font,
+                        fontWeight: 400,
+                        lineHeight: 1,
+                        letterSpacing: "-0.01em",
+                      }}
+                    >
+                      {tile.value}
+                    </EditableText>
+                  </div>
                   <EditableText
                     id={`impact-dashboard:${tile.id}-def`}
                     as="div"
