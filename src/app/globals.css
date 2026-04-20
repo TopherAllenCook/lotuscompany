@@ -36,14 +36,14 @@ html, body {
 
 /* ── Print / PDF export ─────────────────────────────────────── */
 @media print {
-  /* 16:9 landscape — matches widescreen slide format */
+  /* 1440×810 matches the slide design pixel width (16:9) */
   @page {
-    size: 297mm 167.0625mm;
+    size: 1440px 810px;
     margin: 0;
   }
 
   html, body {
-    width: 297mm;
+    width: 1440px;
     height: auto;
     margin: 0;
     padding: 0;
@@ -58,8 +58,8 @@ html, body {
   }
 
   .print-slide {
-    width: 297mm !important;
-    height: 167.0625mm !important;
+    width: 1440px !important;
+    height: 810px !important;
     break-after: page;
     page-break-after: always;
     position: relative;

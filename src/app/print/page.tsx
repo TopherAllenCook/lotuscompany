@@ -55,8 +55,8 @@ function PrintInner() {
           key={SLIDE_REGISTRY[i].key}
           className="print-slide"
           style={{
-            width: "100vw",
-            height: "56.25vw",
+            width: "1440px",
+            height: "810px",
             position: "relative",
             overflow: "hidden",
           }}
