@@ -78,7 +78,7 @@ export function LotusWhyLotusSlide() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          padding: "96px 88px 72px",
+          padding: "80px 88px 56px",
           gap: 0,
         }}
       >
@@ -87,19 +87,19 @@ export function LotusWhyLotusSlide() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
-          style={{ textAlign: "center", marginBottom: "18px" }}
+          style={{ textAlign: "center", marginBottom: "14px" }}
         >
           <EditableText
             id="why-lotus:hero"
             as="h1"
             style={{
-              fontSize: "46px",
+              fontSize: "40px",
               fontWeight: 700,
               color: "#fff",
               fontFamily: font,
               letterSpacing: "-0.02em",
               textTransform: "lowercase",
-              lineHeight: 1.2,
+              lineHeight: 1.15,
               margin: 0,
             }}
           >
@@ -112,19 +112,19 @@ export function LotusWhyLotusSlide() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.35, duration: 0.6 }}
-          style={{ textAlign: "center", marginBottom: "22px" }}
+          style={{ textAlign: "center", marginBottom: "16px" }}
         >
           <EditableText
             id="why-lotus:body"
             as="p"
             style={{
-              fontSize: "24px",
+              fontSize: "18px",
               fontWeight: 400,
               color: "rgba(255,255,255,0.72)",
               fontFamily: font,
               letterSpacing: "0.02em",
               textTransform: "lowercase",
-              lineHeight: 1.9,
+              lineHeight: 1.75,
               margin: 0,
               maxWidth: "58ch",
             }}
@@ -140,20 +140,20 @@ export function LotusWhyLotusSlide() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.6 }}
-          style={{ textAlign: "center", marginBottom: "28px" }}
+          style={{ textAlign: "center", marginBottom: "20px" }}
         >
-          <div style={{ height: "1px", width: "40px", background: theme.turquoise, margin: "0 auto 14px" }} />
+          <div style={{ height: "1px", width: "40px", background: theme.turquoise, margin: "0 auto 10px" }} />
           <EditableText
             id="why-lotus:differentiator"
             as="p"
             style={{
-              fontSize: "24px",
+              fontSize: "18px",
               fontWeight: 500,
               color: "#fff",
               fontFamily: font,
               letterSpacing: "0.01em",
               textTransform: "lowercase",
-              lineHeight: 1.65,
+              lineHeight: 1.6,
               margin: 0,
               maxWidth: "54ch",
             }}
@@ -168,9 +168,9 @@ export function LotusWhyLotusSlide() {
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "14px",
+            gap: "12px",
             width: "100%",
-            marginBottom: "16px",
+            marginBottom: "12px",
           }}
         >
           {PILLARS.map((p, i) => (
@@ -182,7 +182,7 @@ export function LotusWhyLotusSlide() {
             >
               <div
                 style={{
-                  padding: "20px 22px",
+                  padding: "16px 18px",
                   background: "rgba(5,10,12,0.52)",
                   backdropFilter: "blur(28px) saturate(200%)",
                   WebkitBackdropFilter: "blur(28px) saturate(200%)",
@@ -196,14 +196,14 @@ export function LotusWhyLotusSlide() {
                   id={`why-lotus:pillar-${i}-title`}
                   as="div"
                   style={{
-                    fontSize: "24px",
+                    fontSize: "15px",
                     fontWeight: 500,
                     color: "#fff",
                     fontFamily: font,
                     letterSpacing: "0.02em",
                     textTransform: "lowercase",
-                    lineHeight: 1.4,
-                    marginBottom: "8px",
+                    lineHeight: 1.35,
+                    marginBottom: "6px",
                   }}
                 >
                   {p.title}
@@ -212,13 +212,13 @@ export function LotusWhyLotusSlide() {
                   id={`why-lotus:pillar-${i}-body`}
                   as="p"
                   style={{
-                    fontSize: "24px",
+                    fontSize: "14px",
                     fontWeight: 400,
                     color: "rgba(255,255,255,0.58)",
                     fontFamily: font,
                     letterSpacing: "0.02em",
                     textTransform: "lowercase",
-                    lineHeight: 1.65,
+                    lineHeight: 1.6,
                     margin: 0,
                   }}
                 >
@@ -240,7 +240,7 @@ export function LotusWhyLotusSlide() {
             id="why-lotus:closing"
             as="p"
             style={{
-              fontSize: "24px",
+              fontSize: "15px",
               fontWeight: 400,
               color: "rgba(77,186,214,0.7)",
               fontFamily: font,
