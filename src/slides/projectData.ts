@@ -20,6 +20,7 @@ export interface ProjectConfig {
   key: string;
   name: string;
   location: string;
+  address: string;
   phase: string;
   units: number;
   irr: string;
@@ -28,6 +29,16 @@ export interface ProjectConfig {
   cashFee: string;
   totalReturns: string;
   speOwnership: string;
+  spe: string;
+  managingMember: string;
+  siteControl: string;
+  entityNotes?: string;
+  deployDate: string;
+  repaymentDate: string;
+  completionDate: string;
+  dispositionYear: string;
+  prefReturn: string;
+  taxNote?: string;
   slideNumStart: number;
   sectionLabel: string;
   images: { hero: string; secondary: string; tertiary: string };
@@ -45,7 +56,8 @@ const STEELTON_IMGS = {
 export const STEELTON: ProjectConfig = {
   key: "steelton",
   name: "steelton village",
-  location: "dayton, ohio",
+  location: "columbus, ohio",
+  address: "1981 s high st, columbus oh 43207",
   phase: "phase i",
   units: 279,
   irr: "17.78%",
@@ -54,6 +66,15 @@ export const STEELTON: ProjectConfig = {
   cashFee: "$291,053",
   totalReturns: "$7,049,874",
   speOwnership: "6.0%",
+  spe: "lotus advantage steelton i, llc",
+  managingMember: "lotus advantage steelton i managers, llc",
+  siteControl: "psa",
+  entityNotes: "a ut formed limited liability company",
+  deployDate: "5/1/2026",
+  repaymentDate: "9/30/2026",
+  completionDate: "11/30/2029",
+  dispositionYear: "2044",
+  prefReturn: "7%",
   slideNumStart: 20,
   sectionLabel: "steelton village",
   images: STEELTON_IMGS,
@@ -92,7 +113,8 @@ export const STEELTON: ProjectConfig = {
 export const FORGE: ProjectConfig = {
   key: "forge",
   name: "forge",
-  location: "dayton, ohio",
+  location: "ogden, utah",
+  address: "2261 grant ave, ogden ut 84401",
   phase: "phase i",
   units: 193,
   irr: "17.52%",
@@ -100,7 +122,16 @@ export const FORGE: ProjectConfig = {
   capital: "$2,250,000",
   cashFee: "$182,568",
   totalReturns: "$5,209,092",
-  speOwnership: "—",
+  speOwnership: "5%",
+  spe: "lotus advantage forge, llc",
+  managingMember: "lotus advantage forge managers, llc",
+  siteControl: "—",
+  entityNotes: "a ut formed limited liability company",
+  deployDate: "5/1/2026",
+  repaymentDate: "9/30/2026",
+  completionDate: "10/31/2029",
+  dispositionYear: "2044",
+  prefReturn: "7%",
   slideNumStart: 27,
   sectionLabel: "forge",
   images: {
@@ -143,7 +174,8 @@ export const FORGE: ProjectConfig = {
 export const UPARKWAY: ProjectConfig = {
   key: "uparkway",
   name: "university parkway",
-  location: "dayton, ohio",
+  location: "manatee county, fl",
+  address: "unincorporated manatee county, fl",
   phase: "phase i",
   units: 210,
   irr: "13.54%",
@@ -152,6 +184,16 @@ export const UPARKWAY: ProjectConfig = {
   cashFee: "$739,527",
   totalReturns: "$13,783,993",
   speOwnership: "20%",
+  spe: "lotus advantage sarasota, llc",
+  managingMember: "lotus advantage sarasota managers, llc",
+  siteControl: "—",
+  entityNotes: "a fl formed limited liability company",
+  deployDate: "—",
+  repaymentDate: "12/31/2026",
+  completionDate: "12/31/2026",
+  dispositionYear: "2044",
+  prefReturn: "7%",
+  taxNote: "$3.5m gp equity note at 6%",
   slideNumStart: 34,
   sectionLabel: "university parkway",
   images: {
@@ -194,15 +236,25 @@ export const UPARKWAY: ProjectConfig = {
 export const LOTUS_VALE: ProjectConfig = {
   key: "lotus-vale",
   name: "lotus vale",
-  location: "dayton, ohio",
+  location: "midvale, utah",
+  address: "195 w 7200 s, midvale ut 84047",
   phase: "phase i",
   units: 106,
   irr: "17.65%",
-  multiple: "2.0x",
+  multiple: "2.00x",
   capital: "$854,842",
   cashFee: "$84,608",
   totalReturns: "$772,917",
-  speOwnership: "—",
+  speOwnership: "5%",
+  spe: "lotus advantage vale, llc",
+  managingMember: "lotus advantage vale managers, llc",
+  siteControl: "—",
+  entityNotes: "a ut formed limited liability company",
+  deployDate: "—",
+  repaymentDate: "9/30/2026",
+  completionDate: "3/31/2029",
+  dispositionYear: "2044",
+  prefReturn: "7%",
   slideNumStart: 41,
   sectionLabel: "lotus vale",
   images: {

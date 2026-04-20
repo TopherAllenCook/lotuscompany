@@ -6,6 +6,9 @@ import { SlideFooter } from "@/components/SlideFooter";
 import { StatusChip } from "@/components/StatusChip";
 import type { ProjectConfig } from "./projectData";
 
+const BG  = "#F7F5F0";
+const INK = "#050a0c";
+
 export function ProjectLotusWaySlide({ project }: { project: ProjectConfig }) {
   const k = project.key;
   const slideNum = String(project.slideNumStart + 1).padStart(2, "0");
@@ -17,7 +20,7 @@ export function ProjectLotusWaySlide({ project }: { project: ProjectConfig }) {
         width: "100%",
         height: "100%",
         overflow: "hidden",
-        background: theme.darkBg,
+        background: BG,
         fontFamily: font,
       }}
     >

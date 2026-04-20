@@ -16,14 +16,14 @@ export function ProjectPartnershipTermsSlide({ project }: { project: ProjectConf
   const slideNum = String(project.slideNumStart + 5).padStart(2, "0");
 
   const projectInfo = [
-    { label: "project name",      value: project.name          },
-    { label: "location",          value: project.location      },
-    { label: "development phase", value: project.phase         },
-    { label: "total units",       value: String(project.units) },
-    { label: "program type",      value: "lihtc 4% / 9%"       },
-    { label: "construction type", value: "—"                   },
-    { label: "projected close",   value: "—"                   },
-    { label: "development partner",value: "—"                  },
+    { label: "project name",   value: project.name          },
+    { label: "address",        value: project.address       },
+    { label: "location",       value: project.location      },
+    { label: "total units",    value: String(project.units) },
+    { label: "program type",   value: "lihtc 4% / 9%"       },
+    { label: "site control",   value: project.siteControl   },
+    { label: "spe entity",     value: project.spe           },
+    { label: "managing member",value: project.managingMember},
   ];
 
   const terms = [
@@ -33,8 +33,8 @@ export function ProjectPartnershipTermsSlide({ project }: { project: ProjectConf
     { label: "equity multiple",         value: project.multiple     },
     { label: "cash fee",                value: project.cashFee      },
     { label: "total projected returns", value: project.totalReturns },
-    { label: "pref return",             value: "—"                  },
-    { label: "waterfall structure",     value: "—"                  },
+    { label: "preferred return",        value: project.prefReturn   },
+    { label: "waterfall",               value: "class b gp · 7% pref · residual" },
   ];
 
   return (

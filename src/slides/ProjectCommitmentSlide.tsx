@@ -24,10 +24,10 @@ export function ProjectCommitmentSlide({ project }: { project: ProjectConfig }) 
   ];
 
   const drawMilestones = [
-    { milestone: "closing / financial close",   date: "—", pct: "25%" },
-    { milestone: "construction commencement",   date: "—", pct: "25%" },
-    { milestone: "50% construction completion", date: "—", pct: "25%" },
-    { milestone: "certificate of occupancy",    date: "—", pct: "25%" },
+    { milestone: "closing / financial close",   date: project.deployDate,     pct: "25%" },
+    { milestone: "construction commencement",   date: "—",                    pct: "25%" },
+    { milestone: "50% construction completion", date: "—",                    pct: "25%" },
+    { milestone: "certificate of occupancy",    date: project.completionDate, pct: "25%" },
   ];
 
   return (

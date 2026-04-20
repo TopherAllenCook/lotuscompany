@@ -5,7 +5,6 @@ import { EditableText } from "@/components/EditableText";
 import { EditableBgImage } from "@/components/EditableBgImage";
 import { SlideFooter } from "@/components/SlideFooter";
 import { StatusChip } from "@/components/StatusChip";
-import { LotusMark } from "@/components/LotusMark";
 import type { ProjectConfig } from "./projectData";
 
 export function ProjectCoverSlide({ project }: { project: ProjectConfig }) {
@@ -57,62 +56,33 @@ export function ProjectCoverSlide({ project }: { project: ProjectConfig }) {
       <div style={{
         position: "absolute",
         top: 52,
-        left: 64,
         right: 64,
         display: "flex",
         alignItems: "center",
-        justifyContent: "space-between",
+        gap: 16,
         zIndex: 5,
       }}>
-        <LotusMark width={148} onDark />
-
-        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          {/* Location pill */}
-          <div style={{
-            padding: "5px 14px",
-            border: "1px solid rgba(77,186,214,0.28)",
-            borderRadius: 20,
-            background: "rgba(5,10,12,0.36)",
-            backdropFilter: "blur(8px)",
-          }}>
-            <EditableText
-              id={`${k}-cover:location-pill`}
-              as="span"
-              style={{
-                fontSize: 12,
-                color: "rgba(206,232,238,0.70)",
-                fontFamily: font,
-                letterSpacing: "0.16em",
-                textTransform: "lowercase",
-                fontWeight: 300,
-              }}
-            >
-              {project.location}
-            </EditableText>
-          </div>
-
-          {/* Slide indicator */}
-          <EditableText
-            id={`${k}-cover:slide-indicator`}
-            as="span"
-            style={{
-              fontSize: 12,
-              fontWeight: 400,
-              letterSpacing: "0.38em",
-              color: "rgba(206,232,238,0.38)",
-              fontFamily: font,
-              textTransform: "lowercase",
-            }}
-          >
-            {slideNum} / {project.sectionLabel}
-          </EditableText>
-        </div>
+        {/* Slide indicator */}
+        <EditableText
+          id={`${k}-cover:slide-indicator`}
+          as="span"
+          style={{
+            fontSize: 12,
+            fontWeight: 400,
+            letterSpacing: "0.38em",
+            color: "rgba(206,232,238,0.38)",
+            fontFamily: font,
+            textTransform: "lowercase",
+          }}
+        >
+          {slideNum} / {project.sectionLabel}
+        </EditableText>
       </div>
 
       {/* Bottom content block */}
       <div style={{
         position: "absolute",
-        bottom: 72,
+        bottom: "22%",
         left: 64,
         right: "36%",
         zIndex: 5,
@@ -132,7 +102,7 @@ export function ProjectCoverSlide({ project }: { project: ProjectConfig }) {
               fontWeight: 400,
             }}
           >
-            {project.phase} · affordable housing
+            {project.phase} · lihtc, development opportunity
           </EditableText>
         </div>
 
