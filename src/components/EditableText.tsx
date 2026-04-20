@@ -8,6 +8,7 @@ import {
   loadDynamicElements, saveDynamicElements, fetchContent,
   saveDraft, publishContent,
   type DynamicElementDef, type DynamicElementsMap,
+  type VersionMeta, fetchVersions, revertToVersion,
 } from "@/lib/textOverrides";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -49,6 +50,15 @@ interface EditCtx {
   publishError: string | null;
   saveDraftNow: () => Promise<void>;
   publishNow: () => Promise<void>;
+  // versioning
+  previewMode: boolean;
+  reloadContent: () => Promise<void>;
+  versions: VersionMeta[];
+  versionsLoading: boolean;
+  loadVersions: () => Promise<void>;
+  revertState: "idle" | "reverting" | "reverted" | "error";
+  revertError: string | null;
+  revertNow: (versionId: number) => Promise<void>;
 }
 
 const Ctx = createContext<EditCtx | null>(null);
@@ -66,16 +76,25 @@ export function EditModeProvider({ children }: { children: ReactNode }) {
   const [saveError, setSaveError]       = useState<string | null>(null);
   const [publishState, setPublishState] = useState<PublishState>("idle");
   const [publishError, setPublishError] = useState<string | null>(null);
+  const [versions, setVersions]         = useState<VersionMeta[]>([]);
+  const [versionsLoading, setVersionsLoading] = useState(false);
+  const [revertState, setRevertState]   = useState<"idle" | "reverting" | "reverted" | "error">("idle");
+  const [revertError, setRevertError]   = useState<string | null>(null);
+  const previewMode = typeof window !== "undefined" &&
+    new URLSearchParams(window.location.search).get("preview") === "draft";
   const elMap = useRef<Record<string, HTMLElement | null>>({});
   const historyRef    = useRef<OverridesMap[]>([]);
   const futureRef     = useRef<OverridesMap[]>([]);
   const autosaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Load published state from database, overlay localStorage on top
+  // Load published (or draft in preview mode) state from database, overlay localStorage on top
   useEffect(() => {
     const fromLocal = loadOverrides();
     const dynLocal  = loadDynamicElements();
-    fetchContent().then(({ overrides: fromDB, dynamic: dynDB }) => {
+    const mode = typeof window !== "undefined" &&
+      new URLSearchParams(window.location.search).get("preview") === "draft"
+      ? "draft" : "published";
+    fetchContent(mode).then(({ overrides: fromDB, dynamic: dynDB }) => {
       setOverrides({ ...fromDB, ...fromLocal });
       setDynamicElements({ ...dynDB, ...dynLocal });
     });
@@ -159,6 +178,36 @@ export function EditModeProvider({ children }: { children: ReactNode }) {
     setTimeout(() => setPublishState(s => s === "published" ? "idle" : s), 3500);
   }, [overrides, dynamicElements]);
 
+  const reloadContent = useCallback(async () => {
+    const { overrides: fromDB, dynamic: dynDB } = await fetchContent("draft");
+    setOverrides(fromDB);
+    setDynamicElements(dynDB);
+    saveOverrides(fromDB);
+    saveDynamicElements(dynDB);
+  }, []);
+
+  const loadVersions = useCallback(async () => {
+    setVersionsLoading(true);
+    const list = await fetchVersions();
+    setVersions(list);
+    setVersionsLoading(false);
+  }, []);
+
+  const revertNow = useCallback(async (versionId: number) => {
+    setRevertState("reverting");
+    setRevertError(null);
+    const result = await revertToVersion(versionId);
+    if (!result.ok) {
+      setRevertState("error");
+      setRevertError(result.error ?? null);
+      return;
+    }
+    // Reload the reverted draft into local state
+    await reloadContent();
+    setRevertState("reverted");
+    setTimeout(() => setRevertState(s => s === "reverted" ? "idle" : s), 3500);
+  }, [reloadContent]);
+
   const registerEl = useCallback((id: string, label: string, type: ElementType, el: HTMLElement | null) => {
     elMap.current[id] = el;
     if (el) {
@@ -211,6 +260,9 @@ export function EditModeProvider({ children }: { children: ReactNode }) {
       gridSize, snapToGrid, showGrid, setGridSize, setSnapToGrid, setShowGrid,
       dynamicElements, addDynamicElement, removeDynamicElement,
       saveState, saveError, publishState, publishError, saveDraftNow, publishNow,
+      previewMode, reloadContent,
+      versions, versionsLoading, loadVersions,
+      revertState, revertError, revertNow,
     }}>
       {children}
     </Ctx.Provider>

@@ -99,6 +99,7 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
     gridSize, snapToGrid, showGrid, setGridSize, setSnapToGrid, setShowGrid,
     dynamicElements, addDynamicElement, removeDynamicElement,
     saveState, saveError, publishState, publishError, saveDraftNow, publishNow,
+    previewMode, versions, versionsLoading, loadVersions, revertState, revertError, revertNow,
   } = useEditMode();
 
   const editables = registeredList.filter(e => e.id.startsWith(slideKey + ":"));
@@ -109,6 +110,8 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
   const isSvgNodeType = activeType === "svgnode";
   const isBgImageType = activeType === "bgimage";
   const isActiveDynamic = activeId != null && dynamicElements[activeId] != null;
+
+  const [historyOpen, setHistoryOpen] = useState(false);
 
   const [vals, setVals] = useState<Record<string, number>>({
     fontSize: 16, translateX: 0, translateY: 0, letterSpacing: 0, lineHeight: 1.5,
@@ -304,6 +307,16 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
 
   const activeOverride = activeId ? overrides[activeId] ?? {} : {};
   const sliders = isBgImageType ? BG_IMAGE_SLIDERS : isCardType ? CARD_SLIDERS : isSvgNodeType ? SVG_NODE_SLIDERS : isTextType ? TEXT_SLIDERS : SHAPE_SLIDERS;
+
+  function fmtDate(iso: string) {
+    try {
+      const d = new Date(iso);
+      return d.toLocaleString(undefined, {
+        month: "short", day: "numeric",
+        hour: "numeric", minute: "2-digit",
+      }).toLowerCase();
+    } catch { return iso; }
+  }
 
   const typeLabel = (t: string) => {
     if (t === "bar") return "bar";
@@ -758,6 +771,111 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
               ))}
             </div>
           </div>
+
+          {/* Version history */}
+          <div style={{
+            flexShrink: 0,
+            borderTop: "1px solid rgba(255,255,255,0.07)",
+          }}>
+            <button
+              onClick={() => {
+                const next = !historyOpen;
+                setHistoryOpen(next);
+                if (next && versions.length === 0) loadVersions();
+              }}
+              style={{
+                width: "100%", padding: "10px 20px",
+                display: "flex", alignItems: "center", justifyContent: "space-between",
+                background: "none", border: "none", cursor: "pointer",
+                fontFamily: font,
+              }}
+            >
+              <span style={{ fontSize: 9, color: "rgba(255,255,255,0.25)", letterSpacing: "0.18em", textTransform: "lowercase" }}>
+                version history
+              </span>
+              <span style={{ fontSize: 10, color: "rgba(255,255,255,0.2)" }}>
+                {historyOpen ? "▲" : "▼"}
+              </span>
+            </button>
+
+            {historyOpen && (
+              <div style={{ padding: "0 20px 12px" }}>
+                {/* Preview draft link */}
+                <a
+                  href={typeof window !== "undefined" ? window.location.pathname + "?preview=draft" : "?preview=draft"}
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{
+                    display: "block", marginBottom: 10,
+                    fontSize: 9, color: "#028faa",
+                    letterSpacing: "0.12em", textTransform: "lowercase",
+                    textDecoration: "underline", cursor: "pointer",
+                  }}
+                >
+                  preview draft ↗
+                </a>
+
+                {revertState === "error" && revertError && (
+                  <p style={{ margin: "0 0 8px", fontSize: 9, color: "rgba(255,100,100,0.7)", letterSpacing: "0.05em" }}>
+                    {revertError.slice(0, 80)}
+                  </p>
+                )}
+                {revertState === "reverted" && (
+                  <p style={{ margin: "0 0 8px", fontSize: 9, color: "#4dbad6", letterSpacing: "0.05em" }}>
+                    restored to draft ✓
+                  </p>
+                )}
+
+                {versionsLoading && (
+                  <p style={{ margin: 0, fontSize: 9, color: "rgba(255,255,255,0.2)" }}>loading…</p>
+                )}
+                {!versionsLoading && versions.length === 0 && (
+                  <p style={{ margin: 0, fontSize: 9, color: "rgba(255,255,255,0.2)", lineHeight: 1.5 }}>
+                    no versions yet — publish to create the first snapshot.
+                  </p>
+                )}
+                {versions.map(v => (
+                  <div key={v.id} style={{
+                    display: "flex", alignItems: "center", justifyContent: "space-between",
+                    padding: "5px 0",
+                    borderBottom: "1px solid rgba(255,255,255,0.05)",
+                  }}>
+                    <span style={{ fontSize: 9, color: "rgba(255,255,255,0.35)", letterSpacing: "0.06em" }}>
+                      {fmtDate(v.created_at)}
+                    </span>
+                    <button
+                      onClick={() => revertNow(v.id)}
+                      disabled={revertState === "reverting"}
+                      style={{
+                        background: "none",
+                        border: "1px solid rgba(2,143,170,0.3)",
+                        borderRadius: 3, padding: "2px 8px",
+                        color: "rgba(2,143,170,0.7)", fontSize: 8,
+                        letterSpacing: "0.1em", textTransform: "lowercase",
+                        cursor: revertState === "reverting" ? "default" : "pointer",
+                        fontFamily: font,
+                      }}
+                    >
+                      {revertState === "reverting" ? "…" : "restore to draft"}
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Preview mode banner (shown when ?preview=draft is active) */}
+          {previewMode && (
+            <div style={{
+              flexShrink: 0, padding: "8px 20px",
+              background: "rgba(2,143,170,0.12)",
+              borderTop: "1px solid rgba(2,143,170,0.25)",
+            }}>
+              <p style={{ margin: 0, fontSize: 9, color: "#4dbad6", letterSpacing: "0.12em", textTransform: "lowercase" }}>
+                previewing draft — not the live version
+              </p>
+            </div>
+          )}
 
           {/* Footer */}
           <div style={{ flexShrink: 0, padding: "10px 20px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>

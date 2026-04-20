@@ -117,13 +117,43 @@ function adminHeaders(): HeadersInit {
   };
 }
 
-export async function fetchContent(): Promise<{ overrides: OverridesMap; dynamic: DynamicElementsMap }> {
+export async function fetchContent(
+  mode: "published" | "draft" = "published"
+): Promise<{ overrides: OverridesMap; dynamic: DynamicElementsMap }> {
   try {
-    const r = await fetch("/api/content?mode=published&t=" + Date.now());
+    const headers: HeadersInit = mode === "draft" ? adminHeaders() : {};
+    const r = await fetch(`/api/content?mode=${mode}&t=${Date.now()}`, { headers });
     if (!r.ok) return { overrides: {}, dynamic: {} };
     return await r.json();
   } catch {
     return { overrides: {}, dynamic: {} };
+  }
+}
+
+export interface VersionMeta { id: number; created_at: string; }
+
+export async function fetchVersions(): Promise<VersionMeta[]> {
+  try {
+    const r = await fetch("/api/content/versions?t=" + Date.now(), { headers: adminHeaders() });
+    if (!r.ok) return [];
+    return await r.json();
+  } catch {
+    return [];
+  }
+}
+
+export async function revertToVersion(versionId: number): Promise<{ ok: boolean; error?: string }> {
+  try {
+    const r = await fetch("/api/content/revert", {
+      method: "POST",
+      headers: adminHeaders(),
+      body: JSON.stringify({ versionId }),
+    });
+    const body = await r.json().catch(() => ({}));
+    if (!r.ok) return { ok: false, error: body?.error ?? `HTTP ${r.status}` };
+    return { ok: true };
+  } catch (e) {
+    return { ok: false, error: String(e) };
   }
 }
 
