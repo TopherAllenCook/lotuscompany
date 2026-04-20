@@ -177,11 +177,28 @@ export default function MembershipSlide() {
         </EditableEl>
 
         {/* Right — Stat callouts */}
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "20px" }}>
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", gap: "14px", padding: "0 8px" }}>
+          <EditableText
+            id="membership:stats-eyebrow"
+            as="div"
+            style={{
+              fontSize: "11px",
+              color: theme.turquoise,
+              fontFamily: font,
+              fontWeight: 300,
+              letterSpacing: "0.22em",
+              textTransform: "lowercase",
+              marginBottom: "4px",
+              opacity: 0.75,
+            }}
+          >
+            target returns
+          </EditableText>
+
           {[
             { number: "15%+", label: "target irr", sub: "over 15 to 18 year hold period" },
             { number: "2 to 3x", label: "equity multiple", sub: "on invested capital" },
-            { number: "5 to 19%", label: "gp membership participation", sub: "alongside lotus" },
+            { number: "5 to 19%", label: "gp membership", sub: "alongside lotus" },
           ].map((stat, i) => (
             <EditableEl
               key={i}
@@ -189,58 +206,69 @@ export default function MembershipSlide() {
               label={`stat — ${stat.label}`}
               type="card"
               style={{
-                width: "100%",
-                background: "rgba(77,186,214,0.07)",
-                border: "1px solid rgba(77,186,214,0.2)",
+                display: "flex",
+                alignItems: "center",
+                gap: "24px",
+                padding: "22px 28px",
+                background: "rgba(5,10,12,0.42)",
+                backdropFilter: "blur(20px) saturate(180%)",
+                WebkitBackdropFilter: "blur(20px) saturate(180%)",
                 borderRadius: "12px",
-                padding: "20px 24px",
-                textAlign: "center",
+                border: "1px solid rgba(255,255,255,0.08)",
+                borderLeft: "3px solid rgba(77,186,214,0.65)",
+                boxShadow: "0 4px 24px rgba(0,0,0,0.3)",
               }}
             >
+              {/* Big number — left anchor */}
               <EditableText
                 id={`membership:stat-number-${i}`}
                 as="div"
                 style={{
-                  fontSize: "38px",
+                  fontSize: "56px",
                   color: "#fff",
-                  fontWeight: 300,
-                  letterSpacing: "-0.02em",
+                  fontWeight: 200,
+                  letterSpacing: "-0.03em",
                   fontFamily: font,
-                  marginBottom: "6px",
+                  lineHeight: 1,
+                  flexShrink: 0,
+                  minWidth: "150px",
                   textTransform: "lowercase",
                 }}
               >
                 {stat.number}
               </EditableText>
-              <EditableText
-                id={`membership:stat-label-${i}`}
-                as="div"
-                style={{
-                  fontSize: "20px",
-                  color: theme.turquoise,
-                  fontWeight: 400,
-                  letterSpacing: "0.1em",
-                  fontFamily: font,
-                  marginBottom: "4px",
-                  textTransform: "lowercase",
-                }}
-              >
-                {stat.label}
-              </EditableText>
-              <EditableText
-                id={`membership:stat-sub-${i}`}
-                as="div"
-                style={{
-                  fontSize: "20px",
-                  color: "rgba(255,255,255,0.60)",
-                  fontWeight: 300,
-                  letterSpacing: "0.06em",
-                  fontFamily: font,
-                  textTransform: "lowercase",
-                }}
-              >
-                {stat.sub}
-              </EditableText>
+
+              {/* Label stack — right context */}
+              <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+                <EditableText
+                  id={`membership:stat-label-${i}`}
+                  as="div"
+                  style={{
+                    fontSize: "11px",
+                    color: theme.turquoise,
+                    fontWeight: 400,
+                    letterSpacing: "0.2em",
+                    fontFamily: font,
+                    textTransform: "lowercase",
+                  }}
+                >
+                  {stat.label}
+                </EditableText>
+                <EditableText
+                  id={`membership:stat-sub-${i}`}
+                  as="div"
+                  style={{
+                    fontSize: "17px",
+                    color: "rgba(255,255,255,0.55)",
+                    fontWeight: 300,
+                    fontFamily: font,
+                    textTransform: "lowercase",
+                    lineHeight: 1.4,
+                  }}
+                >
+                  {stat.sub}
+                </EditableText>
+              </div>
             </EditableEl>
           ))}
         </div>
