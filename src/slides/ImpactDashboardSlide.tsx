@@ -225,7 +225,7 @@ export function ImpactDashboardSlide() {
         <div
           style={{
             display: "flex",
-            gap: "16px",
+            gap: "20px",
             flex: 1,
             minHeight: 0,
           }}
@@ -236,7 +236,7 @@ export function ImpactDashboardSlide() {
             label="bullet points card"
             type="card"
             style={{
-              flex: "0 0 260px",
+              flex: "0 0 32%",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
@@ -276,7 +276,7 @@ export function ImpactDashboardSlide() {
           </EditableEl>
 
           {/* Right — two tables stacked */}
-          <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "10px", minWidth: 0 }}>
+          <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "10px", minWidth: 0, overflow: "hidden" }}>
             <ImpactTable
               title="Steelton I — Impact Project Metrics"
               headers={T1_HEADERS}
