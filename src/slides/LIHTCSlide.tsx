@@ -26,9 +26,8 @@ const FLOW_STEPS = [
 const DEV_BULLETS = [
   "sources and structures projects",
   "secures lihtc awards",
+  "executes development & operations",
   "retains long-term ownership",
-  "banks / lihtc awards",
-  "executes development",
   "partners with investors to sell tax credits",
 ];
 
