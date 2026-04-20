@@ -37,9 +37,9 @@ export interface ProjectConfig {
 }
 
 const STEELTON_IMGS = {
-  hero:      "/steelton-village/Steelton I_Pedestrian Promenade_2026.03.10.jpg",
-  secondary: "/steelton-village/Steelton I_Clubhouse_2026.03.10.jpg",
-  tertiary:  "/steelton-village/Steelton I_North Park_2026.03.10.jpg",
+  hero:      "/steelton-village/Steelton I_4-corners_2026.03.26.jpg",
+  secondary: "/steelton-village/Steelton I_Updated Lobby_2026.04.02.jpg",
+  tertiary:  "/steelton-village/Steelton I_Pedestrian Promenade_2026.03.10.jpg",
 };
 
 export const STEELTON: ProjectConfig = {
@@ -78,13 +78,13 @@ export const STEELTON: ProjectConfig = {
       label: "place and beauty",
       heading: "design that earns respect",
       body: "six acres of public green space, a pedestrian promenade, and a full clubhouse signal that affordable housing can be the highest-quality building on the block.",
-      img: "/steelton-village/Steelton I_Pedestrian Promenade_2026.03.10.jpg",
+      img: "/steelton-village/Steelton I_North Park_2026.03.10.jpg",
     },
     {
       label: "knowledge and power",
       heading: "services built in, not bolted on",
       body: "on-site resident services — financial literacy, workforce partnerships, and health referrals — are embedded in the operating model from day one.",
-      img: "/steelton-village/Steelton I_Clubhouse_2026.03.10.jpg",
+      img: "/steelton-village/Steelton I_Updated Lobby_2026.04.02.jpg",
     },
   ],
 };
