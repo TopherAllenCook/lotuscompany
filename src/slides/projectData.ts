@@ -104,9 +104,9 @@ export const FORGE: ProjectConfig = {
   slideNumStart: 27,
   sectionLabel: "forge",
   images: {
-    hero:      "/steelton-village/Steelton I_4-corners_2026.03.26.jpg",
-    secondary: "/steelton-village/Steelton I_Updated Lobby_2026.04.02.jpg",
-    tertiary:  "/steelton-village/Steelton I_Water Detention_2026.03.26.jpg",
+    hero:      "/Forge/Forge Rendering.png",
+    secondary: "/Forge/Forge Rendering.png",
+    tertiary:  "/Forge/Forge Rendering.png",
   },
   team: [
     { name: "christian graf", title: "senior development associate" },
