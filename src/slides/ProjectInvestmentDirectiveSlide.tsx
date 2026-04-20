@@ -6,17 +6,22 @@ import { SlideFooter } from "@/components/SlideFooter";
 import { StatusChip } from "@/components/StatusChip";
 import type { ProjectConfig } from "./projectData";
 
+const BG = "#F7F5F0";
+const INK = "#050a0c";
+const muted = (a: number) => `rgba(5,10,12,${a})`;
+const teal = (a: number) => `rgba(77,186,214,${a})`;
+
 export function ProjectInvestmentDirectiveSlide({ project }: { project: ProjectConfig }) {
   const k = project.key;
   const slideNum = String(project.slideNumStart + 3).padStart(2, "0");
 
   const targets = [
-    { label: "target irr",        value: project.irr       },
-    { label: "equity multiple",   value: project.multiple   },
-    { label: "capital commitment",value: project.capital    },
-    { label: "total returns",     value: project.totalReturns },
-    { label: "cash fee",          value: project.cashFee    },
-    { label: "spe ownership",     value: project.speOwnership },
+    { label: "target irr",         value: project.irr          },
+    { label: "equity multiple",    value: project.multiple      },
+    { label: "capital commitment", value: project.capital       },
+    { label: "total returns",      value: project.totalReturns  },
+    { label: "cash fee",           value: project.cashFee       },
+    { label: "spe ownership",      value: project.speOwnership  },
   ];
 
   return (
@@ -26,34 +31,19 @@ export function ProjectInvestmentDirectiveSlide({ project }: { project: ProjectC
         width: "100%",
         height: "100%",
         overflow: "hidden",
-        background: theme.darkBg,
+        background: BG,
         fontFamily: font,
       }}
     >
       <StatusChip status="DRAFT" />
 
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          height: "100%",
-          padding: "56px 64px 72px",
-        }}
-      >
+      <div style={{ display: "flex", flexDirection: "column", height: "100%", padding: "56px 64px 72px" }}>
         {/* Header */}
         <div style={{ marginBottom: 16 }}>
           <EditableText
             id={`${k}-investment:eyebrow`}
             as="div"
-            style={{
-              fontSize: 10,
-              color: theme.turquoise,
-              letterSpacing: "0.28em",
-              textTransform: "lowercase",
-              fontFamily: font,
-              fontWeight: 300,
-              marginBottom: 10,
-            }}
+            style={{ fontSize: 11, color: theme.turquoise, letterSpacing: "0.28em", textTransform: "lowercase", fontFamily: font, fontWeight: 400, marginBottom: 10 }}
           >
             investment directive · {project.name}
           </EditableText>
@@ -61,21 +51,13 @@ export function ProjectInvestmentDirectiveSlide({ project }: { project: ProjectC
           <EditableText
             id={`${k}-investment:headline`}
             as="h1"
-            style={{
-              fontSize: "32px",
-              color: "#fff",
-              fontWeight: 300,
-              fontFamily: font,
-              lineHeight: 1.2,
-              letterSpacing: "-0.02em",
-              textTransform: "lowercase",
-            }}
+            style={{ fontSize: "32px", color: INK, fontWeight: 300, fontFamily: font, lineHeight: 1.2, letterSpacing: "-0.02em", textTransform: "lowercase" }}
           >
             investment returns structured at the partnership level.
           </EditableText>
         </div>
 
-        <div style={{ height: 1, background: "rgba(77,186,214,0.18)", marginBottom: 20 }} />
+        <div style={{ height: 1, background: muted(0.10), marginBottom: 20 }} />
 
         {/* Two-column layout */}
         <div style={{ display: "flex", gap: 24, flex: 1, minHeight: 0 }}>
@@ -85,14 +67,7 @@ export function ProjectInvestmentDirectiveSlide({ project }: { project: ProjectC
             <EditableText
               id={`${k}-investment:targets-title`}
               as="div"
-              style={{
-                fontSize: 9,
-                color: theme.turquoise,
-                letterSpacing: "0.24em",
-                textTransform: "lowercase",
-                fontFamily: font,
-                marginBottom: 4,
-              }}
+              style={{ fontSize: 10, color: theme.turquoise, letterSpacing: "0.24em", textTransform: "lowercase", fontFamily: font, marginBottom: 4 }}
             >
               investment targets
             </EditableText>
@@ -106,34 +81,22 @@ export function ProjectInvestmentDirectiveSlide({ project }: { project: ProjectC
                     justifyContent: "space-between",
                     alignItems: "center",
                     padding: "10px 14px",
-                    background: "rgba(77,186,214,0.05)",
-                    border: "1px solid rgba(77,186,214,0.12)",
+                    background: teal(0.06),
+                    border: `1px solid ${muted(0.08)}`,
                     borderRadius: 3,
                   }}
                 >
                   <EditableText
                     id={`${k}-investment:target-lbl-${i}`}
                     as="div"
-                    style={{
-                      fontSize: 10,
-                      color: "rgba(206,232,238,0.60)",
-                      fontFamily: font,
-                      textTransform: "lowercase",
-                      letterSpacing: "0.06em",
-                    }}
+                    style={{ fontSize: 11, color: muted(0.55), fontFamily: font, textTransform: "lowercase", letterSpacing: "0.06em" }}
                   >
                     {t.label}
                   </EditableText>
                   <EditableText
                     id={`${k}-investment:target-val-${i}`}
                     as="div"
-                    style={{
-                      fontSize: "28px",
-                      color: "#fff",
-                      fontFamily: font,
-                      fontWeight: 300,
-                      letterSpacing: "-0.01em",
-                    }}
+                    style={{ fontSize: "28px", color: INK, fontFamily: font, fontWeight: 300, letterSpacing: "-0.01em" }}
                   >
                     {t.value}
                   </EditableText>
@@ -147,83 +110,46 @@ export function ProjectInvestmentDirectiveSlide({ project }: { project: ProjectC
             <EditableText
               id={`${k}-investment:desc`}
               as="div"
-              style={{
-                fontSize: "20px",
-                color: "rgba(206,232,238,0.75)",
-                fontFamily: font,
-                fontWeight: 300,
-                lineHeight: 1.7,
-                textTransform: "lowercase",
-              }}
+              style={{ fontSize: "18px", color: muted(0.65), fontFamily: font, fontWeight: 300, lineHeight: 1.7, textTransform: "lowercase" }}
             >
               the investment directive locks the impact partner's participation percentages at the time of deal approval. returns are driven by capital turn timing, fee sharing, gp economics, and residual value — not a single event.
             </EditableText>
 
-            <div style={{ height: 1, background: "rgba(77,186,214,0.10)" }} />
+            <div style={{ height: 1, background: muted(0.08) }} />
 
             <EditableText
               id={`${k}-investment:cash-flow-title`}
               as="div"
-              style={{
-                fontSize: 9,
-                color: theme.turquoise,
-                letterSpacing: "0.24em",
-                textTransform: "lowercase",
-                fontFamily: font,
-              }}
+              style={{ fontSize: 10, color: theme.turquoise, letterSpacing: "0.24em", textTransform: "lowercase", fontFamily: font }}
             >
               projected cash flow events
             </EditableText>
 
-            <div
-              style={{
-                border: "1px solid rgba(77,186,214,0.15)",
-                borderRadius: 4,
-                overflow: "hidden",
-              }}
-            >
+            <div style={{ border: `1px solid ${muted(0.10)}`, borderRadius: 4, overflow: "hidden" }}>
               {/* Header */}
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1.5fr 1fr",
-                  background: "rgba(77,186,214,0.10)",
-                  borderBottom: "1px solid rgba(77,186,214,0.18)",
-                }}
-              >
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr 1fr", background: teal(0.10), borderBottom: `1px solid ${muted(0.10)}` }}>
                 {["year", "event", "projected amount"].map((h) => (
-                  <div
-                    key={h}
-                    style={{
-                      padding: "7px 12px",
-                      fontSize: 8,
-                      color: theme.turquoise,
-                      fontFamily: font,
-                      letterSpacing: "0.2em",
-                      textTransform: "lowercase",
-                    }}
-                  >
+                  <div key={h} style={{ padding: "7px 12px", fontSize: 9, color: theme.turquoise, fontFamily: font, letterSpacing: "0.2em", textTransform: "lowercase" }}>
                     {h}
                   </div>
                 ))}
               </div>
 
-              {/* Rows */}
               {[
-                { year: "1",     event: "capital deployment",        amount: project.capital },
-                { year: "1–3",   event: "construction / lease-up",   amount: "—" },
-                { year: "2–4",   event: "cash fee receipt",          amount: project.cashFee },
-                { year: "5–10",  event: "tax credit period",         amount: "ongoing" },
-                { year: "10–18", event: "recap / resyndication",     amount: "—" },
-                { year: "15–18", event: "total return projection",   amount: project.totalReturns },
+                { year: "1",     event: "capital deployment",      amount: project.capital      },
+                { year: "1–3",   event: "construction / lease-up", amount: "—"                  },
+                { year: "2–4",   event: "cash fee receipt",        amount: project.cashFee      },
+                { year: "5–10",  event: "tax credit period",       amount: "ongoing"            },
+                { year: "10–18", event: "recap / resyndication",   amount: "—"                  },
+                { year: "15–18", event: "total return projection", amount: project.totalReturns },
               ].map((row, i) => (
                 <div
                   key={i}
                   style={{
                     display: "grid",
                     gridTemplateColumns: "1fr 1.5fr 1fr",
-                    background: i % 2 === 0 ? "transparent" : "rgba(77,186,214,0.03)",
-                    borderBottom: i < 5 ? "1px solid rgba(77,186,214,0.08)" : "none",
+                    background: i % 2 === 0 ? "transparent" : muted(0.025),
+                    borderBottom: i < 5 ? `1px solid ${muted(0.06)}` : "none",
                   }}
                 >
                   {[row.year, row.event, row.amount].map((val, j) => (
@@ -233,10 +159,10 @@ export function ProjectInvestmentDirectiveSlide({ project }: { project: ProjectC
                       as="div"
                       style={{
                         padding: "8px 12px",
-                        fontSize: "20px",
-                        color: j === 2 ? "#fff" : "rgba(206,232,238,0.65)",
+                        fontSize: "18px",
+                        color: j === 2 ? INK : muted(0.55),
                         fontFamily: font,
-                        fontWeight: 300,
+                        fontWeight: j === 2 ? 400 : 300,
                         textTransform: "lowercase",
                       }}
                     >
@@ -250,11 +176,7 @@ export function ProjectInvestmentDirectiveSlide({ project }: { project: ProjectC
         </div>
       </div>
 
-      <SlideFooter
-        slideKey={`${k}-investment`}
-        slideNum={slideNum}
-        sectionLabel={project.sectionLabel}
-      />
+      <SlideFooter slideKey={`${k}-investment`} slideNum={slideNum} sectionLabel={project.sectionLabel} light />
     </div>
   );
 }

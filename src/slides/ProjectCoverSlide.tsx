@@ -12,6 +12,13 @@ export function ProjectCoverSlide({ project }: { project: ProjectConfig }) {
   const k = project.key;
   const slideNum = String(project.slideNumStart).padStart(2, "0");
 
+  const stats = [
+    { label: "units",      value: String(project.units), id: `${k}-cover:stat-val-0`, labelId: `${k}-cover:stat-lbl-0` },
+    { label: "target irr", value: project.irr,            id: `${k}-cover:stat-val-1`, labelId: `${k}-cover:stat-lbl-1` },
+    { label: "multiple",   value: project.multiple,       id: `${k}-cover:stat-val-2`, labelId: `${k}-cover:stat-lbl-2` },
+    { label: "commitment", value: project.capital,        id: `${k}-cover:stat-val-3`, labelId: `${k}-cover:stat-lbl-3` },
+  ];
+
   return (
     <div
       style={{
@@ -22,7 +29,7 @@ export function ProjectCoverSlide({ project }: { project: ProjectConfig }) {
         background: theme.darkBg,
       }}
     >
-      {/* Full-bleed hero image */}
+      {/* Full-bleed hero */}
       <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
         <EditableBgImage
           id={`${k}-cover:hero`}
@@ -30,132 +37,169 @@ export function ProjectCoverSlide({ project }: { project: ProjectConfig }) {
           src={project.images.hero}
           style={{ width: "100%", height: "100%", opacity: 1 }}
         />
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(to top, rgba(5,10,12,0.94) 0%, rgba(5,10,12,0.55) 45%, rgba(5,10,12,0.20) 75%, rgba(5,10,12,0.08) 100%)",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(to right, rgba(5,10,12,0.60) 0%, rgba(5,10,12,0.0) 55%)",
-          }}
-        />
+        {/* Bottom-up scrim for text legibility */}
+        <div style={{
+          position: "absolute",
+          inset: 0,
+          background: "linear-gradient(to top, rgba(5,10,12,0.96) 0%, rgba(5,10,12,0.72) 38%, rgba(5,10,12,0.28) 65%, rgba(5,10,12,0.06) 100%)",
+        }} />
+        {/* Left-side scrim for content panel */}
+        <div style={{
+          position: "absolute",
+          inset: 0,
+          background: "linear-gradient(to right, rgba(5,10,12,0.68) 0%, rgba(5,10,12,0.28) 50%, rgba(5,10,12,0.0) 75%)",
+        }} />
       </div>
 
       <StatusChip status="DRAFT" />
 
       {/* Top bar */}
-      <div
-        style={{
-          position: "absolute",
-          top: 56,
-          left: 64,
-          right: 64,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          zIndex: 5,
-        }}
-      >
-        <LotusMark width={160} onDark />
-        <EditableText
-          id={`${k}-cover:slide-indicator`}
-          as="span"
-          style={{
-            fontSize: 11,
-            fontWeight: 400,
-            letterSpacing: "0.44em",
-            color: "rgba(206,232,238,0.22)",
-            fontFamily: font,
-            textTransform: "lowercase",
-          }}
-        >
-          {slideNum} / {project.sectionLabel}
-        </EditableText>
+      <div style={{
+        position: "absolute",
+        top: 52,
+        left: 64,
+        right: 64,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        zIndex: 5,
+      }}>
+        <LotusMark width={148} onDark />
+
+        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+          {/* Location pill */}
+          <div style={{
+            padding: "5px 14px",
+            border: "1px solid rgba(77,186,214,0.28)",
+            borderRadius: 20,
+            background: "rgba(5,10,12,0.36)",
+            backdropFilter: "blur(8px)",
+          }}>
+            <EditableText
+              id={`${k}-cover:location-pill`}
+              as="span"
+              style={{
+                fontSize: 12,
+                color: "rgba(206,232,238,0.70)",
+                fontFamily: font,
+                letterSpacing: "0.16em",
+                textTransform: "lowercase",
+                fontWeight: 300,
+              }}
+            >
+              {project.location}
+            </EditableText>
+          </div>
+
+          {/* Slide indicator */}
+          <EditableText
+            id={`${k}-cover:slide-indicator`}
+            as="span"
+            style={{
+              fontSize: 12,
+              fontWeight: 400,
+              letterSpacing: "0.38em",
+              color: "rgba(206,232,238,0.38)",
+              fontFamily: font,
+              textTransform: "lowercase",
+            }}
+          >
+            {slideNum} / {project.sectionLabel}
+          </EditableText>
+        </div>
       </div>
 
-      {/* Bottom content */}
-      <div
-        style={{
-          position: "absolute",
-          bottom: 80,
-          left: 64,
-          maxWidth: "60%",
-          zIndex: 5,
-        }}
-      >
-        <EditableText
-          id={`${k}-cover:eyebrow`}
-          as="div"
-          style={{
-            fontSize: 10,
-            color: theme.turquoise,
-            letterSpacing: "0.3em",
-            textTransform: "lowercase",
-            fontFamily: font,
-            fontWeight: 300,
-            marginBottom: 16,
-          }}
-        >
-          {project.location} · {project.phase}
-        </EditableText>
+      {/* Bottom content block */}
+      <div style={{
+        position: "absolute",
+        bottom: 72,
+        left: 64,
+        right: "36%",
+        zIndex: 5,
+      }}>
+        {/* Eyebrow with accent mark */}
+        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 14 }}>
+          <div style={{ width: 28, height: 2, background: theme.turquoise, borderRadius: 1, flexShrink: 0 }} />
+          <EditableText
+            id={`${k}-cover:eyebrow`}
+            as="div"
+            style={{
+              fontSize: 12,
+              color: theme.turquoise,
+              letterSpacing: "0.28em",
+              textTransform: "lowercase",
+              fontFamily: font,
+              fontWeight: 400,
+            }}
+          >
+            {project.phase} · affordable housing
+          </EditableText>
+        </div>
 
+        {/* Headline */}
         <EditableText
           id={`${k}-cover:headline`}
           as="h1"
           style={{
-            fontSize: "38px",
+            fontSize: "52px",
             color: "#fff",
             fontWeight: 300,
             fontFamily: font,
-            lineHeight: 1.08,
+            lineHeight: 1.0,
             letterSpacing: "-0.03em",
             textTransform: "lowercase",
-            marginBottom: 28,
+            marginBottom: 0,
           }}
         >
           {project.name}
         </EditableText>
 
+        {/* Divider */}
+        <div style={{
+          height: 1,
+          background: "linear-gradient(to right, rgba(77,186,214,0.40) 0%, rgba(77,186,214,0.08) 60%, transparent 100%)",
+          margin: "24px 0",
+        }} />
+
         {/* Stat row */}
-        <div style={{ display: "flex", gap: 32 }}>
-          {[
-            { label: "units",     value: String(project.units)    },
-            { label: "target irr", value: project.irr             },
-            { label: "multiple",  value: project.multiple         },
-            { label: "commitment", value: project.capital         },
-          ].map((stat, i) => (
-            <div key={i}>
+        <div style={{ display: "flex", gap: 0 }}>
+          {stats.map((stat, i) => (
+            <div
+              key={i}
+              style={{
+                flex: 1,
+                paddingLeft: i === 0 ? 0 : 24,
+                paddingRight: 24,
+                borderLeft: i === 0
+                  ? "none"
+                  : "1px solid rgba(77,186,214,0.20)",
+              }}
+            >
               <EditableText
-                id={`${k}-cover:stat-val-${i}`}
+                id={stat.id}
                 as="div"
                 style={{
-                  fontSize: "32px",
+                  fontSize: "34px",
                   color: "#fff",
                   fontFamily: font,
                   fontWeight: 300,
                   lineHeight: 1,
                   letterSpacing: "-0.02em",
-                  marginBottom: 5,
+                  marginBottom: 6,
                 }}
               >
                 {stat.value}
               </EditableText>
               <EditableText
-                id={`${k}-cover:stat-lbl-${i}`}
+                id={stat.labelId}
                 as="div"
                 style={{
-                  fontSize: 9,
+                  fontSize: 12,
                   color: theme.turquoise,
                   fontFamily: font,
-                  letterSpacing: "0.2em",
+                  letterSpacing: "0.18em",
                   textTransform: "lowercase",
+                  fontWeight: 400,
                 }}
               >
                 {stat.label}

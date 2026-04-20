@@ -7,18 +7,23 @@ import { SlideFooter } from "@/components/SlideFooter";
 import { StatusChip } from "@/components/StatusChip";
 import type { ProjectConfig } from "./projectData";
 
+const BG = "#F7F5F0";
+const INK = "#050a0c";
+const muted = (a: number) => `rgba(5,10,12,${a})`;
+const teal = (a: number) => `rgba(77,186,214,${a})`;
+
 const cell = (content: ReactNode, accent = false, right = false) => (
   <div
     style={{
       padding: "7px 12px",
-      borderBottom: "1px solid rgba(77,186,214,0.10)",
+      borderBottom: `1px solid ${muted(0.07)}`,
       display: "flex",
       alignItems: "center",
       justifyContent: right ? "flex-end" : "flex-start",
-      color: accent ? "#fff" : "rgba(206,232,238,0.65)",
+      color: accent ? INK : muted(0.55),
       fontSize: "20px",
       fontFamily: font,
-      fontWeight: accent ? 300 : 300,
+      fontWeight: 300,
       textTransform: "lowercase",
     }}
   >
@@ -37,32 +42,25 @@ export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfi
         width: "100%",
         height: "100%",
         overflow: "hidden",
-        background: theme.darkBg,
+        background: BG,
         fontFamily: font,
       }}
     >
       <StatusChip status="DRAFT" />
 
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          height: "100%",
-          padding: "56px 64px 72px",
-        }}
-      >
+      <div style={{ display: "flex", flexDirection: "column", height: "100%", padding: "56px 64px 72px" }}>
         {/* Header */}
         <div style={{ marginBottom: 16 }}>
           <EditableText
             id={`${k}-impact:eyebrow`}
             as="div"
             style={{
-              fontSize: 10,
+              fontSize: 11,
               color: theme.turquoise,
               letterSpacing: "0.28em",
               textTransform: "lowercase",
               fontFamily: font,
-              fontWeight: 300,
+              fontWeight: 400,
               marginBottom: 10,
             }}
           >
@@ -74,7 +72,7 @@ export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfi
             as="h1"
             style={{
               fontSize: "32px",
-              color: "#fff",
+              color: INK,
               fontWeight: 300,
               fontFamily: font,
               lineHeight: 1.2,
@@ -86,7 +84,7 @@ export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfi
           </EditableText>
         </div>
 
-        <div style={{ height: 1, background: "rgba(77,186,214,0.18)", marginBottom: 20 }} />
+        <div style={{ height: 1, background: muted(0.10), marginBottom: 20 }} />
 
         {/* Two-column layout */}
         <div style={{ display: "flex", gap: 20, flex: 1, minHeight: 0 }}>
@@ -96,76 +94,30 @@ export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfi
             <EditableText
               id={`${k}-impact:unit-mix-title`}
               as="div"
-              style={{
-                fontSize: 9,
-                color: theme.turquoise,
-                letterSpacing: "0.24em",
-                textTransform: "lowercase",
-                fontFamily: font,
-                marginBottom: 4,
-              }}
+              style={{ fontSize: 10, color: theme.turquoise, letterSpacing: "0.24em", textTransform: "lowercase", fontFamily: font, marginBottom: 4 }}
             >
               unit mix by ami tier
             </EditableText>
 
-            <div
-              style={{
-                border: "1px solid rgba(77,186,214,0.15)",
-                borderRadius: 4,
-                overflow: "hidden",
-              }}
-            >
+            <div style={{ border: `1px solid ${muted(0.10)}`, borderRadius: 4, overflow: "hidden" }}>
               {/* Header row */}
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1.4fr 0.7fr 1.2fr",
-                  background: "rgba(77,186,214,0.10)",
-                  borderBottom: "1px solid rgba(77,186,214,0.18)",
-                }}
-              >
+              <div style={{ display: "grid", gridTemplateColumns: "1.4fr 0.7fr 1.2fr", background: teal(0.10), borderBottom: `1px solid ${muted(0.10)}` }}>
                 {["ami tier", "units", "unit types"].map((h) => (
-                  <div
-                    key={h}
-                    style={{
-                      padding: "7px 12px",
-                      fontSize: 8,
-                      color: theme.turquoise,
-                      fontFamily: font,
-                      letterSpacing: "0.2em",
-                      textTransform: "lowercase",
-                    }}
-                  >
+                  <div key={h} style={{ padding: "7px 12px", fontSize: 9, color: theme.turquoise, fontFamily: font, letterSpacing: "0.2em", textTransform: "lowercase" }}>
                     {h}
                   </div>
                 ))}
               </div>
 
-              {/* Data rows */}
               {project.unitMix.map((row, i) => (
-                <div
-                  key={i}
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "1.4fr 0.7fr 1.2fr",
-                    background: i % 2 === 0 ? "transparent" : "rgba(77,186,214,0.03)",
-                  }}
-                >
+                <div key={i} style={{ display: "grid", gridTemplateColumns: "1.4fr 0.7fr 1.2fr", background: i % 2 === 0 ? "transparent" : muted(0.025) }}>
                   {cell(row.ami)}
                   {cell(String(row.units), true, true)}
                   {cell(row.type)}
                 </div>
               ))}
 
-              {/* Total row */}
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1.4fr 0.7fr 1.2fr",
-                  background: "rgba(77,186,214,0.08)",
-                  borderTop: "1px solid rgba(77,186,214,0.18)",
-                }}
-              >
+              <div style={{ display: "grid", gridTemplateColumns: "1.4fr 0.7fr 1.2fr", background: teal(0.08), borderTop: `1px solid ${muted(0.10)}` }}>
                 {cell("total", true)}
                 {cell(String(project.units), true, true)}
                 {cell("all unit types")}
@@ -177,63 +129,29 @@ export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfi
               <EditableText
                 id={`${k}-impact:resident-title`}
                 as="div"
-                style={{
-                  fontSize: 9,
-                  color: theme.turquoise,
-                  letterSpacing: "0.24em",
-                  textTransform: "lowercase",
-                  fontFamily: font,
-                  marginBottom: 10,
-                }}
+                style={{ fontSize: 10, color: theme.turquoise, letterSpacing: "0.24em", textTransform: "lowercase", fontFamily: font, marginBottom: 10 }}
               >
                 resident profile
               </EditableText>
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  gap: 8,
-                }}
-              >
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
                 {[
                   { label: "estimated residents", value: String(Math.round(project.units * 2.5).toLocaleString()) },
                   { label: "avg household size",  value: "2.5" },
                   { label: "ami range served",    value: "30–80%" },
                   { label: "affordability period",value: "15+ years" },
                 ].map((item, i) => (
-                  <div
-                    key={i}
-                    style={{
-                      background: "rgba(77,186,214,0.05)",
-                      border: "1px solid rgba(77,186,214,0.12)",
-                      borderRadius: 3,
-                      padding: "10px 12px",
-                    }}
-                  >
+                  <div key={i} style={{ background: teal(0.06), border: `1px solid ${muted(0.08)}`, borderRadius: 3, padding: "10px 12px" }}>
                     <EditableText
                       id={`${k}-impact:profile-val-${i}`}
                       as="div"
-                      style={{
-                        fontSize: "28px",
-                        color: "#fff",
-                        fontFamily: font,
-                        fontWeight: 300,
-                        lineHeight: 1,
-                        marginBottom: 4,
-                      }}
+                      style={{ fontSize: "28px", color: INK, fontFamily: font, fontWeight: 300, lineHeight: 1, marginBottom: 4 }}
                     >
                       {item.value}
                     </EditableText>
                     <EditableText
                       id={`${k}-impact:profile-lbl-${i}`}
                       as="div"
-                      style={{
-                        fontSize: 8,
-                        color: theme.turquoise,
-                        fontFamily: font,
-                        letterSpacing: "0.18em",
-                        textTransform: "lowercase",
-                      }}
+                      style={{ fontSize: 9, color: theme.turquoise, fontFamily: font, letterSpacing: "0.18em", textTransform: "lowercase" }}
                     >
                       {item.label}
                     </EditableText>
@@ -248,13 +166,7 @@ export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfi
             <EditableText
               id={`${k}-impact:metrics-title`}
               as="div"
-              style={{
-                fontSize: 9,
-                color: theme.turquoise,
-                letterSpacing: "0.24em",
-                textTransform: "lowercase",
-                fontFamily: font,
-              }}
+              style={{ fontSize: 10, color: theme.turquoise, letterSpacing: "0.24em", textTransform: "lowercase", fontFamily: font }}
             >
               impact directive — goals + metrics
             </EditableText>
@@ -270,14 +182,13 @@ export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfi
                 style={{
                   display: "grid",
                   gridTemplateColumns: "1.5fr 1.2fr 0.8fr 1fr",
-                  gap: 0,
-                  background: i % 2 === 0 ? "rgba(77,186,214,0.04)" : "transparent",
-                  border: "1px solid rgba(77,186,214,0.10)",
+                  background: i % 2 === 0 ? muted(0.03) : "transparent",
+                  border: `1px solid ${muted(0.08)}`,
                   borderRadius: 3,
                   overflow: "hidden",
                 }}
               >
-                <div style={{ padding: "10px 12px", borderRight: "1px solid rgba(77,186,214,0.10)" }}>
+                <div style={{ padding: "10px 12px", borderRight: `1px solid ${muted(0.08)}` }}>
                   <EditableText
                     id={`${k}-impact:row-pillar-${i}`}
                     as="div"
@@ -286,20 +197,20 @@ export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfi
                     {row.pillar}
                   </EditableText>
                 </div>
-                <div style={{ padding: "10px 12px", borderRight: "1px solid rgba(77,186,214,0.10)", display: "flex", alignItems: "center" }}>
+                <div style={{ padding: "10px 12px", borderRight: `1px solid ${muted(0.08)}`, display: "flex", alignItems: "center" }}>
                   <EditableText
                     id={`${k}-impact:row-metric-${i}`}
                     as="div"
-                    style={{ fontSize: 11, color: "rgba(206,232,238,0.75)", fontFamily: font, textTransform: "lowercase" }}
+                    style={{ fontSize: 12, color: muted(0.65), fontFamily: font, textTransform: "lowercase" }}
                   >
                     {row.metric}
                   </EditableText>
                 </div>
-                <div style={{ padding: "10px 12px", borderRight: "1px solid rgba(77,186,214,0.10)", display: "flex", alignItems: "center" }}>
+                <div style={{ padding: "10px 12px", borderRight: `1px solid ${muted(0.08)}`, display: "flex", alignItems: "center" }}>
                   <EditableText
                     id={`${k}-impact:row-target-${i}`}
                     as="div"
-                    style={{ fontSize: "28px", color: "#fff", fontFamily: font, fontWeight: 300 }}
+                    style={{ fontSize: "28px", color: INK, fontFamily: font, fontWeight: 300 }}
                   >
                     {row.target}
                   </EditableText>
@@ -308,7 +219,7 @@ export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfi
                   <EditableText
                     id={`${k}-impact:row-baseline-${i}`}
                     as="div"
-                    style={{ fontSize: 10, color: "rgba(206,232,238,0.4)", fontFamily: font, textTransform: "lowercase" }}
+                    style={{ fontSize: 11, color: muted(0.40), fontFamily: font, textTransform: "lowercase" }}
                   >
                     {row.baseline}
                   </EditableText>
@@ -321,14 +232,7 @@ export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfi
               <EditableText
                 id={`${k}-impact:tenyear-title`}
                 as="div"
-                style={{
-                  fontSize: 9,
-                  color: theme.turquoise,
-                  letterSpacing: "0.24em",
-                  textTransform: "lowercase",
-                  fontFamily: font,
-                  marginBottom: 10,
-                }}
+                style={{ fontSize: 10, color: theme.turquoise, letterSpacing: "0.24em", textTransform: "lowercase", fontFamily: font, marginBottom: 10 }}
               >
                 10-year impact projection
               </EditableText>
@@ -336,42 +240,21 @@ export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfi
               <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 8 }}>
                 {[
                   { value: String(Math.round(project.units * 2.5 * 10).toLocaleString()), label: "resident-years of housing" },
-                  { value: "—",  label: "service contacts projected" },
-                  { value: "—",  label: "workforce program enrollments" },
+                  { value: "—", label: "service contacts projected" },
+                  { value: "—", label: "workforce program enrollments" },
                 ].map((stat, i) => (
-                  <div
-                    key={i}
-                    style={{
-                      background: "rgba(77,186,214,0.06)",
-                      border: "1px solid rgba(77,186,214,0.15)",
-                      borderRadius: 3,
-                      padding: "12px 14px",
-                    }}
-                  >
+                  <div key={i} style={{ background: teal(0.06), border: `1px solid ${muted(0.08)}`, borderRadius: 3, padding: "12px 14px" }}>
                     <EditableText
                       id={`${k}-impact:tenyear-val-${i}`}
                       as="div"
-                      style={{
-                        fontSize: "32px",
-                        color: "#fff",
-                        fontFamily: font,
-                        fontWeight: 300,
-                        lineHeight: 1,
-                        marginBottom: 5,
-                      }}
+                      style={{ fontSize: "32px", color: INK, fontFamily: font, fontWeight: 300, lineHeight: 1, marginBottom: 5 }}
                     >
                       {stat.value}
                     </EditableText>
                     <EditableText
                       id={`${k}-impact:tenyear-lbl-${i}`}
                       as="div"
-                      style={{
-                        fontSize: 8,
-                        color: "rgba(206,232,238,0.45)",
-                        fontFamily: font,
-                        lineHeight: 1.4,
-                        textTransform: "lowercase",
-                      }}
+                      style={{ fontSize: 9, color: muted(0.45), fontFamily: font, lineHeight: 1.4, textTransform: "lowercase" }}
                     >
                       {stat.label}
                     </EditableText>
@@ -383,11 +266,7 @@ export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfi
         </div>
       </div>
 
-      <SlideFooter
-        slideKey={`${k}-impact`}
-        slideNum={slideNum}
-        sectionLabel={project.sectionLabel}
-      />
+      <SlideFooter slideKey={`${k}-impact`} slideNum={slideNum} sectionLabel={project.sectionLabel} light />
     </div>
   );
 }

@@ -14,3 +14,10 @@ export const theme = {
 };
 
 export const font = `var(--font-futura), "Futura", "Helvetica Neue", Arial, sans-serif`;
+
+export const typeScale = {
+  largeTitle: 38,
+  title: 32,
+  subhead: 28,
+  body: 20,
+};

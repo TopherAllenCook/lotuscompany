@@ -33,7 +33,7 @@ export function EconomicsSlide() {
         <EditableBgImage
           id="economics:bg-photo"
           label="background photo"
-          src="/nova/Commercial 2025-07-07 Lotus-Nova-3.jpg"
+          src="/lotus-photos/nova/Commercial 2025-07-07 Lotus-Nova-3.jpg"
           style={{ width: "100%", height: "100%", opacity: 0.50 }}
         />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(5,10,12,0.25) 0%, rgba(5,10,12,0.10) 50%, rgba(5,10,12,0.0) 100%)" }} />

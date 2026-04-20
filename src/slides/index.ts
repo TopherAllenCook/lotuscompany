@@ -18,7 +18,6 @@ import { PipelineSlide }            from "./PipelineSlide";
 import { LotusWaySlide }            from "./LotusWaySlide";
 import { LIHTCRentsSlide }          from "./LIHTCRentsSlide";
 import { PartnersSlide }            from "./PartnersSlide";
-import { PortfolioSlide }           from "./PortfolioSlide";
 import { ClosingSlide }             from "./ClosingSlide";
 
 // ── Per-project slide components ───────────────────────────────────────────
@@ -58,7 +57,6 @@ export const SLIDE_REGISTRY = [
   { key: "impact-dashboard", component: ImpactDashboardSlide,     title: "Impact Dashboard"            },
   { key: "pipeline",         component: PipelineSlide,            title: "Pipeline + Readiness"        },
   { key: "partners",         component: PartnersSlide,            title: "Capital Partners"            },
-  { key: "portfolio",        component: PortfolioSlide,           title: "Portfolio"                   },
 
   // ── Steelton Village ──────────────────────────────────────────────────────
   { key: "steelton-cover",        component: () => React.createElement(ProjectCoverSlide,            { project: STEELTON }), title: "Steelton Village — Cover"              },
