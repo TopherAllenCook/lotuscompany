@@ -39,6 +39,9 @@ export interface ProjectConfig {
   dispositionYear: string;
   prefReturn: string;
   taxNote?: string;
+  hhSize?: string;
+  annualResidents?: string;
+  residentYears10?: string;
   slideNumStart: number;
   sectionLabel: string;
   images: { hero: string; secondary: string; tertiary: string };
@@ -75,6 +78,9 @@ export const STEELTON: ProjectConfig = {
   completionDate: "11/30/2029",
   dispositionYear: "2044",
   prefReturn: "7%",
+  hhSize: "2.72",
+  annualResidents: "415",
+  residentYears10: "2,277",
   slideNumStart: 20,
   sectionLabel: "steelton village",
   images: STEELTON_IMGS,

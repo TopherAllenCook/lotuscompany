@@ -134,10 +134,10 @@ export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfi
               </EditableText>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
                 {[
-                  { label: "estimated residents", value: String(Math.round(project.units * 2.5).toLocaleString()) },
-                  { label: "avg household size",  value: "2.5" },
-                  { label: "ami range served",    value: "30–80%" },
-                  { label: "affordability period",value: "15+ years" },
+                  { label: "annual resident impact", value: project.annualResidents ?? String(Math.round(project.units * parseFloat(project.hhSize ?? "2.5")).toLocaleString()) },
+                  { label: "avg household size",     value: project.hhSize ?? "2.5" },
+                  { label: "ami range served",       value: "30–80%" },
+                  { label: "affordability period",   value: "15+ years" },
                 ].map((item, i) => (
                   <div key={i} style={{ background: teal(0.06), border: `1px solid ${muted(0.08)}`, borderRadius: 3, padding: "10px 12px" }}>
                     <EditableText
@@ -171,10 +171,7 @@ export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfi
             </EditableText>
 
             {[
-              { pillar: "shelter and dignity",   metric: "stabilized occupancy", target: "97%",  baseline: "market benchmark" },
-              { pillar: "knowledge and power",   metric: "service utilization",  target: "60%+", baseline: "residents engaged" },
-              { pillar: "wholeness",             metric: "health referrals",     target: "—",    baseline: "annual measure" },
-              { pillar: "place and beauty",      metric: "resident satisfaction",target: "85%+", baseline: "annual survey" },
+              { pillar: "shelter and dignity",   metric: "stabilized occupancy", target: "95%",  baseline: "market benchmark" },
             ].map((row, i) => (
               <div
                 key={i}
@@ -238,7 +235,7 @@ export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfi
 
               <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 8 }}>
                 {[
-                  { value: String(Math.round(project.units * 2.5 * 10).toLocaleString()), label: "resident-years of housing" },
+                  { value: project.residentYears10 ?? String(Math.round(project.units * parseFloat(project.hhSize ?? "2.5") * 10).toLocaleString()), label: "resident-years of housing" },
                   { value: "—", label: "service contacts projected" },
                   { value: "—", label: "workforce program enrollments" },
                 ].map((stat, i) => (
