@@ -54,7 +54,7 @@ export function EconomicsSlide() {
               letterSpacing: "0.28em",
               textTransform: "lowercase",
               fontFamily: font,
-              fontWeight: 300,
+              fontWeight: 400,
               marginBottom: "10px",
             }}
           >
@@ -67,7 +67,7 @@ export function EconomicsSlide() {
             style={{
               fontSize: "38px",
               color: "#fff",
-              fontWeight: 300,
+              fontWeight: 400,
               fontFamily: font,
               lineHeight: 1.2,
               letterSpacing: "-0.02em",
@@ -105,7 +105,7 @@ export function EconomicsSlide() {
                   fontSize: "38px",
                   color: "#fff",
                   fontFamily: font,
-                  fontWeight: 300,
+                  fontWeight: 400,
                   letterSpacing: "-0.02em",
                   lineHeight: 1,
                   marginBottom: "6px",
@@ -181,9 +181,9 @@ export function EconomicsSlide() {
             as="div"
             style={{
               fontSize: "17px",
-              color: "rgba(255,255,255,0.65)",
+              color: "rgba(255,255,255,0.80)",
               fontFamily: font,
-              fontWeight: 300,
+              fontWeight: 400,
               lineHeight: 1.5,
               textTransform: "lowercase",
             }}
@@ -203,7 +203,7 @@ export function EconomicsSlide() {
               textAnchor="middle"
               style={{
                 fontSize: "16px",
-                fill: "rgba(206,232,238,0.75)",
+                fill: "rgba(206,232,238,0.92)",
                 fontFamily: font,
                 letterSpacing: "0.16em",
                 textTransform: "uppercase",
@@ -222,6 +222,7 @@ export function EconomicsSlide() {
                 fontSize: "16px",
                 fill: theme.lightBlue,
                 fontFamily: font,
+                fontWeight: 400,
               }}
             >
               capital turn
@@ -231,9 +232,9 @@ export function EconomicsSlide() {
               y={75}
               style={{
                 fontSize: "16px",
-                fill: theme.turquoise,
+                fill: "#fff",
                 fontFamily: font,
-                fontWeight: 300,
+                fontWeight: 400,
               }}
             >
               75%
@@ -249,6 +250,7 @@ export function EconomicsSlide() {
                 fontSize: "16px",
                 fill: theme.lightBlue,
                 fontFamily: font,
+                fontWeight: 400,
               }}
             >
               fee participation
@@ -258,9 +260,9 @@ export function EconomicsSlide() {
               y={135}
               style={{
                 fontSize: "16px",
-                fill: theme.turquoise,
+                fill: "#fff",
                 fontFamily: font,
-                fontWeight: 300,
+                fontWeight: 400,
               }}
             >
               55%
@@ -276,6 +278,7 @@ export function EconomicsSlide() {
                 fontSize: "16px",
                 fill: theme.lightBlue,
                 fontFamily: font,
+                fontWeight: 400,
               }}
             >
               operations
@@ -285,9 +288,9 @@ export function EconomicsSlide() {
               y={195}
               style={{
                 fontSize: "16px",
-                fill: theme.turquoise,
+                fill: "#fff",
                 fontFamily: font,
-                fontWeight: 300,
+                fontWeight: 400,
               }}
             >
               35%
@@ -303,6 +306,7 @@ export function EconomicsSlide() {
                 fontSize: "16px",
                 fill: theme.lightBlue,
                 fontFamily: font,
+                fontWeight: 400,
               }}
             >
               residual
@@ -312,9 +316,9 @@ export function EconomicsSlide() {
               y={255}
               style={{
                 fontSize: "16px",
-                fill: theme.turquoise,
+                fill: "#fff",
                 fontFamily: font,
-                fontWeight: 300,
+                fontWeight: 400,
               }}
             >
               20%

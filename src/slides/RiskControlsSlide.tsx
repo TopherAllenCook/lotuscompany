@@ -7,6 +7,34 @@ import { EditableText } from "@/components/EditableText";
 import { EditableEl } from "@/components/EditableEl";
 import { EditableBgImage } from "@/components/EditableBgImage";
 
+const ROWS = [
+  {
+    id: "1",
+    risk: "award and timing risk",
+    mitigant: "qap-tied readiness, diversified application cohorts, reserves",
+  },
+  {
+    id: "2",
+    risk: "construction-cost and capital-stack risk",
+    mitigant: "underwritten contingencies, staged advances, fixed-price contracts where available",
+  },
+  {
+    id: "3",
+    risk: "counterparty and sponsor-execution risk",
+    mitigant: "lotus ic gates, vetted sponsor bench, milestone controls",
+  },
+  {
+    id: "4",
+    risk: "regulatory and compliance risk",
+    mitigant: "compliance monitoring, section 42 covenants, third-party reports",
+  },
+  {
+    id: "5",
+    risk: "portfolio concentration risk",
+    mitigant: "concentration limits inside investment directive",
+  },
+];
+
 export function RiskControlsSlide() {
   return (
     <div
@@ -18,7 +46,7 @@ export function RiskControlsSlide() {
         background: theme.darkBg,
       }}
     >
-      {/* Background photo — muted building */}
+      {/* Background photo — full bleed */}
       <div
         style={{
           position: "absolute",
@@ -33,53 +61,20 @@ export function RiskControlsSlide() {
           src="/steelton-village/Steelton I_Updated Lobby_2026.04.02.jpg"
           style={{ width: "100%", height: "100%", opacity: 0.50 }}
         />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(5,10,12,0.25) 0%, rgba(5,10,12,0.10) 50%, rgba(5,10,12,0.0) 100%)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(5,10,12,0.35) 0%, rgba(5,10,12,0.15) 60%, rgba(5,10,12,0.0) 100%)" }} />
       </div>
 
-
-
       <div style={{ position: "relative", display: "flex", flexDirection: "column", height: "100%", padding: "56px 64px 72px" }}>
-        {/* Headline Section */}
-        <div className="anim-fade-in-up" style={{ marginBottom: "20px" }}>
-          <EditableText
-            id="risk-controls:eyebrow"
-            as="div"
-            style={{
-              fontSize: "16px",
-              color: theme.turquoise,
-              letterSpacing: "0.28em",
-              textTransform: "lowercase",
-              fontFamily: font,
-              fontWeight: 300,
-              marginBottom: "10px",
-            }}
-          >
-            risk controls
-          </EditableText>
-
-          <EditableText
-            id="risk-controls:headline"
-            as="h1"
-            style={{
-              fontSize: "38px",
-              color: "#fff",
-              fontWeight: 300,
-              fontFamily: font,
-              lineHeight: 1.2,
-              letterSpacing: "-0.02em",
-              textTransform: "lowercase",
-              marginBottom: "0",
-            }}
-          >
-            mission does not remove risk. we price it in.
-          </EditableText>
-        </div>
-
-        {/* Risk Matrix Table */}
-        <EditableEl id="risk-controls:card" label="glass card" type="card"
+        <EditableEl
+          id="risk-controls:card"
+          label="glass card"
+          type="card"
+          className="anim-fade-in-up"
           style={{
             flex: 1,
-            background: "rgba(5,10,12,0.52)",
+            display: "flex",
+            flexDirection: "column",
+            background: "rgba(5,10,12,0.58)",
             backdropFilter: "blur(28px) saturate(200%)",
             WebkitBackdropFilter: "blur(28px) saturate(200%)",
             borderRadius: "16px",
@@ -88,324 +83,135 @@ export function RiskControlsSlide() {
             overflow: "hidden",
           }}
         >
-        <table
-          style={{
-            width: "100%",
-            borderCollapse: "collapse",
-          }}
-        >
-          <thead>
-            <tr style={{ background: "rgba(77,186,214,0.15)" }}>
-              <th
-                style={{
-                  fontSize: "16px",
-                  color: theme.turquoise,
-                  letterSpacing: "0.16em",
-                  textTransform: "uppercase",
-                  fontFamily: font,
-                  fontWeight: 400,
-                  textAlign: "left",
-                  padding: "14px 28px",
-                  width: "35%",
-                  borderBottom: "1px solid rgba(77,186,214,0.1)",
-                }}
-              >
-                <EditableText
-                  id="risk-controls:header-risk"
-                  as="span"
+          {/* Headline header */}
+          <div style={{ padding: "32px 40px 28px" }}>
+            <EditableText
+              id="risk-controls:eyebrow"
+              as="div"
+              style={{
+                fontSize: "16px",
+                color: theme.turquoise,
+                letterSpacing: "0.28em",
+                textTransform: "lowercase",
+                fontFamily: font,
+                fontWeight: 400,
+                marginBottom: "10px",
+              }}
+            >
+              risk controls
+            </EditableText>
+
+            <EditableText
+              id="risk-controls:headline"
+              as="h1"
+              style={{
+                fontSize: "34px",
+                color: "#fff",
+                fontWeight: 400,
+                fontFamily: font,
+                lineHeight: 1.2,
+                letterSpacing: "-0.02em",
+                textTransform: "lowercase",
+                margin: 0,
+              }}
+            >
+              mission does not remove risk. we price it in.
+            </EditableText>
+          </div>
+
+          {/* Divider */}
+          <div style={{ height: "1px", background: "rgba(77,186,214,0.20)", marginLeft: "40px", marginRight: "40px" }} />
+
+          {/* Table */}
+          <table
+            style={{
+              width: "100%",
+              borderCollapse: "collapse",
+              flex: 1,
+            }}
+          >
+            <thead>
+              <tr style={{ background: "rgba(77,186,214,0.10)" }}>
+                <th
                   style={{
-                    fontSize: "16px",
+                    fontSize: "13px",
                     color: theme.turquoise,
-                    letterSpacing: "0.16em",
+                    letterSpacing: "0.20em",
                     textTransform: "uppercase",
                     fontFamily: font,
-                    fontWeight: 400,
+                    fontWeight: 500,
+                    textAlign: "left",
+                    padding: "14px 40px",
+                    width: "38%",
+                    borderBottom: "1px solid rgba(77,186,214,0.15)",
                   }}
                 >
                   risk
-                </EditableText>
-              </th>
-              <th
-                style={{
-                  fontSize: "16px",
-                  color: theme.turquoise,
-                  letterSpacing: "0.16em",
-                  textTransform: "uppercase",
-                  fontFamily: font,
-                  fontWeight: 400,
-                  textAlign: "left",
-                  padding: "12px 20px",
-                  borderBottom: "1px solid rgba(77,186,214,0.1)",
-                }}
-              >
-                <EditableText
-                  id="risk-controls:header-mitigant"
-                  as="span"
+                </th>
+                <th
                   style={{
-                    fontSize: "16px",
+                    fontSize: "13px",
                     color: theme.turquoise,
-                    letterSpacing: "0.16em",
+                    letterSpacing: "0.20em",
                     textTransform: "uppercase",
                     fontFamily: font,
-                    fontWeight: 400,
+                    fontWeight: 500,
+                    textAlign: "left",
+                    padding: "14px 40px 14px 24px",
+                    borderBottom: "1px solid rgba(77,186,214,0.15)",
                   }}
                 >
                   mitigant
-                </EditableText>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* Row 1 */}
-            <tr style={{ background: "transparent", borderBottom: "1px solid rgba(77,186,214,0.1)" }}>
-              <td
-                style={{
-                  fontSize: "16px",
-                  color: "rgba(255,255,255,0.92)",
-                  fontFamily: font,
-                  fontWeight: 400,
-                  padding: "22px 28px",
-                  width: "35%",
-                }}
-              >
-                <EditableText
-                  id="risk-controls:risk-1"
-                  as="span"
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {ROWS.map((row, i) => (
+                <tr
+                  key={row.id}
                   style={{
-                    fontSize: "16px",
-                    color: "rgba(255,255,255,0.92)",
-                    fontFamily: font,
-                    fontWeight: 400,
+                    background: i % 2 === 1 ? "rgba(255,255,255,0.025)" : "transparent",
+                    borderBottom: i < ROWS.length - 1 ? "1px solid rgba(77,186,214,0.10)" : "none",
                   }}
                 >
-                  award and timing risk
-                </EditableText>
-              </td>
-              <td
-                style={{
-                  fontSize: "16px",
-                  color: theme.lightBlue,
-                  fontFamily: font,
-                  fontWeight: 300,
-                  padding: "22px 28px",
-                }}
-              >
-                <EditableText
-                  id="risk-controls:mitigant-1"
-                  as="span"
-                  style={{
-                    fontSize: "16px",
-                    color: theme.lightBlue,
-                    fontFamily: font,
-                    fontWeight: 300,
-                  }}
-                >
-                  qap-tied readiness, diversified application cohorts, reserves
-                </EditableText>
-              </td>
-            </tr>
-
-            {/* Row 2 */}
-            <tr style={{ background: "rgba(255,255,255,0.02)", borderBottom: "1px solid rgba(77,186,214,0.1)" }}>
-              <td
-                style={{
-                  fontSize: "16px",
-                  color: "rgba(255,255,255,0.92)",
-                  fontFamily: font,
-                  fontWeight: 400,
-                  padding: "12px 20px",
-                  width: "35%",
-                }}
-              >
-                <EditableText
-                  id="risk-controls:risk-2"
-                  as="span"
-                  style={{
-                    fontSize: "16px",
-                    color: "rgba(255,255,255,0.92)",
-                    fontFamily: font,
-                    fontWeight: 400,
-                  }}
-                >
-                  construction-cost and capital-stack risk
-                </EditableText>
-              </td>
-              <td
-                style={{
-                  fontSize: "16px",
-                  color: theme.lightBlue,
-                  fontFamily: font,
-                  fontWeight: 300,
-                  padding: "22px 28px",
-                }}
-              >
-                <EditableText
-                  id="risk-controls:mitigant-2"
-                  as="span"
-                  style={{
-                    fontSize: "16px",
-                    color: theme.lightBlue,
-                    fontFamily: font,
-                    fontWeight: 300,
-                  }}
-                >
-                  underwritten contingencies, staged advances, fixed-price contracts where available
-                </EditableText>
-              </td>
-            </tr>
-
-            {/* Row 3 */}
-            <tr style={{ background: "transparent", borderBottom: "1px solid rgba(77,186,214,0.1)" }}>
-              <td
-                style={{
-                  fontSize: "16px",
-                  color: "rgba(255,255,255,0.92)",
-                  fontFamily: font,
-                  fontWeight: 400,
-                  padding: "12px 20px",
-                  width: "35%",
-                }}
-              >
-                <EditableText
-                  id="risk-controls:risk-3"
-                  as="span"
-                  style={{
-                    fontSize: "16px",
-                    color: "rgba(255,255,255,0.92)",
-                    fontFamily: font,
-                    fontWeight: 400,
-                  }}
-                >
-                  counterparty and sponsor-execution risk
-                </EditableText>
-              </td>
-              <td
-                style={{
-                  fontSize: "16px",
-                  color: theme.lightBlue,
-                  fontFamily: font,
-                  fontWeight: 300,
-                  padding: "22px 28px",
-                }}
-              >
-                <EditableText
-                  id="risk-controls:mitigant-3"
-                  as="span"
-                  style={{
-                    fontSize: "16px",
-                    color: theme.lightBlue,
-                    fontFamily: font,
-                    fontWeight: 300,
-                  }}
-                >
-                  lotus ic gates, vetted sponsor bench, milestone controls
-                </EditableText>
-              </td>
-            </tr>
-
-            {/* Row 4 */}
-            <tr style={{ background: "rgba(255,255,255,0.02)", borderBottom: "1px solid rgba(77,186,214,0.1)" }}>
-              <td
-                style={{
-                  fontSize: "16px",
-                  color: "rgba(255,255,255,0.92)",
-                  fontFamily: font,
-                  fontWeight: 400,
-                  padding: "12px 20px",
-                  width: "35%",
-                }}
-              >
-                <EditableText
-                  id="risk-controls:risk-4"
-                  as="span"
-                  style={{
-                    fontSize: "16px",
-                    color: "rgba(255,255,255,0.92)",
-                    fontFamily: font,
-                    fontWeight: 400,
-                  }}
-                >
-                  regulatory and compliance risk
-                </EditableText>
-              </td>
-              <td
-                style={{
-                  fontSize: "16px",
-                  color: theme.lightBlue,
-                  fontFamily: font,
-                  fontWeight: 300,
-                  padding: "22px 28px",
-                }}
-              >
-                <EditableText
-                  id="risk-controls:mitigant-4"
-                  as="span"
-                  style={{
-                    fontSize: "16px",
-                    color: theme.lightBlue,
-                    fontFamily: font,
-                    fontWeight: 300,
-                  }}
-                >
-                  compliance monitoring, section 42 covenants, third-party reports
-                </EditableText>
-              </td>
-            </tr>
-
-            {/* Row 5 */}
-            <tr style={{ background: "transparent", borderBottom: "1px solid rgba(77,186,214,0.1)" }}>
-              <td
-                style={{
-                  fontSize: "16px",
-                  color: "rgba(255,255,255,0.92)",
-                  fontFamily: font,
-                  fontWeight: 400,
-                  padding: "12px 20px",
-                  width: "35%",
-                }}
-              >
-                <EditableText
-                  id="risk-controls:risk-5"
-                  as="span"
-                  style={{
-                    fontSize: "16px",
-                    color: "rgba(255,255,255,0.92)",
-                    fontFamily: font,
-                    fontWeight: 400,
-                  }}
-                >
-                  portfolio concentration risk
-                </EditableText>
-              </td>
-              <td
-                style={{
-                  fontSize: "16px",
-                  color: theme.lightBlue,
-                  fontFamily: font,
-                  fontWeight: 300,
-                  padding: "22px 28px",
-                }}
-              >
-                <EditableText
-                  id="risk-controls:mitigant-5"
-                  as="span"
-                  style={{
-                    fontSize: "16px",
-                    color: theme.lightBlue,
-                    fontFamily: font,
-                    fontWeight: 300,
-                  }}
-                >
-                  concentration limits inside investment directive
-                </EditableText>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+                  <td style={{ padding: "18px 40px", verticalAlign: "top", width: "38%" }}>
+                    <EditableText
+                      id={`risk-controls:risk-${row.id}`}
+                      as="span"
+                      style={{
+                        fontSize: "16px",
+                        color: "rgba(255,255,255,0.95)",
+                        fontFamily: font,
+                        fontWeight: 400,
+                        lineHeight: 1.45,
+                        textTransform: "lowercase",
+                      }}
+                    >
+                      {row.risk}
+                    </EditableText>
+                  </td>
+                  <td style={{ padding: "18px 40px 18px 24px", verticalAlign: "top" }}>
+                    <EditableText
+                      id={`risk-controls:mitigant-${row.id}`}
+                      as="span"
+                      style={{
+                        fontSize: "16px",
+                        color: theme.lightBlue,
+                        fontFamily: font,
+                        fontWeight: 400,
+                        lineHeight: 1.55,
+                        textTransform: "lowercase",
+                      }}
+                    >
+                      {row.mitigant}
+                    </EditableText>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </EditableEl>
       </div>
-
-
     </div>
   );
 }
