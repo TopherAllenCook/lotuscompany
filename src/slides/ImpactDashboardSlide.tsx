@@ -3,24 +3,21 @@
 import { font, theme } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
 import { EditableEl } from "@/components/EditableEl";
-
-
+import { EditableBgImage } from "@/components/EditableBgImage";
 
 const PILLARS = [
   {
     key: "shelter",
     label: "shelter and dignity",
-    img: "/steelton-village/Steelton I_Unit Rendering_2026.03.10.jpg",
     tiles: [
-      { id: "tile-shelter-1", label: "total units",       value: "788",  def: "units created or preserved"         },
-      { id: "tile-shelter-2", label: "avg ami depth",     value: "—%",   def: "weighted average ami served"        },
-      { id: "tile-shelter-3", label: "est. rent savings", value: "$—",   def: "annual savings vs. market rate"     },
+      { id: "tile-shelter-1", label: "total units",       value: "788",   def: "units created or preserved"         },
+      { id: "tile-shelter-2", label: "avg ami depth",     value: "—%",    def: "weighted average ami served"        },
+      { id: "tile-shelter-3", label: "est. rent savings", value: "$—",    def: "annual savings vs. market rate"     },
     ],
   },
   {
     key: "knowledge",
     label: "knowledge and power",
-    img: "/steelton-village/Steelton I_Clubhouse_2026.03.10.jpg",
     tiles: [
       { id: "tile-knowledge-1", label: "residents served",    value: "1,977", def: "estimated residents housed"            },
       { id: "tile-knowledge-2", label: "service utilization", value: "—%",    def: "residents using on-site services"      },
@@ -30,7 +27,6 @@ const PILLARS = [
   {
     key: "wholeness",
     label: "wholeness",
-    img: "/steelton-village/Steelton I_North Park_2026.03.10.jpg",
     tiles: [
       { id: "tile-wholeness-1", label: "health connections",   value: "—",  def: "health service referrals made"       },
       { id: "tile-wholeness-2", label: "wellness touchpoints", value: "—",  def: "mental wellness interactions"        },
@@ -40,7 +36,6 @@ const PILLARS = [
   {
     key: "place",
     label: "place and beauty",
-    img: "/steelton-village/Steelton I_Pedestrian Promenade_2026.03.10.jpg",
     tiles: [
       { id: "tile-place-1", label: "design quality",        value: "—",  def: "internal design quality score"       },
       { id: "tile-place-2", label: "community amenity",     value: "—",  def: "amenity completeness score"          },
@@ -50,9 +45,9 @@ const PILLARS = [
 ];
 
 const BOTTOM_STATS = [
-  { value: "$3,000", label: "per resident impacted", sub: "first year commitment"                       },
-  { value: "$300",   label: "per resident impacted", sub: "10-years of capital recommitment"            },
-  { value: "50,000", label: "lives impacted",        sub: "with 10-years of capital recommitment"       },
+  { id: "b0", value: "$3,000", label: "per resident impacted", sub: "first year commitment"                 },
+  { id: "b1", value: "$300",   label: "per resident impacted", sub: "10-years of capital recommitment"      },
+  { id: "b2", value: "50,000", label: "lives impacted",        sub: "with 10-years of capital recommitment" },
 ];
 
 export function ImpactDashboardSlide() {
@@ -66,327 +61,248 @@ export function ImpactDashboardSlide() {
         background: theme.darkBg,
       }}
     >
-
+      {/* Subtle full-bleed background */}
+      <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
+        <EditableBgImage
+          id="impact-dashboard:bg-photo"
+          label="background photo"
+          src="/steelton-village/Steelton I_Unit Rendering_2026.03.10.jpg"
+          style={{ width: "100%", height: "100%", opacity: 0.18 }}
+        />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(5,10,12,0.55) 0%, rgba(5,10,12,0.30) 100%)" }} />
+      </div>
 
       <div
         style={{
+          position: "relative",
           display: "flex",
+          flexDirection: "column",
           height: "100%",
-          padding: "56px 64px 72px 64px",
-          gap: "28px",
+          padding: "48px 64px 60px",
+          gap: 0,
         }}
       >
-        {/* LEFT — stacked portrait photo strip, one image per pillar */}
+        {/* Headline */}
+        <div className="anim-fade-in-up" style={{ marginBottom: "16px", flexShrink: 0 }}>
+          <EditableText
+            id="impact-dashboard:eyebrow"
+            as="div"
+            style={{
+              fontSize: "14px",
+              color: theme.turquoise,
+              letterSpacing: "0.28em",
+              textTransform: "lowercase",
+              fontFamily: font,
+              fontWeight: 400,
+              marginBottom: "8px",
+            }}
+          >
+            impact dashboard
+          </EditableText>
+          <EditableText
+            id="impact-dashboard:headline"
+            as="h1"
+            style={{
+              fontSize: "34px",
+              color: "#fff",
+              fontWeight: 400,
+              fontFamily: font,
+              lineHeight: 1.2,
+              letterSpacing: "-0.02em",
+              textTransform: "lowercase",
+              margin: 0,
+            }}
+          >
+            impact is reported like an operating business, not a slogan.
+          </EditableText>
+        </div>
+
+        <div style={{ height: "1px", background: "rgba(77,186,214,0.20)", marginBottom: "16px", flexShrink: 0 }} />
+
+        {/* 4-column pillar grid */}
         <div
           style={{
-            flex: "0 0 200px",
-            display: "flex",
-            flexDirection: "column",
-            gap: "4px",
-            borderRadius: "6px",
-            overflow: "hidden",
+            display: "grid",
+            gridTemplateColumns: "repeat(4, 1fr)",
+            gap: "12px",
+            flex: 1,
+            minHeight: 0,
           }}
         >
-          {PILLARS.map((pillar) => (
+          {PILLARS.map((pillar, pi) => (
             <EditableEl
               key={pillar.key}
-              id={`impact-dashboard:pillar-strip-${pillar.key}`}
-              label={`photo strip — ${pillar.key}`}
+              id={`impact-dashboard:pillar-col-${pillar.key}`}
+              label={`pillar column — ${pillar.key}`}
               type="card"
-              style={{ flex: 1, position: "relative", overflow: "hidden" }}
+              className={`anim-pillar-${pi + 1}`}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "8px",
+                background: "rgba(5,10,12,0.42)",
+                backdropFilter: "blur(20px) saturate(180%)",
+                WebkitBackdropFilter: "blur(20px) saturate(180%)",
+                borderRadius: "12px",
+                border: "1px solid rgba(77,186,214,0.14)",
+                padding: "20px 18px",
+              }}
             >
-              <img
-                src={pillar.img}
-                alt=""
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  objectPosition: "center 40%",
-                  display: "block",
-                }}
-              />
-              {/* Left-to-right gradient so label is legible */}
-              <div
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  background:
-                    "linear-gradient(to right, rgba(5,10,12,0.72) 0%, rgba(5,10,12,0.18) 55%, rgba(5,10,12,0.0) 100%)",
-                }}
-              />
+              {/* Pillar header */}
               <EditableText
-                id={`impact-dashboard:pillar-strip-label-${pillar.key}`}
+                id={`impact-dashboard:pillar-${pillar.key}`}
                 as="div"
                 style={{
-                  position: "absolute",
-                  bottom: "10px",
-                  left: "12px",
-                  fontSize: "14px",
+                  fontSize: "12px",
                   color: theme.turquoise,
                   fontFamily: font,
-                  letterSpacing: "0.12em",
+                  letterSpacing: "0.18em",
                   textTransform: "uppercase",
-                  fontWeight: 400,
+                  fontWeight: 500,
                   lineHeight: 1.4,
-                  maxWidth: "120px",
+                  paddingBottom: "12px",
+                  borderBottom: "1px solid rgba(77,186,214,0.16)",
+                  marginBottom: "4px",
+                  flexShrink: 0,
                 }}
               >
                 {pillar.label}
               </EditableText>
+
+              {/* 3 metric tiles */}
+              {pillar.tiles.map((tile) => (
+                <div
+                  key={tile.id}
+                  style={{
+                    flex: 1,
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    padding: "12px 0",
+                    borderBottom: "1px solid rgba(77,186,214,0.08)",
+                  }}
+                >
+                  <EditableText
+                    id={`impact-dashboard:${tile.id}-label`}
+                    as="div"
+                    style={{
+                      fontSize: "11px",
+                      color: "rgba(206,232,238,0.70)",
+                      fontFamily: font,
+                      letterSpacing: "0.14em",
+                      textTransform: "uppercase",
+                      fontWeight: 400,
+                      marginBottom: "6px",
+                    }}
+                  >
+                    {tile.label}
+                  </EditableText>
+                  <EditableText
+                    id={`impact-dashboard:${tile.id}-value`}
+                    as="div"
+                    className="anim-stat-pulse"
+                    style={{
+                      fontSize: "32px",
+                      color: "#fff",
+                      fontFamily: font,
+                      fontWeight: 400,
+                      lineHeight: 1,
+                      marginBottom: "6px",
+                      letterSpacing: "-0.01em",
+                    }}
+                  >
+                    {tile.value}
+                  </EditableText>
+                  <EditableText
+                    id={`impact-dashboard:${tile.id}-def`}
+                    as="div"
+                    style={{
+                      fontSize: "13px",
+                      color: "rgba(206,232,238,0.65)",
+                      fontFamily: font,
+                      lineHeight: 1.4,
+                      textTransform: "lowercase",
+                    }}
+                  >
+                    {tile.def}
+                  </EditableText>
+                </div>
+              ))}
             </EditableEl>
           ))}
         </div>
 
-        {/* RIGHT — data panel */}
+        {/* Bottom stat bar */}
         <div
           style={{
-            flex: 1,
-            display: "flex",
-            flexDirection: "column",
-            minWidth: 0,
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: "12px",
+            marginTop: "12px",
+            flexShrink: 0,
           }}
         >
-          {/* Headline block */}
-          <div className="anim-fade-in-up" style={{ marginBottom: "18px" }}>
-            <EditableText
-              id="impact-dashboard:eyebrow"
-              as="div"
+          {BOTTOM_STATS.map((stat) => (
+            <EditableEl
+              key={stat.id}
+              id={`impact-dashboard:bottom-stat-${stat.id}`}
+              label={`bottom stat — ${stat.label}`}
+              type="card"
               style={{
-                fontSize: "12px",
-                color: theme.turquoise,
-                letterSpacing: "0.28em",
-                textTransform: "lowercase",
-                fontFamily: font,
-                fontWeight: 300,
-                marginBottom: "10px",
+                background: "rgba(77,186,214,0.09)",
+                border: "1px solid rgba(77,186,214,0.22)",
+                borderRadius: "10px",
+                padding: "14px 18px",
+                display: "flex",
+                flexDirection: "column",
+                gap: "4px",
               }}
             >
-              impact dashboard
-            </EditableText>
-
-            <EditableText
-              id="impact-dashboard:headline"
-              as="h1"
-              style={{
-                fontSize: "38px",
-                color: "#fff",
-                fontWeight: 300,
-                fontFamily: font,
-                lineHeight: 1.2,
-                letterSpacing: "-0.02em",
-                textTransform: "lowercase",
-              }}
-            >
-              impact is reported like an operating business, not a slogan.
-            </EditableText>
-          </div>
-
-          <div
-            style={{
-              height: "1px",
-              background: "rgba(77,186,214,0.18)",
-              marginBottom: "14px",
-            }}
-          />
-
-          {/* 4 horizontal pillar rows */}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "7px",
-              flex: 1,
-              minHeight: 0,
-            }}
-          >
-            {PILLARS.map((pillar, pi) => (
-              <div
-                key={pillar.key}
-                className={`anim-pillar-${pi + 1}`}
+              <EditableText
+                id={`impact-dashboard:bottom-stat-${stat.id}-value`}
+                as="div"
                 style={{
-                  display: "flex",
-                  gap: "7px",
-                  flex: 1,
-                  minHeight: 0,
-                  alignItems: "stretch",
+                  fontSize: "28px",
+                  color: "#fff",
+                  fontFamily: font,
+                  fontWeight: 400,
+                  lineHeight: 1,
+                  letterSpacing: "-0.01em",
                 }}
               >
-                {/* Pillar label cell */}
-                <EditableEl
-                  id={`impact-dashboard:pillar-cell-${pillar.key}`}
-                  label={`pillar cell — ${pillar.key}`}
-                  type="card"
-                  style={{
-                    flex: "0 0 130px",
-                    display: "flex",
-                    alignItems: "center",
-                    padding: "0 10px",
-                    background: "rgba(77,186,214,0.04)",
-                    border: "1px solid rgba(77,186,214,0.10)",
-                    borderRadius: "3px",
-                  }}
-                >
-                  <EditableText
-                    id={`impact-dashboard:pillar-${pillar.key}`}
-                    as="div"
-                    style={{
-                      fontSize: "14px",
-                      color: theme.turquoise,
-                      fontFamily: font,
-                      letterSpacing: "0.12em",
-                      textTransform: "uppercase",
-                      fontWeight: 400,
-                      lineHeight: 1.5,
-                    }}
-                  >
-                    {pillar.label}
-                  </EditableText>
-                </EditableEl>
-
-                {/* 3 metric tiles */}
-                {pillar.tiles.map((tile) => (
-                  <EditableEl
-                    key={tile.id}
-                    id={`impact-dashboard:${tile.id}`}
-                    label={`tile — ${tile.label}`}
-                    type="card"
-                    style={{
-                      flex: 1,
-                      background: "rgba(77,186,214,0.05)",
-                      border: "1px solid rgba(77,186,214,0.15)",
-                      borderRadius: "3px",
-                      padding: "10px 12px",
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <EditableText
-                      id={`impact-dashboard:${tile.id}-label`}
-                      as="div"
-                      style={{
-                        fontSize: "14px",
-                        color: theme.turquoise,
-                        fontFamily: font,
-                        letterSpacing: "0.10em",
-                        textTransform: "uppercase",
-                        marginBottom: "4px",
-                      }}
-                    >
-                      {tile.label}
-                    </EditableText>
-
-                    <div
-                      className="anim-stat-pulse"
-                      style={{ marginBottom: "4px" }}
-                    >
-                      <EditableText
-                        id={`impact-dashboard:${tile.id}-value`}
-                        as="div"
-                        style={{
-                          fontSize: "28px",
-                          color: "#fff",
-                          fontFamily: font,
-                          fontWeight: 300,
-                          lineHeight: 1,
-                        }}
-                      >
-                        {tile.value}
-                      </EditableText>
-                    </div>
-
-                    <EditableText
-                      id={`impact-dashboard:${tile.id}-def`}
-                      as="div"
-                      style={{
-                        fontSize: "12px",
-                        color: "rgba(206,232,238,0.65)",
-                        fontFamily: font,
-                        lineHeight: 1.3,
-                        textTransform: "lowercase",
-                      }}
-                    >
-                      {tile.def}
-                    </EditableText>
-                  </EditableEl>
-                ))}
-              </div>
-            ))}
-          </div>
-
-          {/* Bottom stat bar */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: "7px",
-              marginTop: "10px",
-              flexShrink: 0,
-            }}
-          >
-            {BOTTOM_STATS.map((stat, i) => (
-              <EditableEl
-                key={i}
-                id={`impact-dashboard:bottom-stat-${i}`}
-                label={`bottom stat — ${stat.label}`}
-                type="card"
+                {stat.value}
+              </EditableText>
+              <EditableText
+                id={`impact-dashboard:bottom-stat-${stat.id}-label`}
+                as="div"
                 style={{
-                  background: "rgba(77,186,214,0.08)",
-                  border: "1px solid rgba(77,186,214,0.22)",
-                  borderRadius: "3px",
-                  padding: "12px 14px",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "3px",
+                  fontSize: "12px",
+                  color: theme.turquoise,
+                  fontFamily: font,
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                  fontWeight: 400,
                 }}
               >
-                <EditableText
-                  id={`impact-dashboard:bottom-stat-${i}-value`}
-                  as="div"
-                  style={{
-                    fontSize: "30px",
-                    color: "#fff",
-                    fontFamily: font,
-                    fontWeight: 300,
-                    lineHeight: 1,
-                  }}
-                >
-                  {stat.value}
-                </EditableText>
-                <EditableText
-                  id={`impact-dashboard:bottom-stat-${i}-label`}
-                  as="div"
-                  style={{
-                    fontSize: "12px",
-                    color: theme.turquoise,
-                    fontFamily: font,
-                    letterSpacing: "0.16em",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  {stat.label}
-                </EditableText>
-                <EditableText
-                  id={`impact-dashboard:bottom-stat-${i}-sub`}
-                  as="div"
-                  style={{
-                    fontSize: "12px",
-                    color: "rgba(206,232,238,0.65)",
-                    fontFamily: font,
-                    lineHeight: 1.3,
-                    textTransform: "lowercase",
-                  }}
-                >
-                  {stat.sub}
-                </EditableText>
-              </EditableEl>
-            ))}
-          </div>
+                {stat.label}
+              </EditableText>
+              <EditableText
+                id={`impact-dashboard:bottom-stat-${stat.id}-sub`}
+                as="div"
+                style={{
+                  fontSize: "13px",
+                  color: "rgba(206,232,238,0.70)",
+                  fontFamily: font,
+                  lineHeight: 1.3,
+                  textTransform: "lowercase",
+                }}
+              >
+                {stat.sub}
+              </EditableText>
+            </EditableEl>
+          ))}
         </div>
       </div>
-
-
     </div>
   );
 }
