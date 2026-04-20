@@ -18,13 +18,13 @@ const connections = [
 
 export function CapitalRecyclingLoop({
   width = 560,
-  height = 300,
+  height = 350,
 }: {
   width?: number;
   height?: number;
 }) {
   return (
-    <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} style={{ overflow: "visible" }}>
+    <svg width={width} height={height} viewBox="0 0 490 305" style={{ overflow: "visible" }}>
       <defs>
         <marker id="arrowhead-turquoise" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
           <polygon points="0 0, 10 3, 0 6" fill="#4dbad6" opacity="0.6" />

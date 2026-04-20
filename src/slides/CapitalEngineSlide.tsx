@@ -156,7 +156,7 @@ export default function CapitalEngineSlide() {
 
         {/* Right Diagram */}
         <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <CapitalRecyclingLoop width={460} height={280} />
+          <CapitalRecyclingLoop width={620} height={385} />
         </div>
       </div>
 
