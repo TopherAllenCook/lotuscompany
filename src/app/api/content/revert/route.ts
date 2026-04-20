@@ -11,11 +11,6 @@ function sb() {
 // POST /api/content/revert  body: { versionId: number }
 // Copies the snapshot data into the draft row (does NOT auto-publish)
 export async function POST(req: NextRequest) {
-  const secret = process.env.NEXT_PUBLIC_ADMIN_SECRET;
-  if (!secret || req.headers.get("Authorization") !== `Bearer ${secret}`) {
-    return NextResponse.json({ error: "unauthorized" }, { status: 401 });
-  }
-
   let versionId: number;
   try {
     const body = await req.json();

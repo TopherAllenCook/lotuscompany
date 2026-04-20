@@ -8,18 +8,9 @@ function supabase() {
   );
 }
 
-function isAuthorized(req: NextRequest) {
-  const secret = process.env.NEXT_PUBLIC_ADMIN_SECRET;
-  if (!secret) return false;
-  return req.headers.get("Authorization") === `Bearer ${secret}`;
-}
-
 // GET /api/content?mode=published|draft
 export async function GET(req: NextRequest) {
   const mode = req.nextUrl.searchParams.get("mode") ?? "published";
-  if (mode === "draft" && !isAuthorized(req)) {
-    return NextResponse.json({ error: "unauthorized" }, { status: 401 });
-  }
 
   const { data, error } = await supabase()
     .from("content_overrides")
@@ -61,12 +52,8 @@ export async function GET(req: NextRequest) {
   return NextResponse.json(payload ?? { overrides: {}, dynamic: {} });
 }
 
-// POST /api/content  — save draft (auth required)
+// POST /api/content  — save draft
 export async function POST(req: NextRequest) {
-  if (!isAuthorized(req)) {
-    return NextResponse.json({ error: "unauthorized" }, { status: 401 });
-  }
-
   let body: unknown;
   try { body = await req.json(); }
   catch { return NextResponse.json({ ok: false, error: "invalid json" }, { status: 400 }); }

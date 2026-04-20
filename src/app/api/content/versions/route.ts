@@ -8,13 +8,8 @@ function sb() {
   );
 }
 
-// GET /api/content/versions — returns [{id, created_at}], auth required
-export async function GET(req: NextRequest) {
-  const secret = process.env.NEXT_PUBLIC_ADMIN_SECRET;
-  if (!secret || req.headers.get("Authorization") !== `Bearer ${secret}`) {
-    return NextResponse.json({ error: "unauthorized" }, { status: 401 });
-  }
-
+// GET /api/content/versions — returns [{id, created_at}]
+export async function GET(_req: NextRequest) {
   const { data, error } = await sb()
     .from("content_versions")
     .select("id, created_at")

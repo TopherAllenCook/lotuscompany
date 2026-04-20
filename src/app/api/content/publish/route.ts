@@ -1,5 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
 function sb() {
   return createClient(
@@ -8,12 +9,7 @@ function sb() {
   );
 }
 
-export async function POST(req: NextRequest) {
-  const secret = process.env.NEXT_PUBLIC_ADMIN_SECRET;
-  if (!secret || req.headers.get("Authorization") !== `Bearer ${secret}`) {
-    return NextResponse.json({ error: "unauthorized" }, { status: 401 });
-  }
-
+export async function POST(_req: NextRequest) {
   const client = sb();
 
   const { data: draftRow, error: readErr } = await client

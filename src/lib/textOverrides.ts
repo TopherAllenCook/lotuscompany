@@ -109,20 +109,11 @@ export async function pushSavedState(overrides: OverridesMap, dynamic: DynamicEl
 
 // ─── Phase 1: database-backed draft/publish ───────────────────────────────────
 
-function adminHeaders(): HeadersInit {
-  const secret = process.env.NEXT_PUBLIC_ADMIN_SECRET;
-  return {
-    "Content-Type": "application/json",
-    ...(secret ? { "Authorization": `Bearer ${secret}` } : {}),
-  };
-}
-
 export async function fetchContent(
   mode: "published" | "draft" = "published"
 ): Promise<{ overrides: OverridesMap; dynamic: DynamicElementsMap }> {
   try {
-    const headers: HeadersInit = mode === "draft" ? adminHeaders() : {};
-    const r = await fetch(`/api/content?mode=${mode}&t=${Date.now()}`, { headers });
+    const r = await fetch(`/api/content?mode=${mode}&t=${Date.now()}`);
     if (!r.ok) return { overrides: {}, dynamic: {} };
     return await r.json();
   } catch {
@@ -134,7 +125,7 @@ export interface VersionMeta { id: number; created_at: string; }
 
 export async function fetchVersions(): Promise<VersionMeta[]> {
   try {
-    const r = await fetch("/api/content/versions?t=" + Date.now(), { headers: adminHeaders() });
+    const r = await fetch("/api/content/versions?t=" + Date.now());
     if (!r.ok) return [];
     return await r.json();
   } catch {
@@ -146,7 +137,7 @@ export async function revertToVersion(versionId: number): Promise<{ ok: boolean;
   try {
     const r = await fetch("/api/content/revert", {
       method: "POST",
-      headers: adminHeaders(),
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ versionId }),
     });
     const body = await r.json().catch(() => ({}));
@@ -164,7 +155,7 @@ export async function saveDraft(
   try {
     const r = await fetch("/api/content", {
       method: "POST",
-      headers: adminHeaders(),
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ overrides, dynamic }),
     });
     const body = await r.json().catch(() => ({}));
@@ -179,7 +170,6 @@ export async function publishContent(): Promise<{ ok: boolean; error?: string }>
   try {
     const r = await fetch("/api/content/publish", {
       method: "POST",
-      headers: adminHeaders(),
     });
     const body = await r.json().catch(() => ({}));
     if (!r.ok) return { ok: false, error: body?.error ?? `HTTP ${r.status}` };
