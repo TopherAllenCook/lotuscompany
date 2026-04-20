@@ -106,3 +106,55 @@ export async function pushSavedState(overrides: OverridesMap, dynamic: DynamicEl
     return { ok: false, error: msg };
   }
 }
+
+// ─── Phase 1: database-backed draft/publish ───────────────────────────────────
+
+function adminHeaders(): HeadersInit {
+  const secret = process.env.NEXT_PUBLIC_ADMIN_SECRET;
+  return {
+    "Content-Type": "application/json",
+    ...(secret ? { "Authorization": `Bearer ${secret}` } : {}),
+  };
+}
+
+export async function fetchContent(): Promise<{ overrides: OverridesMap; dynamic: DynamicElementsMap }> {
+  try {
+    const r = await fetch("/api/content?mode=published&t=" + Date.now());
+    if (!r.ok) return { overrides: {}, dynamic: {} };
+    return await r.json();
+  } catch {
+    return { overrides: {}, dynamic: {} };
+  }
+}
+
+export async function saveDraft(
+  overrides: OverridesMap,
+  dynamic: DynamicElementsMap
+): Promise<{ ok: boolean; error?: string }> {
+  try {
+    const r = await fetch("/api/content", {
+      method: "POST",
+      headers: adminHeaders(),
+      body: JSON.stringify({ overrides, dynamic }),
+    });
+    const body = await r.json().catch(() => ({}));
+    if (!r.ok) return { ok: false, error: body?.error ?? `HTTP ${r.status}` };
+    return { ok: true };
+  } catch (e) {
+    return { ok: false, error: String(e) };
+  }
+}
+
+export async function publishContent(): Promise<{ ok: boolean; error?: string }> {
+  try {
+    const r = await fetch("/api/content/publish", {
+      method: "POST",
+      headers: adminHeaders(),
+    });
+    const body = await r.json().catch(() => ({}));
+    if (!r.ok) return { ok: false, error: body?.error ?? `HTTP ${r.status}` };
+    return { ok: true };
+  } catch (e) {
+    return { ok: false, error: String(e) };
+  }
+}

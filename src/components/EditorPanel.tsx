@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { font, EASE_OUT } from "@/lib/theme";
 import { useEditMode } from "@/components/EditableText";
 import type { ElementOverride } from "@/lib/textOverrides";
-import { pushSavedState } from "@/lib/textOverrides";
 
 const TEXT_SLIDERS = [
   { key: "fontSize",      label: "font size",      min: 6,    max: 120,  step: 0.5,  suffix: "px" },
@@ -99,6 +98,7 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
     activeId, setActiveId, getEl, setEditMode, registeredList,
     gridSize, snapToGrid, showGrid, setGridSize, setSnapToGrid, setShowGrid,
     dynamicElements, addDynamicElement, removeDynamicElement,
+    saveState, saveError, publishState, publishError, saveDraftNow, publishNow,
   } = useEditMode();
 
   const editables = registeredList.filter(e => e.id.startsWith(slideKey + ":"));
@@ -119,8 +119,6 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
   const [contentText, setContentText] = useState("");
   const [colorHex, setColorHex] = useState("#ffffff");
   const [bgHex, setBgHex] = useState("#4dbad6");
-  const [saveState, setSaveState] = useState<"idle" | "saving" | "saved" | "error">("idle");
-  const [saveError, setSaveError] = useState<string | null>(null);
   const prevActiveId = useRef<string | null>(null);
 
   useEffect(() => {
@@ -251,15 +249,6 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
     }
   }, [activeId, clearOverride, getEl, registeredList]);
 
-  const handleSave = useCallback(async () => {
-    setSaveState("saving");
-    setSaveError(null);
-    const result = await pushSavedState(overrides, dynamicElements);
-    setSaveState(result.ok ? "saved" : "error");
-    if (!result.ok) setSaveError(result.error ?? null);
-    setTimeout(() => setSaveState("idle"), 3500);
-  }, [overrides, dynamicElements]);
-
   const handleAddElement = useCallback((type: "text" | "bar" | "shape") => {
     const id = addDynamicElement(slideKey, type);
     // Give the element a moment to mount, then select it
@@ -293,7 +282,7 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
     return "text";
   };
 
-  const saveBtnStyle = {
+  const draftBtnStyle = {
     background: saveState === "saved"  ? "rgba(2,143,170,0.25)"  :
                 saveState === "error"  ? "rgba(255,80,80,0.15)"  :
                 saveState === "saving" ? "rgba(255,255,255,0.05)" : "rgba(2,143,170,0.12)",
@@ -307,6 +296,24 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
            saveState === "error"  ? "rgba(255,100,100,0.8)" : "rgba(2,143,170,0.8)",
     fontSize: 9, letterSpacing: "0.12em", textTransform: "lowercase" as const,
     cursor: saveState === "saving" ? "default" : "pointer", fontFamily: font,
+    transition: "all 0.2s ease",
+  };
+
+  const publishBtnStyle = {
+    background: publishState === "published" ? "rgba(77,186,214,0.2)"  :
+                publishState === "error"      ? "rgba(255,80,80,0.15)"  :
+                publishState === "publishing" ? "rgba(255,255,255,0.05)" : "rgba(77,186,214,0.10)",
+    border: `1px solid ${
+      publishState === "published" ? "#4dbad6" :
+      publishState === "error"     ? "rgba(255,80,80,0.4)" :
+      publishState === "publishing"? "rgba(255,255,255,0.1)" : "rgba(77,186,214,0.4)"
+    }`,
+    borderRadius: 4, padding: "4px 10px",
+    color: publishState === "published" ? "#4dbad6" :
+           publishState === "error"     ? "rgba(255,100,100,0.8)" : "rgba(77,186,214,0.9)",
+    fontSize: 9, letterSpacing: "0.12em", textTransform: "lowercase" as const,
+    cursor: publishState === "publishing" ? "default" : "pointer", fontFamily: font,
+    fontWeight: 500,
     transition: "all 0.2s ease",
   };
 
@@ -345,17 +352,32 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
             </div>
             <div style={{ display: "flex", gap: 5, alignItems: "center" }}>
               <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 2 }}>
-                <button onClick={handleSave} disabled={saveState === "saving"} style={saveBtnStyle}
-                  title={saveError ?? undefined}>
-                  {saveState === "saving" ? "saving…" : saveState === "saved" ? "saved ✓" : saveState === "error" ? "error ↑" : "save"}
-                </button>
+                <div style={{ display: "flex", gap: 4 }}>
+                  <button onClick={saveDraftNow} disabled={saveState === "saving"} style={draftBtnStyle}
+                    title={saveError ?? "save draft"}>
+                    {saveState === "saving" ? "saving…" : saveState === "saved" ? "draft ✓" : saveState === "error" ? "error ↑" : "save draft"}
+                  </button>
+                  <button onClick={publishNow} disabled={publishState === "publishing"} style={publishBtnStyle}
+                    title={publishError ?? "publish — makes changes live"}>
+                    {publishState === "publishing" ? "publishing…" : publishState === "published" ? "live ✓" : publishState === "error" ? "error ↑" : "publish"}
+                  </button>
+                </div>
                 {saveState === "error" && saveError && (
                   <span style={{
                     fontSize: 8, color: "rgba(255,100,100,0.65)",
-                    maxWidth: 130, textAlign: "right", lineHeight: 1.3,
+                    maxWidth: 180, textAlign: "right", lineHeight: 1.3,
                     letterSpacing: "0.03em", fontFamily: font,
                   }}>
                     {saveError.slice(0, 80)}
+                  </span>
+                )}
+                {publishState === "error" && publishError && (
+                  <span style={{
+                    fontSize: 8, color: "rgba(255,100,100,0.65)",
+                    maxWidth: 180, textAlign: "right", lineHeight: 1.3,
+                    letterSpacing: "0.03em", fontFamily: font,
+                  }}>
+                    {publishError.slice(0, 80)}
                   </span>
                 )}
               </div>
@@ -704,7 +726,7 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
           {/* Footer */}
           <div style={{ flexShrink: 0, padding: "10px 20px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
             <p style={{ margin: 0, fontSize: 9, color: "rgba(255,255,255,0.18)", letterSpacing: "0.1em", textTransform: "lowercase", lineHeight: 1.6 }}>
-              auto-saved locally · click save to commit · blue dot = modified
+              auto-saves to draft · publish to go live · blue dot = modified
             </p>
           </div>
         </motion.div>

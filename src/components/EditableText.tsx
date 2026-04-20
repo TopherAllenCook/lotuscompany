@@ -5,7 +5,8 @@ import {
 } from "react";
 import {
   loadOverrides, saveOverrides, type ElementOverride, type OverridesMap,
-  loadDynamicElements, saveDynamicElements, fetchSavedState,
+  loadDynamicElements, saveDynamicElements, fetchContent,
+  saveDraft, publishContent,
   type DynamicElementDef, type DynamicElementsMap,
 } from "@/lib/textOverrides";
 
@@ -14,6 +15,9 @@ import {
 export type ElementType = "text" | "bar" | "shape" | "dot" | "image" | "gradient" | "card" | "svgnode" | "bgimage";
 
 // ─── Context ─────────────────────────────────────────────────────────────────
+
+export type SaveState    = "idle" | "saving" | "saved" | "error";
+export type PublishState = "idle" | "publishing" | "published" | "error";
 
 interface EditCtx {
   editMode: boolean;
@@ -38,6 +42,13 @@ interface EditCtx {
   dynamicElements: DynamicElementsMap;
   addDynamicElement: (slideKey: string, type: "text" | "bar" | "shape") => string;
   removeDynamicElement: (id: string) => void;
+  // draft/publish
+  saveState: SaveState;
+  saveError: string | null;
+  publishState: PublishState;
+  publishError: string | null;
+  saveDraftNow: () => Promise<void>;
+  publishNow: () => Promise<void>;
 }
 
 const Ctx = createContext<EditCtx | null>(null);
@@ -51,17 +62,22 @@ export function EditModeProvider({ children }: { children: ReactNode }) {
   const [snapToGrid, setSnapToGrid] = useState(true);
   const [showGrid, setShowGrid] = useState(false);
   const [dynamicElements, setDynamicElements] = useState<DynamicElementsMap>({});
+  const [saveState, setSaveState]       = useState<SaveState>("idle");
+  const [saveError, setSaveError]       = useState<string | null>(null);
+  const [publishState, setPublishState] = useState<PublishState>("idle");
+  const [publishError, setPublishError] = useState<string | null>(null);
   const elMap = useRef<Record<string, HTMLElement | null>>({});
-  const historyRef = useRef<OverridesMap[]>([]);
-  const futureRef  = useRef<OverridesMap[]>([]);
+  const historyRef    = useRef<OverridesMap[]>([]);
+  const futureRef     = useRef<OverridesMap[]>([]);
+  const autosaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Load from committed file first, then overlay localStorage (live edits on top)
+  // Load published state from database, overlay localStorage on top
   useEffect(() => {
     const fromLocal = loadOverrides();
     const dynLocal  = loadDynamicElements();
-    fetchSavedState().then(({ overrides: fromFile, dynamic: dynFile }) => {
-      setOverrides({ ...fromFile, ...fromLocal });
-      setDynamicElements({ ...dynFile, ...dynLocal });
+    fetchContent().then(({ overrides: fromDB, dynamic: dynDB }) => {
+      setOverrides({ ...fromDB, ...fromLocal });
+      setDynamicElements({ ...dynDB, ...dynLocal });
     });
   }, []);
 
@@ -105,6 +121,43 @@ export function EditModeProvider({ children }: { children: ReactNode }) {
       return next;
     });
   }, []);
+
+  // Autosave draft 2 s after the last change while in edit mode
+  useEffect(() => {
+    if (!editMode) return;
+    if (autosaveTimer.current) clearTimeout(autosaveTimer.current);
+    autosaveTimer.current = setTimeout(async () => {
+      setSaveState("saving");
+      setSaveError(null);
+      const result = await saveDraft(overrides, dynamicElements);
+      setSaveState(result.ok ? "saved" : "error");
+      if (!result.ok) setSaveError(result.error ?? null);
+      setTimeout(() => setSaveState(s => s === "saved" ? "idle" : s), 3500);
+    }, 2000);
+    return () => { if (autosaveTimer.current) clearTimeout(autosaveTimer.current); };
+  }, [overrides, dynamicElements, editMode]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const saveDraftNow = useCallback(async () => {
+    if (autosaveTimer.current) clearTimeout(autosaveTimer.current);
+    setSaveState("saving");
+    setSaveError(null);
+    const result = await saveDraft(overrides, dynamicElements);
+    setSaveState(result.ok ? "saved" : "error");
+    if (!result.ok) setSaveError(result.error ?? null);
+    setTimeout(() => setSaveState(s => s === "saved" ? "idle" : s), 3500);
+  }, [overrides, dynamicElements]);
+
+  const publishNow = useCallback(async () => {
+    // Flush any pending draft first
+    if (autosaveTimer.current) clearTimeout(autosaveTimer.current);
+    await saveDraft(overrides, dynamicElements);
+    setPublishState("publishing");
+    setPublishError(null);
+    const result = await publishContent();
+    setPublishState(result.ok ? "published" : "error");
+    if (!result.ok) setPublishError(result.error ?? null);
+    setTimeout(() => setPublishState(s => s === "published" ? "idle" : s), 3500);
+  }, [overrides, dynamicElements]);
 
   const registerEl = useCallback((id: string, label: string, type: ElementType, el: HTMLElement | null) => {
     elMap.current[id] = el;
@@ -157,6 +210,7 @@ export function EditModeProvider({ children }: { children: ReactNode }) {
       activeId, setActiveId, registerEl, getEl, registeredList,
       gridSize, snapToGrid, showGrid, setGridSize, setSnapToGrid, setShowGrid,
       dynamicElements, addDynamicElement, removeDynamicElement,
+      saveState, saveError, publishState, publishError, saveDraftNow, publishNow,
     }}>
       {children}
     </Ctx.Provider>
