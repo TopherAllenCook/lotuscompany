@@ -194,7 +194,7 @@ export function LotusWaySlide() {
               as="div"
               style={{
                 fontSize: 36,
-                fontWeight: 300,
+                fontWeight: 400,
                 color: "#fff",
                 letterSpacing: "-0.01em",
                 lineHeight: 1.15,
@@ -246,7 +246,7 @@ export function LotusWaySlide() {
                 style={{
                   fontSize: 15,
                   fontWeight: 400,
-                  color: "rgba(255,255,255,0.82)",
+                  color: "rgba(255,255,255,0.90)",
                   lineHeight: 1.55,
                 }}
               >
@@ -295,7 +295,7 @@ export function LotusWaySlide() {
                 style={{
                   fontSize: 15,
                   fontWeight: 400,
-                  color: "rgba(255,255,255,0.82)",
+                  color: "rgba(255,255,255,0.90)",
                   lineHeight: 1.55,
                 }}
               >
@@ -355,7 +355,7 @@ export function LotusWaySlide() {
                 style={{
                   fontSize: 16,
                   fontWeight: 400,
-                  color: "rgba(255,255,255,0.88)",
+                  color: "rgba(255,255,255,0.92)",
                   lineHeight: 1.6,
                 }}
               >
@@ -468,7 +468,7 @@ export function LotusWaySlide() {
                 style={{
                   fontSize: 13,
                   fontWeight: 400,
-                  color: "rgba(205,232,238,0.78)",
+                  color: "rgba(205,232,238,0.88)",
                   lineHeight: 1.65,
                 }}
               >
