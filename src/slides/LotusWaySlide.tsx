@@ -1,6 +1,5 @@
 "use client";
 import { motion } from "framer-motion";
-import { LotusMark } from "@/components/LotusMark";
 import { theme, font, EASE_OUT } from "@/lib/theme";
 import { asset } from "@/lib/storage";
 import { EditableText } from "@/components/EditableText";
@@ -51,10 +50,6 @@ export function LotusWaySlide() {
       }} />
 
       {/* ── Header bar ───────────────────────────────────────────────── */}
-      <motion.div {...enter(0)} style={{ position: "absolute", top: 36, left: 52 }}>
-        <LotusMark width={156} onDark />
-      </motion.div>
-
       <motion.div {...enter(0.08)} style={{ position: "absolute", top: 43, left: "50%", transform: "translateX(-50%)" }}>
         <EditableText id="lotus-way:slide-num" as="span" style={{
           fontSize: 11, fontWeight: 400, letterSpacing: "0.50em",
