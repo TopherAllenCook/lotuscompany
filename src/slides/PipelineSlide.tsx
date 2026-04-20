@@ -31,7 +31,7 @@ export function PipelineSlide() {
           src="/steelton-village/Steelton I_North Park_2026.03.10.jpg"
           style={{ width: "100%", height: "100%", opacity: 0.45 }}
         />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(5,10,12,0.35) 0%, rgba(5,10,12,0.15) 60%, rgba(5,10,12,0.05) 100%)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(5,10,12,0.55) 0%, rgba(5,10,12,0.40) 60%, rgba(5,10,12,0.30) 100%)" }} />
       </div>
 
 
@@ -60,7 +60,7 @@ export function PipelineSlide() {
               letterSpacing: "0.28em",
               textTransform: "lowercase",
               fontFamily: font,
-              fontWeight: 300,
+              fontWeight: 400,
               marginBottom: "12px",
             }}
           >
@@ -73,7 +73,7 @@ export function PipelineSlide() {
             style={{
               fontSize: "38px",
               color: "#fff",
-              fontWeight: 300,
+              fontWeight: 400,
               fontFamily: font,
               lineHeight: 1.2,
               letterSpacing: "-0.02em",
@@ -99,7 +99,7 @@ export function PipelineSlide() {
                 as="div"
                 style={{
                   fontSize: "17px",
-                  color: "rgba(255,255,255,0.80)",
+                  color: "rgba(255,255,255,0.90)",
                   fontWeight: 400,
                   fontFamily: font,
                   lineHeight: 1.6,
@@ -120,7 +120,7 @@ export function PipelineSlide() {
               as="span"
               style={{
                 fontSize: "16px",
-                color: "rgba(255,255,255,0.45)",
+                color: "rgba(255,255,255,0.70)",
                 fontFamily: font,
                 textTransform: "lowercase",
                 letterSpacing: "0.08em",
@@ -147,15 +147,17 @@ export function PipelineSlide() {
                   alignItems: "center",
                   gap: "20px",
                   padding: "18px 24px",
-                  background: "rgba(5,10,12,0.50)",
+                  background: "rgba(5,10,12,0.58)",
                   backdropFilter: "blur(20px) saturate(160%)",
                   WebkitBackdropFilter: "blur(20px) saturate(160%)",
                   borderRadius: "10px",
-                  border: "1px solid rgba(255,255,255,0.08)",
+                  borderTop: "1px solid rgba(255,255,255,0.10)",
+                  borderRight: "1px solid rgba(255,255,255,0.08)",
+                  borderBottom: "1px solid rgba(255,255,255,0.06)",
                   borderLeft: isLast
                     ? `3px solid ${theme.turquoise}`
-                    : "3px solid rgba(77,186,214,0.35)",
-                  boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
+                    : "3px solid rgba(77,186,214,0.40)",
+                  boxShadow: "0 4px 24px rgba(0,0,0,0.40)",
                 }}
               >
                 {/* Step badge */}
@@ -182,7 +184,7 @@ export function PipelineSlide() {
                       color: "#fff",
                       fontFamily: font,
                       textTransform: "lowercase",
-                      fontWeight: 300,
+                      fontWeight: 400,
                       letterSpacing: "0.01em",
                       lineHeight: 1.2,
                       marginBottom: "3px",
@@ -195,7 +197,7 @@ export function PipelineSlide() {
                     as="div"
                     style={{
                       fontSize: "15px",
-                      color: "rgba(255,255,255,0.38)",
+                      color: "rgba(255,255,255,0.65)",
                       fontFamily: font,
                       textTransform: "lowercase",
                       letterSpacing: "0.08em",
@@ -213,7 +215,7 @@ export function PipelineSlide() {
                     fontSize: "54px",
                     color: isLast ? theme.turquoise : "#fff",
                     fontFamily: font,
-                    fontWeight: 200,
+                    fontWeight: 400,
                     letterSpacing: "-0.02em",
                     lineHeight: 1,
                     flexShrink: 0,
@@ -240,7 +242,7 @@ export function PipelineSlide() {
               style={{
                 flex: 1,
                 fontSize: "14px",
-                color: "rgba(255,255,255,0.35)",
+                color: "rgba(255,255,255,0.70)",
                 fontFamily: font,
                 textTransform: "lowercase",
                 letterSpacing: "0.2em",
