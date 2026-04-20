@@ -246,7 +246,7 @@ export function ClosingSlide() {
             }}
           />
           <div style={{ position: "relative", zIndex: 2 }}>
-            <CapitalRecyclingLoop width={440} height={260} />
+            <CapitalRecyclingLoop width={580} height={370} />
           </div>
         </div>
       </div>
