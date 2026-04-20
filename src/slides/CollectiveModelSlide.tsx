@@ -171,10 +171,11 @@ export default function CollectiveModelSlide() {
                   style={{
                     width: widths[idx],
                     padding: "14px 20px",
-                    background: `rgba(77,186,214,${opacities[idx]})`,
+                    background: "rgba(77,186,214,1)",
                     border: "1px solid rgba(77,186,214,0.35)",
                     borderRadius: 8,
                     textAlign: "center",
+                    opacity: opacities[idx],
                   }}
                 >
                   <EditableText
