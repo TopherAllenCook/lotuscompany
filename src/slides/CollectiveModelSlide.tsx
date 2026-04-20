@@ -163,8 +163,11 @@ export default function CollectiveModelSlide() {
               const widths = ["58%", "72%", "86%", "100%"];
               const opacities = [0.55, 0.42, 0.30, 0.18];
               return (
-                <div
+                <EditableEl
                   key={level.index}
+                  id={`collective-model:tile-${level.index}`}
+                  label={`tile — ${level.label}`}
+                  type="card"
                   style={{
                     width: widths[idx],
                     padding: "14px 20px",
@@ -174,13 +177,21 @@ export default function CollectiveModelSlide() {
                     textAlign: "center",
                   }}
                 >
-                  <div style={{ fontSize: "20px", color: "#fff", fontFamily: font, fontWeight: 400, textTransform: "lowercase", lineHeight: 1.2 }}>
+                  <EditableText
+                    id={`collective-model:tile-label-${level.index}`}
+                    as="div"
+                    style={{ fontSize: "20px", color: "#fff", fontFamily: font, fontWeight: 400, textTransform: "lowercase", lineHeight: 1.2 }}
+                  >
                     {level.label}
-                  </div>
-                  <div style={{ fontSize: "20px", color: "rgba(206,232,238,0.6)", fontFamily: font, fontWeight: 300, textTransform: "lowercase", marginTop: 4 }}>
+                  </EditableText>
+                  <EditableText
+                    id={`collective-model:tile-sublabel-${level.index}`}
+                    as="div"
+                    style={{ fontSize: "20px", color: "rgba(206,232,238,0.6)", fontFamily: font, fontWeight: 300, textTransform: "lowercase", marginTop: 4 }}
+                  >
                     {level.sublabel}
-                  </div>
-                </div>
+                  </EditableText>
+                </EditableEl>
               );
             })}
           </div>
