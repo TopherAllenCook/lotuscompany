@@ -49,12 +49,12 @@ export default function LIHTCSlide() {
         background: BG,
         display: "flex",
         flexDirection: "column",
-        padding: "48px 64px 68px",
+        padding: "36px 56px 44px",
         fontFamily: font,
       }}
     >
 
-      <div style={{ display: "flex", gap: "28px", flex: 1, minHeight: 0 }}>
+      <div style={{ display: "flex", gap: "24px", flex: 1, minHeight: 0 }}>
 
         {/* ── Left: card ─────────────────────────────────────────────── */}
         <EditableEl
@@ -70,7 +70,7 @@ export default function LIHTCSlide() {
             overflow: "hidden",
           }}
         >
-          <div style={{ padding: "32px 36px 28px", flex: 1 }}>
+          <div style={{ padding: "24px 28px 20px", flex: 1 }}>
             <EditableText
               id="lihtc:eyebrow"
               as="div"
@@ -82,7 +82,7 @@ export default function LIHTCSlide() {
             <EditableText
               id="lihtc:headline"
               as="h1"
-              style={{ fontSize: "38px", color: INK, fontWeight: 300, fontFamily: font, lineHeight: 1.1, letterSpacing: "-0.02em", textTransform: "lowercase", margin: "0 0 10px" }}
+              style={{ fontSize: "32px", color: INK, fontWeight: 300, fontFamily: font, lineHeight: 1.1, letterSpacing: "-0.02em", textTransform: "lowercase", margin: "0 0 8px" }}
             >
               what is lihtc?
             </EditableText>
@@ -90,14 +90,14 @@ export default function LIHTCSlide() {
             <EditableText
               id="lihtc:subtitle"
               as="div"
-              style={{ fontSize: "18px", color: theme.turquoise, fontFamily: font, fontStyle: "italic", fontWeight: 300, textTransform: "lowercase", marginBottom: "20px", lineHeight: 1.45 }}
+              style={{ fontSize: "15px", color: theme.turquoise, fontFamily: font, fontStyle: "italic", fontWeight: 300, textTransform: "lowercase", marginBottom: "14px", lineHeight: 1.45 }}
             >
               lihtc is the operating backbone, not just a backdrop
             </EditableText>
 
-            <div style={{ height: "1px", background: muted(0.10), marginBottom: "20px" }} />
+            <div style={{ height: "1px", background: muted(0.10), marginBottom: "12px" }} />
 
-            <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
               {BULLETS.map((b, i) => (
                 <div key={i} style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
                   <div style={{ width: "5px", height: "5px", borderRadius: "50%", background: theme.turquoise, marginTop: "7px", flexShrink: 0 }} />
@@ -118,7 +118,7 @@ export default function LIHTCSlide() {
             id="lihtc:card-photo-container"
             label="card photo container"
             type="card"
-            style={{ height: 200, flexShrink: 0, overflow: "hidden" }}
+            style={{ height: 130, flexShrink: 0, overflow: "hidden" }}
           >
             <EditableBgImage
               id="lihtc:card-photo"
@@ -130,7 +130,7 @@ export default function LIHTCSlide() {
         </EditableEl>
 
         {/* ── Right: infographic ─────────────────────────────────────── */}
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "14px", justifyContent: "center" }}>
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "10px", justifyContent: "center" }}>
 
           {/* Header */}
           <div>
@@ -175,7 +175,7 @@ export default function LIHTCSlide() {
                     type="card"
                     style={{
                       textAlign: "center",
-                      padding: "14px 12px",
+                      padding: "10px 10px",
                       background: teal(0.06),
                       borderRadius: "8px",
                       border: `1px solid ${muted(0.10)}`,
@@ -184,14 +184,14 @@ export default function LIHTCSlide() {
                     <EditableText
                       id={`lihtc:flow-step-${i}-title`}
                       as="div"
-                      style={{ fontSize: "16px", color: INK, fontFamily: font, fontWeight: 500, textTransform: "lowercase", lineHeight: 1.3, marginBottom: "4px" }}
+                      style={{ fontSize: "14px", color: INK, fontFamily: font, fontWeight: 500, textTransform: "lowercase", lineHeight: 1.3, marginBottom: "3px" }}
                     >
                       {step.title}
                     </EditableText>
                     <EditableText
                       id={`lihtc:flow-step-${i}-sub`}
                       as="div"
-                      style={{ fontSize: "14px", color: muted(0.42), fontFamily: font, fontWeight: 300, textTransform: "lowercase" }}
+                      style={{ fontSize: "12px", color: muted(0.42), fontFamily: font, fontWeight: 300, textTransform: "lowercase" }}
                     >
                       {step.sub}
                     </EditableText>
@@ -215,14 +215,14 @@ export default function LIHTCSlide() {
             label="developer / operator bar"
             type="card"
             style={{
-              padding: "16px 20px",
+              padding: "12px 16px",
               background: teal(0.06),
               border: `1px solid ${muted(0.10)}`,
               borderLeft: `3px solid ${theme.turquoise}`,
               borderRadius: "8px",
             }}
           >
-            <div style={{ marginBottom: "12px" }}>
+            <div style={{ marginBottom: "8px" }}>
               <EditableText
                 id="lihtc:developer-title"
                 as="div"
@@ -238,7 +238,7 @@ export default function LIHTCSlide() {
                 lotus impact initiative
               </EditableText>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "6px 20px" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "4px 16px" }}>
               {DEV_BULLETS.map((b, i) => (
                 <div key={i} style={{ display: "flex", gap: "8px", alignItems: "flex-start" }}>
                   <div style={{ width: "4px", height: "4px", borderRadius: "50%", background: theme.turquoise, marginTop: "6px", flexShrink: 0 }} />
@@ -255,7 +255,7 @@ export default function LIHTCSlide() {
           </EditableEl>
 
           {/* Closing bullets */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
             {CLOSING.map((c, i) => (
               <div key={i} style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
                 <div style={{ width: "4px", height: "4px", borderRadius: "50%", background: teal(0.50), marginTop: "7px", flexShrink: 0 }} />
