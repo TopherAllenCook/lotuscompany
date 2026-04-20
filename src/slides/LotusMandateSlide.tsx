@@ -55,7 +55,7 @@ export function LotusMandateSlide() {
           flex: "0 0 46%",
           display: "flex",
           flexDirection: "column",
-          padding: "44px 48px",
+          padding: "36px 40px",
           background: "rgba(5,10,12,0.52)",
           backdropFilter: "blur(28px) saturate(200%)",
           WebkitBackdropFilter: "blur(28px) saturate(200%)",
@@ -69,12 +69,12 @@ export function LotusMandateSlide() {
           id="mandate:eyebrow"
           as="div"
           style={{
-            fontSize: "24px",
+            fontSize: "13px",
             color: theme.turquoise,
             fontWeight: 300,
             letterSpacing: "0.28em",
             fontFamily: font,
-            marginBottom: "10px",
+            marginBottom: "8px",
             textTransform: "lowercase",
           }}
         >
@@ -86,13 +86,13 @@ export function LotusMandateSlide() {
           id="mandate:headline"
           as="h2"
           style={{
-            fontSize: "46px",
+            fontSize: "38px",
             color: "#fff",
             fontWeight: 300,
             letterSpacing: "-0.02em",
             fontFamily: font,
-            lineHeight: 1.25,
-            marginBottom: "20px",
+            lineHeight: 1.2,
+            marginBottom: "16px",
             textTransform: "lowercase",
           }}
         >
@@ -104,12 +104,12 @@ export function LotusMandateSlide() {
           style={{
             height: "1px",
             background: "rgba(77,186,214,0.18)",
-            marginBottom: "24px",
+            marginBottom: "18px",
           }}
         />
 
         {/* Bullets */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
           {bullets.map((bullet, i) => (
             <motion.div
               key={i}
@@ -127,11 +127,11 @@ export function LotusMandateSlide() {
               >
                 <div
                   style={{
-                    width: "6px",
-                    height: "6px",
+                    width: "5px",
+                    height: "5px",
                     borderRadius: "50%",
                     background: theme.turquoise,
-                    marginTop: "6px",
+                    marginTop: "5px",
                     flexShrink: 0,
                   }}
                 />
@@ -139,12 +139,12 @@ export function LotusMandateSlide() {
                   id={`mandate:bullet-${i}`}
                   as="p"
                   style={{
-                    fontSize: "24px",
+                    fontSize: "17px",
                     color: "rgba(255,255,255,0.88)",
                     fontWeight: 400,
-                    letterSpacing: "0.04em",
+                    letterSpacing: "0.02em",
                     fontFamily: font,
-                    lineHeight: 1.7,
+                    lineHeight: 1.6,
                     margin: 0,
                     textTransform: "lowercase",
                   }}
