@@ -3,7 +3,7 @@
 import { font, theme } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
 import { SlideFooter } from "@/components/SlideFooter";
-import { StatusChip, PlaceholderTag } from "@/components/StatusChip";
+import { StatusChip } from "@/components/StatusChip";
 import { EditableEl } from "@/components/EditableEl";
 import { EditableBgImage } from "@/components/EditableBgImage";
 
@@ -129,131 +129,121 @@ export function PipelineSlide() {
                 letterSpacing: "0.08em",
               }}
             >
-              target states:
+              target states: —
             </EditableText>
-            <PlaceholderTag />
           </div>
         </EditableEl>
 
-        {/* Right: unified pipeline panel */}
-        <EditableEl id="pipeline:stages-panel" label="stages panel" type="card" style={{
-          flex: 1,
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          padding: "32px 40px",
-          background: "rgba(5,10,12,0.48)",
-          backdropFilter: "blur(24px) saturate(180%)",
-          WebkitBackdropFilter: "blur(24px) saturate(180%)",
-          borderRadius: "16px",
-          border: "1px solid rgba(255,255,255,0.10)",
-          boxShadow: "0 8px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08)",
-        }}>
+        {/* Right: pipeline stages — individual dark-glass cards */}
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", gap: "10px" }}>
+
           {stages.map((stage, i) => {
             const isLast = i === stages.length - 1;
-            const dotAlpha = 0.25 + i * 0.18;
             return (
-              <div key={stage.id}>
-                <div style={{ display: "flex", alignItems: "center", padding: "20px 0", gap: "20px" }}>
-
-                  {/* Step indicator — progressively stronger */}
-                  <div style={{
-                    width: "32px",
-                    height: "32px",
-                    borderRadius: "50%",
-                    border: `1.5px solid rgba(77,186,214,${dotAlpha + 0.15})`,
-                    background: `rgba(77,186,214,${dotAlpha * 0.22})`,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flexShrink: 0,
-                    fontSize: "12px",
-                    color: theme.turquoise,
-                    fontFamily: font,
-                    fontWeight: 400,
-                  }}>
-                    {i + 1}
-                  </div>
-
-                  {/* Label + sub */}
-                  <div style={{ flex: 1 }}>
-                    <EditableText
-                      id={`pipeline:stage-label-${i}`}
-                      as="div"
-                      style={{
-                        fontSize: "18px",
-                        color: "#fff",
-                        fontFamily: font,
-                        textTransform: "lowercase",
-                        fontWeight: 300,
-                        letterSpacing: "0.02em",
-                        marginBottom: "3px",
-                      }}
-                    >
-                      {stage.label}
-                    </EditableText>
-                    <EditableText
-                      id={`pipeline:stage-sub-${i}`}
-                      as="div"
-                      style={{
-                        fontSize: "12px",
-                        color: "rgba(255,255,255,0.38)",
-                        fontFamily: font,
-                        textTransform: "lowercase",
-                        letterSpacing: "0.08em",
-                      }}
-                    >
-                      {stage.sub}
-                    </EditableText>
-                  </div>
-
-                  {/* Value — hero number, turquoise on final stage */}
-                  <div style={{ display: "flex", alignItems: "center", gap: "10px", flexShrink: 0 }}>
-                    <EditableText
-                      id={stage.valueId}
-                      as="div"
-                      style={{
-                        fontSize: "48px",
-                        color: isLast ? theme.turquoise : "#fff",
-                        fontFamily: font,
-                        fontWeight: 200,
-                        letterSpacing: "-0.02em",
-                        minWidth: "64px",
-                        textAlign: "right",
-                        lineHeight: 1,
-                      }}
-                    >
-                      —
-                    </EditableText>
-                    <PlaceholderTag />
-                  </div>
+              <EditableEl
+                key={stage.id}
+                id={`pipeline:stage-card-${i}`}
+                label={`stage — ${stage.label}`}
+                type="card"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "20px",
+                  padding: "18px 24px",
+                  background: "rgba(5,10,12,0.50)",
+                  backdropFilter: "blur(20px) saturate(160%)",
+                  WebkitBackdropFilter: "blur(20px) saturate(160%)",
+                  borderRadius: "10px",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  borderLeft: isLast
+                    ? `3px solid ${theme.turquoise}`
+                    : "3px solid rgba(77,186,214,0.35)",
+                  boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
+                }}
+              >
+                {/* Step badge */}
+                <div style={{
+                  fontSize: "11px",
+                  color: isLast ? theme.turquoise : "rgba(77,186,214,0.5)",
+                  fontFamily: font,
+                  fontWeight: 400,
+                  letterSpacing: "0.1em",
+                  flexShrink: 0,
+                  width: "16px",
+                  textAlign: "center",
+                }}>
+                  {i + 1}
                 </div>
 
-                {/* Hairline between rows, indented past the step indicator */}
-                {!isLast && (
-                  <div style={{ height: "1px", background: "rgba(255,255,255,0.06)", marginLeft: "52px" }} />
-                )}
-              </div>
+                {/* Label + sub */}
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <EditableText
+                    id={`pipeline:stage-label-${i}`}
+                    as="div"
+                    style={{
+                      fontSize: "18px",
+                      color: "#fff",
+                      fontFamily: font,
+                      textTransform: "lowercase",
+                      fontWeight: 300,
+                      letterSpacing: "0.01em",
+                      lineHeight: 1.2,
+                      marginBottom: "3px",
+                    }}
+                  >
+                    {stage.label}
+                  </EditableText>
+                  <EditableText
+                    id={`pipeline:stage-sub-${i}`}
+                    as="div"
+                    style={{
+                      fontSize: "12px",
+                      color: "rgba(255,255,255,0.38)",
+                      fontFamily: font,
+                      textTransform: "lowercase",
+                      letterSpacing: "0.08em",
+                    }}
+                  >
+                    {stage.sub}
+                  </EditableText>
+                </div>
+
+                {/* Value */}
+                <EditableText
+                  id={stage.valueId}
+                  as="div"
+                  style={{
+                    fontSize: "44px",
+                    color: isLast ? theme.turquoise : "#fff",
+                    fontFamily: font,
+                    fontWeight: 200,
+                    letterSpacing: "-0.02em",
+                    lineHeight: 1,
+                    flexShrink: 0,
+                  }}
+                >
+                  —
+                </EditableText>
+              </EditableEl>
             );
           })}
 
-          {/* Total — turquoise-accented separator */}
+          {/* Total row */}
           <div style={{
             display: "flex",
             alignItems: "center",
-            paddingTop: "20px",
-            marginTop: "8px",
-            borderTop: "1px solid rgba(77,186,214,0.22)",
+            padding: "14px 24px 14px 43px",
             gap: "20px",
+            borderTop: "1px solid rgba(77,186,214,0.18)",
+            marginTop: "4px",
           }}>
-            <div style={{ width: "32px", flexShrink: 0 }} />
             <EditableText
               id="pipeline:total-label"
               as="div"
               style={{
                 flex: 1,
                 fontSize: "11px",
-                color: "rgba(255,255,255,0.38)",
+                color: "rgba(255,255,255,0.35)",
                 fontFamily: font,
                 textTransform: "lowercase",
                 letterSpacing: "0.2em",
@@ -261,27 +251,24 @@ export function PipelineSlide() {
             >
               total pipeline
             </EditableText>
-            <div style={{ display: "flex", alignItems: "center", gap: "10px", flexShrink: 0 }}>
-              <EditableText
-                id="pipeline:val-total"
-                as="div"
-                style={{
-                  fontSize: "48px",
-                  color: theme.turquoise,
-                  fontFamily: font,
-                  fontWeight: 200,
-                  letterSpacing: "-0.02em",
-                  minWidth: "64px",
-                  textAlign: "right",
-                  lineHeight: 1,
-                }}
-              >
-                —
-              </EditableText>
-              <PlaceholderTag />
-            </div>
+            <EditableText
+              id="pipeline:val-total"
+              as="div"
+              style={{
+                fontSize: "44px",
+                color: theme.turquoise,
+                fontFamily: font,
+                fontWeight: 200,
+                letterSpacing: "-0.02em",
+                lineHeight: 1,
+                flexShrink: 0,
+              }}
+            >
+              —
+            </EditableText>
           </div>
-        </EditableEl>
+
+        </div>
       </div>
 
       <SlideFooter slideKey="pipeline" slideNum="14" sectionLabel="execution" />
