@@ -40,7 +40,7 @@ export function ProjectInvestmentDirectiveSlide({ project }: { project: ProjectC
           <EditableText
             id={`${k}-investment:eyebrow`}
             as="div"
-            style={{ fontSize: 11, color: theme.turquoise, letterSpacing: "0.28em", textTransform: "lowercase", fontFamily: font, fontWeight: 400, marginBottom: 10 }}
+            style={{ fontSize: 14, color: theme.turquoise, letterSpacing: "0.28em", textTransform: "lowercase", fontFamily: font, fontWeight: 400, marginBottom: 10 }}
           >
             investment directive · {project.name}
           </EditableText>
@@ -48,7 +48,7 @@ export function ProjectInvestmentDirectiveSlide({ project }: { project: ProjectC
           <EditableText
             id={`${k}-investment:headline`}
             as="h1"
-            style={{ fontSize: "32px", color: INK, fontWeight: 300, fontFamily: font, lineHeight: 1.2, letterSpacing: "-0.02em", textTransform: "lowercase" }}
+            style={{ fontSize: "40px", color: INK, fontWeight: 300, fontFamily: font, lineHeight: 1.2, letterSpacing: "-0.02em", textTransform: "lowercase" }}
           >
             investment returns structured at the partnership level.
           </EditableText>
@@ -64,7 +64,7 @@ export function ProjectInvestmentDirectiveSlide({ project }: { project: ProjectC
             <EditableText
               id={`${k}-investment:targets-title`}
               as="div"
-              style={{ fontSize: 10, color: theme.turquoise, letterSpacing: "0.24em", textTransform: "lowercase", fontFamily: font, marginBottom: 4 }}
+              style={{ fontSize: 12, color: theme.turquoise, letterSpacing: "0.24em", textTransform: "lowercase", fontFamily: font, marginBottom: 4 }}
             >
               investment targets
             </EditableText>
@@ -86,14 +86,14 @@ export function ProjectInvestmentDirectiveSlide({ project }: { project: ProjectC
                   <EditableText
                     id={`${k}-investment:target-lbl-${i}`}
                     as="div"
-                    style={{ fontSize: 11, color: muted(0.55), fontFamily: font, textTransform: "lowercase", letterSpacing: "0.06em" }}
+                    style={{ fontSize: 14, color: muted(0.55), fontFamily: font, textTransform: "lowercase", letterSpacing: "0.06em" }}
                   >
                     {t.label}
                   </EditableText>
                   <EditableText
                     id={`${k}-investment:target-val-${i}`}
                     as="div"
-                    style={{ fontSize: "28px", color: INK, fontFamily: font, fontWeight: 300, letterSpacing: "-0.01em" }}
+                    style={{ fontSize: "34px", color: INK, fontFamily: font, fontWeight: 300, letterSpacing: "-0.01em" }}
                   >
                     {t.value}
                   </EditableText>
@@ -107,7 +107,7 @@ export function ProjectInvestmentDirectiveSlide({ project }: { project: ProjectC
             <EditableText
               id={`${k}-investment:desc`}
               as="div"
-              style={{ fontSize: "18px", color: muted(0.65), fontFamily: font, fontWeight: 300, lineHeight: 1.7, textTransform: "lowercase" }}
+              style={{ fontSize: "22px", color: muted(0.65), fontFamily: font, fontWeight: 300, lineHeight: 1.7, textTransform: "lowercase" }}
             >
               the investment directive locks the impact partner's participation percentages at the time of deal approval. returns are driven by capital turn timing, fee sharing, gp economics, and residual value — not a single event.
             </EditableText>
@@ -117,7 +117,7 @@ export function ProjectInvestmentDirectiveSlide({ project }: { project: ProjectC
             <EditableText
               id={`${k}-investment:cash-flow-title`}
               as="div"
-              style={{ fontSize: 10, color: theme.turquoise, letterSpacing: "0.24em", textTransform: "lowercase", fontFamily: font }}
+              style={{ fontSize: 12, color: theme.turquoise, letterSpacing: "0.24em", textTransform: "lowercase", fontFamily: font }}
             >
               projected cash flow events
             </EditableText>
@@ -126,7 +126,7 @@ export function ProjectInvestmentDirectiveSlide({ project }: { project: ProjectC
               {/* Header */}
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr 1fr", background: teal(0.10), borderBottom: `1px solid ${muted(0.10)}` }}>
                 {["year", "event", "projected amount"].map((h) => (
-                  <div key={h} style={{ padding: "7px 12px", fontSize: 9, color: theme.turquoise, fontFamily: font, letterSpacing: "0.2em", textTransform: "lowercase" }}>
+                  <div key={h} style={{ padding: "7px 12px", fontSize: 11, color: theme.turquoise, fontFamily: font, letterSpacing: "0.2em", textTransform: "lowercase" }}>
                     {h}
                   </div>
                 ))}
@@ -156,7 +156,7 @@ export function ProjectInvestmentDirectiveSlide({ project }: { project: ProjectC
                       as="div"
                       style={{
                         padding: "8px 12px",
-                        fontSize: "18px",
+                        fontSize: "22px",
                         color: j === 2 ? INK : muted(0.55),
                         fontFamily: font,
                         fontWeight: j === 2 ? 400 : 300,

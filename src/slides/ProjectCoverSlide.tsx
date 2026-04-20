@@ -63,7 +63,7 @@ export function ProjectCoverSlide({ project }: { project: ProjectConfig }) {
             id={`${k}-cover:eyebrow`}
             as="div"
             style={{
-              fontSize: 12,
+              fontSize: 15,
               color: theme.turquoise,
               letterSpacing: "0.28em",
               textTransform: "lowercase",
@@ -80,7 +80,7 @@ export function ProjectCoverSlide({ project }: { project: ProjectConfig }) {
           id={`${k}-cover:headline`}
           as="h1"
           style={{
-            fontSize: "52px",
+            fontSize: "64px",
             color: "#fff",
             fontWeight: 300,
             fontFamily: font,
@@ -118,7 +118,7 @@ export function ProjectCoverSlide({ project }: { project: ProjectConfig }) {
                 id={stat.id}
                 as="div"
                 style={{
-                  fontSize: "34px",
+                  fontSize: "42px",
                   color: "#fff",
                   fontFamily: font,
                   fontWeight: 300,
@@ -133,7 +133,7 @@ export function ProjectCoverSlide({ project }: { project: ProjectConfig }) {
                 id={stat.labelId}
                 as="div"
                 style={{
-                  fontSize: 12,
+                  fontSize: 15,
                   color: theme.turquoise,
                   fontFamily: font,
                   letterSpacing: "0.18em",

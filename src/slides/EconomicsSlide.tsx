@@ -49,7 +49,7 @@ export function EconomicsSlide() {
             id="economics:eyebrow"
             as="div"
             style={{
-              fontSize: "20px",
+              fontSize: "24px",
               color: theme.turquoise,
               letterSpacing: "0.28em",
               textTransform: "lowercase",
@@ -65,7 +65,7 @@ export function EconomicsSlide() {
             id="economics:headline"
             as="h1"
             style={{
-              fontSize: "38px",
+              fontSize: "46px",
               color: "#fff",
               fontWeight: 300,
               fontFamily: font,
@@ -97,7 +97,7 @@ export function EconomicsSlide() {
             >
               <div
                 style={{
-                  fontSize: "38px",
+                  fontSize: "46px",
                   color: "#fff",
                   fontFamily: font,
                   fontWeight: 300,
@@ -112,7 +112,7 @@ export function EconomicsSlide() {
                 id="economics:bullet-1"
                 as="div"
                 style={{
-                  fontSize: "20px",
+                  fontSize: "24px",
                   color: "rgba(255,255,255,0.88)",
                   fontWeight: 400,
                   fontFamily: font,
@@ -128,7 +128,7 @@ export function EconomicsSlide() {
               id="economics:bullet-2"
               as="div"
               style={{
-                fontSize: "20px",
+                fontSize: "24px",
                 color: "rgba(255,255,255,0.88)",
                 fontWeight: 400,
                 fontFamily: font,
@@ -143,7 +143,7 @@ export function EconomicsSlide() {
               id="economics:bullet-3"
               as="div"
               style={{
-                fontSize: "20px",
+                fontSize: "24px",
                 color: "rgba(255,255,255,0.88)",
                 fontWeight: 400,
                 fontFamily: font,
@@ -158,7 +158,7 @@ export function EconomicsSlide() {
               id="economics:bullet-4"
               as="div"
               style={{
-                fontSize: "20px",
+                fontSize: "24px",
                 color: "rgba(255,255,255,0.88)",
                 fontWeight: 400,
                 fontFamily: font,
@@ -175,7 +175,7 @@ export function EconomicsSlide() {
             id="economics:footnote"
             as="div"
             style={{
-              fontSize: "20px",
+              fontSize: "24px",
               color: "rgba(255,255,255,0.45)",
               fontFamily: font,
               fontWeight: 300,
@@ -197,7 +197,7 @@ export function EconomicsSlide() {
               y={20}
               textAnchor="middle"
               style={{
-                fontSize: "13px",
+                fontSize: "16px",
                 fill: "rgba(206,232,238,0.4)",
                 fontFamily: font,
                 letterSpacing: "0.16em",
@@ -214,7 +214,7 @@ export function EconomicsSlide() {
               y={75}
               textAnchor="end"
               style={{
-                fontSize: "13px",
+                fontSize: "16px",
                 fill: theme.lightBlue,
                 fontFamily: font,
               }}
@@ -225,7 +225,7 @@ export function EconomicsSlide() {
               x={392}
               y={75}
               style={{
-                fontSize: "13px",
+                fontSize: "16px",
                 fill: theme.turquoise,
                 fontFamily: font,
                 fontWeight: 300,
@@ -241,7 +241,7 @@ export function EconomicsSlide() {
               y={135}
               textAnchor="end"
               style={{
-                fontSize: "13px",
+                fontSize: "16px",
                 fill: theme.lightBlue,
                 fontFamily: font,
               }}
@@ -252,7 +252,7 @@ export function EconomicsSlide() {
               x={342}
               y={135}
               style={{
-                fontSize: "13px",
+                fontSize: "16px",
                 fill: theme.turquoise,
                 fontFamily: font,
                 fontWeight: 300,
@@ -268,7 +268,7 @@ export function EconomicsSlide() {
               y={195}
               textAnchor="end"
               style={{
-                fontSize: "13px",
+                fontSize: "16px",
                 fill: theme.lightBlue,
                 fontFamily: font,
               }}
@@ -279,7 +279,7 @@ export function EconomicsSlide() {
               x={292}
               y={195}
               style={{
-                fontSize: "13px",
+                fontSize: "16px",
                 fill: theme.turquoise,
                 fontFamily: font,
                 fontWeight: 300,
@@ -295,7 +295,7 @@ export function EconomicsSlide() {
               y={255}
               textAnchor="end"
               style={{
-                fontSize: "13px",
+                fontSize: "16px",
                 fill: theme.lightBlue,
                 fontFamily: font,
               }}
@@ -306,7 +306,7 @@ export function EconomicsSlide() {
               x={242}
               y={255}
               style={{
-                fontSize: "13px",
+                fontSize: "16px",
                 fill: theme.turquoise,
                 fontFamily: font,
                 fontWeight: 300,

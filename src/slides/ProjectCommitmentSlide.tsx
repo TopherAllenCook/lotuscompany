@@ -46,7 +46,7 @@ export function ProjectCommitmentSlide({ project }: { project: ProjectConfig }) 
           <EditableText
             id={`${k}-commitment:eyebrow`}
             as="div"
-            style={{ fontSize: 11, color: theme.turquoise, letterSpacing: "0.28em", textTransform: "lowercase", fontFamily: font, fontWeight: 400, marginBottom: 10 }}
+            style={{ fontSize: 14, color: theme.turquoise, letterSpacing: "0.28em", textTransform: "lowercase", fontFamily: font, fontWeight: 400, marginBottom: 10 }}
           >
             commitment amount + draw schedule · {project.name}
           </EditableText>
@@ -54,7 +54,7 @@ export function ProjectCommitmentSlide({ project }: { project: ProjectConfig }) 
           <EditableText
             id={`${k}-commitment:headline`}
             as="h1"
-            style={{ fontSize: "32px", color: INK, fontWeight: 300, fontFamily: font, lineHeight: 1.2, letterSpacing: "-0.02em", textTransform: "lowercase" }}
+            style={{ fontSize: "40px", color: INK, fontWeight: 300, fontFamily: font, lineHeight: 1.2, letterSpacing: "-0.02em", textTransform: "lowercase" }}
           >
             capital is drawn in stages against verified milestones.
           </EditableText>
@@ -79,14 +79,14 @@ export function ProjectCommitmentSlide({ project }: { project: ProjectConfig }) 
             <EditableText
               id={`${k}-commitment:amount-lbl`}
               as="div"
-              style={{ fontSize: 10, color: theme.turquoise, letterSpacing: "0.28em", textTransform: "lowercase", fontFamily: font, marginBottom: 6 }}
+              style={{ fontSize: 12, color: theme.turquoise, letterSpacing: "0.28em", textTransform: "lowercase", fontFamily: font, marginBottom: 6 }}
             >
               total commitment
             </EditableText>
             <EditableText
               id={`${k}-commitment:amount-val`}
               as="div"
-              style={{ fontSize: "38px", color: INK, fontFamily: font, fontWeight: 300, letterSpacing: "-0.03em", lineHeight: 1 }}
+              style={{ fontSize: "46px", color: INK, fontFamily: font, fontWeight: 300, letterSpacing: "-0.03em", lineHeight: 1 }}
             >
               {project.capital}
             </EditableText>
@@ -103,14 +103,14 @@ export function ProjectCommitmentSlide({ project }: { project: ProjectConfig }) 
               <EditableText
                 id={`${k}-commitment:quick-lbl-${i}`}
                 as="div"
-                style={{ fontSize: 10, color: theme.turquoise, letterSpacing: "0.2em", textTransform: "lowercase", fontFamily: font, marginBottom: 4 }}
+                style={{ fontSize: 12, color: theme.turquoise, letterSpacing: "0.2em", textTransform: "lowercase", fontFamily: font, marginBottom: 4 }}
               >
                 {s.label}
               </EditableText>
               <EditableText
                 id={`${k}-commitment:quick-val-${i}`}
                 as="div"
-                style={{ fontSize: "28px", color: INK, fontFamily: font, fontWeight: 300 }}
+                style={{ fontSize: "34px", color: INK, fontFamily: font, fontWeight: 300 }}
               >
                 {s.value}
               </EditableText>
@@ -126,14 +126,14 @@ export function ProjectCommitmentSlide({ project }: { project: ProjectConfig }) 
             <EditableText
               id={`${k}-commitment:use-title`}
               as="div"
-              style={{ fontSize: 10, color: theme.turquoise, letterSpacing: "0.24em", textTransform: "lowercase", fontFamily: font, marginBottom: 10 }}
+              style={{ fontSize: 12, color: theme.turquoise, letterSpacing: "0.24em", textTransform: "lowercase", fontFamily: font, marginBottom: 10 }}
             >
               use of funds
             </EditableText>
             <div style={{ border: `1px solid ${muted(0.10)}`, borderRadius: 4, overflow: "hidden" }}>
               <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 0.7fr", background: teal(0.10), borderBottom: `1px solid ${muted(0.10)}` }}>
                 {["category", "amount", "% of total"].map((h) => (
-                  <div key={h} style={{ padding: "7px 12px", fontSize: 9, color: theme.turquoise, fontFamily: font, letterSpacing: "0.18em", textTransform: "lowercase" }}>{h}</div>
+                  <div key={h} style={{ padding: "7px 12px", fontSize: 11, color: theme.turquoise, fontFamily: font, letterSpacing: "0.18em", textTransform: "lowercase" }}>{h}</div>
                 ))}
               </div>
               {useOfFunds.map((row, i) => (
@@ -153,7 +153,7 @@ export function ProjectCommitmentSlide({ project }: { project: ProjectConfig }) 
                       as="div"
                       style={{
                         padding: "8px 12px",
-                        fontSize: "18px",
+                        fontSize: "22px",
                         color: i === useOfFunds.length - 1 ? INK : muted(0.60),
                         fontFamily: font,
                         fontWeight: i === useOfFunds.length - 1 ? 400 : 300,
@@ -174,14 +174,14 @@ export function ProjectCommitmentSlide({ project }: { project: ProjectConfig }) 
             <EditableText
               id={`${k}-commitment:draw-title`}
               as="div"
-              style={{ fontSize: 10, color: theme.turquoise, letterSpacing: "0.24em", textTransform: "lowercase", fontFamily: font, marginBottom: 10 }}
+              style={{ fontSize: 12, color: theme.turquoise, letterSpacing: "0.24em", textTransform: "lowercase", fontFamily: font, marginBottom: 10 }}
             >
               draw schedule
             </EditableText>
             <div style={{ border: `1px solid ${muted(0.10)}`, borderRadius: 4, overflow: "hidden" }}>
               <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 0.6fr", background: teal(0.10), borderBottom: `1px solid ${muted(0.10)}` }}>
                 {["milestone", "target date", "% drawn"].map((h) => (
-                  <div key={h} style={{ padding: "7px 12px", fontSize: 9, color: theme.turquoise, fontFamily: font, letterSpacing: "0.18em", textTransform: "lowercase" }}>{h}</div>
+                  <div key={h} style={{ padding: "7px 12px", fontSize: 11, color: theme.turquoise, fontFamily: font, letterSpacing: "0.18em", textTransform: "lowercase" }}>{h}</div>
                 ))}
               </div>
               {drawMilestones.map((row, i) => (
@@ -199,7 +199,7 @@ export function ProjectCommitmentSlide({ project }: { project: ProjectConfig }) 
                       key={j}
                       id={`${k}-commitment:draw-r${i}-c${j}`}
                       as="div"
-                      style={{ padding: "8px 12px", fontSize: "18px", color: muted(0.60), fontFamily: font, fontWeight: 300, textTransform: "lowercase" }}
+                      style={{ padding: "8px 12px", fontSize: "22px", color: muted(0.60), fontFamily: font, fontWeight: 300, textTransform: "lowercase" }}
                     >
                       {val}
                     </EditableText>

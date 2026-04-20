@@ -40,7 +40,7 @@ export function LotusWhyLotusSlide() {
           id="why-lotus:title"
           as="div"
           style={{
-            fontSize: "20px",
+            fontSize: "24px",
             fontWeight: 700,
             color: "#fff",
             fontFamily: font,
@@ -56,7 +56,7 @@ export function LotusWhyLotusSlide() {
           id="why-lotus:subtitle"
           as="div"
           style={{
-            fontSize: "20px",
+            fontSize: "24px",
             fontWeight: 400,
             color: theme.turquoise,
             fontFamily: font,
@@ -93,7 +93,7 @@ export function LotusWhyLotusSlide() {
             id="why-lotus:hero"
             as="h1"
             style={{
-              fontSize: "38px",
+              fontSize: "46px",
               fontWeight: 700,
               color: "#fff",
               fontFamily: font,
@@ -118,7 +118,7 @@ export function LotusWhyLotusSlide() {
             id="why-lotus:body"
             as="p"
             style={{
-              fontSize: "20px",
+              fontSize: "24px",
               fontWeight: 400,
               color: "rgba(255,255,255,0.72)",
               fontFamily: font,
@@ -147,7 +147,7 @@ export function LotusWhyLotusSlide() {
             id="why-lotus:differentiator"
             as="p"
             style={{
-              fontSize: "20px",
+              fontSize: "24px",
               fontWeight: 500,
               color: "#fff",
               fontFamily: font,
@@ -196,7 +196,7 @@ export function LotusWhyLotusSlide() {
                   id={`why-lotus:pillar-${i}-title`}
                   as="div"
                   style={{
-                    fontSize: "20px",
+                    fontSize: "24px",
                     fontWeight: 500,
                     color: "#fff",
                     fontFamily: font,
@@ -212,7 +212,7 @@ export function LotusWhyLotusSlide() {
                   id={`why-lotus:pillar-${i}-body`}
                   as="p"
                   style={{
-                    fontSize: "20px",
+                    fontSize: "24px",
                     fontWeight: 400,
                     color: "rgba(255,255,255,0.58)",
                     fontFamily: font,
@@ -240,7 +240,7 @@ export function LotusWhyLotusSlide() {
             id="why-lotus:closing"
             as="p"
             style={{
-              fontSize: "20px",
+              fontSize: "24px",
               fontWeight: 400,
               color: "rgba(77,186,214,0.7)",
               fontFamily: font,

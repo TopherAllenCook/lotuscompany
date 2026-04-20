@@ -44,7 +44,7 @@ export function PartnersSlide() {
             id="partners:eyebrow"
             as="div"
             style={{
-              fontSize: 10,
+              fontSize: 12,
               color: theme.turquoise,
               letterSpacing: "0.28em",
               textTransform: "lowercase",
@@ -60,7 +60,7 @@ export function PartnersSlide() {
             id="partners:headline"
             as="h1"
             style={{
-              fontSize: "32px",
+              fontSize: "40px",
               color: "#fff",
               fontWeight: 300,
               fontFamily: font,
@@ -127,7 +127,7 @@ export function PartnersSlide() {
                   id={`partners:name-${i}`}
                   as="div"
                   style={{
-                    fontSize: "11px",
+                    fontSize: "14px",
                     color: "#fff",
                     fontFamily: font,
                     fontWeight: 300,
@@ -142,7 +142,7 @@ export function PartnersSlide() {
                   id={`partners:category-${i}`}
                   as="div"
                   style={{
-                    fontSize: 8,
+                    fontSize: 10,
                     color: theme.turquoise,
                     fontFamily: font,
                     letterSpacing: "0.16em",
@@ -161,7 +161,7 @@ export function PartnersSlide() {
           as="div"
           style={{
             marginTop: 16,
-            fontSize: 9,
+            fontSize: 11,
             color: "rgba(206,232,238,0.25)",
             fontFamily: font,
             textTransform: "lowercase",

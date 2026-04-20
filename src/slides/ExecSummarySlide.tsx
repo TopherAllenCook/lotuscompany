@@ -59,7 +59,7 @@ function FloatStat({
     <motion.div {...lift(delay)} style={{ textAlign: align }}>
       <EditableText id={`exec-summary:stat-${id}`} as="div" style={{
         fontFamily: font, fontWeight: 700,
-        fontSize: "38px",
+        fontSize: "46px",
         color: "#fff", lineHeight: 1,
         letterSpacing: "-0.025em", whiteSpace: "nowrap",
         textShadow: "0 2px 12px rgba(0,0,0,0.35)",
@@ -71,7 +71,7 @@ function FloatStat({
       </EditableText>
       <EditableText id={`exec-summary:stat-label-${id}`} as="div" style={{
         fontFamily: font, fontWeight: 400,
-        fontSize: "20px",
+        fontSize: "24px",
         color: "rgba(255,255,255,0.65)",
         letterSpacing: "0.18em", textTransform: "lowercase",
         marginTop: 4,
@@ -200,14 +200,14 @@ export function ExecSummarySlide() {
           </svg>
           <EditableText id="exec-summary:title" as="span" style={{
             fontFamily: font, fontWeight: 400,
-            fontSize: "20px", color: "rgba(255,255,255,0.82)",
+            fontSize: "24px", color: "rgba(255,255,255,0.82)",
             letterSpacing: "0.08em", textTransform: "lowercase",
           }}>
             executive summary. lotus impact initiative.
           </EditableText>
         </div>
         <span style={{
-          fontSize: 10, fontWeight: 400, color: "rgba(255,255,255,0.38)",
+          fontSize: 12, fontWeight: 400, color: "rgba(255,255,255,0.38)",
           letterSpacing: "0.22em",
         }}>03. executive summary.</span>
       </motion.div>
@@ -220,7 +220,7 @@ export function ExecSummarySlide() {
           transition={{ delay: 0.2, duration: 0.65, ease: EASE_OUT }}
         >
           <EditableText id="exec-summary:headline" as="div" style={{
-            fontSize: "38px",
+            fontSize: "46px",
             fontWeight: 300, color: "#fff",
             letterSpacing: "0.005em", textTransform: "lowercase",
             lineHeight: 1.12,
@@ -256,7 +256,7 @@ export function ExecSummarySlide() {
         <motion.div {...lift(0.50)}>
           <EditableText id="exec-summary:stat-units" as="div" style={{
             fontFamily: font, fontWeight: 600,
-            fontSize: "38px",
+            fontSize: "46px",
             color: "#fff", lineHeight: 1,
             letterSpacing: "-0.02em", whiteSpace: "nowrap",
             textShadow: "0 2px 10px rgba(0,0,0,0.3)",
@@ -265,7 +265,7 @@ export function ExecSummarySlide() {
           </EditableText>
           <EditableText id="exec-summary:stat-label-units" as="div" style={{
             fontFamily: font, fontWeight: 400,
-            fontSize: "20px",
+            fontSize: "24px",
             color: "rgba(255,255,255,0.80)",
             letterSpacing: "0.18em", textTransform: "lowercase", marginTop: 4,
           }}>
@@ -276,7 +276,7 @@ export function ExecSummarySlide() {
         <motion.div {...lift(0.56)} style={{ textAlign: "right" }}>
           <EditableText id="exec-summary:stat-residents" as="div" style={{
             fontFamily: font, fontWeight: 600,
-            fontSize: "38px",
+            fontSize: "46px",
             color: "#fff", lineHeight: 1,
             letterSpacing: "-0.02em", whiteSpace: "nowrap",
             textShadow: "0 2px 10px rgba(0,0,0,0.3)",
@@ -285,7 +285,7 @@ export function ExecSummarySlide() {
           </EditableText>
           <EditableText id="exec-summary:stat-label-residents" as="div" style={{
             fontFamily: font, fontWeight: 400,
-            fontSize: "20px",
+            fontSize: "24px",
             color: "rgba(255,255,255,0.80)",
             letterSpacing: "0.18em", textTransform: "lowercase", marginTop: 4,
           }}>
@@ -343,13 +343,13 @@ export function ExecSummarySlide() {
               alignItems: "flex-start", marginBottom: 8,
             }}>
               <EditableText id={`exec-summary:col-header-${card.id}`} as="p" style={{
-                margin: 0, fontSize: 11, fontWeight: 500,
+                margin: 0, fontSize: 14, fontWeight: 500,
                 color: DARK_TQ, letterSpacing: "0.22em", textTransform: "lowercase",
               }}>
                 {card.header}
               </EditableText>
               <span style={{
-                fontSize: 9, fontWeight: 400,
+                fontSize: 11, fontWeight: 400,
                 color: "rgba(2,143,170,0.35)", letterSpacing: "0.15em",
               }}>
                 {card.num}
@@ -364,7 +364,7 @@ export function ExecSummarySlide() {
             {card.lines.map((line, li) => (
               <EditableText key={li} id={`exec-summary:col-${card.id}-line-${li}`} as="p" style={{
                 margin: "0 0 8px", fontFamily: font, fontWeight: 400, color: BODY,
-                fontSize: "28px",
+                fontSize: "34px",
                 letterSpacing: "0.01em", textTransform: "lowercase", lineHeight: 1.65,
               }}>
                 {line}

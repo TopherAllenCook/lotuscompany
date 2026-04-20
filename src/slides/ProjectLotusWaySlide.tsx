@@ -40,7 +40,7 @@ export function ProjectLotusWaySlide({ project }: { project: ProjectConfig }) {
             id={`${k}-lotus-way:eyebrow`}
             as="div"
             style={{
-              fontSize: 10,
+              fontSize: 12,
               color: theme.turquoise,
               letterSpacing: "0.28em",
               textTransform: "lowercase",
@@ -56,7 +56,7 @@ export function ProjectLotusWaySlide({ project }: { project: ProjectConfig }) {
             id={`${k}-lotus-way:headline`}
             as="h1"
             style={{
-              fontSize: "38px",
+              fontSize: "46px",
               color: "#fff",
               fontWeight: 300,
               fontFamily: font,
@@ -132,7 +132,7 @@ export function ProjectLotusWaySlide({ project }: { project: ProjectConfig }) {
                     position: "absolute",
                     bottom: 10,
                     left: 14,
-                    fontSize: 8,
+                    fontSize: 10,
                     color: theme.turquoise,
                     fontFamily: font,
                     letterSpacing: "0.22em",
@@ -159,7 +159,7 @@ export function ProjectLotusWaySlide({ project }: { project: ProjectConfig }) {
                   id={`${k}-lotus-way:pillar-heading-${i}`}
                   as="div"
                   style={{
-                    fontSize: "28px",
+                    fontSize: "34px",
                     color: "#fff",
                     fontFamily: font,
                     fontWeight: 300,
@@ -175,7 +175,7 @@ export function ProjectLotusWaySlide({ project }: { project: ProjectConfig }) {
                   id={`${k}-lotus-way:pillar-body-${i}`}
                   as="div"
                   style={{
-                    fontSize: "20px",
+                    fontSize: "24px",
                     color: "rgba(206,232,238,0.65)",
                     fontFamily: font,
                     fontWeight: 300,

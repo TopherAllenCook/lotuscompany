@@ -54,7 +54,7 @@ export function LotusWaySlide() {
         <LotusMark width={180} onDark />
       </motion.div>
       <motion.div {...lift(0.1)} style={{ position: "absolute", top: 64, left: "50%", transform: "translateX(-50%)" }}>
-        <EditableText id="lotus-way:slide-num" as="span" style={{ fontSize: 11, fontWeight: 400, letterSpacing: "0.44em", color: "rgba(206,232,238,0.22)", textTransform: "lowercase" }}>
+        <EditableText id="lotus-way:slide-num" as="span" style={{ fontSize: 14, fontWeight: 400, letterSpacing: "0.44em", color: "rgba(206,232,238,0.22)", textTransform: "lowercase" }}>
           06 / steelton village
         </EditableText>
       </motion.div>
@@ -77,7 +77,7 @@ export function LotusWaySlide() {
             style={{ transformOrigin: "left" }}>
             <EditableEl id="lotus-way:rule-left" label="eyebrow rule left" type="bar" style={{ width: 52, height: 1.5, background: theme.turquoise }} />
           </motion.div>
-          <EditableText id="lotus-way:eyebrow" label="eyebrow — the lotus way" as="span" style={{ fontSize: 13, fontWeight: 400, letterSpacing: "0.4em", color: theme.turquoise, textTransform: "lowercase" }}>
+          <EditableText id="lotus-way:eyebrow" label="eyebrow — the lotus way" as="span" style={{ fontSize: 16, fontWeight: 400, letterSpacing: "0.4em", color: theme.turquoise, textTransform: "lowercase" }}>
             the lotus way
           </EditableText>
           <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.3, duration: 0.5 }}
@@ -97,12 +97,12 @@ export function LotusWaySlide() {
               style={{ flex: 1, paddingRight: 48 }}
             >
               {/* Number (Counter — not wrappable) */}
-              <div style={{ fontSize: "38px", fontWeight: 300, color: "#fff", lineHeight: 0.9, letterSpacing: "-0.03em" }}>
+              <div style={{ fontSize: "46px", fontWeight: 300, color: "#fff", lineHeight: 0.9, letterSpacing: "-0.03em" }}>
                 <Counter to={stat.value} delay={0.8 + i * 0.15} prefix={stat.prefix} suffix={stat.suffix} />
               </div>
 
               {/* Unit label */}
-              <EditableText id={`lotus-way:unit-${i}`} label={`unit label — ${stat.unit}`} as="div" style={{ fontSize: 13, fontWeight: 400, color: theme.turquoise, letterSpacing: "0.22em", textTransform: "lowercase", marginTop: 10, marginBottom: 12 }}>
+              <EditableText id={`lotus-way:unit-${i}`} label={`unit label — ${stat.unit}`} as="div" style={{ fontSize: 16, fontWeight: 400, color: theme.turquoise, letterSpacing: "0.22em", textTransform: "lowercase", marginTop: 10, marginBottom: 12 }}>
                 {stat.unit}
               </EditableText>
 
@@ -117,7 +117,7 @@ export function LotusWaySlide() {
               </motion.div>
 
               {/* Sub-label */}
-              <EditableText id={`lotus-way:sub-${i}`} label={`sub label — ${stat.unit}`} as="div" style={{ fontSize: 12, fontWeight: 300, color: "rgba(206,232,238,0.50)", letterSpacing: "0.06em", lineHeight: 1.6, textTransform: "lowercase" }}>
+              <EditableText id={`lotus-way:sub-${i}`} label={`sub label — ${stat.unit}`} as="div" style={{ fontSize: 15, fontWeight: 300, color: "rgba(206,232,238,0.50)", letterSpacing: "0.06em", lineHeight: 1.6, textTransform: "lowercase" }}>
                 {stat.sub}
               </EditableText>
             </motion.div>
@@ -127,7 +127,7 @@ export function LotusWaySlide() {
 
       {/* Tagline */}
       <motion.div {...lift(1.6)} style={{ position: "absolute", bottom: 16, right: 72 }}>
-        <EditableText id="lotus-way:tagline" label="tagline" as="span" style={{ fontSize: 13, fontWeight: 300, color: "rgba(206,232,238,0.40)", letterSpacing: "0.28em", textTransform: "lowercase" }}>
+        <EditableText id="lotus-way:tagline" label="tagline" as="span" style={{ fontSize: 16, fontWeight: 300, color: "rgba(206,232,238,0.40)", letterSpacing: "0.28em", textTransform: "lowercase" }}>
           mindfully creating.
         </EditableText>
       </motion.div>

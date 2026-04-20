@@ -62,7 +62,7 @@ export function ImpactProfileSlide() {
 
       {/* Slide number */}
       <motion.div {...lift(0.1)} style={{ position: "absolute", top: 64, left: "50%", transform: "translateX(-50%)" }}>
-        <EditableText id="impact-profile:slide-num" as="span" style={{ fontSize: 11, fontWeight: 400, letterSpacing: "0.44em", color: "rgba(206,232,238,0.22)", textTransform: "lowercase" }}>
+        <EditableText id="impact-profile:slide-num" as="span" style={{ fontSize: 14, fontWeight: 400, letterSpacing: "0.44em", color: "rgba(206,232,238,0.22)", textTransform: "lowercase" }}>
           07 / steelton village
         </EditableText>
       </motion.div>
@@ -74,7 +74,7 @@ export function ImpactProfileSlide() {
             style={{ transformOrigin: "left" }}>
             <EditableEl id="impact-profile:rule-left" label="eyebrow rule left" type="bar" style={{ width: 52, height: 1.5, background: theme.turquoise }} />
           </motion.div>
-          <EditableText id="impact-profile:eyebrow" label="eyebrow — impact & resident profile" as="span" style={{ fontSize: 13, fontWeight: 400, letterSpacing: "0.4em", color: theme.turquoise, textTransform: "lowercase" }}>
+          <EditableText id="impact-profile:eyebrow" label="eyebrow — impact & resident profile" as="span" style={{ fontSize: 16, fontWeight: 400, letterSpacing: "0.4em", color: theme.turquoise, textTransform: "lowercase" }}>
             impact &amp; resident profile
           </EditableText>
           <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.25, duration: 0.5 }}
@@ -94,10 +94,10 @@ export function ImpactProfileSlide() {
             transition={{ delay: 0.35 + i * 0.14, duration: 0.7, ease: EASE_OUT }}
             style={{ flex: 1 }}
           >
-            <div style={{ fontSize: "38px", fontWeight: 300, color: "#fff", lineHeight: 0.9, letterSpacing: "-0.03em" }}>
+            <div style={{ fontSize: "46px", fontWeight: 300, color: "#fff", lineHeight: 0.9, letterSpacing: "-0.03em" }}>
               {m.prefix}<Counter to={m.value} delay={0.6 + i * 0.12} />{m.suffix}
             </div>
-            <EditableText id={`impact-profile:metric-label-${i}`} label={`metric label — ${m.label}`} as="div" style={{ fontSize: 11, fontWeight: 400, color: "rgba(206,232,238,0.45)", letterSpacing: "0.14em", textTransform: "lowercase", marginTop: 10 }}>
+            <EditableText id={`impact-profile:metric-label-${i}`} label={`metric label — ${m.label}`} as="div" style={{ fontSize: 14, fontWeight: 400, color: "rgba(206,232,238,0.45)", letterSpacing: "0.14em", textTransform: "lowercase", marginTop: 10 }}>
               {m.label}
             </EditableText>
           </motion.div>
@@ -120,14 +120,14 @@ export function ImpactProfileSlide() {
             transition={{ delay: 1.0 + i * 0.12, duration: 0.6, ease: EASE_OUT }}
             style={{ flex: 1 }}
           >
-            <EditableText id={`impact-profile:seg-label-${i}`} label={`audience — ${seg.label}`} as="div" style={{ fontSize: 10, fontWeight: 400, color: seg.color, letterSpacing: "0.2em", textTransform: "lowercase", marginBottom: 10 }}>
+            <EditableText id={`impact-profile:seg-label-${i}`} label={`audience — ${seg.label}`} as="div" style={{ fontSize: 12, fontWeight: 400, color: seg.color, letterSpacing: "0.2em", textTransform: "lowercase", marginBottom: 10 }}>
               {seg.label}
             </EditableText>
             <div style={{ display: "flex", alignItems: "baseline", gap: 10 }}>
-              <EditableText id={`impact-profile:seg-units-${i}`} label={`audience units — ${seg.label}`} as="span" style={{ fontSize: "38px", fontWeight: 300, color: "#fff", lineHeight: 1, letterSpacing: "-0.025em" }}>{seg.units}</EditableText>
-              <EditableText id={`impact-profile:seg-units-label-${i}`} label={`audience units label — ${seg.label}`} as="span" style={{ fontSize: 12, fontWeight: 400, color: seg.color, letterSpacing: "0.12em", textTransform: "lowercase" }}>units</EditableText>
+              <EditableText id={`impact-profile:seg-units-${i}`} label={`audience units — ${seg.label}`} as="span" style={{ fontSize: "46px", fontWeight: 300, color: "#fff", lineHeight: 1, letterSpacing: "-0.025em" }}>{seg.units}</EditableText>
+              <EditableText id={`impact-profile:seg-units-label-${i}`} label={`audience units label — ${seg.label}`} as="span" style={{ fontSize: 15, fontWeight: 400, color: seg.color, letterSpacing: "0.12em", textTransform: "lowercase" }}>units</EditableText>
             </div>
-            <EditableText id={`impact-profile:seg-pct-${i}`} label={`audience pct — ${seg.label}`} as="div" style={{ fontSize: 12, fontWeight: 300, color: "rgba(206,232,238,0.40)", marginTop: 5, letterSpacing: "0.04em" }}>{seg.pct} of total</EditableText>
+            <EditableText id={`impact-profile:seg-pct-${i}`} label={`audience pct — ${seg.label}`} as="div" style={{ fontSize: 15, fontWeight: 300, color: "rgba(206,232,238,0.40)", marginTop: 5, letterSpacing: "0.04em" }}>{seg.pct} of total</EditableText>
           </motion.div>
         ))}
       </div>
@@ -160,7 +160,7 @@ export function ImpactProfileSlide() {
           style={{ display: "flex", gap: 2, marginTop: 10 }}
         >
           {SEGMENTS.map((seg, i) => (
-            <EditableText key={i} id={`impact-profile:ami-${i}`} label={`ami label — ${seg.label}`} as="div" style={{ width: seg.width, fontSize: 10, fontWeight: 300, color: "rgba(206,232,238,0.40)", letterSpacing: "0.06em", textTransform: "lowercase" }}>
+            <EditableText key={i} id={`impact-profile:ami-${i}`} label={`ami label — ${seg.label}`} as="div" style={{ width: seg.width, fontSize: 12, fontWeight: 300, color: "rgba(206,232,238,0.40)", letterSpacing: "0.06em", textTransform: "lowercase" }}>
               {seg.label} · {seg.units}
             </EditableText>
           ))}
@@ -169,7 +169,7 @@ export function ImpactProfileSlide() {
 
       {/* Tagline */}
       <motion.div {...lift(1.9)} style={{ position: "absolute", bottom: 16, right: 72 }}>
-        <EditableText id="impact-profile:tagline" label="tagline" as="span" style={{ fontSize: 13, fontWeight: 300, color: "rgba(206,232,238,0.40)", letterSpacing: "0.28em", textTransform: "lowercase" }}>
+        <EditableText id="impact-profile:tagline" label="tagline" as="span" style={{ fontSize: 16, fontWeight: 300, color: "rgba(206,232,238,0.40)", letterSpacing: "0.28em", textTransform: "lowercase" }}>
           mindfully creating.
         </EditableText>
       </motion.div>

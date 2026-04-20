@@ -55,7 +55,7 @@ export function PipelineSlide() {
             id="pipeline:eyebrow"
             as="div"
             style={{
-              fontSize: "13px",
+              fontSize: "16px",
               color: theme.turquoise,
               letterSpacing: "0.28em",
               textTransform: "lowercase",
@@ -71,7 +71,7 @@ export function PipelineSlide() {
             id="pipeline:headline"
             as="h1"
             style={{
-              fontSize: "36px",
+              fontSize: "44px",
               color: "#fff",
               fontWeight: 300,
               fontFamily: font,
@@ -98,7 +98,7 @@ export function PipelineSlide() {
                 id={id}
                 as="div"
                 style={{
-                  fontSize: "16px",
+                  fontSize: "20px",
                   color: "rgba(255,255,255,0.80)",
                   fontWeight: 400,
                   fontFamily: font,
@@ -119,7 +119,7 @@ export function PipelineSlide() {
               id="pipeline:target-states"
               as="span"
               style={{
-                fontSize: "13px",
+                fontSize: "16px",
                 color: "rgba(255,255,255,0.45)",
                 fontFamily: font,
                 textTransform: "lowercase",
@@ -160,7 +160,7 @@ export function PipelineSlide() {
               >
                 {/* Step badge */}
                 <div style={{
-                  fontSize: "11px",
+                  fontSize: "14px",
                   color: isLast ? theme.turquoise : "rgba(77,186,214,0.5)",
                   fontFamily: font,
                   fontWeight: 400,
@@ -178,7 +178,7 @@ export function PipelineSlide() {
                     id={`pipeline:stage-label-${i}`}
                     as="div"
                     style={{
-                      fontSize: "18px",
+                      fontSize: "22px",
                       color: "#fff",
                       fontFamily: font,
                       textTransform: "lowercase",
@@ -194,7 +194,7 @@ export function PipelineSlide() {
                     id={`pipeline:stage-sub-${i}`}
                     as="div"
                     style={{
-                      fontSize: "12px",
+                      fontSize: "15px",
                       color: "rgba(255,255,255,0.38)",
                       fontFamily: font,
                       textTransform: "lowercase",
@@ -210,7 +210,7 @@ export function PipelineSlide() {
                   id={stage.valueId}
                   as="div"
                   style={{
-                    fontSize: "44px",
+                    fontSize: "54px",
                     color: isLast ? theme.turquoise : "#fff",
                     fontFamily: font,
                     fontWeight: 200,
@@ -239,7 +239,7 @@ export function PipelineSlide() {
               as="div"
               style={{
                 flex: 1,
-                fontSize: "11px",
+                fontSize: "14px",
                 color: "rgba(255,255,255,0.35)",
                 fontFamily: font,
                 textTransform: "lowercase",
@@ -252,7 +252,7 @@ export function PipelineSlide() {
               id="pipeline:val-total"
               as="div"
               style={{
-                fontSize: "44px",
+                fontSize: "54px",
                 color: theme.turquoise,
                 fontFamily: font,
                 fontWeight: 200,

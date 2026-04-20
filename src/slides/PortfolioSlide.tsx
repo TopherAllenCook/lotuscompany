@@ -26,13 +26,13 @@ export function PortfolioSlide() {
       </motion.div>
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1, duration: 0.5 }}
         style={{ position: "absolute", top: 64, left: "50%", transform: "translateX(-50%)", zIndex: 10 }}>
-        <EditableText id="portfolio:slide-num" as="span" style={{ fontSize: 11, fontWeight: 400, letterSpacing: "0.44em", color: "rgba(206,232,238,0.22)", textTransform: "lowercase" }}>
+        <EditableText id="portfolio:slide-num" as="span" style={{ fontSize: 14, fontWeight: 400, letterSpacing: "0.44em", color: "rgba(206,232,238,0.22)", textTransform: "lowercase" }}>
           05 / lotus portfolio
         </EditableText>
       </motion.div>
       <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.5 }}
         style={{ position: "absolute", top: 62, right: 72, display: "flex", alignItems: "center", gap: 12, zIndex: 10 }}>
-        <EditableText id="portfolio:header" label="header — the lotus portfolio" as="span" style={{ fontSize: 12, fontWeight: 400, letterSpacing: "0.36em", color: theme.turquoise, textTransform: "lowercase" }}>
+        <EditableText id="portfolio:header" label="header — the lotus portfolio" as="span" style={{ fontSize: 15, fontWeight: 400, letterSpacing: "0.36em", color: theme.turquoise, textTransform: "lowercase" }}>
           the lotus portfolio
         </EditableText>
         <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.35, duration: 0.5 }}
@@ -70,7 +70,7 @@ export function PortfolioSlide() {
               background: "linear-gradient(to top, rgba(0,0,0,0.58) 0%, transparent 100%)",
             }}>
               <EditableText id={`portfolio:img-label-${i}`} label={`image — ${img.label} ${i}`} as="span" style={{
-                fontSize: 10, fontWeight: 400, letterSpacing: "0.3em",
+                fontSize: 12, fontWeight: 400, letterSpacing: "0.3em",
                 color: "rgba(206,232,238,0.78)", textTransform: "lowercase",
               }}>
                 {img.label}
@@ -82,7 +82,7 @@ export function PortfolioSlide() {
 
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9, duration: 0.6 }}
         style={{ position: "absolute", bottom: 16, right: 64 }}>
-        <EditableText id="portfolio:tagline" label="tagline" as="span" style={{ fontSize: 13, fontWeight: 300, color: "rgba(206,232,238,0.40)", letterSpacing: "0.28em", textTransform: "lowercase" }}>
+        <EditableText id="portfolio:tagline" label="tagline" as="span" style={{ fontSize: 16, fontWeight: 300, color: "rgba(206,232,238,0.40)", letterSpacing: "0.28em", textTransform: "lowercase" }}>
           mindfully creating.
         </EditableText>
       </motion.div>

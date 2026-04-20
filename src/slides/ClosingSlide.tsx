@@ -54,7 +54,7 @@ export function ClosingSlide() {
             id="closing:eyebrow"
             as="div"
             style={{
-              fontSize: "20px",
+              fontSize: "24px",
               color: theme.turquoise,
               letterSpacing: "0.28em",
               textTransform: "lowercase",
@@ -70,7 +70,7 @@ export function ClosingSlide() {
             id="closing:headline"
             as="h1"
             style={{
-              fontSize: "38px",
+              fontSize: "46px",
               color: "#fff",
               fontWeight: 300,
               fontFamily: font,
@@ -98,7 +98,7 @@ export function ClosingSlide() {
                 border: "1px solid rgba(77,186,214,0.2)",
                 borderRadius: 3,
                 padding: "8px 16px",
-                fontSize: "20px",
+                fontSize: "24px",
                 color: theme.lightBlue,
                 fontFamily: font,
                 fontWeight: 300,
@@ -109,7 +109,7 @@ export function ClosingSlide() {
                 id="closing:pill-1"
                 as="span"
                 style={{
-                  fontSize: "20px",
+                  fontSize: "24px",
                   color: theme.lightBlue,
                   fontFamily: font,
                   fontWeight: 300,
@@ -126,7 +126,7 @@ export function ClosingSlide() {
                 border: "1px solid rgba(77,186,214,0.2)",
                 borderRadius: 3,
                 padding: "8px 16px",
-                fontSize: "20px",
+                fontSize: "24px",
                 color: theme.lightBlue,
                 fontFamily: font,
                 fontWeight: 300,
@@ -137,7 +137,7 @@ export function ClosingSlide() {
                 id="closing:pill-2"
                 as="span"
                 style={{
-                  fontSize: "20px",
+                  fontSize: "24px",
                   color: theme.lightBlue,
                   fontFamily: font,
                   fontWeight: 300,
@@ -154,7 +154,7 @@ export function ClosingSlide() {
                 border: "1px solid rgba(77,186,214,0.2)",
                 borderRadius: 3,
                 padding: "8px 16px",
-                fontSize: "20px",
+                fontSize: "24px",
                 color: theme.lightBlue,
                 fontFamily: font,
                 fontWeight: 300,
@@ -165,7 +165,7 @@ export function ClosingSlide() {
                 id="closing:pill-3"
                 as="span"
                 style={{
-                  fontSize: "20px",
+                  fontSize: "24px",
                   color: theme.lightBlue,
                   fontFamily: font,
                   fontWeight: 300,
@@ -182,7 +182,7 @@ export function ClosingSlide() {
                 border: "1px solid rgba(77,186,214,0.2)",
                 borderRadius: 3,
                 padding: "8px 16px",
-                fontSize: "20px",
+                fontSize: "24px",
                 color: theme.lightBlue,
                 fontFamily: font,
                 fontWeight: 300,
@@ -193,7 +193,7 @@ export function ClosingSlide() {
                 id="closing:pill-4"
                 as="span"
                 style={{
-                  fontSize: "20px",
+                  fontSize: "24px",
                   color: theme.lightBlue,
                   fontFamily: font,
                   fontWeight: 300,
@@ -210,7 +210,7 @@ export function ClosingSlide() {
                 border: "1px solid rgba(77,186,214,0.2)",
                 borderRadius: 3,
                 padding: "8px 16px",
-                fontSize: "20px",
+                fontSize: "24px",
                 color: theme.lightBlue,
                 fontFamily: font,
                 fontWeight: 300,
@@ -221,7 +221,7 @@ export function ClosingSlide() {
                 id="closing:pill-5"
                 as="span"
                 style={{
-                  fontSize: "20px",
+                  fontSize: "24px",
                   color: theme.lightBlue,
                   fontFamily: font,
                   fontWeight: 300,

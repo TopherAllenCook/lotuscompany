@@ -41,7 +41,7 @@ export function LIHTCRentsSlide() {
             id="lihtc-rents:eyebrow"
             as="div"
             style={{
-              fontSize: 10,
+              fontSize: 12,
               color: theme.turquoise,
               letterSpacing: "0.28em",
               textTransform: "lowercase",
@@ -57,7 +57,7 @@ export function LIHTCRentsSlide() {
             id="lihtc-rents:headline"
             as="h1"
             style={{
-              fontSize: "32px",
+              fontSize: "40px",
               color: "#fff",
               fontWeight: 300,
               fontFamily: font,
@@ -81,7 +81,7 @@ export function LIHTCRentsSlide() {
               id="lihtc-rents:desc"
               as="div"
               style={{
-                fontSize: "20px",
+                fontSize: "24px",
                 color: "rgba(206,232,238,0.75)",
                 fontFamily: font,
                 fontWeight: 300,
@@ -98,7 +98,7 @@ export function LIHTCRentsSlide() {
               id="lihtc-rents:mechanic-title"
               as="div"
               style={{
-                fontSize: 9,
+                fontSize: 11,
                 color: theme.turquoise,
                 letterSpacing: "0.24em",
                 textTransform: "lowercase",
@@ -119,7 +119,7 @@ export function LIHTCRentsSlide() {
                 <div
                   style={{
                     flexShrink: 0,
-                    fontSize: 8,
+                    fontSize: 10,
                     color: theme.turquoise,
                     fontFamily: font,
                     letterSpacing: "0.16em",
@@ -132,7 +132,7 @@ export function LIHTCRentsSlide() {
                   id={`lihtc-rents:step-${i}`}
                   as="div"
                   style={{
-                    fontSize: "20px",
+                    fontSize: "24px",
                     color: "rgba(206,232,238,0.60)",
                     fontFamily: font,
                     fontWeight: 300,
@@ -152,7 +152,7 @@ export function LIHTCRentsSlide() {
               id="lihtc-rents:chart-title"
               as="div"
               style={{
-                fontSize: 9,
+                fontSize: 11,
                 color: theme.turquoise,
                 letterSpacing: "0.24em",
                 textTransform: "lowercase",
@@ -177,14 +177,14 @@ export function LIHTCRentsSlide() {
               <EditableText
                 id="lihtc-rents:market-lbl"
                 as="div"
-                style={{ fontSize: 10, color: "rgba(206,232,238,0.50)", fontFamily: font, textTransform: "lowercase", letterSpacing: "0.08em" }}
+                style={{ fontSize: 12, color: "rgba(206,232,238,0.50)", fontFamily: font, textTransform: "lowercase", letterSpacing: "0.08em" }}
               >
                 dayton market rate (2br avg)
               </EditableText>
               <EditableText
                 id="lihtc-rents:market-val"
                 as="div"
-                style={{ fontSize: "28px", color: "rgba(206,232,238,0.55)", fontFamily: font, fontWeight: 300 }}
+                style={{ fontSize: "34px", color: "rgba(206,232,238,0.55)", fontFamily: font, fontWeight: 300 }}
               >
                 ${marketRent.toLocaleString()} / mo
               </EditableText>
@@ -200,7 +200,7 @@ export function LIHTCRentsSlide() {
                       <EditableText
                         id={`lihtc-rents:tier-lbl-${i}`}
                         as="div"
-                        style={{ fontSize: 9, color: theme.turquoise, fontFamily: font, letterSpacing: "0.18em", textTransform: "lowercase" }}
+                        style={{ fontSize: 11, color: theme.turquoise, fontFamily: font, letterSpacing: "0.18em", textTransform: "lowercase" }}
                       >
                         {tier.ami} — {tier.label}
                       </EditableText>
@@ -208,14 +208,14 @@ export function LIHTCRentsSlide() {
                         <EditableText
                           id={`lihtc-rents:tier-rent-${i}`}
                           as="div"
-                          style={{ fontSize: "28px", color: "#fff", fontFamily: font, fontWeight: 300 }}
+                          style={{ fontSize: "34px", color: "#fff", fontFamily: font, fontWeight: 300 }}
                         >
                           ${tier.rent.toLocaleString()}
                         </EditableText>
                         <EditableText
                           id={`lihtc-rents:tier-savings-${i}`}
                           as="div"
-                          style={{ fontSize: 9, color: "rgba(77,186,214,0.65)", fontFamily: font, textTransform: "lowercase" }}
+                          style={{ fontSize: 11, color: "rgba(77,186,214,0.65)", fontFamily: font, textTransform: "lowercase" }}
                         >
                           saves ${tier.savings.toLocaleString()} / mo
                         </EditableText>
@@ -264,7 +264,7 @@ export function LIHTCRentsSlide() {
                     id={`lihtc-rents:summary-val-${i}`}
                     as="div"
                     style={{
-                      fontSize: "28px",
+                      fontSize: "34px",
                       color: "#fff",
                       fontFamily: font,
                       fontWeight: 300,
@@ -278,7 +278,7 @@ export function LIHTCRentsSlide() {
                     id={`lihtc-rents:summary-lbl-${i}`}
                     as="div"
                     style={{
-                      fontSize: 8,
+                      fontSize: 10,
                       color: "rgba(206,232,238,0.40)",
                       fontFamily: font,
                       lineHeight: 1.4,

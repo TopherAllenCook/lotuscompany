@@ -45,7 +45,7 @@ export function RiskControlsSlide() {
             id="risk-controls:eyebrow"
             as="div"
             style={{
-              fontSize: "20px",
+              fontSize: "24px",
               color: theme.turquoise,
               letterSpacing: "0.28em",
               textTransform: "lowercase",
@@ -61,7 +61,7 @@ export function RiskControlsSlide() {
             id="risk-controls:headline"
             as="h1"
             style={{
-              fontSize: "38px",
+              fontSize: "46px",
               color: "#fff",
               fontWeight: 300,
               fontFamily: font,
@@ -98,7 +98,7 @@ export function RiskControlsSlide() {
             <tr style={{ background: "rgba(77,186,214,0.15)" }}>
               <th
                 style={{
-                  fontSize: "20px",
+                  fontSize: "24px",
                   color: theme.turquoise,
                   letterSpacing: "0.16em",
                   textTransform: "uppercase",
@@ -114,7 +114,7 @@ export function RiskControlsSlide() {
                   id="risk-controls:header-risk"
                   as="span"
                   style={{
-                    fontSize: "20px",
+                    fontSize: "24px",
                     color: theme.turquoise,
                     letterSpacing: "0.16em",
                     textTransform: "uppercase",
@@ -127,7 +127,7 @@ export function RiskControlsSlide() {
               </th>
               <th
                 style={{
-                  fontSize: "20px",
+                  fontSize: "24px",
                   color: theme.turquoise,
                   letterSpacing: "0.16em",
                   textTransform: "uppercase",
@@ -142,7 +142,7 @@ export function RiskControlsSlide() {
                   id="risk-controls:header-mitigant"
                   as="span"
                   style={{
-                    fontSize: "20px",
+                    fontSize: "24px",
                     color: theme.turquoise,
                     letterSpacing: "0.16em",
                     textTransform: "uppercase",
@@ -160,7 +160,7 @@ export function RiskControlsSlide() {
             <tr style={{ background: "transparent", borderBottom: "1px solid rgba(77,186,214,0.1)" }}>
               <td
                 style={{
-                  fontSize: "20px",
+                  fontSize: "24px",
                   color: "rgba(255,255,255,0.92)",
                   fontFamily: font,
                   fontWeight: 400,
@@ -172,7 +172,7 @@ export function RiskControlsSlide() {
                   id="risk-controls:risk-1"
                   as="span"
                   style={{
-                    fontSize: "20px",
+                    fontSize: "24px",
                     color: "rgba(255,255,255,0.92)",
                     fontFamily: font,
                     fontWeight: 400,
@@ -183,7 +183,7 @@ export function RiskControlsSlide() {
               </td>
               <td
                 style={{
-                  fontSize: "20px",
+                  fontSize: "24px",
                   color: theme.lightBlue,
                   fontFamily: font,
                   fontWeight: 300,
@@ -194,7 +194,7 @@ export function RiskControlsSlide() {
                   id="risk-controls:mitigant-1"
                   as="span"
                   style={{
-                    fontSize: "20px",
+                    fontSize: "24px",
                     color: theme.lightBlue,
                     fontFamily: font,
                     fontWeight: 300,
@@ -209,7 +209,7 @@ export function RiskControlsSlide() {
             <tr style={{ background: "rgba(255,255,255,0.02)", borderBottom: "1px solid rgba(77,186,214,0.1)" }}>
               <td
                 style={{
-                  fontSize: "20px",
+                  fontSize: "24px",
                   color: "rgba(255,255,255,0.92)",
                   fontFamily: font,
                   fontWeight: 400,
@@ -221,7 +221,7 @@ export function RiskControlsSlide() {
                   id="risk-controls:risk-2"
                   as="span"
                   style={{
-                    fontSize: "20px",
+                    fontSize: "24px",
                     color: "rgba(255,255,255,0.92)",
                     fontFamily: font,
                     fontWeight: 400,
@@ -232,7 +232,7 @@ export function RiskControlsSlide() {
               </td>
               <td
                 style={{
-                  fontSize: "20px",
+                  fontSize: "24px",
                   color: theme.lightBlue,
                   fontFamily: font,
                   fontWeight: 300,
@@ -243,7 +243,7 @@ export function RiskControlsSlide() {
                   id="risk-controls:mitigant-2"
                   as="span"
                   style={{
-                    fontSize: "20px",
+                    fontSize: "24px",
                     color: theme.lightBlue,
                     fontFamily: font,
                     fontWeight: 300,
@@ -258,7 +258,7 @@ export function RiskControlsSlide() {
             <tr style={{ background: "transparent", borderBottom: "1px solid rgba(77,186,214,0.1)" }}>
               <td
                 style={{
-                  fontSize: "20px",
+                  fontSize: "24px",
                   color: "rgba(255,255,255,0.92)",
                   fontFamily: font,
                   fontWeight: 400,
@@ -270,7 +270,7 @@ export function RiskControlsSlide() {
                   id="risk-controls:risk-3"
                   as="span"
                   style={{
-                    fontSize: "20px",
+                    fontSize: "24px",
                     color: "rgba(255,255,255,0.92)",
                     fontFamily: font,
                     fontWeight: 400,
@@ -281,7 +281,7 @@ export function RiskControlsSlide() {
               </td>
               <td
                 style={{
-                  fontSize: "20px",
+                  fontSize: "24px",
                   color: theme.lightBlue,
                   fontFamily: font,
                   fontWeight: 300,
@@ -292,7 +292,7 @@ export function RiskControlsSlide() {
                   id="risk-controls:mitigant-3"
                   as="span"
                   style={{
-                    fontSize: "20px",
+                    fontSize: "24px",
                     color: theme.lightBlue,
                     fontFamily: font,
                     fontWeight: 300,
@@ -307,7 +307,7 @@ export function RiskControlsSlide() {
             <tr style={{ background: "rgba(255,255,255,0.02)", borderBottom: "1px solid rgba(77,186,214,0.1)" }}>
               <td
                 style={{
-                  fontSize: "20px",
+                  fontSize: "24px",
                   color: "rgba(255,255,255,0.92)",
                   fontFamily: font,
                   fontWeight: 400,
@@ -319,7 +319,7 @@ export function RiskControlsSlide() {
                   id="risk-controls:risk-4"
                   as="span"
                   style={{
-                    fontSize: "20px",
+                    fontSize: "24px",
                     color: "rgba(255,255,255,0.92)",
                     fontFamily: font,
                     fontWeight: 400,
@@ -330,7 +330,7 @@ export function RiskControlsSlide() {
               </td>
               <td
                 style={{
-                  fontSize: "20px",
+                  fontSize: "24px",
                   color: theme.lightBlue,
                   fontFamily: font,
                   fontWeight: 300,
@@ -341,7 +341,7 @@ export function RiskControlsSlide() {
                   id="risk-controls:mitigant-4"
                   as="span"
                   style={{
-                    fontSize: "20px",
+                    fontSize: "24px",
                     color: theme.lightBlue,
                     fontFamily: font,
                     fontWeight: 300,
@@ -356,7 +356,7 @@ export function RiskControlsSlide() {
             <tr style={{ background: "transparent", borderBottom: "1px solid rgba(77,186,214,0.1)" }}>
               <td
                 style={{
-                  fontSize: "20px",
+                  fontSize: "24px",
                   color: "rgba(255,255,255,0.92)",
                   fontFamily: font,
                   fontWeight: 400,
@@ -368,7 +368,7 @@ export function RiskControlsSlide() {
                   id="risk-controls:risk-5"
                   as="span"
                   style={{
-                    fontSize: "20px",
+                    fontSize: "24px",
                     color: "rgba(255,255,255,0.92)",
                     fontFamily: font,
                     fontWeight: 400,
@@ -379,7 +379,7 @@ export function RiskControlsSlide() {
               </td>
               <td
                 style={{
-                  fontSize: "20px",
+                  fontSize: "24px",
                   color: theme.lightBlue,
                   fontFamily: font,
                   fontWeight: 300,
@@ -390,7 +390,7 @@ export function RiskControlsSlide() {
                   id="risk-controls:mitigant-5"
                   as="span"
                   style={{
-                    fontSize: "20px",
+                    fontSize: "24px",
                     color: theme.lightBlue,
                     fontFamily: font,
                     fontWeight: 300,

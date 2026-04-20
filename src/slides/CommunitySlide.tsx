@@ -50,7 +50,7 @@ export function CommunitySlide() {
         <LotusMark width={180} onDark />
       </motion.div>
       <motion.div {...lift(0.1)} style={{ position: "absolute", top: 64, left: "50%", transform: "translateX(-50%)" }}>
-        <EditableText id="community:slide-num" as="span" style={{ fontSize: 11, fontWeight: 400, letterSpacing: "0.44em", color: "rgba(206,232,238,0.22)", textTransform: "lowercase" }}>
+        <EditableText id="community:slide-num" as="span" style={{ fontSize: 14, fontWeight: 400, letterSpacing: "0.44em", color: "rgba(206,232,238,0.22)", textTransform: "lowercase" }}>
           03 / steelton village
         </EditableText>
       </motion.div>
@@ -64,7 +64,7 @@ export function CommunitySlide() {
             style={{ transformOrigin: "left" }}>
             <EditableEl id="community:rule-left" label="eyebrow rule left" type="bar" style={{ width: 52, height: 1.5, background: theme.turquoise }} />
           </motion.div>
-          <EditableText id="community:eyebrow" label="eyebrow" as="span" style={{ fontSize: 13, fontWeight: 400, letterSpacing: "0.4em", color: theme.turquoise, textTransform: "lowercase" }}>
+          <EditableText id="community:eyebrow" label="eyebrow" as="span" style={{ fontSize: 16, fontWeight: 400, letterSpacing: "0.4em", color: theme.turquoise, textTransform: "lowercase" }}>
             steelton village · phase 1
           </EditableText>
           <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.3, duration: 0.5 }}
@@ -74,7 +74,7 @@ export function CommunitySlide() {
         </motion.div>
 
         {/* Editorial statement */}
-        <div style={{ fontSize: "38px", fontWeight: 300, color: "#fff", lineHeight: 1.0, letterSpacing: "-0.02em", textTransform: "lowercase", marginBottom: 40 }}>
+        <div style={{ fontSize: "46px", fontWeight: 300, color: "#fff", lineHeight: 1.0, letterSpacing: "-0.02em", textTransform: "lowercase", marginBottom: 40 }}>
           {EDITORIAL_LINES.map((line, i) => (
             <div key={i} style={{ overflow: "hidden", paddingBottom: 6 }}>
               <motion.span
@@ -99,7 +99,7 @@ export function CommunitySlide() {
           style={{ display: "flex", alignItems: "center", gap: 32 }}
         >
           {CONCEPTS.map((c, i) => (
-            <EditableText key={i} id={`community:concept-${i}`} label={`concept — ${c}`} as="span" style={{ fontSize: 12, fontWeight: 400, letterSpacing: "0.22em", color: "rgba(206,232,238,0.50)", textTransform: "lowercase" }}>
+            <EditableText key={i} id={`community:concept-${i}`} label={`concept — ${c}`} as="span" style={{ fontSize: 15, fontWeight: 400, letterSpacing: "0.22em", color: "rgba(206,232,238,0.50)", textTransform: "lowercase" }}>
               {c}
             </EditableText>
           ))}
@@ -108,7 +108,7 @@ export function CommunitySlide() {
 
       {/* Tagline */}
       <motion.div {...lift(1.4)} style={{ position: "absolute", bottom: 32, right: 72 }}>
-        <EditableText id="community:tagline" label="tagline" as="span" style={{ fontSize: 13, fontWeight: 300, color: "rgba(206,232,238,0.40)", letterSpacing: "0.28em", textTransform: "lowercase" }}>
+        <EditableText id="community:tagline" label="tagline" as="span" style={{ fontSize: 16, fontWeight: 300, color: "rgba(206,232,238,0.40)", letterSpacing: "0.28em", textTransform: "lowercase" }}>
           mindfully creating.
         </EditableText>
       </motion.div>

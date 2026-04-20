@@ -64,7 +64,7 @@ export default function CollectiveModelSlide() {
             id="collective-model:eyebrow"
             as="div"
             style={{
-              fontSize: "20px",
+              fontSize: "24px",
               color: theme.turquoise,
               letterSpacing: "0.12em",
               textTransform: "lowercase",
@@ -80,7 +80,7 @@ export default function CollectiveModelSlide() {
             id="collective-model:headline"
             as="h1"
             style={{
-              fontSize: "38px",
+              fontSize: "46px",
               color: "#fff",
               fontWeight: 300,
               fontFamily: font,
@@ -119,7 +119,7 @@ export default function CollectiveModelSlide() {
                 id={`collective-model:bullet-${i}`}
                 as="div"
                 style={{
-                  fontSize: "20px",
+                  fontSize: "24px",
                   color: "rgba(255,255,255,0.88)",
                   fontWeight: 400,
                   fontFamily: font,
@@ -136,7 +136,7 @@ export default function CollectiveModelSlide() {
             id="collective-model:closing"
             as="div"
             style={{
-              fontSize: "20px",
+              fontSize: "24px",
               color: theme.turquoise,
               fontWeight: 300,
               fontFamily: font,
@@ -152,7 +152,7 @@ export default function CollectiveModelSlide() {
         <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 0, padding: "0 16px" }}>
           {/* Ladder label */}
           <div style={{ marginBottom: 20, textAlign: "center" }}>
-            <div style={{ fontSize: "20px", color: theme.turquoise, fontFamily: font, fontWeight: 300, letterSpacing: "0.18em", textTransform: "lowercase" }}>
+            <div style={{ fontSize: "24px", color: theme.turquoise, fontFamily: font, fontWeight: 300, letterSpacing: "0.18em", textTransform: "lowercase" }}>
               participation levels
             </div>
           </div>
@@ -181,14 +181,14 @@ export default function CollectiveModelSlide() {
                   <EditableText
                     id={`collective-model:tile-label-${level.index}`}
                     as="div"
-                    style={{ fontSize: "20px", color: "#fff", fontFamily: font, fontWeight: 400, textTransform: "lowercase", lineHeight: 1.2 }}
+                    style={{ fontSize: "24px", color: "#fff", fontFamily: font, fontWeight: 400, textTransform: "lowercase", lineHeight: 1.2 }}
                   >
                     {level.label}
                   </EditableText>
                   <EditableText
                     id={`collective-model:tile-sublabel-${level.index}`}
                     as="div"
-                    style={{ fontSize: "20px", color: "rgba(206,232,238,0.6)", fontFamily: font, fontWeight: 300, textTransform: "lowercase", marginTop: 4 }}
+                    style={{ fontSize: "24px", color: "rgba(206,232,238,0.6)", fontFamily: font, fontWeight: 300, textTransform: "lowercase", marginTop: 4 }}
                   >
                     {level.sublabel}
                   </EditableText>
@@ -199,7 +199,7 @@ export default function CollectiveModelSlide() {
 
           {/* Bottom label */}
           <div style={{ marginTop: 16, textAlign: "center" }}>
-            <div style={{ fontSize: "20px", color: "rgba(255,255,255,0.35)", fontFamily: font, fontWeight: 300, textTransform: "lowercase", fontStyle: "italic" }}>
+            <div style={{ fontSize: "24px", color: "rgba(255,255,255,0.35)", fontFamily: font, fontWeight: 300, textTransform: "lowercase", fontStyle: "italic" }}>
               all partners receive base reporting
             </div>
           </div>

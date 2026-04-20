@@ -19,7 +19,7 @@ const cell = (content: ReactNode, accent = false, right = false) => (
       alignItems: "center",
       justifyContent: right ? "flex-end" : "flex-start",
       color: accent ? INK : muted(0.55),
-      fontSize: "20px",
+      fontSize: "24px",
       fontFamily: font,
       fontWeight: 300,
       textTransform: "lowercase",
@@ -52,7 +52,7 @@ export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfi
             id={`${k}-impact:eyebrow`}
             as="div"
             style={{
-              fontSize: 11,
+              fontSize: 14,
               color: theme.turquoise,
               letterSpacing: "0.28em",
               textTransform: "lowercase",
@@ -68,7 +68,7 @@ export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfi
             id={`${k}-impact:headline`}
             as="h1"
             style={{
-              fontSize: "32px",
+              fontSize: "40px",
               color: INK,
               fontWeight: 300,
               fontFamily: font,
@@ -91,7 +91,7 @@ export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfi
             <EditableText
               id={`${k}-impact:unit-mix-title`}
               as="div"
-              style={{ fontSize: 10, color: theme.turquoise, letterSpacing: "0.24em", textTransform: "lowercase", fontFamily: font, marginBottom: 4 }}
+              style={{ fontSize: 12, color: theme.turquoise, letterSpacing: "0.24em", textTransform: "lowercase", fontFamily: font, marginBottom: 4 }}
             >
               unit mix by ami tier
             </EditableText>
@@ -100,7 +100,7 @@ export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfi
               {/* Header row */}
               <div style={{ display: "grid", gridTemplateColumns: "1.4fr 0.7fr 1.2fr", background: teal(0.10), borderBottom: `1px solid ${muted(0.10)}` }}>
                 {["ami tier", "units", "unit types"].map((h) => (
-                  <div key={h} style={{ padding: "7px 12px", fontSize: 9, color: theme.turquoise, fontFamily: font, letterSpacing: "0.2em", textTransform: "lowercase" }}>
+                  <div key={h} style={{ padding: "7px 12px", fontSize: 11, color: theme.turquoise, fontFamily: font, letterSpacing: "0.2em", textTransform: "lowercase" }}>
                     {h}
                   </div>
                 ))}
@@ -126,7 +126,7 @@ export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfi
               <EditableText
                 id={`${k}-impact:resident-title`}
                 as="div"
-                style={{ fontSize: 10, color: theme.turquoise, letterSpacing: "0.24em", textTransform: "lowercase", fontFamily: font, marginBottom: 10 }}
+                style={{ fontSize: 12, color: theme.turquoise, letterSpacing: "0.24em", textTransform: "lowercase", fontFamily: font, marginBottom: 10 }}
               >
                 resident profile
               </EditableText>
@@ -141,14 +141,14 @@ export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfi
                     <EditableText
                       id={`${k}-impact:profile-val-${i}`}
                       as="div"
-                      style={{ fontSize: "28px", color: INK, fontFamily: font, fontWeight: 300, lineHeight: 1, marginBottom: 4 }}
+                      style={{ fontSize: "34px", color: INK, fontFamily: font, fontWeight: 300, lineHeight: 1, marginBottom: 4 }}
                     >
                       {item.value}
                     </EditableText>
                     <EditableText
                       id={`${k}-impact:profile-lbl-${i}`}
                       as="div"
-                      style={{ fontSize: 9, color: theme.turquoise, fontFamily: font, letterSpacing: "0.18em", textTransform: "lowercase" }}
+                      style={{ fontSize: 11, color: theme.turquoise, fontFamily: font, letterSpacing: "0.18em", textTransform: "lowercase" }}
                     >
                       {item.label}
                     </EditableText>
@@ -163,7 +163,7 @@ export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfi
             <EditableText
               id={`${k}-impact:metrics-title`}
               as="div"
-              style={{ fontSize: 10, color: theme.turquoise, letterSpacing: "0.24em", textTransform: "lowercase", fontFamily: font }}
+              style={{ fontSize: 12, color: theme.turquoise, letterSpacing: "0.24em", textTransform: "lowercase", fontFamily: font }}
             >
               impact directive — goals + metrics
             </EditableText>
@@ -189,7 +189,7 @@ export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfi
                   <EditableText
                     id={`${k}-impact:row-pillar-${i}`}
                     as="div"
-                    style={{ fontSize: 9, color: theme.turquoise, letterSpacing: "0.16em", textTransform: "lowercase", fontFamily: font }}
+                    style={{ fontSize: 11, color: theme.turquoise, letterSpacing: "0.16em", textTransform: "lowercase", fontFamily: font }}
                   >
                     {row.pillar}
                   </EditableText>
@@ -198,7 +198,7 @@ export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfi
                   <EditableText
                     id={`${k}-impact:row-metric-${i}`}
                     as="div"
-                    style={{ fontSize: 12, color: muted(0.65), fontFamily: font, textTransform: "lowercase" }}
+                    style={{ fontSize: 15, color: muted(0.65), fontFamily: font, textTransform: "lowercase" }}
                   >
                     {row.metric}
                   </EditableText>
@@ -207,7 +207,7 @@ export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfi
                   <EditableText
                     id={`${k}-impact:row-target-${i}`}
                     as="div"
-                    style={{ fontSize: "28px", color: INK, fontFamily: font, fontWeight: 300 }}
+                    style={{ fontSize: "34px", color: INK, fontFamily: font, fontWeight: 300 }}
                   >
                     {row.target}
                   </EditableText>
@@ -216,7 +216,7 @@ export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfi
                   <EditableText
                     id={`${k}-impact:row-baseline-${i}`}
                     as="div"
-                    style={{ fontSize: 11, color: muted(0.40), fontFamily: font, textTransform: "lowercase" }}
+                    style={{ fontSize: 14, color: muted(0.40), fontFamily: font, textTransform: "lowercase" }}
                   >
                     {row.baseline}
                   </EditableText>
@@ -229,7 +229,7 @@ export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfi
               <EditableText
                 id={`${k}-impact:tenyear-title`}
                 as="div"
-                style={{ fontSize: 10, color: theme.turquoise, letterSpacing: "0.24em", textTransform: "lowercase", fontFamily: font, marginBottom: 10 }}
+                style={{ fontSize: 12, color: theme.turquoise, letterSpacing: "0.24em", textTransform: "lowercase", fontFamily: font, marginBottom: 10 }}
               >
                 10-year impact projection
               </EditableText>
@@ -244,14 +244,14 @@ export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfi
                     <EditableText
                       id={`${k}-impact:tenyear-val-${i}`}
                       as="div"
-                      style={{ fontSize: "32px", color: INK, fontFamily: font, fontWeight: 300, lineHeight: 1, marginBottom: 5 }}
+                      style={{ fontSize: "40px", color: INK, fontFamily: font, fontWeight: 300, lineHeight: 1, marginBottom: 5 }}
                     >
                       {stat.value}
                     </EditableText>
                     <EditableText
                       id={`${k}-impact:tenyear-lbl-${i}`}
                       as="div"
-                      style={{ fontSize: 9, color: muted(0.45), fontFamily: font, lineHeight: 1.4, textTransform: "lowercase" }}
+                      style={{ fontSize: 11, color: muted(0.45), fontFamily: font, lineHeight: 1.4, textTransform: "lowercase" }}
                     >
                       {stat.label}
                     </EditableText>

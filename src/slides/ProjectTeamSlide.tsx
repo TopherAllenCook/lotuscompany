@@ -31,7 +31,7 @@ export function ProjectTeamSlide({ project }: { project: ProjectConfig }) {
           <EditableText
             id={`${k}-team:eyebrow`}
             as="div"
-            style={{ fontSize: 11, color: theme.turquoise, letterSpacing: "0.28em", textTransform: "lowercase", fontFamily: font, fontWeight: 400, marginBottom: 10 }}
+            style={{ fontSize: 14, color: theme.turquoise, letterSpacing: "0.28em", textTransform: "lowercase", fontFamily: font, fontWeight: 400, marginBottom: 10 }}
           >
             development team · {project.name}
           </EditableText>
@@ -39,7 +39,7 @@ export function ProjectTeamSlide({ project }: { project: ProjectConfig }) {
           <EditableText
             id={`${k}-team:headline`}
             as="h1"
-            style={{ fontSize: "32px", color: INK, fontWeight: 300, fontFamily: font, lineHeight: 1.2, letterSpacing: "-0.02em", textTransform: "lowercase" }}
+            style={{ fontSize: "40px", color: INK, fontWeight: 300, fontFamily: font, lineHeight: 1.2, letterSpacing: "-0.02em", textTransform: "lowercase" }}
           >
             the lotus team assigned to this project.
           </EditableText>
@@ -85,7 +85,7 @@ export function ProjectTeamSlide({ project }: { project: ProjectConfig }) {
                     background: "rgba(255,255,255,0.50)",
                   }}
                 >
-                  <div style={{ fontSize: "38px", color: muted(0.28), fontFamily: font, fontWeight: 300, letterSpacing: "-0.02em" }}>
+                  <div style={{ fontSize: "46px", color: muted(0.28), fontFamily: font, fontWeight: 300, letterSpacing: "-0.02em" }}>
                     {member.name.charAt(0)}
                   </div>
                 </div>
@@ -97,7 +97,7 @@ export function ProjectTeamSlide({ project }: { project: ProjectConfig }) {
                     position: "absolute",
                     bottom: 12,
                     left: 16,
-                    fontSize: 9,
+                    fontSize: 11,
                     color: muted(0.22),
                     fontFamily: font,
                     letterSpacing: "0.18em",
@@ -113,14 +113,14 @@ export function ProjectTeamSlide({ project }: { project: ProjectConfig }) {
                 <EditableText
                   id={`${k}-team:name-${i}`}
                   as="div"
-                  style={{ fontSize: "32px", color: INK, fontFamily: font, fontWeight: 300, letterSpacing: "-0.01em", textTransform: "lowercase", marginBottom: 6 }}
+                  style={{ fontSize: "40px", color: INK, fontFamily: font, fontWeight: 300, letterSpacing: "-0.01em", textTransform: "lowercase", marginBottom: 6 }}
                 >
                   {member.name}
                 </EditableText>
                 <EditableText
                   id={`${k}-team:title-${i}`}
                   as="div"
-                  style={{ fontSize: 10, color: theme.turquoise, fontFamily: font, letterSpacing: "0.20em", textTransform: "lowercase", marginBottom: 16 }}
+                  style={{ fontSize: 12, color: theme.turquoise, fontFamily: font, letterSpacing: "0.20em", textTransform: "lowercase", marginBottom: 16 }}
                 >
                   {member.title}
                 </EditableText>
@@ -128,7 +128,7 @@ export function ProjectTeamSlide({ project }: { project: ProjectConfig }) {
                 <EditableText
                   id={`${k}-team:bio-${i}`}
                   as="div"
-                  style={{ fontSize: "18px", color: muted(0.50), fontFamily: font, fontWeight: 300, lineHeight: 1.65, textTransform: "lowercase" }}
+                  style={{ fontSize: "22px", color: muted(0.50), fontFamily: font, fontWeight: 300, lineHeight: 1.65, textTransform: "lowercase" }}
                 >
                   bio to be added.
                 </EditableText>

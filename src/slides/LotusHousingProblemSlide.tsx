@@ -102,7 +102,7 @@ export function LotusHousingProblemSlide() {
             id="housing-problem:eyebrow"
             as="div"
             style={{
-              fontSize: "20px",
+              fontSize: "24px",
               color: theme.turquoise,
               fontWeight: 300,
               letterSpacing: "0.28em",
@@ -118,7 +118,7 @@ export function LotusHousingProblemSlide() {
             id="housing-problem:headline"
             as="h2"
             style={{
-              fontSize: "38px",
+              fontSize: "46px",
               color: "#fff",
               fontWeight: 300,
               letterSpacing: "-0.02em",
@@ -141,7 +141,7 @@ export function LotusHousingProblemSlide() {
                   <EditableText
                     id={`housing-problem:bullet-${i}`}
                     as="p"
-                    style={{ fontSize: "20px", color: "rgba(255,255,255,0.88)", fontWeight: 400, letterSpacing: "0.04em", fontFamily: font, lineHeight: 1.65, margin: 0, textTransform: "lowercase" }}
+                    style={{ fontSize: "24px", color: "rgba(255,255,255,0.88)", fontWeight: 400, letterSpacing: "0.04em", fontFamily: font, lineHeight: 1.65, margin: 0, textTransform: "lowercase" }}
                   >
                     {bullet}
                   </EditableText>
@@ -153,7 +153,7 @@ export function LotusHousingProblemSlide() {
           <EditableText
             id="housing-problem:source"
             as="p"
-            style={{ fontSize: "20px", color: "rgba(255,255,255,0.35)", fontWeight: 300, letterSpacing: "0.06em", fontFamily: font, margin: "24px 0 0", textTransform: "lowercase" }}
+            style={{ fontSize: "24px", color: "rgba(255,255,255,0.35)", fontWeight: 300, letterSpacing: "0.06em", fontFamily: font, margin: "24px 0 0", textTransform: "lowercase" }}
           >
             sources: nlihc, hud, harvard jchs. 2025.
           </EditableText>
@@ -199,17 +199,17 @@ export function LotusHousingProblemSlide() {
                     background: "rgba(77,186,214,0.08)",
                   }}
                 >
-                  <span style={{ fontSize: "28px", color: theme.turquoise, fontFamily: font, fontWeight: 300 }}>
+                  <span style={{ fontSize: "34px", color: theme.turquoise, fontFamily: font, fontWeight: 300 }}>
                     {p.initial}
                   </span>
                 </div>
 
                 {/* Name + role */}
                 <div style={{ flex: "0 0 140px" }}>
-                  <div style={{ fontSize: "20px", color: "#fff", fontFamily: font, fontWeight: 400, textTransform: "lowercase", lineHeight: 1.3 }}>
+                  <div style={{ fontSize: "24px", color: "#fff", fontFamily: font, fontWeight: 400, textTransform: "lowercase", lineHeight: 1.3 }}>
                     {p.name}
                   </div>
-                  <div style={{ fontSize: "20px", color: "rgba(255,255,255,0.5)", fontFamily: font, fontWeight: 300, textTransform: "lowercase", marginTop: "3px", letterSpacing: "0.04em" }}>
+                  <div style={{ fontSize: "24px", color: "rgba(255,255,255,0.5)", fontFamily: font, fontWeight: 300, textTransform: "lowercase", marginTop: "3px", letterSpacing: "0.04em" }}>
                     {p.role}
                   </div>
                 </div>
@@ -219,10 +219,10 @@ export function LotusHousingProblemSlide() {
 
                 {/* Stat */}
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: "38px", color: theme.turquoise, fontFamily: font, fontWeight: 300, lineHeight: 1, letterSpacing: "-0.02em" }}>
+                  <div style={{ fontSize: "46px", color: theme.turquoise, fontFamily: font, fontWeight: 300, lineHeight: 1, letterSpacing: "-0.02em" }}>
                     {p.stat}
                   </div>
-                  <div style={{ fontSize: "20px", color: "rgba(255,255,255,0.6)", fontFamily: font, fontWeight: 300, textTransform: "lowercase", marginTop: "6px", lineHeight: 1.4 }}>
+                  <div style={{ fontSize: "24px", color: "rgba(255,255,255,0.6)", fontFamily: font, fontWeight: 300, textTransform: "lowercase", marginTop: "6px", lineHeight: 1.4 }}>
                     {p.descriptor}
                   </div>
                 </div>

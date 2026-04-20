@@ -39,7 +39,7 @@ export default function CapitalEngineSlide() {
             id="capital-engine:eyebrow"
             as="div"
             style={{
-              fontSize: "20px",
+              fontSize: "24px",
               color: theme.turquoise,
               letterSpacing: "0.28em",
               textTransform: "lowercase",
@@ -55,7 +55,7 @@ export default function CapitalEngineSlide() {
             id="capital-engine:headline"
             as="h1"
             style={{
-              fontSize: "38px",
+              fontSize: "46px",
               color: "#fff",
               fontWeight: 300,
               fontFamily: font,
@@ -81,7 +81,7 @@ export default function CapitalEngineSlide() {
               id="capital-engine:bullet-1"
               as="div"
               style={{
-                fontSize: "20px",
+                fontSize: "24px",
                 color: "rgba(255,255,255,0.88)",
                 fontWeight: 400,
                 fontFamily: font,
@@ -96,7 +96,7 @@ export default function CapitalEngineSlide() {
               id="capital-engine:bullet-2"
               as="div"
               style={{
-                fontSize: "20px",
+                fontSize: "24px",
                 color: "rgba(255,255,255,0.88)",
                 fontWeight: 400,
                 fontFamily: font,
@@ -111,7 +111,7 @@ export default function CapitalEngineSlide() {
               id="capital-engine:bullet-3"
               as="div"
               style={{
-                fontSize: "20px",
+                fontSize: "24px",
                 color: "rgba(255,255,255,0.88)",
                 fontWeight: 400,
                 fontFamily: font,
@@ -126,7 +126,7 @@ export default function CapitalEngineSlide() {
               id="capital-engine:bullet-4"
               as="div"
               style={{
-                fontSize: "20px",
+                fontSize: "24px",
                 color: "rgba(255,255,255,0.88)",
                 fontWeight: 400,
                 fontFamily: font,
@@ -141,7 +141,7 @@ export default function CapitalEngineSlide() {
               id="capital-engine:bullet-5"
               as="div"
               style={{
-                fontSize: "20px",
+                fontSize: "24px",
                 color: "rgba(255,255,255,0.88)",
                 fontWeight: 400,
                 fontFamily: font,

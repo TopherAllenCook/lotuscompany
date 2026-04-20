@@ -73,7 +73,7 @@ export default function LIHTCSlide() {
             <EditableText
               id="lihtc:eyebrow"
               as="div"
-              style={{ fontSize: 11, color: theme.turquoise, letterSpacing: "0.28em", textTransform: "lowercase", fontFamily: font, fontWeight: 400, marginBottom: 10 }}
+              style={{ fontSize: 14, color: theme.turquoise, letterSpacing: "0.28em", textTransform: "lowercase", fontFamily: font, fontWeight: 400, marginBottom: 10 }}
             >
               policy
             </EditableText>
@@ -81,7 +81,7 @@ export default function LIHTCSlide() {
             <EditableText
               id="lihtc:headline"
               as="h1"
-              style={{ fontSize: "38px", color: INK, fontWeight: 300, fontFamily: font, lineHeight: 1.1, letterSpacing: "-0.02em", textTransform: "lowercase", margin: "0 0 10px" }}
+              style={{ fontSize: "46px", color: INK, fontWeight: 300, fontFamily: font, lineHeight: 1.1, letterSpacing: "-0.02em", textTransform: "lowercase", margin: "0 0 10px" }}
             >
               what is lihtc?
             </EditableText>
@@ -89,7 +89,7 @@ export default function LIHTCSlide() {
             <EditableText
               id="lihtc:subtitle"
               as="div"
-              style={{ fontSize: "14px", color: theme.turquoise, fontFamily: font, fontStyle: "italic", fontWeight: 300, textTransform: "lowercase", marginBottom: "20px", lineHeight: 1.45 }}
+              style={{ fontSize: "18px", color: theme.turquoise, fontFamily: font, fontStyle: "italic", fontWeight: 300, textTransform: "lowercase", marginBottom: "20px", lineHeight: 1.45 }}
             >
               lihtc is the operating backbone, not just a backdrop
             </EditableText>
@@ -103,7 +103,7 @@ export default function LIHTCSlide() {
                   <EditableText
                     id={`lihtc:bullet-${i}`}
                     as="p"
-                    style={{ fontSize: "14px", color: muted(0.70), fontFamily: font, fontWeight: 300, textTransform: "lowercase", lineHeight: 1.6, margin: 0 }}
+                    style={{ fontSize: "18px", color: muted(0.70), fontFamily: font, fontWeight: 300, textTransform: "lowercase", lineHeight: 1.6, margin: 0 }}
                   >
                     {b}
                   </EditableText>
@@ -131,14 +131,14 @@ export default function LIHTCSlide() {
             <EditableText
               id="lihtc:infographic-title"
               as="div"
-              style={{ fontSize: 11, color: theme.turquoise, letterSpacing: "0.24em", textTransform: "lowercase", fontFamily: font, marginBottom: 4 }}
+              style={{ fontSize: 14, color: theme.turquoise, letterSpacing: "0.24em", textTransform: "lowercase", fontFamily: font, marginBottom: 4 }}
             >
               how lihtc works
             </EditableText>
             <EditableText
               id="lihtc:infographic-sub"
               as="div"
-              style={{ fontSize: "18px", color: muted(0.65), fontFamily: font, fontWeight: 300, textTransform: "lowercase", lineHeight: 1.5 }}
+              style={{ fontSize: "22px", color: muted(0.65), fontFamily: font, fontWeight: 300, textTransform: "lowercase", lineHeight: 1.5 }}
             >
               how affordable housing is financed in the u.s.
             </EditableText>
@@ -157,7 +157,7 @@ export default function LIHTCSlide() {
                       <EditableText
                         id={`lihtc:flow-label-${i}`}
                         as="div"
-                        style={{ fontSize: 9, color: theme.turquoise, fontFamily: font, letterSpacing: "0.12em", textTransform: "lowercase" }}
+                        style={{ fontSize: 11, color: theme.turquoise, fontFamily: font, letterSpacing: "0.12em", textTransform: "lowercase" }}
                       >
                         {step.label}
                       </EditableText>
@@ -175,14 +175,14 @@ export default function LIHTCSlide() {
                     <EditableText
                       id={`lihtc:flow-step-${i}-title`}
                       as="div"
-                      style={{ fontSize: "13px", color: INK, fontFamily: font, fontWeight: 500, textTransform: "lowercase", lineHeight: 1.3, marginBottom: "4px" }}
+                      style={{ fontSize: "16px", color: INK, fontFamily: font, fontWeight: 500, textTransform: "lowercase", lineHeight: 1.3, marginBottom: "4px" }}
                     >
                       {step.title}
                     </EditableText>
                     <EditableText
                       id={`lihtc:flow-step-${i}-sub`}
                       as="div"
-                      style={{ fontSize: "11px", color: muted(0.42), fontFamily: font, fontWeight: 300, textTransform: "lowercase" }}
+                      style={{ fontSize: "14px", color: muted(0.42), fontFamily: font, fontWeight: 300, textTransform: "lowercase" }}
                     >
                       {step.sub}
                     </EditableText>
@@ -217,14 +217,14 @@ export default function LIHTCSlide() {
               <EditableText
                 id="lihtc:developer-title"
                 as="div"
-                style={{ fontSize: "18px", color: INK, fontFamily: font, fontWeight: 400, textTransform: "lowercase" }}
+                style={{ fontSize: "22px", color: INK, fontFamily: font, fontWeight: 400, textTransform: "lowercase" }}
               >
                 developer / operator
               </EditableText>
               <EditableText
                 id="lihtc:developer-sub"
                 as="div"
-                style={{ fontSize: 11, color: theme.turquoise, fontFamily: font, fontWeight: 400, textTransform: "lowercase", letterSpacing: "0.16em", marginTop: "3px" }}
+                style={{ fontSize: 14, color: theme.turquoise, fontFamily: font, fontWeight: 400, textTransform: "lowercase", letterSpacing: "0.16em", marginTop: "3px" }}
               >
                 lotus impact initiative
               </EditableText>
@@ -236,7 +236,7 @@ export default function LIHTCSlide() {
                   <EditableText
                     id={`lihtc:dev-bullet-${i}`}
                     as="div"
-                    style={{ fontSize: "13px", color: muted(0.65), fontFamily: font, fontWeight: 300, textTransform: "lowercase", lineHeight: 1.5 }}
+                    style={{ fontSize: "16px", color: muted(0.65), fontFamily: font, fontWeight: 300, textTransform: "lowercase", lineHeight: 1.5 }}
                   >
                     {b}
                   </EditableText>
@@ -253,7 +253,7 @@ export default function LIHTCSlide() {
                 <EditableText
                   id={`lihtc:closing-${i}`}
                   as="div"
-                  style={{ fontSize: "14px", color: muted(0.50), fontFamily: font, fontWeight: 300, textTransform: "lowercase", lineHeight: 1.5 }}
+                  style={{ fontSize: "18px", color: muted(0.50), fontFamily: font, fontWeight: 300, textTransform: "lowercase", lineHeight: 1.5 }}
                 >
                   {c}
                 </EditableText>

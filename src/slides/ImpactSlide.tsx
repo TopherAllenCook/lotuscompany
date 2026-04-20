@@ -45,7 +45,7 @@ export function ImpactSlide() {
         <LotusMark width={180} onDark />
       </motion.div>
       <motion.div {...lift(0.1)} style={{ position: "absolute", top: 64, left: "50%", transform: "translateX(-50%)" }}>
-        <EditableText id="impact:slide-num" as="span" style={{ fontSize: 11, fontWeight: 400, letterSpacing: "0.44em", color: "rgba(206,232,238,0.22)", textTransform: "lowercase" }}>
+        <EditableText id="impact:slide-num" as="span" style={{ fontSize: 14, fontWeight: 400, letterSpacing: "0.44em", color: "rgba(206,232,238,0.22)", textTransform: "lowercase" }}>
           02 / steelton village
         </EditableText>
       </motion.div>
@@ -59,7 +59,7 @@ export function ImpactSlide() {
             style={{ transformOrigin: "left" }}>
             <EditableEl id="impact:rule-left" label="eyebrow rule left" type="bar" style={{ width: 52, height: 1.5, background: theme.turquoise }} />
           </motion.div>
-          <EditableText id="impact:eyebrow" label="eyebrow" as="span" style={{ fontSize: 13, fontWeight: 400, letterSpacing: "0.4em", color: theme.turquoise, textTransform: "lowercase" }}>
+          <EditableText id="impact:eyebrow" label="eyebrow" as="span" style={{ fontSize: 16, fontWeight: 400, letterSpacing: "0.4em", color: theme.turquoise, textTransform: "lowercase" }}>
             steelton village · phase 1
           </EditableText>
           <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.3, duration: 0.5 }}
@@ -69,7 +69,7 @@ export function ImpactSlide() {
         </motion.div>
 
         {/* Title */}
-        <div style={{ fontSize: "38px", fontWeight: 300, color: "#fff", lineHeight: 0.92, letterSpacing: "-0.025em", textTransform: "lowercase" }}>
+        <div style={{ fontSize: "46px", fontWeight: 300, color: "#fff", lineHeight: 0.92, letterSpacing: "-0.025em", textTransform: "lowercase" }}>
           {TITLE_WORDS.map((word, i) => (
             <div key={word} style={{ overflow: "hidden", paddingBottom: 10 }}>
               <motion.span {...reveal(0.5 + i * 0.15)} style={{ display: "inline-block" }}>
@@ -86,7 +86,7 @@ export function ImpactSlide() {
 
       {/* Tagline */}
       <motion.div {...lift(1.3)} style={{ position: "absolute", bottom: 32, right: 72 }}>
-        <EditableText id="impact:tagline" label="tagline" as="span" style={{ fontSize: 13, fontWeight: 300, color: "rgba(206,232,238,0.40)", letterSpacing: "0.28em", textTransform: "lowercase" }}>
+        <EditableText id="impact:tagline" label="tagline" as="span" style={{ fontSize: 16, fontWeight: 300, color: "rgba(206,232,238,0.40)", letterSpacing: "0.28em", textTransform: "lowercase" }}>
           mindfully creating.
         </EditableText>
       </motion.div>

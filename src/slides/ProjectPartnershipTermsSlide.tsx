@@ -53,7 +53,7 @@ export function ProjectPartnershipTermsSlide({ project }: { project: ProjectConf
           <EditableText
             id={`${k}-partnership:eyebrow`}
             as="div"
-            style={{ fontSize: 11, color: theme.turquoise, letterSpacing: "0.28em", textTransform: "lowercase", fontFamily: font, fontWeight: 400, marginBottom: 10 }}
+            style={{ fontSize: 14, color: theme.turquoise, letterSpacing: "0.28em", textTransform: "lowercase", fontFamily: font, fontWeight: 400, marginBottom: 10 }}
           >
             partnership terms · {project.name}
           </EditableText>
@@ -61,7 +61,7 @@ export function ProjectPartnershipTermsSlide({ project }: { project: ProjectConf
           <EditableText
             id={`${k}-partnership:headline`}
             as="h1"
-            style={{ fontSize: "32px", color: INK, fontWeight: 300, fontFamily: font, lineHeight: 1.2, letterSpacing: "-0.02em", textTransform: "lowercase" }}
+            style={{ fontSize: "40px", color: INK, fontWeight: 300, fontFamily: font, lineHeight: 1.2, letterSpacing: "-0.02em", textTransform: "lowercase" }}
           >
             terms are set at approval and held through the full hold period.
           </EditableText>
@@ -77,7 +77,7 @@ export function ProjectPartnershipTermsSlide({ project }: { project: ProjectConf
             <EditableText
               id={`${k}-partnership:info-title`}
               as="div"
-              style={{ fontSize: 10, color: theme.turquoise, letterSpacing: "0.24em", textTransform: "lowercase", fontFamily: font, marginBottom: 10 }}
+              style={{ fontSize: 12, color: theme.turquoise, letterSpacing: "0.24em", textTransform: "lowercase", fontFamily: font, marginBottom: 10 }}
             >
               project information
             </EditableText>
@@ -96,14 +96,14 @@ export function ProjectPartnershipTermsSlide({ project }: { project: ProjectConf
                   <EditableText
                     id={`${k}-partnership:info-lbl-${i}`}
                     as="div"
-                    style={{ padding: "9px 14px", fontSize: "18px", color: muted(0.42), fontFamily: font, textTransform: "lowercase", letterSpacing: "0.04em" }}
+                    style={{ padding: "9px 14px", fontSize: "22px", color: muted(0.42), fontFamily: font, textTransform: "lowercase", letterSpacing: "0.04em" }}
                   >
                     {row.label}
                   </EditableText>
                   <EditableText
                     id={`${k}-partnership:info-val-${i}`}
                     as="div"
-                    style={{ padding: "9px 14px", fontSize: "18px", color: muted(0.75), fontFamily: font, textTransform: "lowercase" }}
+                    style={{ padding: "9px 14px", fontSize: "22px", color: muted(0.75), fontFamily: font, textTransform: "lowercase" }}
                   >
                     {row.value}
                   </EditableText>
@@ -117,7 +117,7 @@ export function ProjectPartnershipTermsSlide({ project }: { project: ProjectConf
             <EditableText
               id={`${k}-partnership:terms-title`}
               as="div"
-              style={{ fontSize: 10, color: theme.turquoise, letterSpacing: "0.24em", textTransform: "lowercase", fontFamily: font, marginBottom: 10 }}
+              style={{ fontSize: 12, color: theme.turquoise, letterSpacing: "0.24em", textTransform: "lowercase", fontFamily: font, marginBottom: 10 }}
             >
               partnership terms
             </EditableText>
@@ -136,14 +136,14 @@ export function ProjectPartnershipTermsSlide({ project }: { project: ProjectConf
                   <EditableText
                     id={`${k}-partnership:terms-lbl-${i}`}
                     as="div"
-                    style={{ padding: "9px 14px", fontSize: "18px", color: muted(0.42), fontFamily: font, textTransform: "lowercase", letterSpacing: "0.04em" }}
+                    style={{ padding: "9px 14px", fontSize: "22px", color: muted(0.42), fontFamily: font, textTransform: "lowercase", letterSpacing: "0.04em" }}
                   >
                     {row.label}
                   </EditableText>
                   <EditableText
                     id={`${k}-partnership:terms-val-${i}`}
                     as="div"
-                    style={{ padding: "9px 14px", fontSize: "18px", color: INK, fontFamily: font, fontWeight: 400, textTransform: "lowercase" }}
+                    style={{ padding: "9px 14px", fontSize: "22px", color: INK, fontFamily: font, fontWeight: 400, textTransform: "lowercase" }}
                   >
                     {row.value}
                   </EditableText>
@@ -154,7 +154,7 @@ export function ProjectPartnershipTermsSlide({ project }: { project: ProjectConf
             <EditableText
               id={`${k}-partnership:note`}
               as="div"
-              style={{ marginTop: 14, fontSize: 10, color: muted(0.30), fontFamily: font, textTransform: "lowercase", lineHeight: 1.6 }}
+              style={{ marginTop: 14, fontSize: 12, color: muted(0.30), fontFamily: font, textTransform: "lowercase", lineHeight: 1.6 }}
             >
               all figures are projections based on current underwriting. final terms subject to lp approval and closing documents.
             </EditableText>
