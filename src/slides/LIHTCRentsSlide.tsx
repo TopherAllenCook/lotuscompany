@@ -2,8 +2,8 @@
 
 import { font, theme } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
-import { SlideFooter } from "@/components/SlideFooter";
-import { StatusChip } from "@/components/StatusChip";
+
+
 
 const marketRent = 1450;
 const tiers = [
@@ -25,7 +25,7 @@ export function LIHTCRentsSlide() {
         fontFamily: font,
       }}
     >
-      <StatusChip status="DRAFT" />
+
 
       <div
         style={{
@@ -294,11 +294,7 @@ export function LIHTCRentsSlide() {
         </div>
       </div>
 
-      <SlideFooter
-        slideKey="lihtc-rents"
-        slideNum="17"
-        sectionLabel="the platform"
-      />
+
     </div>
   );
 }

@@ -43,13 +43,6 @@ export function CoverSlide() {
         }}
       />
 
-      {/* Location — top right */}
-      <motion.div {...lift(0.25)} style={{ position: "absolute", top: 66, right: 72, display: "flex", alignItems: "center", gap: 12 }}>
-        <EditableEl id="cover:location-dot" label="location dot" type="dot" style={{ width: 5, height: 5, borderRadius: "50%", background: theme.turquoise }} />
-        <EditableText id="cover:location" label="location" as="span" style={{ fontSize: 13, fontWeight: 400, letterSpacing: "0.28em", color: theme.lightBlue, textTransform: "lowercase" }}>
-          columbus, ohio
-        </EditableText>
-      </motion.div>
 
       {/* Eyebrow */}
       <motion.div {...lift(0.4)} style={{ position: "absolute", top: "14%", left: 72, right: 72, display: "flex", alignItems: "center", gap: 16 }}>

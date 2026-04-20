@@ -2,8 +2,8 @@
 
 import { font, theme } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
-import { SlideFooter } from "@/components/SlideFooter";
-import { StatusChip } from "@/components/StatusChip";
+
+
 
 const partners = [
   { name: "newpoint real estate capital",                  category: "debt / equity",          logo: "/Logos/New Point Real Estat Capitol Logo.jpg" },
@@ -28,7 +28,7 @@ export function PartnersSlide() {
         fontFamily: font,
       }}
     >
-      <StatusChip status="READY" />
+
 
       <div
         style={{
@@ -173,11 +173,7 @@ export function PartnersSlide() {
         </EditableText>
       </div>
 
-      <SlideFooter
-        slideKey="partners"
-        slideNum="18"
-        sectionLabel="the platform"
-      />
+
     </div>
   );
 }

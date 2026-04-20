@@ -2,8 +2,8 @@
 
 import { font, theme } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
-import { SlideFooter } from "@/components/SlideFooter";
-import { StatusChip } from "@/components/StatusChip";
+
+
 import { CapitalRecyclingLoop } from "@/components/diagrams/CapitalRecyclingLoop";
 import { EditableBgImage } from "@/components/EditableBgImage";
 
@@ -45,7 +45,7 @@ export function ClosingSlide() {
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(5,10,12,0.25) 0%, rgba(5,10,12,0.10) 50%, rgba(5,10,12,0.0) 100%)" }} />
       </div>
 
-      <StatusChip status="READY" />
+
 
       <div style={{ position: "relative", display: "flex", alignItems: "center", height: "100%", padding: "56px 64px 72px", gap: 32 }}>
         {/* Left Content */}
@@ -260,7 +260,7 @@ export function ClosingSlide() {
         </div>
       </div>
 
-      <SlideFooter slideKey="closing" slideNum="15" sectionLabel="close" />
+
     </div>
   );
 }

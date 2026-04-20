@@ -3,13 +3,10 @@
 import { font, theme } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
 import { EditableBgImage } from "@/components/EditableBgImage";
-import { SlideFooter } from "@/components/SlideFooter";
-import { StatusChip } from "@/components/StatusChip";
 import type { ProjectConfig } from "./projectData";
 
 export function ProjectCoverSlide({ project }: { project: ProjectConfig }) {
   const k = project.key;
-  const slideNum = String(project.slideNumStart).padStart(2, "0");
 
   const stats = [
     { label: "units",      value: String(project.units), id: `${k}-cover:stat-val-0`, labelId: `${k}-cover:stat-lbl-0` },
@@ -50,34 +47,6 @@ export function ProjectCoverSlide({ project }: { project: ProjectConfig }) {
         }} />
       </div>
 
-      <StatusChip status="DRAFT" />
-
-      {/* Top bar */}
-      <div style={{
-        position: "absolute",
-        top: 52,
-        right: 64,
-        display: "flex",
-        alignItems: "center",
-        gap: 16,
-        zIndex: 5,
-      }}>
-        {/* Slide indicator */}
-        <EditableText
-          id={`${k}-cover:slide-indicator`}
-          as="span"
-          style={{
-            fontSize: 12,
-            fontWeight: 400,
-            letterSpacing: "0.38em",
-            color: "rgba(206,232,238,0.38)",
-            fontFamily: font,
-            textTransform: "lowercase",
-          }}
-        >
-          {slideNum} / {project.sectionLabel}
-        </EditableText>
-      </div>
 
       {/* Bottom content block */}
       <div style={{
@@ -179,11 +148,6 @@ export function ProjectCoverSlide({ project }: { project: ProjectConfig }) {
         </div>
       </div>
 
-      <SlideFooter
-        slideKey={`${k}-cover`}
-        slideNum={slideNum}
-        sectionLabel={project.sectionLabel}
-      />
     </div>
   );
 }

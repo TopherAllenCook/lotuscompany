@@ -5,8 +5,8 @@ import { font, theme } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
 import { EditableEl } from "@/components/EditableEl";
 import { EditableBgImage } from "@/components/EditableBgImage";
-import { SlideFooter } from "@/components/SlideFooter";
-import { StatusChip } from "@/components/StatusChip";
+
+
 
 export function LotusStructureSlide() {
   const tableData = [
@@ -59,7 +59,7 @@ export function LotusStructureSlide() {
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(5,10,12,0.25) 0%, rgba(5,10,12,0.10) 50%, rgba(5,10,12,0.0) 100%)" }} />
       </div>
 
-      <StatusChip status="READY" />
+
 
       {/* Header section */}
       <div
@@ -333,11 +333,7 @@ export function LotusStructureSlide() {
         </EditableEl>
       </div>
 
-      <SlideFooter
-        slideKey="structure"
-        slideNum="04"
-        sectionLabel="positioning"
-      />
+
     </div>
   );
 }

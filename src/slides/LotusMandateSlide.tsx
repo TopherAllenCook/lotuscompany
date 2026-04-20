@@ -3,8 +3,8 @@
 import { motion } from "framer-motion";
 import { font, theme } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
-import { SlideFooter } from "@/components/SlideFooter";
-import { StatusChip } from "@/components/StatusChip";
+
+
 import { EditableEl } from "@/components/EditableEl";
 import { EditableBgImage } from "@/components/EditableBgImage";
 
@@ -46,7 +46,7 @@ export function LotusMandateSlide() {
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(5,10,12,0.25) 0%, rgba(5,10,12,0.10) 50%, rgba(5,10,12,0.0) 100%)" }} />
       </div>
 
-      <StatusChip status="READY" />
+
 
       <div style={{ position: "relative", display: "flex", alignItems: "center", height: "100%", padding: "56px 64px 72px", gap: 32 }}>
       {/* Left content */}
@@ -180,7 +180,7 @@ export function LotusMandateSlide() {
       </div>
       </div>
 
-      <SlideFooter slideKey="mandate" slideNum="02" sectionLabel="mission" />
+
     </div>
   );
 }

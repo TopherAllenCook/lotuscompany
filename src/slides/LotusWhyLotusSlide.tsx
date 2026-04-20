@@ -3,8 +3,8 @@
 import { motion } from "framer-motion";
 import { font, theme } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
-import { SlideFooter } from "@/components/SlideFooter";
-import { StatusChip } from "@/components/StatusChip";
+
+
 
 const PILLARS = [
   {
@@ -32,7 +32,7 @@ export function LotusWhyLotusSlide() {
         background: theme.darkBg,
       }}
     >
-      <StatusChip status="READY" />
+
 
       {/* Top-left title block */}
       <div style={{ position: "absolute", top: 48, left: 64 }}>
@@ -255,7 +255,7 @@ export function LotusWhyLotusSlide() {
         </motion.div>
       </div>
 
-      <SlideFooter slideKey="why-lotus" slideNum="02" sectionLabel="mission" />
+
     </div>
   );
 }

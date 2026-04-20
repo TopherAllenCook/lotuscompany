@@ -2,8 +2,6 @@
 
 import { font, theme } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
-import { SlideFooter } from "@/components/SlideFooter";
-import { StatusChip } from "@/components/StatusChip";
 import { EditableEl } from "@/components/EditableEl";
 import { EditableBgImage } from "@/components/EditableBgImage";
 
@@ -36,7 +34,6 @@ export function PipelineSlide() {
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(5,10,12,0.35) 0%, rgba(5,10,12,0.15) 60%, rgba(5,10,12,0.05) 100%)" }} />
       </div>
 
-      <StatusChip status="PLACEHOLDER" />
 
       <div style={{ position: "relative", display: "flex", alignItems: "stretch", height: "100%", padding: "56px 64px 72px", gap: 40 }}>
 
@@ -271,7 +268,6 @@ export function PipelineSlide() {
         </div>
       </div>
 
-      <SlideFooter slideKey="pipeline" slideNum="14" sectionLabel="execution" />
     </div>
   );
 }

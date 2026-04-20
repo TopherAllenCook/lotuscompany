@@ -2,8 +2,6 @@
 
 import { font, theme } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
-import { SlideFooter } from "@/components/SlideFooter";
-import { StatusChip } from "@/components/StatusChip";
 import type { ProjectConfig } from "./projectData";
 
 const BG = "#F7F5F0";
@@ -48,7 +46,6 @@ export function ProjectPartnershipTermsSlide({ project }: { project: ProjectConf
         fontFamily: font,
       }}
     >
-      <StatusChip status="DRAFT" />
 
       <div style={{ display: "flex", flexDirection: "column", height: "100%", padding: "56px 64px 72px" }}>
         {/* Header */}
@@ -165,7 +162,6 @@ export function ProjectPartnershipTermsSlide({ project }: { project: ProjectConf
         </div>
       </div>
 
-      <SlideFooter slideKey={`${k}-partnership`} slideNum={slideNum} sectionLabel={project.sectionLabel} light />
     </div>
   );
 }

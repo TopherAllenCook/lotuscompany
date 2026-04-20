@@ -4,8 +4,6 @@ import { font, theme } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
 import { EditableEl } from "@/components/EditableEl";
 import { EditableBgImage } from "@/components/EditableBgImage";
-import { SlideFooter } from "@/components/SlideFooter";
-import { StatusChip } from "@/components/StatusChip";
 
 const BG = "#424242";
 const INK = "#ffffff";
@@ -54,7 +52,6 @@ export default function LIHTCSlide() {
         fontFamily: font,
       }}
     >
-      <StatusChip status="READY" />
 
       <div style={{ display: "flex", gap: "28px", flex: 1, minHeight: 0 }}>
 
@@ -267,7 +264,6 @@ export default function LIHTCSlide() {
         </div>
       </div>
 
-      <SlideFooter slideKey="lihtc" slideNum="06" sectionLabel="mechanism" />
     </div>
   );
 }

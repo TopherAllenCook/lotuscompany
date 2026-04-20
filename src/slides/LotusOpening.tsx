@@ -3,8 +3,8 @@
 import { motion } from "framer-motion";
 import { font, theme } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
-import { SlideFooter } from "@/components/SlideFooter";
-import { StatusChip } from "@/components/StatusChip";
+
+
 import { EditableBgImage } from "@/components/EditableBgImage";
 
 export function LotusOpening() {
@@ -51,7 +51,7 @@ export function LotusOpening() {
         }}
       />
 
-      <StatusChip status="READY" />
+
 
       {/* Content container */}
       <div
@@ -203,7 +203,7 @@ export function LotusOpening() {
         </EditableText>
       </div>
 
-      <SlideFooter slideKey="lotus-opening" slideNum="01" sectionLabel="opening" />
+
     </div>
   );
 }

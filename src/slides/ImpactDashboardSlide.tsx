@@ -2,8 +2,8 @@
 
 import { font, theme } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
-import { SlideFooter } from "@/components/SlideFooter";
-import { StatusChip } from "@/components/StatusChip";
+
+
 
 const PILLARS = [
   {
@@ -65,7 +65,7 @@ export function ImpactDashboardSlide() {
         background: theme.darkBg,
       }}
     >
-      <StatusChip status="DRAFT" />
+
 
       <div
         style={{
@@ -371,7 +371,7 @@ export function ImpactDashboardSlide() {
         </div>
       </div>
 
-      <SlideFooter slideKey="impact-dashboard" slideNum="13" sectionLabel="reporting" />
+
     </div>
   );
 }
