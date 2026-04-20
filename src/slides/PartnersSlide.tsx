@@ -6,14 +6,14 @@ import { EditableText } from "@/components/EditableText";
 
 
 const partners = [
+  { name: "raymond james tax credit funds",               category: "tax credit syndicator",   logo: "/Logos/Raymond_James_Financial-Logo.wine.svg" },
+  { name: "citi community capital",                       category: "cra equity investor",     logo: "/Logos/Citi Logo.jpg"                         },
   { name: "newpoint real estate capital",                  category: "debt / equity",          logo: "/Logos/New Point Real Estat Capitol Logo.jpg" },
   { name: "jpmorgan chase",                               category: "cra equity investor",     logo: "/Logos/Jp-Morgan Chase Logo.svg"              },
   { name: "ohio capital corporation for housing (occh)",  category: "syndicator / equity",     logo: "/Logos/OCCH_Logo.png"                         },
-  { name: "citi community capital",                       category: "cra equity investor",     logo: "/Logos/Citi Logo.jpg"                         },
   { name: "pnc bank",                                     category: "construction lender",     logo: "/Logos/PNC Bank Logo.svg"                     },
   { name: "keybank community development corporation",    category: "cra equity investor",     logo: "/Logos/Key Bank Logo.png"                     },
-  { name: "fannie mae",                                   category: "permanent debt",          logo: "/Logos/fannie May Logo.png"                   },
-  { name: "raymond james tax credit funds",               category: "tax credit syndicator",   logo: "/Logos/Raymond_James_Financial-Logo.wine.svg"  },
+  { name: "fannie mae",                                   category: "permanent debt",          logo: "/Logos/Fannie may logo color.png"              },
 ];
 
 export function PartnersSlide() {
@@ -114,7 +114,7 @@ export function PartnersSlide() {
                   alt={partner.name}
                   style={{
                     maxWidth: "100%",
-                    maxHeight: "64px",
+                    maxHeight: "88px",
                     objectFit: "contain",
                     display: "block",
                   }}
