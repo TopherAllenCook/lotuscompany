@@ -112,15 +112,20 @@ export default function LIHTCSlide() {
             </div>
           </div>
 
-          {/* Photo strip at card bottom */}
-          <div style={{ height: "320px", flexShrink: 0 }}>
+          {/* Photo strip at card bottom — EditableEl makes height/width overridable in editor */}
+          <EditableEl
+            id="lihtc:card-photo-container"
+            label="card photo container"
+            type="card"
+            style={{ height: 320, flexShrink: 0, overflow: "hidden" }}
+          >
             <EditableBgImage
               id="lihtc:card-photo"
               label="card photo"
               src="/lotus-photos/nova/Commercial 2025-07-07 Lotus-Nova-5.jpg"
               style={{ width: "100%", height: "100%" }}
             />
-          </div>
+          </EditableEl>
         </EditableEl>
 
         {/* ── Right: infographic ─────────────────────────────────────── */}

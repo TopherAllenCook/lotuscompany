@@ -6,10 +6,10 @@ import { asset } from "@/lib/storage";
 import { EditableText } from "@/components/EditableText";
 import { EditableEl } from "@/components/EditableEl";
 
-const lift = (delay: number) => ({
-  initial:   { opacity: 0, y: 10 },
-  animate:   { opacity: 1, y: 0 },
-  transition: { delay, duration: 0.6, ease: EASE_OUT },
+const enter = (delay: number, x = 0) => ({
+  initial:   { opacity: 0, y: x === 0 ? 16 : 0, x },
+  animate:   { opacity: 1, y: 0, x: 0 },
+  transition: { delay, duration: 0.75, ease: EASE_OUT },
 });
 
 const CRITERIA = [
@@ -22,143 +22,242 @@ const CRITERIA = [
 
 export function LotusWaySlide() {
   return (
-    <div style={{ position: "absolute", inset: 0, background: "#000", fontFamily: font, overflow: "hidden" }}>
+    <div style={{ position: "absolute", inset: 0, background: "#050a0c", fontFamily: font, overflow: "hidden" }}>
 
-      {/* Full-bleed image */}
+      {/* Background image — revealed on right side */}
       <motion.img
         src={asset("/steelton-village/Steelton I_Clubhouse_2026.03.10.jpg")}
         alt=""
         initial={{ scale: 1.0 }}
         animate={{ scale: 1.06 }}
-        transition={{ duration: 14, ease: "linear" }}
-        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 50%" }}
+        transition={{ duration: 18, ease: "linear" }}
+        style={{
+          position: "absolute", inset: 0,
+          width: "100%", height: "100%",
+          objectFit: "cover", objectPosition: "60% center",
+        }}
       />
 
-      {/* Gradient — heavier to support dense text */}
+      {/* Left-to-right fog — content readable, image breathes on right */}
       <div style={{
         position: "absolute", inset: 0,
-        background: "linear-gradient(to top, rgba(5,10,12,0.98) 0%, rgba(5,10,12,0.88) 45%, rgba(5,10,12,0.55) 75%, rgba(5,10,12,0.20) 100%)",
+        background: "linear-gradient(100deg, rgba(5,10,12,0.97) 0%, rgba(5,10,12,0.94) 38%, rgba(5,10,12,0.75) 58%, rgba(5,10,12,0.25) 80%, rgba(5,10,12,0.10) 100%)",
       }} />
 
-      {/* Top bar */}
-      <motion.div {...lift(0)} style={{ position: "absolute", top: 56, left: 72 }}>
-        <LotusMark width={180} onDark />
+      {/* Bottom vignette */}
+      <div style={{
+        position: "absolute", bottom: 0, left: 0, right: 0, height: "45%",
+        background: "linear-gradient(to top, rgba(5,10,12,0.90) 0%, transparent 100%)",
+      }} />
+
+      {/* ── Header bar ───────────────────────────────────────────────── */}
+      <motion.div {...enter(0)} style={{ position: "absolute", top: 36, left: 52 }}>
+        <LotusMark width={156} onDark />
       </motion.div>
-      <motion.div {...lift(0.1)} style={{ position: "absolute", top: 64, left: "50%", transform: "translateX(-50%)" }}>
-        <EditableText id="lotus-way:slide-num" as="span" style={{ fontSize: 14, fontWeight: 400, letterSpacing: "0.44em", color: "rgba(206,232,238,0.22)", textTransform: "lowercase" }}>
+
+      <motion.div {...enter(0.08)} style={{ position: "absolute", top: 43, left: "50%", transform: "translateX(-50%)" }}>
+        <EditableText id="lotus-way:slide-num" as="span" style={{
+          fontSize: 11, fontWeight: 400, letterSpacing: "0.50em",
+          color: "rgba(206,232,238,0.18)", textTransform: "lowercase",
+        }}>
           06 / steelton village
         </EditableText>
       </motion.div>
 
-      {/* Main card */}
-      <EditableEl id="lotus-way:card" label="glass card" type="card" style={{
-        position: "absolute", top: 118, bottom: 28, left: 64, right: 64,
-        background: "rgba(5,10,12,0.62)",
-        backdropFilter: "blur(24px) saturate(180%)",
-        WebkitBackdropFilter: "blur(24px) saturate(180%)",
-        borderRadius: "16px",
-        border: "1px solid rgba(255,255,255,0.09)",
-        boxShadow: "0 8px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.08)",
-        padding: "26px 36px 24px",
-        overflow: "hidden",
+      {/* ── Two-column body ───────────────────────────────────────────── */}
+      <div style={{
+        position: "absolute", top: 100, bottom: 0, left: 0, right: 0,
+        display: "flex",
       }}>
 
-        {/* Eyebrow */}
-        <motion.div {...lift(0.2)} style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 18 }}>
-          <EditableEl id="lotus-way:rule-left" label="eyebrow rule left" type="bar" style={{ width: 36, height: 1.5, background: theme.turquoise, flexShrink: 0 }} />
-          <EditableText id="lotus-way:eyebrow" as="span" style={{ fontSize: 12, fontWeight: 400, letterSpacing: "0.42em", color: theme.turquoise, textTransform: "lowercase", whiteSpace: "nowrap" }}>
-            the lotus way
-          </EditableText>
-          <EditableEl id="lotus-way:rule-right" label="eyebrow rule right" type="bar" style={{ width: 36, height: 1.5, background: theme.turquoise, flexShrink: 0 }} />
-          <EditableText id="lotus-way:org-label" as="span" style={{ fontSize: 11, fontWeight: 400, letterSpacing: "0.22em", color: "rgba(206,232,238,0.28)", textTransform: "lowercase" }}>
-            lotus impact initiative
-          </EditableText>
-        </motion.div>
+        {/* ── LEFT: Philosophy + Principles ────────────────────────── */}
+        <div style={{
+          flex: "0 0 46%",
+          display: "flex", flexDirection: "column", justifyContent: "flex-end",
+          padding: "0 32px 48px 52px",
+        }}>
 
-        {/* Philosophy quote */}
-        <motion.div {...lift(0.3)} style={{ marginBottom: 20 }}>
-          <EditableText id="lotus-way:quote" as="p" style={{
-            fontSize: 13.5, fontWeight: 300, color: "rgba(206,232,238,0.78)",
-            letterSpacing: "0.04em", lineHeight: 1.55, fontStyle: "italic",
-            borderLeft: `2px solid ${theme.turquoise}`, paddingLeft: 14, margin: 0,
+          {/* Eyebrow */}
+          <motion.div {...enter(0.2)} style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 22 }}>
+            <EditableEl id="lotus-way:rule" label="eyebrow rule" type="bar"
+              style={{ width: 24, height: 1.5, background: theme.turquoise, flexShrink: 0 }} />
+            <EditableText id="lotus-way:eyebrow" as="span" style={{
+              fontSize: 11, fontWeight: 400, letterSpacing: "0.46em",
+              color: theme.turquoise, textTransform: "lowercase",
+            }}>
+              the lotus way
+            </EditableText>
+            <EditableText id="lotus-way:org-label" as="span" style={{
+              fontSize: 10, fontWeight: 400, letterSpacing: "0.22em",
+              color: "rgba(206,232,238,0.22)", textTransform: "lowercase",
+            }}>
+              · lotus impact initiative
+            </EditableText>
+          </motion.div>
+
+          {/* Hero philosophy statement */}
+          <motion.div {...enter(0.3)}>
+            <EditableText id="lotus-way:quote" as="div" style={{
+              fontSize: "clamp(18px, 1.95vw, 26px)",
+              fontWeight: 300,
+              color: "#fff",
+              letterSpacing: "-0.01em",
+              lineHeight: 1.4,
+              marginBottom: 32,
+              maxWidth: 500,
+            }}>
+              We believe the psychology associated with the spaces we occupy defines the outcomes we achieve.
+            </EditableText>
+          </motion.div>
+
+          {/* Principle — Dignity First */}
+          <motion.div {...enter(0.48)} style={{
+            display: "flex", gap: 18, alignItems: "flex-start",
+            padding: "20px 0",
+            borderTop: "1px solid rgba(206,232,238,0.09)",
           }}>
-            We believe the psychology associated with the spaces we occupy defines the outcomes we achieve.
-          </EditableText>
-        </motion.div>
-
-        {/* Two columns */}
-        <div style={{ display: "flex", gap: 36, alignItems: "flex-start" }}>
-
-          {/* Left column */}
-          <motion.div {...lift(0.4)} style={{ flex: "0 0 44%" }}>
-
-            {/* Dignity first */}
-            <div style={{ marginBottom: 14 }}>
-              <EditableText id="lotus-way:dignity-label" as="div" style={{ fontSize: 11, fontWeight: 600, color: theme.turquoise, letterSpacing: "0.22em", textTransform: "lowercase", marginBottom: 4 }}>
+            <div style={{ width: 2.5, height: "100%", minHeight: 52, background: theme.turquoise, flexShrink: 0, borderRadius: 2 }} />
+            <div>
+              <EditableText id="lotus-way:dignity-label" as="div" style={{
+                fontSize: 13, fontWeight: 500, color: "#fff",
+                letterSpacing: "0.22em", textTransform: "lowercase", marginBottom: 6,
+              }}>
                 dignity first
               </EditableText>
-              <EditableText id="lotus-way:dignity-body" as="div" style={{ fontSize: 11, fontWeight: 300, color: "rgba(206,232,238,0.62)", letterSpacing: "0.03em", lineHeight: 1.65 }}>
+              <EditableText id="lotus-way:dignity-body" as="div" style={{
+                fontSize: 13, fontWeight: 300,
+                color: "rgba(206,232,238,0.58)",
+                letterSpacing: "0.02em", lineHeight: 1.65,
+              }}>
                 Our developments are designed for livability, sustainability, and community well-being.
               </EditableText>
             </div>
+          </motion.div>
 
-            {/* Mindfully Creating */}
-            <div style={{ marginBottom: 18 }}>
-              <EditableText id="lotus-way:mindful-label" as="div" style={{ fontSize: 11, fontWeight: 600, color: theme.turquoise, letterSpacing: "0.22em", textTransform: "lowercase", marginBottom: 4 }}>
+          {/* Principle — Mindfully Creating */}
+          <motion.div {...enter(0.60)} style={{
+            display: "flex", gap: 18, alignItems: "flex-start",
+            padding: "20px 0",
+            borderTop: "1px solid rgba(206,232,238,0.09)",
+          }}>
+            <div style={{ width: 2.5, height: "100%", minHeight: 52, background: theme.turquoise, flexShrink: 0, borderRadius: 2 }} />
+            <div>
+              <EditableText id="lotus-way:mindful-label" as="div" style={{
+                fontSize: 13, fontWeight: 500, color: "#fff",
+                letterSpacing: "0.22em", textTransform: "lowercase", marginBottom: 6,
+              }}>
                 mindfully creating
               </EditableText>
-              <EditableText id="lotus-way:mindful-body" as="div" style={{ fontSize: 11, fontWeight: 300, color: "rgba(206,232,238,0.62)", letterSpacing: "0.03em", lineHeight: 1.65 }}>
-                We deliver market-rate quality finishes, and thoughtful design that inspires pride of place, not stigma. Our developments raise the bar for what affordable housing should look and feel like.
-              </EditableText>
-            </div>
-
-            {/* Divider */}
-            <div style={{ height: 1, background: "rgba(206,232,238,0.10)", marginBottom: 16 }} />
-
-            {/* Lotus Ethos */}
-            <div>
-              <EditableText id="lotus-way:ethos-label" as="div" style={{ fontSize: 11, fontWeight: 600, color: theme.turquoise, letterSpacing: "0.22em", textTransform: "lowercase", marginBottom: 5 }}>
-                lotus ethos
-              </EditableText>
-              <EditableText id="lotus-way:ethos-body" as="div" style={{ fontSize: 10.5, fontWeight: 300, color: "rgba(206,232,238,0.52)", letterSpacing: "0.03em", lineHeight: 1.7 }}>
-                Achieving the results that represent the Lotus Way starts with alignment in the ethos we surround ourselves with. The alignment comes from how we present and frame our approach — the language we speak, employees we hire, markets and cities we select, investment partners we utilize, and third parties we rely upon. Impact is central to the conversation, and our core values always lead.
+              <EditableText id="lotus-way:mindful-body" as="div" style={{
+                fontSize: 13, fontWeight: 300,
+                color: "rgba(206,232,238,0.58)",
+                letterSpacing: "0.02em", lineHeight: 1.65,
+              }}>
+                Market-rate quality finishes and thoughtful design that inspires pride of place — raising the bar for what affordable housing should look and feel like.
               </EditableText>
             </div>
           </motion.div>
 
-          {/* Column divider */}
-          <div style={{ width: 1, background: "rgba(206,232,238,0.10)", alignSelf: "stretch", flexShrink: 0 }} />
+          <div style={{ height: 1, background: "rgba(206,232,238,0.09)" }} />
+        </div>
 
-          {/* Right column */}
-          <motion.div {...lift(0.5)} style={{ flex: 1 }}>
-            <EditableText id="lotus-way:standard-header" as="div" style={{ fontSize: 11, fontWeight: 500, color: "rgba(206,232,238,0.80)", letterSpacing: "0.18em", textTransform: "lowercase", marginBottom: 12 }}>
+        {/* Column divider */}
+        <div style={{ width: 1, background: "rgba(206,232,238,0.07)", flexShrink: 0, margin: "0 0 48px" }} />
+
+        {/* ── RIGHT: Ethos + Project Qualification ─────────────────── */}
+        <motion.div
+          {...enter(0.35, 18)}
+          style={{
+            flex: 1,
+            display: "flex", flexDirection: "column", justifyContent: "flex-end",
+            padding: "0 52px 48px 36px",
+          }}
+        >
+
+          {/* Lotus Ethos — glass callout */}
+          <EditableEl id="lotus-way:ethos-card" label="ethos callout" type="card" style={{
+            marginBottom: 24,
+            padding: "16px 20px",
+            background: "rgba(77,186,214,0.05)",
+            borderRadius: 10,
+            border: "1px solid rgba(77,186,214,0.13)",
+          }}>
+            <EditableText id="lotus-way:ethos-label" as="div" style={{
+              fontSize: 10, fontWeight: 600, color: theme.turquoise,
+              letterSpacing: "0.32em", textTransform: "lowercase", marginBottom: 7,
+            }}>
+              lotus ethos
+            </EditableText>
+            <EditableText id="lotus-way:ethos-body" as="div" style={{
+              fontSize: 12.5, fontWeight: 300,
+              color: "rgba(206,232,238,0.50)",
+              letterSpacing: "0.02em", lineHeight: 1.70, fontStyle: "italic",
+            }}>
+              Achieving results that represent the Lotus Way starts with alignment in the ethos we surround ourselves with — the language we speak, people we hire, cities we select, and partners we rely upon. Impact always leads.
+            </EditableText>
+          </EditableEl>
+
+          {/* How we uphold / Project Qualification */}
+          <motion.div {...enter(0.55)}>
+            <EditableText id="lotus-way:standard-header" as="div" style={{
+              fontSize: 10, fontWeight: 400,
+              color: "rgba(206,232,238,0.34)",
+              letterSpacing: "0.38em", textTransform: "lowercase", marginBottom: 8,
+            }}>
               how do we uphold this standard?
             </EditableText>
-
-            <EditableText id="lotus-way:qualification-label" as="div" style={{ fontSize: 11, fontWeight: 600, color: theme.turquoise, letterSpacing: "0.22em", textTransform: "lowercase", marginBottom: 10 }}>
+            <EditableText id="lotus-way:qualification-label" as="div" style={{
+              fontSize: 15, fontWeight: 400, color: "#fff",
+              letterSpacing: "0.14em", textTransform: "lowercase", marginBottom: 14,
+            }}>
               project qualification
             </EditableText>
+          </motion.div>
 
+          {/* Criteria */}
+          <div>
             {CRITERIA.map((item, i) => (
-              <div key={i} style={{ display: "flex", gap: 8, marginBottom: 9 }}>
-                <EditableText id={`lotus-way:q-num-${i}`} as="span" style={{ fontSize: 10.5, fontWeight: 500, color: theme.turquoise, letterSpacing: "0.08em", flexShrink: 0, paddingTop: 1 }}>
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: 10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.65 + i * 0.07, duration: 0.55, ease: EASE_OUT }}
+                style={{
+                  display: "flex", gap: 14, alignItems: "flex-start",
+                  padding: "9px 0",
+                  borderTop: "1px solid rgba(206,232,238,0.07)",
+                }}
+              >
+                <EditableText id={`lotus-way:q-num-${i}`} as="span" style={{
+                  fontSize: 11, fontWeight: 500, color: theme.turquoise,
+                  letterSpacing: "0.10em", flexShrink: 0, paddingTop: 1, minWidth: 16,
+                }}>
                   {i + 1}.
                 </EditableText>
-                <EditableText id={`lotus-way:q-${i}`} as="span" style={{ fontSize: 10.5, fontWeight: 300, color: "rgba(206,232,238,0.58)", letterSpacing: "0.03em", lineHeight: 1.65 }}>
+                <EditableText id={`lotus-way:q-${i}`} as="span" style={{
+                  fontSize: 12.5, fontWeight: 300,
+                  color: "rgba(206,232,238,0.60)",
+                  letterSpacing: "0.02em", lineHeight: 1.65,
+                }}>
                   {item}
                 </EditableText>
-              </div>
+              </motion.div>
             ))}
+            <div style={{ height: 1, background: "rgba(206,232,238,0.07)" }} />
+          </div>
 
-            {/* Sub-note for item 5 */}
-            <div style={{ paddingLeft: 18, marginTop: 2 }}>
-              <EditableText id="lotus-way:q-sub" as="div" style={{ fontSize: 10, fontWeight: 300, color: "rgba(206,232,238,0.36)", letterSpacing: "0.03em", lineHeight: 1.65, fontStyle: "italic" }}>
-                e.g. Competitive tax credit secured ensures project budget can be elevated to include heightened design standards.
-              </EditableText>
-            </div>
+          {/* Sub-note */}
+          <motion.div {...enter(1.05)} style={{ paddingTop: 9, paddingLeft: 30 }}>
+            <EditableText id="lotus-way:q-sub" as="div" style={{
+              fontSize: 11, fontWeight: 300,
+              color: "rgba(206,232,238,0.27)",
+              letterSpacing: "0.02em", lineHeight: 1.65, fontStyle: "italic",
+            }}>
+              e.g. Competitive tax credit secured ensures project budget can be elevated to include heightened design standards.
+            </EditableText>
           </motion.div>
-        </div>
-      </EditableEl>
+        </motion.div>
+      </div>
     </div>
   );
 }
