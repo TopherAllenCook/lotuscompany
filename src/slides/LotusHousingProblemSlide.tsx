@@ -29,7 +29,7 @@ const bulletVariants = {
 const PERSONAS = [
   {
     initial: "M",
-    img: "/Resident headshots/maya.png",
+    img: "/headshots/maya.png",
     name: "maya, 32",
     role: "home health aide",
     stat: "7.2M",
@@ -37,7 +37,7 @@ const PERSONAS = [
   },
   {
     initial: "L",
-    img: "/Resident headshots/Letty.jpg",
+    img: "/headshots/letty.jpg",
     name: "letty, 41",
     role: "grocery cashier",
     stat: "1 in 2",
@@ -45,7 +45,7 @@ const PERSONAS = [
   },
   {
     initial: "M",
-    img: "/Resident headshots/marcus.png",
+    img: "/headshots/marcus.png",
     name: "marcus, 29",
     role: "warehouse worker",
     stat: "8.46M",
