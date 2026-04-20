@@ -33,7 +33,7 @@ export function LotusOpening() {
         <EditableBgImage
           id="lotus-opening:bg-photo"
           label="background photo"
-          src="/republic/aerials/DJI_20250821112542_0507_D_0000.jpg"
+          src="/Forge/DSC05656.jpg"
           style={{ width: "100%", height: "100%", opacity: 0.50 }}
         />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(5,10,12,0.25) 0%, rgba(5,10,12,0.10) 50%, rgba(5,10,12,0.0) 100%)" }} />
