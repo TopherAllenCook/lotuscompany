@@ -349,7 +349,7 @@ function DeckInner({ slides, initialIndex = 0 }: DeckProps) {
           animate="center"
           exit="exit"
           transition={{ duration: 0.65, ease: EASE_OUT }}
-          onMouseDown={editMode ? () => setActiveId(null) : undefined}
+          onMouseDown={editMode ? (e) => { if (e.target === e.currentTarget) setActiveId(null); } : undefined}
           style={{ position: "absolute", inset: 0 }}
         >
           {slides[index]}

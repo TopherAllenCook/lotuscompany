@@ -113,7 +113,7 @@ export default function LIHTCSlide() {
           </div>
 
           {/* Photo strip at card bottom */}
-          <div style={{ height: "220px", flexShrink: 0 }}>
+          <div style={{ height: "320px", flexShrink: 0 }}>
             <EditableBgImage
               id="lihtc:card-photo"
               label="card photo"
