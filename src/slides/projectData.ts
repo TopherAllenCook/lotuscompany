@@ -13,7 +13,7 @@ export interface LotusWayPillar {
   label: string;
   heading: string;
   body: string;
-  img: string;
+  img?: string;
 }
 
 export interface ProjectConfig {
@@ -45,7 +45,7 @@ export interface ProjectConfig {
   slideNumStart: number;
   sectionLabel: string;
   images: { hero: string; secondary: string; tertiary: string };
-  team: [TeamMember, TeamMember];
+  team: TeamMember[];
   unitMix: UnitTier[];
   lotusWayPillars: LotusWayPillar[];
 }
@@ -87,6 +87,8 @@ export const STEELTON: ProjectConfig = {
   team: [
     { name: "christian graf",  title: "senior development associate" },
     { name: "angie clarke",    title: "development analyst"          },
+    { name: "steven",          title: "—"                            },
+    { name: "carden",          title: "—"                            },
   ],
   unitMix: [
     { ami: "30% ami", units: 28,  type: "studio / 1br" },
@@ -148,6 +150,8 @@ export const FORGE: ProjectConfig = {
   team: [
     { name: "christian graf", title: "senior development associate" },
     { name: "angie clarke",   title: "development analyst"          },
+    { name: "steven",         title: "—"                            },
+    { name: "carden",         title: "—"                            },
   ],
   unitMix: [
     { ami: "30% ami", units: 20,  type: "studio / 1br"    },
@@ -160,19 +164,16 @@ export const FORGE: ProjectConfig = {
       label: "shelter and dignity",
       heading: "two buildings, one mission",
       body: "forge delivers 193 homes across two interconnected buildings, expanding affordable supply in a neighborhood shaped by generations of disinvestment.",
-      img: "/steelton-village/Steelton I_4-corners_2026.03.26.jpg",
     },
     {
       label: "place and beauty",
       heading: "industrial heritage, renewed",
       body: "the forge design draws on the site's manufacturing history — brick, steel, and honest material choices that honor the neighborhood's working-class identity.",
-      img: "/steelton-village/Steelton I_Updated Lobby_2026.04.02.jpg",
     },
     {
       label: "knowledge and power",
       heading: "resident programs from opening day",
       body: "service partners are identified pre-construction. residents move into a building with active programming, not a building waiting to add it later.",
-      img: "/steelton-village/Steelton I_Water Detention_2026.03.26.jpg",
     },
   ],
 };
@@ -208,8 +209,10 @@ export const UPARKWAY: ProjectConfig = {
     tertiary:  "/steelton-village/Steelton I_Unit Rendering_2026.03.10.jpg",
   },
   team: [
-    { name: "andrea palmer", title: "development associate" },
-    { name: "emma brooks",   title: "development analyst"   },
+    { name: "andrea palmer",  title: "development associate" },
+    { name: "emma brooks",    title: "development analyst"   },
+    { name: "steven carden",  title: "—"                     },
+    { name: "jake jones",     title: "—"                     },
   ],
   unitMix: [
     { ami: "30% ami", units: 21,  type: "1br"           },
@@ -222,19 +225,16 @@ export const UPARKWAY: ProjectConfig = {
       label: "shelter and dignity",
       heading: "proximity to opportunity",
       body: "university parkway places 210 households within walking distance of dayton's university corridor — transit, healthcare, and employment in a single neighborhood.",
-      img: "/steelton-village/Steelton I_North Park_2026.03.10.jpg",
     },
     {
       label: "place and beauty",
       heading: "campus-adjacent quality",
       body: "the design reflects the institutional character of the university district — landscaped setbacks, quality materials, and common spaces that invite community use.",
-      img: "/steelton-village/Steelton I_Clubhouse_2026.03.10.jpg",
     },
     {
       label: "knowledge and power",
       heading: "education and workforce pipeline",
       body: "university partners provide residents with workforce training pathways, tutoring support, and continuing education access embedded in the resident services model.",
-      img: "/steelton-village/Steelton I_Unit Rendering_2026.03.10.jpg",
     },
   ],
 };
@@ -269,8 +269,11 @@ export const LOTUS_VALE: ProjectConfig = {
     tertiary:  "/steelton-village/Steelton I_Updated Lobby_2026.04.02.jpg",
   },
   team: [
-    { name: "andrea palmer", title: "development associate" },
-    { name: "angie clarke",  title: "development analyst"   },
+    { name: "andrea palmer",    title: "development associate" },
+    { name: "angie clarke",     title: "development analyst"   },
+    { name: "steven blomquist", title: "—"                     },
+    { name: "carden lykes",     title: "—"                     },
+    { name: "scott kim",        title: "—"                     },
   ],
   unitMix: [
     { ami: "30% ami", units: 11, type: "1br"           },
@@ -283,19 +286,16 @@ export const LOTUS_VALE: ProjectConfig = {
       label: "shelter and dignity",
       heading: "smaller scale, same standard",
       body: "lotus vale delivers 106 homes at the same design and service standard as lotus's larger projects — proving that the lotus model is not scale-dependent.",
-      img: "/steelton-village/Steelton I_Water Detention_2026.03.26.jpg",
     },
     {
       label: "place and beauty",
       heading: "neighborhood-scaled design",
       body: "at 106 units, lotus vale integrates into its residential context without displacing the scale and character of the surrounding neighborhood.",
-      img: "/steelton-village/Steelton I_Pedestrian Promenade_2026.03.10.jpg",
     },
     {
       label: "knowledge and power",
       heading: "concentrated resident support",
       body: "a focused service model — fewer units, higher touchpoint frequency — allows lotus vale to pilot intensive resident programs that inform platform-wide practice.",
-      img: "/steelton-village/Steelton I_Updated Lobby_2026.04.02.jpg",
     },
   ],
 };

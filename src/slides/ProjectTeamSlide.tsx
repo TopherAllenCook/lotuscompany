@@ -47,8 +47,8 @@ export function ProjectTeamSlide({ project }: { project: ProjectConfig }) {
 
         <div style={{ height: 1, background: muted(0.10), marginBottom: 32 }} />
 
-        {/* Team members — two-up */}
-        <div style={{ display: "flex", gap: 24, flex: 1, minHeight: 0, alignItems: "flex-start" }}>
+        {/* Team members — responsive grid */}
+        <div style={{ display: "grid", gridTemplateColumns: `repeat(${project.team.length}, 1fr)`, gap: 24, flex: 1, minHeight: 0, alignItems: "flex-start" }}>
           {project.team.map((member, i) => (
             <div
               key={i}

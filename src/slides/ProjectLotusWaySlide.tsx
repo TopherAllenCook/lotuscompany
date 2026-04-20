@@ -6,8 +6,9 @@ import { EditableText } from "@/components/EditableText";
 
 import type { ProjectConfig } from "./projectData";
 
-const BG  = "#F7F5F0";
-const INK = "#050a0c";
+const BG   = "#F7F5F0";
+const INK  = "#050a0c";
+const muted = (a: number) => `rgba(5,10,12,${a})`;
 
 export function ProjectLotusWaySlide({ project }: { project: ProjectConfig }) {
   const k = project.key;
@@ -57,7 +58,7 @@ export function ProjectLotusWaySlide({ project }: { project: ProjectConfig }) {
             as="h1"
             style={{
               fontSize: "46px",
-              color: "#fff",
+              color: INK,
               fontWeight: 300,
               fontFamily: font,
               lineHeight: 1.2,
@@ -98,33 +99,45 @@ export function ProjectLotusWaySlide({ project }: { project: ProjectConfig }) {
                 border: "1px solid rgba(77,186,214,0.12)",
               }}
             >
-              {/* Photo */}
+              {/* Photo or placeholder */}
               <div
                 style={{
                   flex: "0 0 44%",
                   position: "relative",
                   overflow: "hidden",
+                  background: pillar.img ? undefined : "rgba(77,186,214,0.06)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
               >
-                <img
-                  src={pillar.img}
-                  alt=""
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    objectPosition: "center 35%",
-                    display: "block",
-                  }}
-                />
-                <div
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    background:
-                      "linear-gradient(to bottom, rgba(5,10,12,0.0) 50%, rgba(5,10,12,0.65) 100%)",
-                  }}
-                />
+                {pillar.img ? (
+                  <>
+                    <img
+                      src={pillar.img}
+                      alt=""
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        objectPosition: "center 35%",
+                        display: "block",
+                      }}
+                    />
+                    <div
+                      style={{
+                        position: "absolute",
+                        inset: 0,
+                        background:
+                          "linear-gradient(to bottom, rgba(5,10,12,0.0) 50%, rgba(5,10,12,0.65) 100%)",
+                      }}
+                    />
+                  </>
+                ) : (
+                  <div style={{ fontSize: 11, color: "rgba(77,186,214,0.30)", fontFamily: font, letterSpacing: "0.18em", textTransform: "lowercase" }}>
+                    rendering coming soon
+                  </div>
+                )}
                 <EditableText
                   id={`${k}-lotus-way:pillar-label-${i}`}
                   as="div"
@@ -160,7 +173,7 @@ export function ProjectLotusWaySlide({ project }: { project: ProjectConfig }) {
                   as="div"
                   style={{
                     fontSize: "34px",
-                    color: "#fff",
+                    color: INK,
                     fontFamily: font,
                     fontWeight: 300,
                     lineHeight: 1.3,
@@ -176,7 +189,7 @@ export function ProjectLotusWaySlide({ project }: { project: ProjectConfig }) {
                   as="div"
                   style={{
                     fontSize: "24px",
-                    color: "rgba(206,232,238,0.65)",
+                    color: muted(0.60),
                     fontFamily: font,
                     fontWeight: 300,
                     lineHeight: 1.6,
