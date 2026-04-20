@@ -6,14 +6,14 @@ import { SlideFooter } from "@/components/SlideFooter";
 import { StatusChip } from "@/components/StatusChip";
 
 const partners = [
-  { name: "newpoint real estate capital", category: "debt / equity"         },
-  { name: "jpmorgan chase",              category: "cra equity investor"    },
-  { name: "ohio capital corporation for housing (occh)", category: "syndicator / equity" },
-  { name: "citi community capital",      category: "cra equity investor"    },
-  { name: "pnc bank",                    category: "construction lender"    },
-  { name: "keybank community development corporation", category: "cra equity investor" },
-  { name: "fannie mae",                  category: "permanent debt"         },
-  { name: "raymond james tax credit funds", category: "tax credit syndicator" },
+  { name: "newpoint real estate capital",                  category: "debt / equity",          logo: "/Logos/New Point Real Estat Capitol Logo.jpg" },
+  { name: "jpmorgan chase",                               category: "cra equity investor",     logo: "/Logos/Jp-Morgan Chase Logo.svg"              },
+  { name: "ohio capital corporation for housing (occh)",  category: "syndicator / equity",     logo: "/Logos/OCCH_Logo.png"                         },
+  { name: "citi community capital",                       category: "cra equity investor",     logo: "/Logos/Citi Logo.jpg"                         },
+  { name: "pnc bank",                                     category: "construction lender",     logo: "/Logos/PNC Bank Logo.svg"                     },
+  { name: "keybank community development corporation",    category: "cra equity investor",     logo: "/Logos/Key Bank Logo.png"                     },
+  { name: "fannie mae",                                   category: "permanent debt",          logo: "/Logos/fannie May Logo.png"                   },
+  { name: "raymond james tax credit funds",               category: "tax credit syndicator",   logo: "/Logos/Raymond_James_Financial-Logo.wine.svg"  },
 ];
 
 export function PartnersSlide() {
@@ -28,7 +28,7 @@ export function PartnersSlide() {
         fontFamily: font,
       }}
     >
-      <StatusChip status="DRAFT" />
+      <StatusChip status="READY" />
 
       <div
         style={{
@@ -91,57 +91,49 @@ export function PartnersSlide() {
               key={i}
               style={{
                 border: "1px solid rgba(77,186,214,0.12)",
-                borderRadius: 5,
+                borderRadius: 8,
                 background: "rgba(77,186,214,0.04)",
                 display: "flex",
                 flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: 12,
-                padding: "20px 18px",
-                textAlign: "center",
+                overflow: "hidden",
               }}
             >
-              {/* Logo placeholder */}
+              {/* Logo area — white background so logos render correctly */}
               <div
                 style={{
-                  width: "100%",
-                  height: 56,
+                  background: "#fff",
+                  flex: 1,
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  borderRadius: 3,
-                  background: "rgba(77,186,214,0.06)",
-                  border: "1px dashed rgba(77,186,214,0.15)",
+                  padding: "16px 20px",
                 }}
               >
-                <EditableText
-                  id={`partners:logo-${i}`}
-                  as="div"
+                <img
+                  src={partner.logo}
+                  alt={partner.name}
                   style={{
-                    fontSize: 8,
-                    color: "rgba(77,186,214,0.30)",
-                    fontFamily: font,
-                    letterSpacing: "0.14em",
-                    textTransform: "lowercase",
+                    maxWidth: "100%",
+                    maxHeight: "64px",
+                    objectFit: "contain",
+                    display: "block",
                   }}
-                >
-                  logo
-                </EditableText>
+                />
               </div>
 
-              <div>
+              {/* Name + category */}
+              <div style={{ padding: "10px 14px 12px", textAlign: "center" }}>
                 <EditableText
                   id={`partners:name-${i}`}
                   as="div"
                   style={{
-                    fontSize: "20px",
+                    fontSize: "11px",
                     color: "#fff",
                     fontFamily: font,
                     fontWeight: 300,
                     textTransform: "lowercase",
                     lineHeight: 1.4,
-                    marginBottom: 5,
+                    marginBottom: 4,
                   }}
                 >
                   {partner.name}
@@ -177,7 +169,7 @@ export function PartnersSlide() {
             lineHeight: 1.5,
           }}
         >
-          partner relationships vary by project. logos to be added prior to final presentation.
+          partner relationships vary by project.
         </EditableText>
       </div>
 
