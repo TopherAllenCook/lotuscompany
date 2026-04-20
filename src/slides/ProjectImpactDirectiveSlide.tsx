@@ -10,8 +10,10 @@ const INK = "#050a0c";
 const muted = (a: number) => `rgba(5,10,12,${a})`;
 const teal = (a: number) => `rgba(77,186,214,${a})`;
 
-const cell = (content: ReactNode, accent = false, right = false) => (
-  <div
+const cell = (id: string, content: ReactNode, accent = false, right = false) => (
+  <EditableText
+    id={id}
+    as="div"
     style={{
       padding: "7px 12px",
       borderBottom: `1px solid ${muted(0.07)}`,
@@ -26,7 +28,7 @@ const cell = (content: ReactNode, accent = false, right = false) => (
     }}
   >
     {content}
-  </div>
+  </EditableText>
 );
 
 export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfig }) {
@@ -100,24 +102,24 @@ export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfi
               {/* Header row */}
               <div style={{ display: "grid", gridTemplateColumns: "1.4fr 0.7fr 1.2fr", background: teal(0.10), borderBottom: `1px solid ${muted(0.10)}` }}>
                 {["ami tier", "units", "unit types"].map((h) => (
-                  <div key={h} style={{ padding: "7px 12px", fontSize: 11, color: theme.turquoise, fontFamily: font, letterSpacing: "0.2em", textTransform: "lowercase" }}>
+                  <EditableText key={h} id={`${k}-impact:unit-header-${h.replace(/\s+/g, "-")}`} as="div" style={{ padding: "7px 12px", fontSize: 11, color: theme.turquoise, fontFamily: font, letterSpacing: "0.2em", textTransform: "lowercase" }}>
                     {h}
-                  </div>
+                  </EditableText>
                 ))}
               </div>
 
               {project.unitMix.map((row, i) => (
                 <div key={i} style={{ display: "grid", gridTemplateColumns: "1.4fr 0.7fr 1.2fr", background: i % 2 === 0 ? "transparent" : muted(0.025) }}>
-                  {cell(row.ami)}
-                  {cell(String(row.units), true, true)}
-                  {cell(row.type)}
+                  {cell(`${k}-impact:unit-r${i}-ami`, row.ami)}
+                  {cell(`${k}-impact:unit-r${i}-units`, String(row.units), true, true)}
+                  {cell(`${k}-impact:unit-r${i}-type`, row.type)}
                 </div>
               ))}
 
               <div style={{ display: "grid", gridTemplateColumns: "1.4fr 0.7fr 1.2fr", background: teal(0.08), borderTop: `1px solid ${muted(0.10)}` }}>
-                {cell("total", true)}
-                {cell(String(project.units), true, true)}
-                {cell("all unit types")}
+                {cell(`${k}-impact:unit-total-label`, "total", true)}
+                {cell(`${k}-impact:unit-total-count`, String(project.units), true, true)}
+                {cell(`${k}-impact:unit-total-type`, "all unit types")}
               </div>
             </div>
 

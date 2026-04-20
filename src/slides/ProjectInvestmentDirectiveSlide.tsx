@@ -126,9 +126,9 @@ export function ProjectInvestmentDirectiveSlide({ project }: { project: ProjectC
               {/* Header */}
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr 1fr", background: teal(0.10), borderBottom: `1px solid ${muted(0.10)}` }}>
                 {["year", "event", "projected amount"].map((h) => (
-                  <div key={h} style={{ padding: "7px 12px", fontSize: 11, color: theme.turquoise, fontFamily: font, letterSpacing: "0.2em", textTransform: "lowercase" }}>
+                  <EditableText key={h} id={`${k}-investment:cashflow-header-${h.replace(/\s+/g, "-")}`} as="div" style={{ padding: "7px 12px", fontSize: 11, color: theme.turquoise, fontFamily: font, letterSpacing: "0.2em", textTransform: "lowercase" }}>
                     {h}
-                  </div>
+                  </EditableText>
                 ))}
               </div>
 

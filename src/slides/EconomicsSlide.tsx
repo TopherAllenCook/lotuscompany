@@ -87,7 +87,10 @@ export function EconomicsSlide() {
           />
 
           <div style={{ display: "flex", flexDirection: "column", gap: "20px", marginBottom: "20px" }}>
-            <div
+            <EditableEl
+              id="economics:highlight-card"
+              label="irr highlight card"
+              type="card"
               style={{
                 background: "rgba(77,186,214,0.10)",
                 border: "1px solid rgba(77,186,214,0.25)",
@@ -95,7 +98,9 @@ export function EconomicsSlide() {
                 padding: "14px 16px",
               }}
             >
-              <div
+              <EditableText
+                id="economics:irr-number"
+                as="div"
                 style={{
                   fontSize: "46px",
                   color: "#fff",
@@ -107,7 +112,7 @@ export function EconomicsSlide() {
                 }}
               >
                 13–15%
-              </div>
+              </EditableText>
               <EditableText
                 id="economics:bullet-1"
                 as="div"
@@ -122,7 +127,7 @@ export function EconomicsSlide() {
               >
                 net irr portfolio target range, not a per-deal guarantee.
               </EditableText>
-            </div>
+            </EditableEl>
 
             <EditableText
               id="economics:bullet-2"

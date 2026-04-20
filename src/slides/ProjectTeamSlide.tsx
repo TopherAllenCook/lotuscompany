@@ -85,9 +85,9 @@ export function ProjectTeamSlide({ project }: { project: ProjectConfig }) {
                     background: "rgba(255,255,255,0.50)",
                   }}
                 >
-                  <div style={{ fontSize: "46px", color: muted(0.28), fontFamily: font, fontWeight: 300, letterSpacing: "-0.02em" }}>
+                  <EditableText id={`${k}-team:avatar-initial-${i}`} as="div" style={{ fontSize: "46px", color: muted(0.28), fontFamily: font, fontWeight: 300, letterSpacing: "-0.02em" }}>
                     {member.name.charAt(0)}
-                  </div>
+                  </EditableText>
                 </div>
 
                 <EditableText

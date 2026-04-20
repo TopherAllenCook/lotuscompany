@@ -133,7 +133,7 @@ export function ProjectCommitmentSlide({ project }: { project: ProjectConfig }) 
             <div style={{ border: `1px solid ${muted(0.10)}`, borderRadius: 4, overflow: "hidden" }}>
               <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 0.7fr", background: teal(0.10), borderBottom: `1px solid ${muted(0.10)}` }}>
                 {["category", "amount", "% of total"].map((h) => (
-                  <div key={h} style={{ padding: "7px 12px", fontSize: 11, color: theme.turquoise, fontFamily: font, letterSpacing: "0.18em", textTransform: "lowercase" }}>{h}</div>
+                  <EditableText key={h} id={`${k}-commitment:use-header-${h.replace(/\s+/g, "-")}`} as="div" style={{ padding: "7px 12px", fontSize: 11, color: theme.turquoise, fontFamily: font, letterSpacing: "0.18em", textTransform: "lowercase" }}>{h}</EditableText>
                 ))}
               </div>
               {useOfFunds.map((row, i) => (
@@ -181,7 +181,7 @@ export function ProjectCommitmentSlide({ project }: { project: ProjectConfig }) 
             <div style={{ border: `1px solid ${muted(0.10)}`, borderRadius: 4, overflow: "hidden" }}>
               <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 0.6fr", background: teal(0.10), borderBottom: `1px solid ${muted(0.10)}` }}>
                 {["milestone", "target date", "% drawn"].map((h) => (
-                  <div key={h} style={{ padding: "7px 12px", fontSize: 11, color: theme.turquoise, fontFamily: font, letterSpacing: "0.18em", textTransform: "lowercase" }}>{h}</div>
+                  <EditableText key={h} id={`${k}-commitment:draw-header-${h.replace(/\s+/g, "-")}`} as="div" style={{ padding: "7px 12px", fontSize: 11, color: theme.turquoise, fontFamily: font, letterSpacing: "0.18em", textTransform: "lowercase" }}>{h}</EditableText>
                 ))}
               </div>
               {drawMilestones.map((row, i) => (

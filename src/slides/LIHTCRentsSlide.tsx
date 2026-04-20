@@ -2,6 +2,7 @@
 
 import { font, theme } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
+import { EditableEl } from "@/components/EditableEl";
 
 
 
@@ -116,7 +117,9 @@ export function LIHTCRentsSlide() {
               { step: "04", text: "rent is set as a percentage of area median income (ami), not market rate — families pay what they can afford." },
             ].map((item, i) => (
               <div key={i} style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
-                <div
+                <EditableText
+                  id={`lihtc-rents:step-num-${i}`}
+                  as="div"
                   style={{
                     flexShrink: 0,
                     fontSize: 10,
@@ -127,7 +130,7 @@ export function LIHTCRentsSlide() {
                   }}
                 >
                   {item.step}
-                </div>
+                </EditableText>
                 <EditableText
                   id={`lihtc-rents:step-${i}`}
                   as="div"
@@ -163,7 +166,10 @@ export function LIHTCRentsSlide() {
             </EditableText>
 
             {/* Market rate reference */}
-            <div
+            <EditableEl
+              id="lihtc-rents:market-row"
+              label="market rate row"
+              type="card"
               style={{
                 display: "flex",
                 justifyContent: "space-between",
@@ -188,14 +194,14 @@ export function LIHTCRentsSlide() {
               >
                 ${marketRent.toLocaleString()} / mo
               </EditableText>
-            </div>
+            </EditableEl>
 
             {/* AMI tier bars */}
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {tiers.map((tier, i) => {
                 const barPct = (tier.rent / marketRent) * 100;
                 return (
-                  <div key={i}>
+                  <EditableEl key={i} id={`lihtc-rents:tier-row-${i}`} label={`tier row — ${tier.ami}`} type="card">
                     <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 5 }}>
                       <EditableText
                         id={`lihtc-rents:tier-lbl-${i}`}
@@ -231,7 +237,7 @@ export function LIHTCRentsSlide() {
                         }}
                       />
                     </div>
-                  </div>
+                  </EditableEl>
                 );
               })}
             </div>
@@ -251,8 +257,11 @@ export function LIHTCRentsSlide() {
                 { value: "$1,015 / mo",  label: "avg monthly savings at 30% ami" },
                 { value: "15+ yrs",      label: "affordability restriction period" },
               ].map((stat, i) => (
-                <div
+                <EditableEl
                   key={i}
+                  id={`lihtc-rents:summary-tile-${i}`}
+                  label={`summary tile — ${stat.label}`}
+                  type="card"
                   style={{
                     background: "rgba(77,186,214,0.06)",
                     border: "1px solid rgba(77,186,214,0.14)",
@@ -287,7 +296,7 @@ export function LIHTCRentsSlide() {
                   >
                     {stat.label}
                   </EditableText>
-                </div>
+                </EditableEl>
               ))}
             </div>
           </div>

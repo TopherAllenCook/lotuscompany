@@ -5,6 +5,7 @@ import { EditableText } from "@/components/EditableText";
 
 
 import { CapitalRecyclingLoop } from "@/components/diagrams/CapitalRecyclingLoop";
+import { EditableEl } from "@/components/EditableEl";
 import { EditableBgImage } from "@/components/EditableBgImage";
 
 export function ClosingSlide() {
@@ -49,7 +50,7 @@ export function ClosingSlide() {
 
       <div style={{ position: "relative", display: "flex", alignItems: "center", height: "100%", padding: "56px 64px 72px", gap: 32 }}>
         {/* Left Content */}
-        <div className="anim-fade-in-up" style={{ flex: "0 0 46%", display: "flex", flexDirection: "column" }}>
+        <EditableEl id="closing:card" label="left card" type="card" className="anim-fade-in-up" style={{ flex: "0 0 46%", display: "flex", flexDirection: "column" }}>
           <EditableText
             id="closing:eyebrow"
             as="div"
@@ -92,21 +93,19 @@ export function ClosingSlide() {
           />
 
           <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-            <div
+            <EditableEl
+              id="closing:pill-1"
+              label="pill — impact-first mandate"
+              type="card"
               style={{
                 background: "rgba(77,186,214,0.08)",
                 border: "1px solid rgba(77,186,214,0.2)",
                 borderRadius: 3,
                 padding: "8px 16px",
-                fontSize: "24px",
-                color: theme.lightBlue,
-                fontFamily: font,
-                fontWeight: 300,
-                textTransform: "lowercase",
               }}
             >
               <EditableText
-                id="closing:pill-1"
+                id="closing:pill-1-text"
                 as="span"
                 style={{
                   fontSize: "24px",
@@ -118,23 +117,21 @@ export function ClosingSlide() {
               >
                 impact-first mandate.
               </EditableText>
-            </div>
+            </EditableEl>
 
-            <div
+            <EditableEl
+              id="closing:pill-2"
+              label="pill — lotus-proven execution"
+              type="card"
               style={{
                 background: "rgba(77,186,214,0.08)",
                 border: "1px solid rgba(77,186,214,0.2)",
                 borderRadius: 3,
                 padding: "8px 16px",
-                fontSize: "24px",
-                color: theme.lightBlue,
-                fontFamily: font,
-                fontWeight: 300,
-                textTransform: "lowercase",
               }}
             >
               <EditableText
-                id="closing:pill-2"
+                id="closing:pill-2-text"
                 as="span"
                 style={{
                   fontSize: "24px",
@@ -146,23 +143,21 @@ export function ClosingSlide() {
               >
                 lotus-proven execution.
               </EditableText>
-            </div>
+            </EditableEl>
 
-            <div
+            <EditableEl
+              id="closing:pill-3"
+              label="pill — disciplined recycling engine"
+              type="card"
               style={{
                 background: "rgba(77,186,214,0.08)",
                 border: "1px solid rgba(77,186,214,0.2)",
                 borderRadius: 3,
                 padding: "8px 16px",
-                fontSize: "24px",
-                color: theme.lightBlue,
-                fontFamily: font,
-                fontWeight: 300,
-                textTransform: "lowercase",
               }}
             >
               <EditableText
-                id="closing:pill-3"
+                id="closing:pill-3-text"
                 as="span"
                 style={{
                   fontSize: "24px",
@@ -174,23 +169,21 @@ export function ClosingSlide() {
               >
                 disciplined recycling engine.
               </EditableText>
-            </div>
+            </EditableEl>
 
-            <div
+            <EditableEl
+              id="closing:pill-4"
+              label="pill — active partner participation"
+              type="card"
               style={{
                 background: "rgba(77,186,214,0.08)",
                 border: "1px solid rgba(77,186,214,0.2)",
                 borderRadius: 3,
                 padding: "8px 16px",
-                fontSize: "24px",
-                color: theme.lightBlue,
-                fontFamily: font,
-                fontWeight: 300,
-                textTransform: "lowercase",
               }}
             >
               <EditableText
-                id="closing:pill-4"
+                id="closing:pill-4-text"
                 as="span"
                 style={{
                   fontSize: "24px",
@@ -202,23 +195,21 @@ export function ClosingSlide() {
               >
                 active partner participation.
               </EditableText>
-            </div>
+            </EditableEl>
 
-            <div
+            <EditableEl
+              id="closing:pill-5"
+              label="pill — durable reporting and governance"
+              type="card"
               style={{
                 background: "rgba(77,186,214,0.08)",
                 border: "1px solid rgba(77,186,214,0.2)",
                 borderRadius: 3,
                 padding: "8px 16px",
-                fontSize: "24px",
-                color: theme.lightBlue,
-                fontFamily: font,
-                fontWeight: 300,
-                textTransform: "lowercase",
               }}
             >
               <EditableText
-                id="closing:pill-5"
+                id="closing:pill-5-text"
                 as="span"
                 style={{
                   fontSize: "24px",
@@ -230,9 +221,9 @@ export function ClosingSlide() {
               >
                 durable reporting and governance.
               </EditableText>
-            </div>
+            </EditableEl>
           </div>
-        </div>
+        </EditableEl>
 
         {/* Right Diagram with Glow */}
         <div

@@ -163,7 +163,10 @@ export default function LIHTCSlide() {
                       </EditableText>
                     </div>
                   )}
-                  <div
+                  <EditableEl
+                    id={`lihtc:flow-step-box-${i}`}
+                    label={`flow step — ${step.title}`}
+                    type="card"
                     style={{
                       textAlign: "center",
                       padding: "14px 12px",
@@ -186,7 +189,7 @@ export default function LIHTCSlide() {
                     >
                       {step.sub}
                     </EditableText>
-                  </div>
+                  </EditableEl>
                 </div>
                 {i < 2 && (
                   <div style={{ flexShrink: 0, padding: "0 8px" }}>

@@ -152,9 +152,9 @@ export default function CollectiveModelSlide() {
         <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 0, padding: "0 16px" }}>
           {/* Ladder label */}
           <div style={{ marginBottom: 20, textAlign: "center" }}>
-            <div style={{ fontSize: "24px", color: theme.turquoise, fontFamily: font, fontWeight: 300, letterSpacing: "0.18em", textTransform: "lowercase" }}>
+            <EditableText id="collective-model:ladder-title" as="div" style={{ fontSize: "24px", color: theme.turquoise, fontFamily: font, fontWeight: 300, letterSpacing: "0.18em", textTransform: "lowercase" }}>
               participation levels
-            </div>
+            </EditableText>
           </div>
 
           {/* Rungs — rendered top (shaping) → bottom (informed) */}
@@ -199,9 +199,9 @@ export default function CollectiveModelSlide() {
 
           {/* Bottom label */}
           <div style={{ marginTop: 16, textAlign: "center" }}>
-            <div style={{ fontSize: "24px", color: "rgba(255,255,255,0.35)", fontFamily: font, fontWeight: 300, textTransform: "lowercase", fontStyle: "italic" }}>
+            <EditableText id="collective-model:ladder-footer" as="div" style={{ fontSize: "24px", color: "rgba(255,255,255,0.35)", fontFamily: font, fontWeight: 300, textTransform: "lowercase", fontStyle: "italic" }}>
               all partners receive base reporting
-            </div>
+            </EditableText>
           </div>
         </div>
       </div>

@@ -170,7 +170,10 @@ export function LotusHousingProblemSlide() {
               variants={cardVariants}
               style={{ flex: 1 }}
             >
-              <div
+              <EditableEl
+                id={`housing-problem:persona-card-${i}`}
+                label={`persona card — ${p.name}`}
+                type="card"
                 style={{
                   height: "100%",
                   display: "flex",
@@ -185,7 +188,7 @@ export function LotusHousingProblemSlide() {
                   boxShadow: "0 4px 24px rgba(0,0,0,0.35)",
                 }}
               >
-                {/* Avatar */}
+                {/* Avatar — initial letter */}
                 <div
                   style={{
                     width: "60px",
@@ -199,19 +202,19 @@ export function LotusHousingProblemSlide() {
                     background: "rgba(77,186,214,0.08)",
                   }}
                 >
-                  <span style={{ fontSize: "34px", color: theme.turquoise, fontFamily: font, fontWeight: 300 }}>
+                  <EditableText id={`housing-problem:persona-initial-${i}`} as="span" style={{ fontSize: "34px", color: theme.turquoise, fontFamily: font, fontWeight: 300 }}>
                     {p.initial}
-                  </span>
+                  </EditableText>
                 </div>
 
                 {/* Name + role */}
                 <div style={{ flex: "0 0 140px" }}>
-                  <div style={{ fontSize: "24px", color: "#fff", fontFamily: font, fontWeight: 400, textTransform: "lowercase", lineHeight: 1.3 }}>
+                  <EditableText id={`housing-problem:persona-name-${i}`} as="div" style={{ fontSize: "24px", color: "#fff", fontFamily: font, fontWeight: 400, textTransform: "lowercase", lineHeight: 1.3 }}>
                     {p.name}
-                  </div>
-                  <div style={{ fontSize: "24px", color: "rgba(255,255,255,0.5)", fontFamily: font, fontWeight: 300, textTransform: "lowercase", marginTop: "3px", letterSpacing: "0.04em" }}>
+                  </EditableText>
+                  <EditableText id={`housing-problem:persona-role-${i}`} as="div" style={{ fontSize: "24px", color: "rgba(255,255,255,0.5)", fontFamily: font, fontWeight: 300, textTransform: "lowercase", marginTop: "3px", letterSpacing: "0.04em" }}>
                     {p.role}
-                  </div>
+                  </EditableText>
                 </div>
 
                 {/* Divider */}
@@ -219,14 +222,14 @@ export function LotusHousingProblemSlide() {
 
                 {/* Stat */}
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: "46px", color: theme.turquoise, fontFamily: font, fontWeight: 300, lineHeight: 1, letterSpacing: "-0.02em" }}>
+                  <EditableText id={`housing-problem:persona-stat-${i}`} as="div" style={{ fontSize: "46px", color: theme.turquoise, fontFamily: font, fontWeight: 300, lineHeight: 1, letterSpacing: "-0.02em" }}>
                     {p.stat}
-                  </div>
-                  <div style={{ fontSize: "24px", color: "rgba(255,255,255,0.6)", fontFamily: font, fontWeight: 300, textTransform: "lowercase", marginTop: "6px", lineHeight: 1.4 }}>
+                  </EditableText>
+                  <EditableText id={`housing-problem:persona-desc-${i}`} as="div" style={{ fontSize: "24px", color: "rgba(255,255,255,0.6)", fontFamily: font, fontWeight: 300, textTransform: "lowercase", marginTop: "6px", lineHeight: 1.4 }}>
                     {p.descriptor}
-                  </div>
+                  </EditableText>
                 </div>
-              </div>
+              </EditableEl>
             </motion.div>
           ))}
         </div>

@@ -2,6 +2,7 @@
 
 import { font, theme } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
+import { EditableEl } from "@/components/EditableEl";
 
 
 
@@ -87,8 +88,11 @@ export function ImpactDashboardSlide() {
           }}
         >
           {PILLARS.map((pillar) => (
-            <div
+            <EditableEl
               key={pillar.key}
+              id={`impact-dashboard:pillar-strip-${pillar.key}`}
+              label={`photo strip — ${pillar.key}`}
+              type="card"
               style={{ flex: 1, position: "relative", overflow: "hidden" }}
             >
               <img
@@ -111,7 +115,9 @@ export function ImpactDashboardSlide() {
                     "linear-gradient(to right, rgba(5,10,12,0.72) 0%, rgba(5,10,12,0.18) 55%, rgba(5,10,12,0.0) 100%)",
                 }}
               />
-              <div
+              <EditableText
+                id={`impact-dashboard:pillar-strip-label-${pillar.key}`}
+                as="div"
                 style={{
                   position: "absolute",
                   bottom: "10px",
@@ -127,8 +133,8 @@ export function ImpactDashboardSlide() {
                 }}
               >
                 {pillar.label}
-              </div>
-            </div>
+              </EditableText>
+            </EditableEl>
           ))}
         </div>
 
@@ -207,7 +213,10 @@ export function ImpactDashboardSlide() {
                 }}
               >
                 {/* Pillar label cell */}
-                <div
+                <EditableEl
+                  id={`impact-dashboard:pillar-cell-${pillar.key}`}
+                  label={`pillar cell — ${pillar.key}`}
+                  type="card"
                   style={{
                     flex: "0 0 130px",
                     display: "flex",
@@ -233,12 +242,15 @@ export function ImpactDashboardSlide() {
                   >
                     {pillar.label}
                   </EditableText>
-                </div>
+                </EditableEl>
 
                 {/* 3 metric tiles */}
                 {pillar.tiles.map((tile) => (
-                  <div
+                  <EditableEl
                     key={tile.id}
+                    id={`impact-dashboard:${tile.id}`}
+                    label={`tile — ${tile.label}`}
+                    type="card"
                     style={{
                       flex: 1,
                       background: "rgba(77,186,214,0.05)",
@@ -297,7 +309,7 @@ export function ImpactDashboardSlide() {
                     >
                       {tile.def}
                     </EditableText>
-                  </div>
+                  </EditableEl>
                 ))}
               </div>
             ))}
@@ -314,8 +326,11 @@ export function ImpactDashboardSlide() {
             }}
           >
             {BOTTOM_STATS.map((stat, i) => (
-              <div
+              <EditableEl
                 key={i}
+                id={`impact-dashboard:bottom-stat-${i}`}
+                label={`bottom stat — ${stat.label}`}
+                type="card"
                 style={{
                   background: "rgba(77,186,214,0.08)",
                   border: "1px solid rgba(77,186,214,0.22)",
@@ -365,7 +380,7 @@ export function ImpactDashboardSlide() {
                 >
                   {stat.sub}
                 </EditableText>
-              </div>
+              </EditableEl>
             ))}
           </div>
         </div>
