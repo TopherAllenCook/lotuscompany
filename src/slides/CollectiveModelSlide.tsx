@@ -161,7 +161,7 @@ export default function CollectiveModelSlide() {
           <div style={{ display: "flex", flexDirection: "column", gap: 10, width: "100%", alignItems: "center" }}>
             {[...participationLevels].reverse().map((level, idx) => {
               const widths = ["58%", "72%", "86%", "100%"];
-              const opacities = [0.22, 0.15, 0.10, 0.06];
+              const opacities = [0.12, 0.08, 0.05, 0.02];
               return (
                 <div
                   key={level.index}
