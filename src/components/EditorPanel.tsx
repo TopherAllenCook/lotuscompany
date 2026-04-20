@@ -120,6 +120,41 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
   const [colorHex, setColorHex] = useState("#ffffff");
   const [bgHex, setBgHex] = useState("#4dbad6");
   const prevActiveId = useRef<string | null>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  // Keyboard navigation: Tab cycles elements, Escape deselects/closes, Enter focuses textarea
+  useEffect(() => {
+    if (!open) return;
+    const handler = (e: KeyboardEvent) => {
+      const tag = (e.target as HTMLElement).tagName;
+      const isInput = tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT";
+
+      if (e.key === "Escape") {
+        e.preventDefault();
+        if (activeId) { setActiveId(null); } else { setEditMode(false); setActiveId(null); onClose(); }
+        return;
+      }
+
+      if (e.key === "Tab" && !isInput) {
+        e.preventDefault();
+        if (editables.length === 0) return;
+        const idx = editables.findIndex(el => el.id === activeId);
+        const next = e.shiftKey
+          ? (idx <= 0 ? editables.length - 1 : idx - 1)
+          : (idx < 0 || idx >= editables.length - 1 ? 0 : idx + 1);
+        setActiveId(editables[next].id);
+        return;
+      }
+
+      if (e.key === "Enter" && !isInput && activeId && isTextType) {
+        e.preventDefault();
+        setTimeout(() => textareaRef.current?.focus(), 30);
+      }
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open, activeId, editables, isTextType, setActiveId, setEditMode, onClose]);
 
   useEffect(() => {
     if (!activeId || activeId === prevActiveId.current) return;
@@ -540,6 +575,7 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
                         text content
                       </label>
                       <textarea
+                        ref={textareaRef}
                         value={contentText}
                         onChange={e => handleContent(e.target.value)}
                         rows={3}
@@ -726,7 +762,7 @@ export function EditorPanel({ slideKey, open, onClose }: Props) {
           {/* Footer */}
           <div style={{ flexShrink: 0, padding: "10px 20px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
             <p style={{ margin: 0, fontSize: 9, color: "rgba(255,255,255,0.18)", letterSpacing: "0.1em", textTransform: "lowercase", lineHeight: 1.6 }}>
-              auto-saves to draft · publish to go live · blue dot = modified
+              tab/shift-tab cycle elements · enter = edit text · esc deselect · blue dot = modified
             </p>
           </div>
         </motion.div>
