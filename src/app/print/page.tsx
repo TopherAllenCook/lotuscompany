@@ -56,11 +56,9 @@ function PrintInner() {
           className="print-slide"
           style={{
             width: "100vw",
-            height: "100vh",
+            height: "56.25vw",
             position: "relative",
             overflow: "hidden",
-            pageBreakAfter: "always",
-            breakAfter: "page",
           }}
         >
           {slide}
