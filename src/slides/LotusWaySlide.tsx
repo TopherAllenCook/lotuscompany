@@ -98,7 +98,7 @@ export function LotusWaySlide() {
           {/* Hero philosophy statement */}
           <motion.div {...enter(0.3)}>
             <EditableText id="lotus-way:quote" as="div" style={{
-              fontSize: "clamp(18px, 1.95vw, 26px)",
+              fontSize: "clamp(22px, 2.6vw, 36px)",
               fontWeight: 300,
               color: "#fff",
               letterSpacing: "-0.01em",
@@ -119,13 +119,13 @@ export function LotusWaySlide() {
             <div style={{ width: 2.5, height: "100%", minHeight: 52, background: theme.turquoise, flexShrink: 0, borderRadius: 2 }} />
             <div>
               <EditableText id="lotus-way:dignity-label" as="div" style={{
-                fontSize: 13, fontWeight: 500, color: "#fff",
+                fontSize: 15, fontWeight: 500, color: "#fff",
                 letterSpacing: "0.22em", textTransform: "lowercase", marginBottom: 6,
               }}>
                 dignity first
               </EditableText>
               <EditableText id="lotus-way:dignity-body" as="div" style={{
-                fontSize: 13, fontWeight: 300,
+                fontSize: 15, fontWeight: 300,
                 color: "rgba(206,232,238,0.58)",
                 letterSpacing: "0.02em", lineHeight: 1.65,
               }}>
@@ -143,13 +143,13 @@ export function LotusWaySlide() {
             <div style={{ width: 2.5, height: "100%", minHeight: 52, background: theme.turquoise, flexShrink: 0, borderRadius: 2 }} />
             <div>
               <EditableText id="lotus-way:mindful-label" as="div" style={{
-                fontSize: 13, fontWeight: 500, color: "#fff",
+                fontSize: 15, fontWeight: 500, color: "#fff",
                 letterSpacing: "0.22em", textTransform: "lowercase", marginBottom: 6,
               }}>
                 mindfully creating
               </EditableText>
               <EditableText id="lotus-way:mindful-body" as="div" style={{
-                fontSize: 13, fontWeight: 300,
+                fontSize: 15, fontWeight: 300,
                 color: "rgba(206,232,238,0.58)",
                 letterSpacing: "0.02em", lineHeight: 1.65,
               }}>
@@ -183,13 +183,13 @@ export function LotusWaySlide() {
             border: "1px solid rgba(77,186,214,0.13)",
           }}>
             <EditableText id="lotus-way:ethos-label" as="div" style={{
-              fontSize: 10, fontWeight: 600, color: theme.turquoise,
+              fontSize: 12, fontWeight: 600, color: theme.turquoise,
               letterSpacing: "0.32em", textTransform: "lowercase", marginBottom: 7,
             }}>
               lotus ethos
             </EditableText>
             <EditableText id="lotus-way:ethos-body" as="div" style={{
-              fontSize: 12.5, fontWeight: 300,
+              fontSize: 15, fontWeight: 300,
               color: "rgba(206,232,238,0.50)",
               letterSpacing: "0.02em", lineHeight: 1.70, fontStyle: "italic",
             }}>
@@ -207,7 +207,7 @@ export function LotusWaySlide() {
               how do we uphold this standard?
             </EditableText>
             <EditableText id="lotus-way:qualification-label" as="div" style={{
-              fontSize: 15, fontWeight: 400, color: "#fff",
+              fontSize: 20, fontWeight: 400, color: "#fff",
               letterSpacing: "0.14em", textTransform: "lowercase", marginBottom: 14,
             }}>
               project qualification
@@ -229,13 +229,13 @@ export function LotusWaySlide() {
                 }}
               >
                 <EditableText id={`lotus-way:q-num-${i}`} as="span" style={{
-                  fontSize: 11, fontWeight: 500, color: theme.turquoise,
-                  letterSpacing: "0.10em", flexShrink: 0, paddingTop: 1, minWidth: 16,
+                  fontSize: 13, fontWeight: 500, color: theme.turquoise,
+                  letterSpacing: "0.10em", flexShrink: 0, paddingTop: 1, minWidth: 18,
                 }}>
                   {i + 1}.
                 </EditableText>
                 <EditableText id={`lotus-way:q-${i}`} as="span" style={{
-                  fontSize: 12.5, fontWeight: 300,
+                  fontSize: 15, fontWeight: 300,
                   color: "rgba(206,232,238,0.60)",
                   letterSpacing: "0.02em", lineHeight: 1.65,
                 }}>
@@ -249,7 +249,7 @@ export function LotusWaySlide() {
           {/* Sub-note */}
           <motion.div {...enter(1.05)} style={{ paddingTop: 9, paddingLeft: 30 }}>
             <EditableText id="lotus-way:q-sub" as="div" style={{
-              fontSize: 11, fontWeight: 300,
+              fontSize: 13, fontWeight: 300,
               color: "rgba(206,232,238,0.27)",
               letterSpacing: "0.02em", lineHeight: 1.65, fontStyle: "italic",
             }}>
