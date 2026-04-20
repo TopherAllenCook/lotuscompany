@@ -121,8 +121,8 @@ export function LotusWaySlide() {
           inset: 0,
           display: "flex",
           alignItems: "center",
-          padding: "120px 80px",
-          gap: 120,
+          padding: "72px 64px",
+          gap: 64,
         }}
       >
         {/* LEFT: Philosophy + Principles */}
@@ -140,7 +140,7 @@ export function LotusWaySlide() {
               display: "flex",
               alignItems: "center",
               gap: 10,
-              marginBottom: 28,
+              marginBottom: 20,
             }}
           >
             <span
@@ -193,12 +193,12 @@ export function LotusWaySlide() {
               id="lotus-way:quote"
               as="div"
               style={{
-                fontSize: 52,
+                fontSize: 36,
                 fontWeight: 300,
                 color: "#fff",
                 letterSpacing: "-0.01em",
                 lineHeight: 1.15,
-                marginBottom: 40,
+                marginBottom: 24,
               }}
             >
               We believe the psychology associated with the spaces we occupy
@@ -322,7 +322,7 @@ export function LotusWaySlide() {
               WebkitBackdropFilter: "blur(14px) saturate(1.05)",
               border: "1px solid rgba(205,232,238,0.15)",
               borderRadius: 4,
-              padding: "48px 56px",
+              padding: "32px 40px",
             }}
           >
             {/* Lotus Ethos heading */}
@@ -330,7 +330,7 @@ export function LotusWaySlide() {
               id="lotus-way:ethos-label"
               as="div"
               style={{
-                fontSize: 30,
+                fontSize: 22,
                 fontWeight: 400,
                 color: "#fff",
                 textTransform: "lowercase",
@@ -346,7 +346,7 @@ export function LotusWaySlide() {
               style={{
                 borderLeft: "3px solid #4dbad6",
                 paddingLeft: 12,
-                marginBottom: 24,
+                marginBottom: 16,
               }}
             >
               <EditableText
@@ -371,7 +371,7 @@ export function LotusWaySlide() {
               style={{
                 height: 1,
                 background: "rgba(205,232,238,0.18)",
-                marginBottom: 24,
+                marginBottom: 16,
               }}
             />
 
@@ -396,12 +396,12 @@ export function LotusWaySlide() {
               id="lotus-way:qualification-label"
               as="div"
               style={{
-                fontSize: 30,
+                fontSize: 22,
                 fontWeight: 400,
                 color: "#fff",
                 letterSpacing: "-0.01em",
                 textTransform: "lowercase",
-                marginBottom: 20,
+                marginBottom: 14,
               }}
             >
               project qualification
@@ -415,7 +415,7 @@ export function LotusWaySlide() {
                 listStyle: "none",
                 display: "flex",
                 flexDirection: "column",
-                gap: 20,
+                gap: 14,
               }}
             >
               {CRITERIA.map((item, i) => (

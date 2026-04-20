@@ -153,7 +153,7 @@ export function ImpactDashboardSlide() {
               id="impact-dashboard:eyebrow"
               as="div"
               style={{
-                fontSize: "24px",
+                fontSize: "12px",
                 color: theme.turquoise,
                 letterSpacing: "0.28em",
                 textTransform: "lowercase",
@@ -169,7 +169,7 @@ export function ImpactDashboardSlide() {
               id="impact-dashboard:headline"
               as="h1"
               style={{
-                fontSize: "46px",
+                fontSize: "38px",
                 color: "#fff",
                 fontWeight: 300,
                 fontFamily: font,
@@ -285,7 +285,7 @@ export function ImpactDashboardSlide() {
                         id={`impact-dashboard:${tile.id}-value`}
                         as="div"
                         style={{
-                          fontSize: "40px",
+                          fontSize: "28px",
                           color: "#fff",
                           fontFamily: font,
                           fontWeight: 300,
@@ -300,8 +300,8 @@ export function ImpactDashboardSlide() {
                       id={`impact-dashboard:${tile.id}-def`}
                       as="div"
                       style={{
-                        fontSize: "24px",
-                        color: "rgba(206,232,238,0.4)",
+                        fontSize: "12px",
+                        color: "rgba(206,232,238,0.65)",
                         fontFamily: font,
                         lineHeight: 1.3,
                         textTransform: "lowercase",
@@ -345,7 +345,7 @@ export function ImpactDashboardSlide() {
                   id={`impact-dashboard:bottom-stat-${i}-value`}
                   as="div"
                   style={{
-                    fontSize: "40px",
+                    fontSize: "30px",
                     color: "#fff",
                     fontFamily: font,
                     fontWeight: 300,
@@ -358,7 +358,7 @@ export function ImpactDashboardSlide() {
                   id={`impact-dashboard:bottom-stat-${i}-label`}
                   as="div"
                   style={{
-                    fontSize: "24px",
+                    fontSize: "12px",
                     color: theme.turquoise,
                     fontFamily: font,
                     letterSpacing: "0.16em",
@@ -371,8 +371,8 @@ export function ImpactDashboardSlide() {
                   id={`impact-dashboard:bottom-stat-${i}-sub`}
                   as="div"
                   style={{
-                    fontSize: "24px",
-                    color: "rgba(206,232,238,0.4)",
+                    fontSize: "12px",
+                    color: "rgba(206,232,238,0.65)",
                     fontFamily: font,
                     lineHeight: 1.3,
                     textTransform: "lowercase",

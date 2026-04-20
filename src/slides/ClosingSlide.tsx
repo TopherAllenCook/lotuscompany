@@ -55,7 +55,7 @@ export function ClosingSlide() {
             id="closing:eyebrow"
             as="div"
             style={{
-              fontSize: "24px",
+              fontSize: "17px",
               color: theme.turquoise,
               letterSpacing: "0.28em",
               textTransform: "lowercase",
@@ -71,7 +71,7 @@ export function ClosingSlide() {
             id="closing:headline"
             as="h1"
             style={{
-              fontSize: "46px",
+              fontSize: "38px",
               color: "#fff",
               fontWeight: 300,
               fontFamily: font,
@@ -88,7 +88,7 @@ export function ClosingSlide() {
             style={{
               height: "1px",
               background: "rgba(77, 186, 214, 0.18)",
-              marginBottom: "24px",
+              marginBottom: "18px",
             }}
           />
 
@@ -108,7 +108,7 @@ export function ClosingSlide() {
                 id="closing:pill-1-text"
                 as="span"
                 style={{
-                  fontSize: "24px",
+                  fontSize: "17px",
                   color: theme.lightBlue,
                   fontFamily: font,
                   fontWeight: 300,
@@ -134,7 +134,7 @@ export function ClosingSlide() {
                 id="closing:pill-2-text"
                 as="span"
                 style={{
-                  fontSize: "24px",
+                  fontSize: "17px",
                   color: theme.lightBlue,
                   fontFamily: font,
                   fontWeight: 300,
@@ -160,7 +160,7 @@ export function ClosingSlide() {
                 id="closing:pill-3-text"
                 as="span"
                 style={{
-                  fontSize: "24px",
+                  fontSize: "17px",
                   color: theme.lightBlue,
                   fontFamily: font,
                   fontWeight: 300,
@@ -186,7 +186,7 @@ export function ClosingSlide() {
                 id="closing:pill-4-text"
                 as="span"
                 style={{
-                  fontSize: "24px",
+                  fontSize: "17px",
                   color: theme.lightBlue,
                   fontFamily: font,
                   fontWeight: 300,
@@ -212,7 +212,7 @@ export function ClosingSlide() {
                 id="closing:pill-5-text"
                 as="span"
                 style={{
-                  fontSize: "24px",
+                  fontSize: "17px",
                   color: theme.lightBlue,
                   fontFamily: font,
                   fontWeight: 300,

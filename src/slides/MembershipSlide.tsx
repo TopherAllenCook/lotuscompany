@@ -49,7 +49,7 @@ export default function MembershipSlide() {
           flex: "0 0 46%",
           display: "flex",
           flexDirection: "column",
-          padding: "44px 48px",
+          padding: "36px 40px",
           background: "rgba(5,10,12,0.52)",
           backdropFilter: "blur(28px) saturate(200%)",
           WebkitBackdropFilter: "blur(28px) saturate(200%)",
@@ -61,7 +61,7 @@ export default function MembershipSlide() {
             id="membership:eyebrow"
             as="div"
             style={{
-              fontSize: "24px",
+              fontSize: "17px",
               color: theme.turquoise,
               letterSpacing: "0.28em",
               textTransform: "lowercase",
@@ -77,7 +77,7 @@ export default function MembershipSlide() {
             id="membership:headline"
             as="h1"
             style={{
-              fontSize: "46px",
+              fontSize: "38px",
               color: "#fff",
               fontWeight: 300,
               fontFamily: font,
@@ -94,16 +94,16 @@ export default function MembershipSlide() {
             style={{
               height: "1px",
               background: "rgba(77, 186, 214, 0.18)",
-              marginBottom: "24px",
+              marginBottom: "18px",
             }}
           />
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "20px", marginBottom: "20px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "14px", marginBottom: "16px" }}>
             <EditableText
               id="membership:bullet-1"
               as="div"
               style={{
-                fontSize: "24px",
+                fontSize: "17px",
                 color: "rgba(255,255,255,0.88)",
                 fontWeight: 400,
                 fontFamily: font,
@@ -118,7 +118,7 @@ export default function MembershipSlide() {
               id="membership:bullet-2"
               as="div"
               style={{
-                fontSize: "24px",
+                fontSize: "17px",
                 color: "rgba(255,255,255,0.88)",
                 fontWeight: 400,
                 fontFamily: font,
@@ -133,7 +133,7 @@ export default function MembershipSlide() {
               id="membership:bullet-3"
               as="div"
               style={{
-                fontSize: "24px",
+                fontSize: "17px",
                 color: "rgba(255,255,255,0.88)",
                 fontWeight: 400,
                 fontFamily: font,
@@ -148,7 +148,7 @@ export default function MembershipSlide() {
               id="membership:bullet-4"
               as="div"
               style={{
-                fontSize: "24px",
+                fontSize: "17px",
                 color: "rgba(255,255,255,0.88)",
                 fontWeight: 400,
                 fontFamily: font,
@@ -164,7 +164,7 @@ export default function MembershipSlide() {
             id="membership:closing"
             as="div"
             style={{
-              fontSize: "24px",
+              fontSize: "17px",
               color: theme.turquoise,
               fontWeight: 300,
               fontFamily: font,
@@ -224,7 +224,7 @@ export default function MembershipSlide() {
                 id={`membership:stat-number-${i}`}
                 as="div"
                 style={{
-                  fontSize: "70px",
+                  fontSize: "52px",
                   color: "#fff",
                   fontWeight: 200,
                   letterSpacing: "-0.03em",
@@ -258,7 +258,7 @@ export default function MembershipSlide() {
                   id={`membership:stat-sub-${i}`}
                   as="div"
                   style={{
-                    fontSize: "21px",
+                    fontSize: "17px",
                     color: "rgba(255,255,255,0.55)",
                     fontWeight: 300,
                     fontFamily: font,

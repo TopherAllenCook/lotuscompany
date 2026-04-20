@@ -89,7 +89,7 @@ export function LotusHousingProblemSlide() {
             flex: "0 0 46%",
             display: "flex",
             flexDirection: "column",
-            padding: "44px 48px",
+            padding: "36px 40px",
             background: "rgba(5,10,12,0.52)",
             backdropFilter: "blur(28px) saturate(200%)",
             WebkitBackdropFilter: "blur(28px) saturate(200%)",
@@ -102,7 +102,7 @@ export function LotusHousingProblemSlide() {
             id="housing-problem:eyebrow"
             as="div"
             style={{
-              fontSize: "24px",
+              fontSize: "17px",
               color: theme.turquoise,
               fontWeight: 300,
               letterSpacing: "0.28em",
@@ -118,22 +118,22 @@ export function LotusHousingProblemSlide() {
             id="housing-problem:headline"
             as="h2"
             style={{
-              fontSize: "46px",
+              fontSize: "38px",
               color: "#fff",
               fontWeight: 300,
               letterSpacing: "-0.02em",
               fontFamily: font,
               lineHeight: 1.25,
-              marginBottom: "20px",
+              marginBottom: "16px",
               textTransform: "lowercase",
             }}
           >
             every number is a neighbor.
           </EditableText>
 
-          <div style={{ height: "1px", background: "rgba(77,186,214,0.18)", marginBottom: "24px" }} />
+          <div style={{ height: "1px", background: "rgba(77,186,214,0.18)", marginBottom: "18px" }} />
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
             {bullets.map((bullet, i) => (
               <motion.div key={i} custom={i} initial="hidden" animate="visible" variants={bulletVariants}>
                 <div style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
@@ -141,7 +141,7 @@ export function LotusHousingProblemSlide() {
                   <EditableText
                     id={`housing-problem:bullet-${i}`}
                     as="p"
-                    style={{ fontSize: "24px", color: "rgba(255,255,255,0.88)", fontWeight: 400, letterSpacing: "0.04em", fontFamily: font, lineHeight: 1.65, margin: 0, textTransform: "lowercase" }}
+                    style={{ fontSize: "17px", color: "rgba(255,255,255,0.88)", fontWeight: 400, letterSpacing: "0.04em", fontFamily: font, lineHeight: 1.65, margin: 0, textTransform: "lowercase" }}
                   >
                     {bullet}
                   </EditableText>
@@ -153,14 +153,14 @@ export function LotusHousingProblemSlide() {
           <EditableText
             id="housing-problem:source"
             as="p"
-            style={{ fontSize: "24px", color: "rgba(255,255,255,0.35)", fontWeight: 300, letterSpacing: "0.06em", fontFamily: font, margin: "24px 0 0", textTransform: "lowercase" }}
+            style={{ fontSize: "13px", color: "rgba(255,255,255,0.35)", fontWeight: 300, letterSpacing: "0.06em", fontFamily: font, margin: "16px 0 0", textTransform: "lowercase" }}
           >
             sources: nlihc, hud, harvard jchs. 2025.
           </EditableText>
         </EditableEl>
 
         {/* Right — persona cards */}
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "16px", height: "100%" }}>
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "12px", height: "100%" }}>
           {PERSONAS.map((p, i) => (
             <motion.div
               key={p.name}
@@ -191,8 +191,8 @@ export function LotusHousingProblemSlide() {
                 {/* Avatar — initial letter */}
                 <div
                   style={{
-                    width: "60px",
-                    height: "60px",
+                    width: "48px",
+                    height: "48px",
                     borderRadius: "50%",
                     border: `2px solid ${theme.turquoise}`,
                     display: "flex",
@@ -202,17 +202,17 @@ export function LotusHousingProblemSlide() {
                     background: "rgba(77,186,214,0.08)",
                   }}
                 >
-                  <EditableText id={`housing-problem:persona-initial-${i}`} as="span" style={{ fontSize: "34px", color: theme.turquoise, fontFamily: font, fontWeight: 300 }}>
+                  <EditableText id={`housing-problem:persona-initial-${i}`} as="span" style={{ fontSize: "22px", color: theme.turquoise, fontFamily: font, fontWeight: 300 }}>
                     {p.initial}
                   </EditableText>
                 </div>
 
                 {/* Name + role */}
                 <div style={{ flex: "0 0 140px" }}>
-                  <EditableText id={`housing-problem:persona-name-${i}`} as="div" style={{ fontSize: "24px", color: "#fff", fontFamily: font, fontWeight: 400, textTransform: "lowercase", lineHeight: 1.3 }}>
+                  <EditableText id={`housing-problem:persona-name-${i}`} as="div" style={{ fontSize: "17px", color: "#fff", fontFamily: font, fontWeight: 400, textTransform: "lowercase", lineHeight: 1.3 }}>
                     {p.name}
                   </EditableText>
-                  <EditableText id={`housing-problem:persona-role-${i}`} as="div" style={{ fontSize: "24px", color: "rgba(255,255,255,0.5)", fontFamily: font, fontWeight: 300, textTransform: "lowercase", marginTop: "3px", letterSpacing: "0.04em" }}>
+                  <EditableText id={`housing-problem:persona-role-${i}`} as="div" style={{ fontSize: "14px", color: "rgba(255,255,255,0.5)", fontFamily: font, fontWeight: 300, textTransform: "lowercase", marginTop: "3px", letterSpacing: "0.04em" }}>
                     {p.role}
                   </EditableText>
                 </div>
@@ -222,10 +222,10 @@ export function LotusHousingProblemSlide() {
 
                 {/* Stat */}
                 <div style={{ flex: 1 }}>
-                  <EditableText id={`housing-problem:persona-stat-${i}`} as="div" style={{ fontSize: "46px", color: theme.turquoise, fontFamily: font, fontWeight: 300, lineHeight: 1, letterSpacing: "-0.02em" }}>
+                  <EditableText id={`housing-problem:persona-stat-${i}`} as="div" style={{ fontSize: "32px", color: theme.turquoise, fontFamily: font, fontWeight: 300, lineHeight: 1, letterSpacing: "-0.02em" }}>
                     {p.stat}
                   </EditableText>
-                  <EditableText id={`housing-problem:persona-desc-${i}`} as="div" style={{ fontSize: "24px", color: "rgba(255,255,255,0.6)", fontFamily: font, fontWeight: 300, textTransform: "lowercase", marginTop: "6px", lineHeight: 1.4 }}>
+                  <EditableText id={`housing-problem:persona-desc-${i}`} as="div" style={{ fontSize: "15px", color: "rgba(255,255,255,0.6)", fontFamily: font, fontWeight: 300, textTransform: "lowercase", marginTop: "6px", lineHeight: 1.4 }}>
                     {p.descriptor}
                   </EditableText>
                 </div>

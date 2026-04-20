@@ -86,16 +86,16 @@ export function LIHTCRentsSlide() {
         <div style={{ display: "flex", gap: 32, flex: 1, minHeight: 0 }}>
 
           {/* Left — explanation */}
-          <div style={{ flex: "0 0 38%", display: "flex", flexDirection: "column", gap: 20 }}>
+          <div style={{ flex: "0 0 38%", display: "flex", flexDirection: "column", gap: 12 }}>
             <EditableText
               id="lihtc-rents:desc"
               as="div"
               style={{
-                fontSize: "24px",
+                fontSize: "15px",
                 color: "rgba(206,232,238,0.75)",
                 fontFamily: font,
                 fontWeight: 300,
-                lineHeight: 1.75,
+                lineHeight: 1.65,
                 textTransform: "lowercase",
               }}
             >

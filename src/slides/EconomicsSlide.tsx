@@ -44,12 +44,12 @@ export function EconomicsSlide() {
 
       <div style={{ position: "relative", display: "flex", alignItems: "center", height: "100%", padding: "56px 64px 72px", gap: 32 }}>
         {/* Left Content */}
-        <EditableEl id="economics:card" label="glass card" type="card" className="anim-fade-in-up" style={{ flex: "0 0 46%", display: "flex", flexDirection: "column", padding: "44px 48px", background: "rgba(5,10,12,0.52)", backdropFilter: "blur(28px) saturate(200%)", WebkitBackdropFilter: "blur(28px) saturate(200%)", borderRadius: "16px", border: "1px solid rgba(255,255,255,0.15)", boxShadow: "0 8px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.14)" }}>
+        <EditableEl id="economics:card" label="glass card" type="card" className="anim-fade-in-up" style={{ flex: "0 0 46%", display: "flex", flexDirection: "column", padding: "36px 40px", background: "rgba(5,10,12,0.52)", backdropFilter: "blur(28px) saturate(200%)", WebkitBackdropFilter: "blur(28px) saturate(200%)", borderRadius: "16px", border: "1px solid rgba(255,255,255,0.15)", boxShadow: "0 8px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.14)" }}>
           <EditableText
             id="economics:eyebrow"
             as="div"
             style={{
-              fontSize: "24px",
+              fontSize: "17px",
               color: theme.turquoise,
               letterSpacing: "0.28em",
               textTransform: "lowercase",
@@ -65,7 +65,7 @@ export function EconomicsSlide() {
             id="economics:headline"
             as="h1"
             style={{
-              fontSize: "46px",
+              fontSize: "38px",
               color: "#fff",
               fontWeight: 300,
               fontFamily: font,
@@ -82,11 +82,11 @@ export function EconomicsSlide() {
             style={{
               height: "1px",
               background: "rgba(77, 186, 214, 0.18)",
-              marginBottom: "24px",
+              marginBottom: "18px",
             }}
           />
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "20px", marginBottom: "20px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "14px", marginBottom: "16px" }}>
             <EditableEl
               id="economics:highlight-card"
               label="irr highlight card"
@@ -102,7 +102,7 @@ export function EconomicsSlide() {
                 id="economics:irr-number"
                 as="div"
                 style={{
-                  fontSize: "46px",
+                  fontSize: "38px",
                   color: "#fff",
                   fontFamily: font,
                   fontWeight: 300,
@@ -117,7 +117,7 @@ export function EconomicsSlide() {
                 id="economics:bullet-1"
                 as="div"
                 style={{
-                  fontSize: "24px",
+                  fontSize: "17px",
                   color: "rgba(255,255,255,0.88)",
                   fontWeight: 400,
                   fontFamily: font,
@@ -133,7 +133,7 @@ export function EconomicsSlide() {
               id="economics:bullet-2"
               as="div"
               style={{
-                fontSize: "24px",
+                fontSize: "17px",
                 color: "rgba(255,255,255,0.88)",
                 fontWeight: 400,
                 fontFamily: font,
@@ -148,7 +148,7 @@ export function EconomicsSlide() {
               id="economics:bullet-3"
               as="div"
               style={{
-                fontSize: "24px",
+                fontSize: "17px",
                 color: "rgba(255,255,255,0.88)",
                 fontWeight: 400,
                 fontFamily: font,
@@ -163,7 +163,7 @@ export function EconomicsSlide() {
               id="economics:bullet-4"
               as="div"
               style={{
-                fontSize: "24px",
+                fontSize: "17px",
                 color: "rgba(255,255,255,0.88)",
                 fontWeight: 400,
                 fontFamily: font,
@@ -180,8 +180,8 @@ export function EconomicsSlide() {
             id="economics:footnote"
             as="div"
             style={{
-              fontSize: "24px",
-              color: "rgba(255,255,255,0.45)",
+              fontSize: "17px",
+              color: "rgba(255,255,255,0.65)",
               fontFamily: font,
               fontWeight: 300,
               lineHeight: 1.5,
@@ -203,7 +203,7 @@ export function EconomicsSlide() {
               textAnchor="middle"
               style={{
                 fontSize: "16px",
-                fill: "rgba(206,232,238,0.4)",
+                fill: "rgba(206,232,238,0.75)",
                 fontFamily: font,
                 letterSpacing: "0.16em",
                 textTransform: "uppercase",

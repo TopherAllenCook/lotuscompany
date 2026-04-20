@@ -43,7 +43,7 @@ export function PipelineSlide() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          padding: "44px 48px",
+          padding: "36px 40px",
           background: "rgba(5,10,12,0.52)",
           backdropFilter: "blur(28px) saturate(200%)",
           WebkitBackdropFilter: "blur(28px) saturate(200%)",
@@ -71,14 +71,14 @@ export function PipelineSlide() {
             id="pipeline:headline"
             as="h1"
             style={{
-              fontSize: "44px",
+              fontSize: "38px",
               color: "#fff",
               fontWeight: 300,
               fontFamily: font,
               lineHeight: 1.2,
               letterSpacing: "-0.02em",
               textTransform: "lowercase",
-              marginBottom: "28px",
+              marginBottom: "20px",
             }}
           >
             a live pipeline. not a concept.
@@ -98,7 +98,7 @@ export function PipelineSlide() {
                 id={id}
                 as="div"
                 style={{
-                  fontSize: "20px",
+                  fontSize: "17px",
                   color: "rgba(255,255,255,0.80)",
                   fontWeight: 400,
                   fontFamily: font,
@@ -178,7 +178,7 @@ export function PipelineSlide() {
                     id={`pipeline:stage-label-${i}`}
                     as="div"
                     style={{
-                      fontSize: "22px",
+                      fontSize: "16px",
                       color: "#fff",
                       fontFamily: font,
                       textTransform: "lowercase",
