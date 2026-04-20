@@ -6,11 +6,16 @@ export function SlideFooter({
   slideKey,
   slideNum,
   sectionLabel,
+  light = false,
 }: {
   slideKey: string;
   slideNum: string;
   sectionLabel: string;
+  light?: boolean;
 }) {
+  const textColor = light ? "rgba(5,10,12,0.30)" : "rgba(255,255,255,0.28)";
+  const borderColor = light ? "rgba(5,10,12,0.10)" : "rgba(77,186,214,0.10)";
+
   return (
     <div
       style={{
@@ -23,7 +28,7 @@ export function SlideFooter({
         justifyContent: "space-between",
         alignItems: "center",
         zIndex: 5,
-        borderTop: "1px solid rgba(77,186,214,0.10)",
+        borderTop: `1px solid ${borderColor}`,
         paddingTop: 14,
       }}
     >
@@ -34,7 +39,7 @@ export function SlideFooter({
         style={{
           fontSize: 9,
           letterSpacing: "0.22em",
-          color: "rgba(255,255,255,0.28)",
+          color: textColor,
           fontFamily: font,
           textTransform: "lowercase",
         }}
@@ -48,7 +53,7 @@ export function SlideFooter({
         style={{
           fontSize: 9,
           letterSpacing: "0.22em",
-          color: "rgba(255,255,255,0.28)",
+          color: textColor,
           fontFamily: font,
           textTransform: "lowercase",
         }}
