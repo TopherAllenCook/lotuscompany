@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
 import { slides, SLIDE_REGISTRY } from "@/slides";
 import { EditModeProvider } from "@/components/EditableText";
 
@@ -14,7 +13,7 @@ export default function PrintPage() {
 
 function PrintInner() {
   return (
-    <div>
+    <div style={{ margin: 0, padding: 0, lineHeight: 0 }}>
       {/* Print button — hidden when printing */}
       <div style={{ position: "fixed", top: 16, right: 16, zIndex: 1000, display: "flex", gap: 10 }} className="no-print">
         <button

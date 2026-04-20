@@ -62,8 +62,17 @@ html, body {
     height: 810px !important;
     break-after: page;
     page-break-after: always;
+    break-inside: avoid;
+    page-break-inside: avoid;
     position: relative;
     overflow: hidden;
     display: block;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .print-slide:last-child {
+    break-after: auto;
+    page-break-after: auto;
   }
 }
