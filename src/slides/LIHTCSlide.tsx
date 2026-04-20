@@ -29,12 +29,14 @@ const DEV_BULLETS = [
   "retains long-term ownership",
   "banks / lihtc awards",
   "executes development",
+  "partners with investors to sell tax credits",
 ];
 
 const CLOSING = [
   "government allocates tax credits to incentivize affordable housing",
   "investors provide upfront capital in exchange for those credits",
   "projects are built with long-term rent restrictions",
+  "ensures compliance with federal regulations",
 ];
 
 export default function LIHTCSlide() {
