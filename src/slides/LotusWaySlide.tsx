@@ -66,15 +66,15 @@ export function LotusWaySlide() {
 
       {/* ── Two-column body ───────────────────────────────────────────── */}
       <div style={{
-        position: "absolute", top: 100, bottom: 0, left: 0, right: 0,
+        position: "absolute", top: 80, bottom: 0, left: 0, right: 0,
         display: "flex",
       }}>
 
         {/* ── LEFT: Philosophy + Principles ────────────────────────── */}
         <div style={{
           flex: "0 0 46%",
-          display: "flex", flexDirection: "column", justifyContent: "flex-end",
-          padding: "0 32px 48px 52px",
+          display: "flex", flexDirection: "column", justifyContent: "center",
+          padding: "0 32px 24px 52px",
         }}>
 
           {/* Eyebrow */}
@@ -98,13 +98,13 @@ export function LotusWaySlide() {
           {/* Hero philosophy statement */}
           <motion.div {...enter(0.3)}>
             <EditableText id="lotus-way:quote" as="div" style={{
-              fontSize: "clamp(22px, 2.6vw, 36px)",
+              fontSize: "clamp(26px, 3.2vw, 46px)",
               fontWeight: 300,
               color: "#fff",
               letterSpacing: "-0.01em",
-              lineHeight: 1.4,
-              marginBottom: 32,
-              maxWidth: 500,
+              lineHeight: 1.35,
+              marginBottom: 36,
+              maxWidth: 560,
             }}>
               We believe the psychology associated with the spaces we occupy defines the outcomes we achieve.
             </EditableText>
@@ -119,13 +119,13 @@ export function LotusWaySlide() {
             <div style={{ width: 2.5, height: "100%", minHeight: 52, background: theme.turquoise, flexShrink: 0, borderRadius: 2 }} />
             <div>
               <EditableText id="lotus-way:dignity-label" as="div" style={{
-                fontSize: 15, fontWeight: 500, color: "#fff",
-                letterSpacing: "0.22em", textTransform: "lowercase", marginBottom: 6,
+                fontSize: 18, fontWeight: 500, color: "#fff",
+                letterSpacing: "0.22em", textTransform: "lowercase", marginBottom: 7,
               }}>
                 dignity first
               </EditableText>
               <EditableText id="lotus-way:dignity-body" as="div" style={{
-                fontSize: 15, fontWeight: 300,
+                fontSize: 17, fontWeight: 300,
                 color: "rgba(206,232,238,0.58)",
                 letterSpacing: "0.02em", lineHeight: 1.65,
               }}>
@@ -143,13 +143,13 @@ export function LotusWaySlide() {
             <div style={{ width: 2.5, height: "100%", minHeight: 52, background: theme.turquoise, flexShrink: 0, borderRadius: 2 }} />
             <div>
               <EditableText id="lotus-way:mindful-label" as="div" style={{
-                fontSize: 15, fontWeight: 500, color: "#fff",
-                letterSpacing: "0.22em", textTransform: "lowercase", marginBottom: 6,
+                fontSize: 18, fontWeight: 500, color: "#fff",
+                letterSpacing: "0.22em", textTransform: "lowercase", marginBottom: 7,
               }}>
                 mindfully creating
               </EditableText>
               <EditableText id="lotus-way:mindful-body" as="div" style={{
-                fontSize: 15, fontWeight: 300,
+                fontSize: 17, fontWeight: 300,
                 color: "rgba(206,232,238,0.58)",
                 letterSpacing: "0.02em", lineHeight: 1.65,
               }}>
@@ -169,8 +169,8 @@ export function LotusWaySlide() {
           {...enter(0.35, 18)}
           style={{
             flex: 1,
-            display: "flex", flexDirection: "column", justifyContent: "flex-end",
-            padding: "0 52px 48px 36px",
+            display: "flex", flexDirection: "column", justifyContent: "center",
+            padding: "0 52px 24px 36px",
           }}
         >
 
@@ -183,13 +183,13 @@ export function LotusWaySlide() {
             border: "1px solid rgba(77,186,214,0.13)",
           }}>
             <EditableText id="lotus-way:ethos-label" as="div" style={{
-              fontSize: 12, fontWeight: 600, color: theme.turquoise,
-              letterSpacing: "0.32em", textTransform: "lowercase", marginBottom: 7,
+              fontSize: 13, fontWeight: 600, color: theme.turquoise,
+              letterSpacing: "0.32em", textTransform: "lowercase", marginBottom: 8,
             }}>
               lotus ethos
             </EditableText>
             <EditableText id="lotus-way:ethos-body" as="div" style={{
-              fontSize: 15, fontWeight: 300,
+              fontSize: 17, fontWeight: 300,
               color: "rgba(206,232,238,0.50)",
               letterSpacing: "0.02em", lineHeight: 1.70, fontStyle: "italic",
             }}>
@@ -207,7 +207,7 @@ export function LotusWaySlide() {
               how do we uphold this standard?
             </EditableText>
             <EditableText id="lotus-way:qualification-label" as="div" style={{
-              fontSize: 20, fontWeight: 400, color: "#fff",
+              fontSize: 24, fontWeight: 400, color: "#fff",
               letterSpacing: "0.14em", textTransform: "lowercase", marginBottom: 14,
             }}>
               project qualification
@@ -229,15 +229,15 @@ export function LotusWaySlide() {
                 }}
               >
                 <EditableText id={`lotus-way:q-num-${i}`} as="span" style={{
-                  fontSize: 13, fontWeight: 500, color: theme.turquoise,
-                  letterSpacing: "0.10em", flexShrink: 0, paddingTop: 1, minWidth: 18,
+                  fontSize: 14, fontWeight: 500, color: theme.turquoise,
+                  letterSpacing: "0.10em", flexShrink: 0, paddingTop: 2, minWidth: 20,
                 }}>
                   {i + 1}.
                 </EditableText>
                 <EditableText id={`lotus-way:q-${i}`} as="span" style={{
-                  fontSize: 15, fontWeight: 300,
+                  fontSize: 17, fontWeight: 300,
                   color: "rgba(206,232,238,0.60)",
-                  letterSpacing: "0.02em", lineHeight: 1.65,
+                  letterSpacing: "0.02em", lineHeight: 1.6,
                 }}>
                   {item}
                 </EditableText>
