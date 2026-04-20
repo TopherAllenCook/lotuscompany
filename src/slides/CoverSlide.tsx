@@ -22,24 +22,26 @@ export function CoverSlide() {
   return (
     <div style={{ position: "absolute", inset: 0, background: "#000", fontFamily: font, overflow: "hidden" }}>
 
-      {/* Background image */}
+      {/* Background image — fetchPriority high: this is the LCP element */}
       <motion.img
         src={asset("/steelton-village/Steelton I_Pedestrian Promenade_2026.03.10.jpg")}
         alt=""
+        fetchPriority="high"
+        decoding="async"
         initial={{ scale: 1.0 }}
-        animate={{ scale: 1.07 }}
-        transition={{ duration: 10, ease: "linear" }}
+        animate={{ scale: 1.05 }}
+        transition={{ duration: 12, ease: "linear" }}
         style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "40% 55%", transformOrigin: "40% 55%" }}
       />
 
-      {/* Gradient overlay */}
+      {/* Gradient overlay — stronger at top so eyebrow stays legible */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.5 }}
         style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(160deg, rgba(15,20,22,0.35) 0%, rgba(10,14,16,0.50) 35%, rgba(5,10,12,0.80) 65%, rgba(2,6,8,0.96) 100%)",
+          background: "linear-gradient(160deg, rgba(5,10,12,0.62) 0%, rgba(8,12,14,0.52) 35%, rgba(5,10,12,0.82) 65%, rgba(2,6,8,0.97) 100%)",
         }}
       />
 
