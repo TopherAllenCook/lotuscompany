@@ -16,7 +16,7 @@ const BULLETS = [
 const STATS = [
   { number: "15%+",    label: "target irr",       sub: "over 15 to 18 year hold period" },
   { number: "2 to 3×", label: "equity multiple",  sub: "on invested capital" },
-  { number: "5 to 19%", label: "gp membership",   sub: "alongside lotus" },
+  { number: "5 to 19%", label: "gp membership",   sub: "class b ownership in the deal alongside lotus" },
 ];
 
 export default function MembershipSlide() {
@@ -114,7 +114,7 @@ export default function MembershipSlide() {
                   as="div"
                   style={{
                     fontSize: "15px",
-                    color: "rgba(255,255,255,0.84)",
+                    color: "#ffffff",
                     fontWeight: 400,
                     fontFamily: font,
                     lineHeight: 1.62,
@@ -246,7 +246,7 @@ export default function MembershipSlide() {
                     as="div"
                     style={{
                       fontSize: "16px",
-                      color: "rgba(255,255,255,0.72)",
+                      color: "#ffffff",
                       fontWeight: 300,
                       fontFamily: font,
                       textTransform: "lowercase",
