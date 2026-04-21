@@ -65,42 +65,34 @@ export function ProjectTeamSlide({ project }: { project: ProjectConfig }) {
                 pageBreakInside: "avoid",
               }}
             >
-              {/* Photo — fixed 2:3 portrait aspect ratio so PDF can't collapse it */}
-              <div
-                style={{
-                  position: "relative",
-                  width: "100%",
-                  aspectRatio: "2/3",
-                  flexShrink: 0,
-                  background: teal(0.07),
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  overflow: "hidden",
-                }}
-              >
+              {/* Photo — padding-bottom ratio trick: html2canvas handles computed
+                  padding reliably; aspect-ratio CSS is ignored by its layout engine */}
+              <div style={{ position: "relative", width: "100%", paddingBottom: "150%", flexShrink: 0, background: teal(0.07), overflow: "hidden" }}>
                 {member.photo ? (
                   <img
                     src={member.photo}
                     alt={member.name}
-                    style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }}
+                    style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }}
                   />
                 ) : (
                   <div
                     style={{
-                      width: 72,
-                      height: 72,
-                      borderRadius: "50%",
-                      border: `1px solid ${muted(0.18)}`,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      background: "rgba(255,255,255,0.50)",
+                      position: "absolute", inset: 0,
+                      display: "flex", alignItems: "center", justifyContent: "center",
                     }}
                   >
-                    <EditableText id={`${k}-team:avatar-initial-${i}`} as="div" style={{ fontSize: "46px", color: muted(0.28), fontFamily: font, fontWeight: 300, letterSpacing: "-0.02em" }}>
-                      {member.name.charAt(0)}
-                    </EditableText>
+                    <div
+                      style={{
+                        width: 72, height: 72, borderRadius: "50%",
+                        border: `1px solid ${muted(0.18)}`,
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                        background: "rgba(255,255,255,0.50)",
+                      }}
+                    >
+                      <EditableText id={`${k}-team:avatar-initial-${i}`} as="div" style={{ fontSize: "46px", color: muted(0.28), fontFamily: font, fontWeight: 300, letterSpacing: "-0.02em" }}>
+                        {member.name.charAt(0)}
+                      </EditableText>
+                    </div>
                   </div>
                 )}
               </div>
