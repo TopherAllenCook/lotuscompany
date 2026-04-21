@@ -80,7 +80,6 @@ export const SLIDE_REGISTRY = [
   // ── Lotus Vale ────────────────────────────────────────────────────────────
   { key: "lotus-vale-cover",       component: () => React.createElement(ProjectCoverSlide,            { project: LOTUS_VALE }), title: "Lotus Vale — Cover"              },
   { key: "lotus-vale-lotus-way",   component: () => React.createElement(ProjectLotusWaySlide,         { project: LOTUS_VALE }), title: "Lotus Vale — The Lotus Way"      },
-  { key: "lotus-vale-impact",      component: () => React.createElement(ProjectImpactDirectiveSlide,  { project: LOTUS_VALE }), title: "Lotus Vale — Impact Directive"   },
   { key: "lotus-vale-investment",  component: () => React.createElement(ProjectInvestmentDirectiveSlide, { project: LOTUS_VALE }), title: "Lotus Vale — Investment Directive" },
   { key: "lotus-vale-commitment",  component: () => React.createElement(ProjectCommitmentSlide,       { project: LOTUS_VALE }), title: "Lotus Vale — Commitment + Draw"  },
   { key: "lotus-vale-partnership", component: () => React.createElement(ProjectPartnershipTermsSlide, { project: LOTUS_VALE }), title: "Lotus Vale — Partnership Terms"  },
