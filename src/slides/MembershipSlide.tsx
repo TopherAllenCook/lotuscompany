@@ -189,7 +189,6 @@ export default function MembershipSlide() {
               letterSpacing: "0.22em",
               textTransform: "lowercase",
               marginBottom: "4px",
-              opacity: 0.75,
             }}
           >
             target returns
@@ -226,7 +225,7 @@ export default function MembershipSlide() {
                 style={{
                   fontSize: "52px",
                   color: "#fff",
-                  fontWeight: 200,
+                  fontWeight: 300,
                   letterSpacing: "-0.03em",
                   fontFamily: font,
                   lineHeight: 1,
