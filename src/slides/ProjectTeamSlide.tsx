@@ -124,14 +124,6 @@ export function ProjectTeamSlide({ project }: { project: ProjectConfig }) {
                 >
                   {member.title}
                 </EditableText>
-                <div style={{ height: 1, background: muted(0.08), marginBottom: 14 }} />
-                <EditableText
-                  id={`${k}-team:bio-${i}`}
-                  as="div"
-                  style={{ fontSize: "22px", color: muted(0.50), fontFamily: font, fontWeight: 300, lineHeight: 1.65, textTransform: "lowercase" }}
-                >
-                  bio to be added.
-                </EditableText>
               </div>
             </div>
           ))}
