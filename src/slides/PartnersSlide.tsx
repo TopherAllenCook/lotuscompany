@@ -9,7 +9,7 @@ const partners = [
   { name: "raymond james tax credit funds",               category: "tax credit syndicator",   logo: "/Logos/Raymond_James_Financial-Logo.wine.svg" },
   { name: "citi community capital",                       category: "cra equity investor",     logo: "/Logos/Citi Logo.jpg"                         },
   { name: "newpoint real estate capital",                  category: "debt / equity",          logo: "/Logos/New Point Real Estat Capitol Logo.jpg" },
-  { name: "jpmorgan chase",                               category: "cra equity investor",     logo: "/Logos/Jp-Morgan Chase Logo.svg"              },
+  { name: "jpmorgan chase",                               category: "cra equity investor",     logo: "/Logos/jp-morgan chase logo.jpg"              },
   { name: "ohio capital corporation for housing (occh)",  category: "syndicator / equity",     logo: "/Logos/OCCH_Logo.png"                         },
   { name: "pnc bank",                                     category: "construction lender",     logo: "/Logos/PNC Bank Logo.svg"                     },
   { name: "keybank community development corporation",    category: "cra equity investor",     logo: "/Logos/Key Bank Logo.png"                     },
