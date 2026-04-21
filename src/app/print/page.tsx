@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { slides, SLIDE_REGISTRY } from "@/slides";
 import { EditModeProvider } from "@/components/EditableText";
 
@@ -14,32 +14,74 @@ export default function PrintPage() {
 
 function PrintInner() {
   const [ready, setReady] = useState(false);
+  const [generating, setGenerating] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // globals.css sets html,body { overflow:hidden; height:100% } which clips
-    // the print page to one viewport — override it so all slides are reachable
+    // Override global overflow:hidden so all slides render
     const html = document.documentElement;
     const body = document.body;
     html.style.overflow = "auto";
-    html.style.height   = "auto";
+    html.style.height = "auto";
     body.style.overflow = "auto";
-    body.style.height   = "auto";
+    body.style.height = "auto";
 
-    // Give Supabase overrides + images 3s to load before enabling print
+    // Wait 3s for Supabase overrides + images
     const t = setTimeout(() => setReady(true), 3000);
-
     return () => {
       clearTimeout(t);
       html.style.overflow = "";
-      html.style.height   = "";
+      html.style.height = "";
       body.style.overflow = "";
-      body.style.height   = "";
+      body.style.height = "";
     };
   }, []);
 
+  async function downloadPDF() {
+    if (!containerRef.current) return;
+    setGenerating(true);
+    setProgress(0);
+
+    const { default: html2canvas } = await import("html2canvas");
+    const { default: jsPDF } = await import("jspdf");
+
+    const slideEls = containerRef.current.querySelectorAll<HTMLElement>(".print-slide");
+    const total = slideEls.length;
+
+    const pdf = new jsPDF({
+      orientation: "landscape",
+      unit: "px",
+      format: [1440, 810],
+      compress: true,
+    });
+
+    for (let i = 0; i < total; i++) {
+      const el = slideEls[i];
+      const canvas = await html2canvas(el, {
+        scale: 1,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: null,
+        width: 1440,
+        height: 810,
+        logging: false,
+      });
+
+      if (i > 0) pdf.addPage([1440, 810], "landscape");
+      pdf.addImage(canvas.toDataURL("image/jpeg", 0.92), "JPEG", 0, 0, 1440, 810);
+
+      setProgress(Math.round(((i + 1) / total) * 100));
+    }
+
+    pdf.save("lotus-company-deck.pdf");
+    setGenerating(false);
+    setProgress(0);
+  }
+
   return (
     <div style={{ margin: 0, padding: 0, background: "#050a0c" }}>
-      {/* Toolbar — hidden when printing */}
+      {/* Toolbar */}
       <div
         className="no-print"
         style={{
@@ -51,22 +93,27 @@ function PrintInner() {
         }}
       >
         <button
-          onClick={() => window.print()}
-          disabled={!ready}
+          onClick={downloadPDF}
+          disabled={!ready || generating}
           style={{
             padding: "10px 28px",
-            background: ready ? "#4dbad6" : "rgba(77,186,214,0.25)",
-            color: ready ? "#050a0c" : "rgba(255,255,255,0.3)",
+            background: ready && !generating ? "#4dbad6" : "rgba(77,186,214,0.25)",
+            color: ready && !generating ? "#050a0c" : "rgba(255,255,255,0.3)",
             border: "none",
             borderRadius: 4,
-            cursor: ready ? "pointer" : "not-allowed",
+            cursor: ready && !generating ? "pointer" : "not-allowed",
             fontSize: 13,
             fontWeight: 600,
             letterSpacing: "0.08em",
             transition: "all 0.4s ease",
+            minWidth: 180,
           }}
         >
-          {ready ? "print / save pdf" : "preparing…"}
+          {!ready
+            ? "preparing…"
+            : generating
+            ? `building pdf… ${progress}%`
+            : "download pdf"}
         </button>
 
         <button
@@ -84,29 +131,33 @@ function PrintInner() {
           ← back
         </button>
 
-        <span style={{ fontSize: 11, color: "rgba(255,255,255,0.25)", letterSpacing: "0.1em", marginLeft: 4 }}>
-          chrome: destination → save as pdf · background graphics → on · scale → 100%
-        </span>
+        {generating && (
+          <span style={{ fontSize: 11, color: "rgba(255,255,255,0.35)", letterSpacing: "0.1em" }}>
+            capturing {progress}% — this takes about a minute
+          </span>
+        )}
       </div>
 
       {/* Spacer */}
       <div className="no-print" style={{ height: 53 }} />
 
       {/* Slides */}
-      {slides.map((slide, i) => (
-        <div
-          key={SLIDE_REGISTRY[i].key}
-          className="print-slide"
-          style={{
-            width: "1440px",
-            height: "810px",
-            position: "relative",
-            overflow: "hidden",
-          }}
-        >
-          {slide}
-        </div>
-      ))}
+      <div ref={containerRef}>
+        {slides.map((slide, i) => (
+          <div
+            key={SLIDE_REGISTRY[i].key}
+            className="print-slide"
+            style={{
+              width: "1440px",
+              height: "810px",
+              position: "relative",
+              overflow: "hidden",
+            }}
+          >
+            {slide}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
