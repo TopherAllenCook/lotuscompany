@@ -87,8 +87,8 @@ export const STEELTON: ProjectConfig = {
   team: [
     { name: "christian graf",  title: "senior development associate" },
     { name: "angie clarke",    title: "development analyst"          },
-    { name: "steven",          title: "—"                            },
-    { name: "carden",          title: "—"                            },
+    { name: "steven blomquist", title: "director of development"      },
+    { name: "carden likes",    title: "capital markets manager"      },
   ],
   unitMix: [
     { ami: "30% ami", units: 28,  type: "studio / 1br" },
@@ -150,8 +150,8 @@ export const FORGE: ProjectConfig = {
   team: [
     { name: "christian graf", title: "senior development associate" },
     { name: "angie clarke",   title: "development analyst"          },
-    { name: "stephen blomquist", title: "—"                          },
-    { name: "carden likes",   title: "—"                            },
+    { name: "steven blomquist", title: "director of development"      },
+    { name: "carden likes",   title: "capital markets manager"       },
   ],
   unitMix: [
     { ami: "30% ami", units: 20,  type: "studio / 1br"    },
@@ -271,8 +271,8 @@ export const LOTUS_VALE: ProjectConfig = {
   team: [
     { name: "andrea palmer",    title: "development associate" },
     { name: "angie clarke",     title: "development analyst"   },
-    { name: "steven blomquist", title: "—"                     },
-    { name: "carden lykes",     title: "—"                     },
+    { name: "steven blomquist", title: "director of development" },
+    { name: "carden likes",    title: "capital markets manager" },
     { name: "scott kim",        title: "—"                     },
   ],
   unitMix: [
