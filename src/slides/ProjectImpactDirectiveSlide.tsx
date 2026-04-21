@@ -233,11 +233,9 @@ export function ProjectImpactDirectiveSlide({ project }: { project: ProjectConfi
                 10-year impact projection
               </EditableText>
 
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 8 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(1, 1fr)", gap: 8 }}>
                 {[
                   { value: project.residentYears10 ?? String(Math.round(project.units * parseFloat(project.hhSize ?? "2.5") * 10).toLocaleString()), label: "resident-years of housing" },
-                  { value: "—", label: "service contacts projected" },
-                  { value: "—", label: "workforce program enrollments" },
                 ].map((stat, i) => (
                   <div key={i} style={{ background: teal(0.06), border: `1px solid ${muted(0.08)}`, borderRadius: 3, padding: "12px 14px" }}>
                     <EditableText
