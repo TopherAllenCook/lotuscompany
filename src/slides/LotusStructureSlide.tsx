@@ -6,32 +6,16 @@ import { EditableText } from "@/components/EditableText";
 import { EditableEl } from "@/components/EditableEl";
 import { EditableBgImage } from "@/components/EditableBgImage";
 
-const tableData = [
-  {
-    dimension: "capital lifecycle",
-    philanthropy: "spent once",
-    blindPool: "locked, single cycle",
-    curated: "recycled across cohorts",
-  },
-  {
-    dimension: "partner visibility",
-    philanthropy: "low",
-    blindPool: "low to moderate",
-    curated: "high",
-  },
-  {
-    dimension: "impact accountability",
-    philanthropy: "high intent, variable measurement",
-    blindPool: "secondary to return",
-    curated: "core to reporting",
-  },
-  {
-    dimension: "speed to deploy",
-    philanthropy: "slow",
-    blindPool: "manager pace",
-    curated: "deal-level consent within rules",
-  },
+const DIMENSIONS = [
+  { label: "capital lifecycle",      philanthropy: "spent once",                    blindPool: "locked, single cycle",           lotus: "recycled across cohorts" },
+  { label: "partner visibility",     philanthropy: "low",                           blindPool: "low to moderate",                lotus: "high" },
+  { label: "impact accountability",  philanthropy: "high intent, variable measure", blindPool: "secondary to return",            lotus: "core to reporting" },
+  { label: "speed to deploy",        philanthropy: "slow",                          blindPool: "manager pace",                   lotus: "deal-level consent within rules" },
+  { label: "return on capital",      philanthropy: "none",                          blindPool: "target-based, opaque",           lotus: "15%+ irr, transparent" },
 ];
+
+const muted = (a: number) => `rgba(255,255,255,${a})`;
+const teal  = (a: number) => `rgba(77,186,214,${a})`;
 
 export function LotusStructureSlide() {
   return (
@@ -44,158 +28,200 @@ export function LotusStructureSlide() {
         background: theme.darkBg,
       }}
     >
-      {/* Background photo */}
+      {/* Background */}
       <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
         <EditableBgImage
           id="lotus-structure:bg-photo"
           label="background photo"
           src="/steelton-village/Steelton I_4-corners_2026.03.26.jpg"
-          style={{ width: "100%", height: "100%", opacity: 0.55 }}
+          style={{ width: "100%", height: "100%", opacity: 0.40 }}
         />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(5,10,12,0.25) 0%, rgba(5,10,12,0.10) 50%, rgba(5,10,12,0.0) 100%)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(110deg, rgba(5,10,12,0.82) 0%, rgba(5,10,12,0.50) 55%, rgba(5,10,12,0.22) 100%)" }} />
       </div>
 
-      <div style={{ position: "relative", display: "flex", alignItems: "center", height: "100%", padding: "56px 64px 72px", gap: 32 }}>
+      <div style={{ position: "relative", display: "flex", flexDirection: "column", height: "100%", padding: "48px 60px 56px" }}>
 
-        {/* Left: glass card */}
-        <EditableEl id="structure:card-left" label="left glass card" type="card" style={{
-          flex: "0 0 36%",
-          display: "flex",
-          flexDirection: "column",
-          padding: "36px 40px",
-          background: "rgba(5,10,12,0.52)",
-          backdropFilter: "blur(28px) saturate(200%)",
-          WebkitBackdropFilter: "blur(28px) saturate(200%)",
-          borderRadius: "16px",
-          border: "1px solid rgba(255,255,255,0.15)",
-          boxShadow: "0 8px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.14)",
-        }}>
+        {/* ── Top header ── */}
+        <div style={{ marginBottom: "28px" }}>
           <EditableText
             id="structure:eyebrow"
             as="div"
-            style={{
-              fontSize: "13px",
-              color: theme.turquoise,
-              fontWeight: 300,
-              letterSpacing: "0.28em",
-              fontFamily: font,
-              marginBottom: "10px",
-              textTransform: "lowercase",
-            }}
+            style={{ fontSize: "11px", color: theme.turquoise, fontWeight: 500, letterSpacing: "0.32em", textTransform: "uppercase", fontFamily: font, marginBottom: "10px" }}
           >
             why this structure exists
           </EditableText>
-
           <EditableText
             id="structure:headline"
-            as="h2"
-            style={{
-              fontSize: "34px",
-              color: "#fff",
-              fontWeight: 300,
-              letterSpacing: "-0.02em",
-              fontFamily: font,
-              lineHeight: 1.2,
-              marginBottom: "16px",
-              textTransform: "lowercase",
-              textShadow: "0 1px 12px rgba(5,10,12,0.8)",
-            }}
+            as="h1"
+            style={{ fontSize: "36px", color: "#fff", fontWeight: 300, letterSpacing: "-0.02em", fontFamily: font, lineHeight: 1.15, textTransform: "lowercase", margin: 0 }}
           >
-            most models trade capital, control, or impact. we won't.
+            most models trade capital, control, or impact.&nbsp;we won&apos;t.
           </EditableText>
+        </div>
 
-          <div style={{ height: "1px", background: "rgba(77,186,214,0.18)", marginBottom: "16px" }} />
+        <div style={{ height: "1px", background: teal(0.20), marginBottom: "24px" }} />
 
-          <EditableText
-            id="structure:caption"
-            as="p"
-            style={{
-              fontSize: "17px",
-              color: "rgba(255,255,255,0.88)",
-              fontWeight: 400,
-              letterSpacing: "0.04em",
-              fontFamily: font,
-              fontStyle: "italic",
-              margin: 0,
-              textTransform: "lowercase",
-              lineHeight: 1.6,
-            }}
-          >
-            purpose with process.
-          </EditableText>
-        </EditableEl>
+        {/* ── Three pillar cards ── */}
+        <div style={{ flex: 1, display: "grid", gridTemplateColumns: "1fr 1fr 1.18fr", gap: "14px", minHeight: 0 }}>
 
-        {/* Right: comparison table */}
-        <div style={{ flex: 1, display: "flex", alignItems: "center", minWidth: 0 }}>
+          {/* — Philanthropy — */}
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            style={{ width: "100%", minWidth: 0 }}
+            transition={{ delay: 0.10, duration: 0.50, ease: [0.25, 0.46, 0.45, 0.94] }}
+            style={{ display: "flex", flexDirection: "column", minHeight: 0 }}
           >
-            <EditableEl id="structure:card" label="table card" type="card"
+            <EditableEl
+              id="structure:card-philanthropy"
+              label="philanthropy card"
+              type="card"
               style={{
-                background: "rgba(5,10,12,0.52)",
-                backdropFilter: "blur(28px) saturate(200%)",
-                WebkitBackdropFilter: "blur(28px) saturate(200%)",
-                borderRadius: "16px",
-                border: "1px solid rgba(255,255,255,0.15)",
-                boxShadow: "0 8px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.14)",
+                flex: 1,
+                display: "flex",
+                flexDirection: "column",
+                background: "rgba(5,10,12,0.48)",
+                backdropFilter: "blur(24px) saturate(160%)",
+                WebkitBackdropFilter: "blur(24px) saturate(160%)",
+                borderRadius: "14px",
+                border: "1px solid rgba(255,255,255,0.09)",
+                boxShadow: "0 8px 32px rgba(0,0,0,0.35)",
                 overflow: "hidden",
-                width: "100%",
               }}
             >
-              {/* Header row */}
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", background: "rgba(77,186,214,0.12)" }}>
-                {[
-                  { id: "structure:header-dimension",    label: "dimensions"           },
-                  { id: "structure:header-philanthropy", label: "philanthropy"          },
-                  { id: "structure:header-blindpool",    label: "blind-pool fund"       },
-                  { id: "structure:header-curated",      label: "the lotus collective"  },
-                ].map((h) => (
-                  <div key={h.id} style={{ padding: "12px 18px", minWidth: 0 }}>
-                    <EditableText id={h.id} as="span" style={{ fontSize: "11px", fontWeight: 500, color: theme.turquoise, letterSpacing: "0.14em", textTransform: "uppercase", fontFamily: font }}>
-                      {h.label}
+              {/* Header */}
+              <div style={{ padding: "20px 22px 16px", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
+                <EditableText
+                  id="structure:label-philanthropy"
+                  as="div"
+                  style={{ fontSize: "13px", color: muted(0.50), fontFamily: font, fontWeight: 500, textTransform: "lowercase", letterSpacing: "0.10em" }}
+                >
+                  philanthropy
+                </EditableText>
+              </div>
+              {/* Rows */}
+              <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+                {DIMENSIONS.map((d, i) => (
+                  <div key={i} style={{ flex: 1, padding: "0 22px", display: "flex", flexDirection: "column", justifyContent: "center", borderBottom: i < DIMENSIONS.length - 1 ? "1px solid rgba(255,255,255,0.05)" : "none" }}>
+                    <EditableText id={`structure:phil-dim-${i}`} as="div" style={{ fontSize: "9px", color: teal(0.45), fontFamily: font, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.18em", marginBottom: "3px" }}>
+                      {d.label}
+                    </EditableText>
+                    <EditableText id={`structure:phil-val-${i}`} as="div" style={{ fontSize: "14px", color: muted(0.55), fontFamily: font, fontWeight: 300, textTransform: "lowercase", lineHeight: 1.35 }}>
+                      {d.philanthropy}
                     </EditableText>
                   </div>
                 ))}
               </div>
-
-              {/* Data rows */}
-              {tableData.map((row, rowIdx) => (
-                <div
-                  key={rowIdx}
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "1fr 1fr 1fr 1fr",
-                    background: rowIdx % 2 === 1 ? "rgba(255,255,255,0.025)" : "transparent",
-                    borderTop: rowIdx > 0 ? "1px solid rgba(77,186,214,0.12)" : "none",
-                  }}
-                >
-                  <div style={{ padding: "14px 18px", minWidth: 0 }}>
-                    <EditableText id={`structure:dim-${rowIdx}`} as="span" style={{ fontSize: "14px", fontWeight: 300, color: "rgba(77,186,214,0.9)", letterSpacing: "0.06em", textTransform: "lowercase", fontFamily: font }}>
-                      {row.dimension}
-                    </EditableText>
-                  </div>
-                  <div style={{ padding: "14px 18px", minWidth: 0 }}>
-                    <EditableText id={`structure:phil-${rowIdx}`} as="span" style={{ fontSize: "15px", fontWeight: 400, color: "rgba(255,255,255,0.75)", textTransform: "lowercase", fontFamily: font }}>
-                      {row.philanthropy}
-                    </EditableText>
-                  </div>
-                  <div style={{ padding: "14px 18px", minWidth: 0 }}>
-                    <EditableText id={`structure:blind-${rowIdx}`} as="span" style={{ fontSize: "15px", fontWeight: 400, color: "rgba(255,255,255,0.75)", textTransform: "lowercase", fontFamily: font }}>
-                      {row.blindPool}
-                    </EditableText>
-                  </div>
-                  <div style={{ padding: "14px 18px", minWidth: 0 }}>
-                    <EditableText id={`structure:curated-${rowIdx}`} as="span" style={{ fontSize: "15px", fontWeight: 500, color: "#fff", textTransform: "lowercase", fontFamily: font }}>
-                      {row.curated}
-                    </EditableText>
-                  </div>
-                </div>
-              ))}
             </EditableEl>
           </motion.div>
+
+          {/* — Blind-Pool Fund — */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.20, duration: 0.50, ease: [0.25, 0.46, 0.45, 0.94] }}
+            style={{ display: "flex", flexDirection: "column", minHeight: 0 }}
+          >
+            <EditableEl
+              id="structure:card-blindpool"
+              label="blind-pool fund card"
+              type="card"
+              style={{
+                flex: 1,
+                display: "flex",
+                flexDirection: "column",
+                background: "rgba(5,10,12,0.52)",
+                backdropFilter: "blur(24px) saturate(160%)",
+                WebkitBackdropFilter: "blur(24px) saturate(160%)",
+                borderRadius: "14px",
+                border: "1px solid rgba(255,255,255,0.11)",
+                boxShadow: "0 8px 32px rgba(0,0,0,0.35)",
+                overflow: "hidden",
+              }}
+            >
+              <div style={{ padding: "20px 22px 16px", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
+                <EditableText
+                  id="structure:label-blindpool"
+                  as="div"
+                  style={{ fontSize: "13px", color: muted(0.58), fontFamily: font, fontWeight: 500, textTransform: "lowercase", letterSpacing: "0.10em" }}
+                >
+                  blind-pool fund
+                </EditableText>
+              </div>
+              <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+                {DIMENSIONS.map((d, i) => (
+                  <div key={i} style={{ flex: 1, padding: "0 22px", display: "flex", flexDirection: "column", justifyContent: "center", borderBottom: i < DIMENSIONS.length - 1 ? "1px solid rgba(255,255,255,0.05)" : "none" }}>
+                    <EditableText id={`structure:bp-dim-${i}`} as="div" style={{ fontSize: "9px", color: teal(0.45), fontFamily: font, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.18em", marginBottom: "3px" }}>
+                      {d.label}
+                    </EditableText>
+                    <EditableText id={`structure:bp-val-${i}`} as="div" style={{ fontSize: "14px", color: muted(0.62), fontFamily: font, fontWeight: 300, textTransform: "lowercase", lineHeight: 1.35 }}>
+                      {d.blindPool}
+                    </EditableText>
+                  </div>
+                ))}
+              </div>
+            </EditableEl>
+          </motion.div>
+
+          {/* — The Lotus Collective — highlighted ── */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.32, duration: 0.54, ease: [0.25, 0.46, 0.45, 0.94] }}
+            style={{ display: "flex", flexDirection: "column", minHeight: 0 }}
+          >
+            <EditableEl
+              id="structure:card-lotus"
+              label="the lotus collective card"
+              type="card"
+              style={{
+                flex: 1,
+                display: "flex",
+                flexDirection: "column",
+                background: "rgba(5,10,12,0.62)",
+                backdropFilter: "blur(32px) saturate(180%)",
+                WebkitBackdropFilter: "blur(32px) saturate(180%)",
+                borderRadius: "14px",
+                border: `1px solid ${teal(0.38)}`,
+                boxShadow: `0 12px 48px rgba(0,0,0,0.50), 0 0 0 1px ${teal(0.12)}, inset 0 1px 0 ${teal(0.15)}`,
+                overflow: "hidden",
+              }}
+            >
+              {/* Turquoise header band */}
+              <div style={{ padding: "20px 24px 16px", background: teal(0.10), borderBottom: `1px solid ${teal(0.22)}` }}>
+                <EditableText
+                  id="structure:label-lotus"
+                  as="div"
+                  style={{ fontSize: "13px", color: theme.turquoise, fontFamily: font, fontWeight: 600, textTransform: "lowercase", letterSpacing: "0.12em" }}
+                >
+                  the lotus collective
+                </EditableText>
+              </div>
+              <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+                {DIMENSIONS.map((d, i) => (
+                  <div key={i} style={{ flex: 1, padding: "0 24px", display: "flex", flexDirection: "column", justifyContent: "center", borderBottom: i < DIMENSIONS.length - 1 ? `1px solid ${teal(0.10)}` : "none", background: i % 2 === 0 ? teal(0.03) : "transparent" }}>
+                    <EditableText id={`structure:lotus-dim-${i}`} as="div" style={{ fontSize: "9px", color: teal(0.65), fontFamily: font, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.18em", marginBottom: "3px" }}>
+                      {d.label}
+                    </EditableText>
+                    <EditableText id={`structure:lotus-val-${i}`} as="div" style={{ fontSize: "15px", color: "#ffffff", fontFamily: font, fontWeight: 400, textTransform: "lowercase", lineHeight: 1.35 }}>
+                      {d.lotus}
+                    </EditableText>
+                  </div>
+                ))}
+              </div>
+            </EditableEl>
+          </motion.div>
+
+        </div>
+
+        {/* ── Footer caption ── */}
+        <div style={{ marginTop: "18px" }}>
+          <EditableText
+            id="structure:caption"
+            as="div"
+            style={{ fontSize: "13px", color: theme.turquoise, fontFamily: font, fontWeight: 400, textTransform: "lowercase", letterSpacing: "0.08em", fontStyle: "italic" }}
+          >
+            purpose with process.
+          </EditableText>
         </div>
 
       </div>
