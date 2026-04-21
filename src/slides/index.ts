@@ -61,7 +61,6 @@ export const SLIDE_REGISTRY = [
   // ── Steelton Village ──────────────────────────────────────────────────────
   { key: "steelton-cover",        component: () => React.createElement(ProjectCoverSlide,            { project: STEELTON }), title: "Steelton Village — Cover"              },
   { key: "steelton-lotus-way",    component: () => React.createElement(ProjectLotusWaySlide,         { project: STEELTON }), title: "Steelton Village — The Lotus Way"      },
-  { key: "steelton-partnership",  component: () => React.createElement(ProjectPartnershipTermsSlide, { project: STEELTON }), title: "Steelton Village — Partnership Terms"  },
   { key: "steelton-team",         component: () => React.createElement(ProjectTeamSlide,             { project: STEELTON }), title: "Steelton Village — Development Team"   },
 
   // ── Forge ─────────────────────────────────────────────────────────────────
