@@ -97,7 +97,7 @@ export function LotusStructureSlide() {
               {/* Header */}
               <div style={{ padding: "16px 20px 14px", borderBottom: "1px solid rgba(255,255,255,0.07)", flexShrink: 0 }}>
                 <EditableText id="structure:label-philanthropy" as="div"
-                  style={{ fontSize: "13px", color: muted(0.44), fontFamily: font, fontWeight: 500, textTransform: "lowercase", letterSpacing: "0.08em" }}
+                  style={{ fontSize: "13px", color: "#ffffff", fontFamily: font, fontWeight: 500, textTransform: "lowercase", letterSpacing: "0.08em" }}
                 >
                   philanthropy
                 </EditableText>
@@ -105,10 +105,10 @@ export function LotusStructureSlide() {
               {/* Rows */}
               {DIMENSIONS.map((d, i) => (
                 <div key={i} style={{ flex: 1, padding: "0 20px", display: "flex", flexDirection: "column", justifyContent: "center", borderBottom: i < DIMENSIONS.length - 1 ? "1px solid rgba(255,255,255,0.05)" : "none" }}>
-                  <EditableText id={`structure:phil-dim-${i}`} as="div" style={{ fontSize: "9px", color: teal(0.40), fontFamily: font, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.18em", marginBottom: "4px" }}>
+                  <EditableText id={`structure:phil-dim-${i}`} as="div" style={{ fontSize: "9px", color: theme.turquoise, fontFamily: font, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.18em", marginBottom: "4px" }}>
                     {d.label}
                   </EditableText>
-                  <EditableText id={`structure:phil-val-${i}`} as="div" style={{ fontSize: "15px", color: muted(0.50), fontFamily: font, fontWeight: 300, textTransform: "lowercase", lineHeight: 1.35 }}>
+                  <EditableText id={`structure:phil-val-${i}`} as="div" style={{ fontSize: "15px", color: "#ffffff", fontFamily: font, fontWeight: 300, textTransform: "lowercase", lineHeight: 1.35 }}>
                     {d.philanthropy}
                   </EditableText>
                 </div>
@@ -128,17 +128,17 @@ export function LotusStructureSlide() {
             >
               <div style={{ padding: "16px 20px 14px", borderBottom: "1px solid rgba(255,255,255,0.07)", flexShrink: 0 }}>
                 <EditableText id="structure:label-blindpool" as="div"
-                  style={{ fontSize: "13px", color: muted(0.52), fontFamily: font, fontWeight: 500, textTransform: "lowercase", letterSpacing: "0.08em" }}
+                  style={{ fontSize: "13px", color: "#ffffff", fontFamily: font, fontWeight: 500, textTransform: "lowercase", letterSpacing: "0.08em" }}
                 >
                   blind-pool fund
                 </EditableText>
               </div>
               {DIMENSIONS.map((d, i) => (
                 <div key={i} style={{ flex: 1, padding: "0 20px", display: "flex", flexDirection: "column", justifyContent: "center", borderBottom: i < DIMENSIONS.length - 1 ? "1px solid rgba(255,255,255,0.05)" : "none" }}>
-                  <EditableText id={`structure:bp-dim-${i}`} as="div" style={{ fontSize: "9px", color: teal(0.40), fontFamily: font, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.18em", marginBottom: "4px" }}>
+                  <EditableText id={`structure:bp-dim-${i}`} as="div" style={{ fontSize: "9px", color: theme.turquoise, fontFamily: font, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.18em", marginBottom: "4px" }}>
                     {d.label}
                   </EditableText>
-                  <EditableText id={`structure:bp-val-${i}`} as="div" style={{ fontSize: "15px", color: muted(0.58), fontFamily: font, fontWeight: 300, textTransform: "lowercase", lineHeight: 1.35 }}>
+                  <EditableText id={`structure:bp-val-${i}`} as="div" style={{ fontSize: "15px", color: "#ffffff", fontFamily: font, fontWeight: 300, textTransform: "lowercase", lineHeight: 1.35 }}>
                     {d.blindPool}
                   </EditableText>
                 </div>
