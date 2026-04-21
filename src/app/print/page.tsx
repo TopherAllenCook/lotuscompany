@@ -64,7 +64,7 @@ function PrintInner() {
 
       for (let i = 0; i < total; i++) {
         const canvas = await html2canvas(slideEls[i], {
-          scale: 1,
+          scale: 2,
           useCORS: true,
           allowTaint: true,
           backgroundColor: null,
@@ -74,7 +74,7 @@ function PrintInner() {
         });
 
         if (i > 0) pdf.addPage([1440, 810], "landscape");
-        pdf.addImage(canvas.toDataURL("image/jpeg", 0.92), "JPEG", 0, 0, 1440, 810);
+        pdf.addImage(canvas.toDataURL("image/jpeg", 0.95), "JPEG", 0, 0, 1440, 810);
 
         setProgress(Math.round(((i + 1) / total) * 100));
       }
