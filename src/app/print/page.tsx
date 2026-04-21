@@ -65,7 +65,6 @@ function PrintInner() {
         orientation: "landscape",
         unit: "px",
         format: [1440, 810],
-        compress: true,
       });
 
       for (let i = 0; i < total; i++) {
