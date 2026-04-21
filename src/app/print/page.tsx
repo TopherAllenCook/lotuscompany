@@ -15,10 +15,26 @@ export default function PrintPage() {
 function PrintInner() {
   const [ready, setReady] = useState(false);
 
-  // Give Supabase overrides + images 3s to load before enabling print
   useEffect(() => {
+    // globals.css sets html,body { overflow:hidden; height:100% } which clips
+    // the print page to one viewport — override it so all slides are reachable
+    const html = document.documentElement;
+    const body = document.body;
+    html.style.overflow = "auto";
+    html.style.height   = "auto";
+    body.style.overflow = "auto";
+    body.style.height   = "auto";
+
+    // Give Supabase overrides + images 3s to load before enabling print
     const t = setTimeout(() => setReady(true), 3000);
-    return () => clearTimeout(t);
+
+    return () => {
+      clearTimeout(t);
+      html.style.overflow = "";
+      html.style.height   = "";
+      body.style.overflow = "";
+      body.style.height   = "";
+    };
   }, []);
 
   return (
