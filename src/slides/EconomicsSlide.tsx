@@ -119,7 +119,7 @@ export function EconomicsSlide() {
                 textTransform: "lowercase",
               }}
             >
-              primary drivers are recap timing, fee participation, gp economics, and residual value.
+              primary drivers are return of capital (30%), development fee (5%), operations (25%), and residual value (40%).
             </EditableText>
 
             <EditableText
@@ -189,8 +189,8 @@ export function EconomicsSlide() {
               return driver contribution
             </text>
 
-            {/* Bar 1: Capital Turn */}
-            <rect x={185} y={50} width={200} height={40} fill="rgba(77,186,214,0.25)" />
+            {/* Bar 1: Return of Capital */}
+            <rect x={185} y={50} width={150} height={40} fill="rgba(77,186,214,0.25)" />
             <text
               x={178}
               y={75}
@@ -202,38 +202,38 @@ export function EconomicsSlide() {
                 fontWeight: 400,
               }}
             >
-              capital turn
-            </text>
-            <text
-              x={392}
-              y={75}
-              style={{
-                fontSize: "16px",
-                fill: "#fff",
-                fontFamily: font,
-                fontWeight: 400,
-              }}
-            >
-              75%
-            </text>
-
-            {/* Bar 2: Fee Participation */}
-            <rect x={185} y={110} width={150} height={40} fill="rgba(77,186,214,0.35)" />
-            <text
-              x={178}
-              y={135}
-              textAnchor="end"
-              style={{
-                fontSize: "16px",
-                fill: theme.lightBlue,
-                fontFamily: font,
-                fontWeight: 400,
-              }}
-            >
-              fee participation
+              return of capital
             </text>
             <text
               x={342}
+              y={75}
+              style={{
+                fontSize: "16px",
+                fill: "#fff",
+                fontFamily: font,
+                fontWeight: 400,
+              }}
+            >
+              30%
+            </text>
+
+            {/* Bar 2: Development Fee */}
+            <rect x={185} y={110} width={25} height={40} fill="rgba(77,186,214,0.35)" />
+            <text
+              x={178}
+              y={135}
+              textAnchor="end"
+              style={{
+                fontSize: "16px",
+                fill: theme.lightBlue,
+                fontFamily: font,
+                fontWeight: 400,
+              }}
+            >
+              development fee
+            </text>
+            <text
+              x={217}
               y={135}
               style={{
                 fontSize: "16px",
@@ -242,11 +242,11 @@ export function EconomicsSlide() {
                 fontWeight: 400,
               }}
             >
-              55%
+              5%
             </text>
 
             {/* Bar 3: Operations */}
-            <rect x={185} y={170} width={100} height={40} fill="rgba(77,186,214,0.45)" />
+            <rect x={185} y={170} width={125} height={40} fill="rgba(77,186,214,0.45)" />
             <text
               x={178}
               y={195}
@@ -261,7 +261,7 @@ export function EconomicsSlide() {
               operations
             </text>
             <text
-              x={292}
+              x={317}
               y={195}
               style={{
                 fontSize: "16px",
@@ -270,11 +270,11 @@ export function EconomicsSlide() {
                 fontWeight: 400,
               }}
             >
-              35%
+              25%
             </text>
 
             {/* Bar 4: Residual */}
-            <rect x={185} y={230} width={50} height={40} fill="rgba(77,186,214,0.6)" />
+            <rect x={185} y={230} width={200} height={40} fill="rgba(77,186,214,0.6)" />
             <text
               x={178}
               y={255}
@@ -289,7 +289,7 @@ export function EconomicsSlide() {
               residual
             </text>
             <text
-              x={242}
+              x={392}
               y={255}
               style={{
                 fontSize: "16px",
@@ -298,7 +298,7 @@ export function EconomicsSlide() {
                 fontWeight: 400,
               }}
             >
-              20%
+              40%
             </text>
           </svg>
         </div>
