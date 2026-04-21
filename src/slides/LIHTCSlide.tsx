@@ -19,7 +19,7 @@ const BULLETS = [
 const DEV_BULLETS = [
   "sources and structures projects",
   "secures lihtc awards",
-  "executes on development and operations",
+  "executes on development & operation",
   "partners with investors to sell tax credits",
   "retains long-term ownership",
   "ensures compliance with federal regulations",
