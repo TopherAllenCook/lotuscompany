@@ -108,40 +108,25 @@ export function LIHTCRentsSlide() {
           </EditableText>
 
           {/* Steps */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "9px" }}>
             {MECHANIC_STEPS.map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -8 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.10 + i * 0.07, duration: 0.38, ease: [0.25, 0.46, 0.45, 0.94] }}
-                style={{ display: "flex", gap: "10px", alignItems: "flex-start", flexShrink: 0 }}
-              >
-                {/* Step badge */}
+              <div key={i} style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
                 <div style={{
                   flexShrink: 0,
-                  width: "18px",
-                  height: "18px",
+                  width: "5px",
+                  height: "5px",
                   borderRadius: "50%",
-                  background: teal(0.10),
-                  border: `1px solid ${teal(0.35)}`,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginTop: "1px",
-                }}>
-                  <span style={{ fontSize: "8px", color: theme.turquoise, fontFamily: font, fontWeight: 600, lineHeight: 1 }}>
-                    {item.n}
-                  </span>
-                </div>
+                  background: theme.turquoise,
+                  marginTop: "6px",
+                }} />
                 <EditableText
                   id={`lihtc-rents:step-${i}`}
                   as="div"
-                  style={{ fontSize: "11px", color: muted(0.78), fontFamily: font, fontWeight: 300, lineHeight: 1.50, textTransform: "lowercase" }}
+                  style={{ fontSize: "12px", color: muted(0.80), fontFamily: font, fontWeight: 300, lineHeight: 1.55, textTransform: "lowercase" }}
                 >
-                  {item.text}
+                  <span style={{ color: theme.turquoise, fontWeight: 500 }}>{item.n}. </span>{item.text}
                 </EditableText>
-              </motion.div>
+              </div>
             ))}
           </div>
         </EditableEl>
