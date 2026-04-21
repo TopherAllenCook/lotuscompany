@@ -17,6 +17,7 @@ function PrintInner() {
   const [generating, setGenerating] = useState(false);
   const [progress, setProgress] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const runningRef = useRef(false);
 
   useEffect(() => {
     // Override global overflow:hidden so all slides render
@@ -39,47 +40,54 @@ function PrintInner() {
   }, []);
 
   async function downloadPDF() {
-    if (!containerRef.current) return;
+    if (!containerRef.current || runningRef.current) return;
+    runningRef.current = true;
     setGenerating(true);
     setProgress(0);
 
-    const { default: html2canvas } = await import("html2canvas");
-    const { default: jsPDF } = await import("jspdf");
+    try {
+      const { default: html2canvas } = await import("html2canvas");
+      const { default: jsPDF } = await import("jspdf");
 
-    const slideEls = containerRef.current.querySelectorAll<HTMLElement>(".print-slide");
-    const total = slideEls.length;
+      // Snapshot the slide elements before any re-renders occur
+      const slideEls = Array.from(
+        containerRef.current.querySelectorAll<HTMLElement>(".print-slide")
+      );
+      const total = slideEls.length;
 
-    const pdf = new jsPDF({
-      orientation: "landscape",
-      unit: "px",
-      format: [1440, 810],
-      compress: true,
-    });
-
-    for (let i = 0; i < total; i++) {
-      const el = slideEls[i];
-      const canvas = await html2canvas(el, {
-        scale: 1,
-        useCORS: true,
-        allowTaint: true,
-        backgroundColor: null,
-        width: 1440,
-        height: 810,
-        logging: false,
+      const pdf = new jsPDF({
+        orientation: "landscape",
+        unit: "px",
+        format: [1440, 810],
+        compress: true,
       });
 
-      if (i > 0) pdf.addPage([1440, 810], "landscape");
-      pdf.addImage(canvas.toDataURL("image/jpeg", 0.92), "JPEG", 0, 0, 1440, 810);
+      for (let i = 0; i < total; i++) {
+        const canvas = await html2canvas(slideEls[i], {
+          scale: 1,
+          useCORS: true,
+          allowTaint: true,
+          backgroundColor: null,
+          width: 1440,
+          height: 810,
+          logging: false,
+        });
 
-      setProgress(Math.round(((i + 1) / total) * 100));
+        if (i > 0) pdf.addPage([1440, 810], "landscape");
+        pdf.addImage(canvas.toDataURL("image/jpeg", 0.92), "JPEG", 0, 0, 1440, 810);
+
+        setProgress(Math.round(((i + 1) / total) * 100));
+      }
+
+      const blob = pdf.output("blob");
+      const url = URL.createObjectURL(blob);
+      window.open(url, "_blank");
+      setTimeout(() => URL.revokeObjectURL(url), 60000);
+    } finally {
+      runningRef.current = false;
+      setGenerating(false);
+      setProgress(0);
     }
-
-    const blob = pdf.output("blob");
-    const url = URL.createObjectURL(blob);
-    window.open(url, "_blank");
-    setTimeout(() => URL.revokeObjectURL(url), 60000);
-    setGenerating(false);
-    setProgress(0);
   }
 
   return (
