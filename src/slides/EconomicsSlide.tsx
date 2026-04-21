@@ -5,7 +5,6 @@ import { EditableText } from "@/components/EditableText";
 
 
 import { EditableEl } from "@/components/EditableEl";
-import { EditableBgImage } from "@/components/EditableBgImage";
 
 export function EconomicsSlide() {
   return (
@@ -15,29 +14,9 @@ export function EconomicsSlide() {
         width: "100%",
         height: "100%",
         overflow: "hidden",
-        background: theme.darkBg,
+        background: "#424242",
       }}
     >
-      {/* Background photo — right side accent */}
-      <div
-        style={{
-          position: "absolute",
-          right: 0,
-          top: 0,
-          width: "45%",
-          height: "100%",
-          overflow: "hidden",
-          pointerEvents: "none",
-        }}
-      >
-        <EditableBgImage
-          id="economics:bg-photo"
-          label="background photo"
-          src="/lotus-photos/nova/Commercial 2025-07-07 Lotus-Nova-3.jpg"
-          style={{ width: "100%", height: "100%", opacity: 0.50 }}
-        />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(5,10,12,0.25) 0%, rgba(5,10,12,0.10) 50%, rgba(5,10,12,0.0) 100%)" }} />
-      </div>
 
 
 

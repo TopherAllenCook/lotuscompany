@@ -267,7 +267,7 @@ export default function MembershipSlide() {
               as="div"
               style={{
                 fontSize: "11px",
-                color: "rgba(255,255,255,0.36)",
+                color: "rgba(255,255,255,0.60)",
                 fontFamily: font,
                 fontWeight: 300,
                 letterSpacing: "0.06em",

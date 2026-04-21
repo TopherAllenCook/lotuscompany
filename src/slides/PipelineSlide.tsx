@@ -221,51 +221,11 @@ export function PipelineSlide() {
                     flexShrink: 0,
                   }}
                 >
-                  —
                 </EditableText>
               </EditableEl>
             );
           })}
 
-          {/* Total row */}
-          <div style={{
-            display: "flex",
-            alignItems: "center",
-            padding: "14px 24px 14px 43px",
-            gap: "20px",
-            borderTop: "1px solid rgba(77,186,214,0.18)",
-            marginTop: "4px",
-          }}>
-            <EditableText
-              id="pipeline:total-label"
-              as="div"
-              style={{
-                flex: 1,
-                fontSize: "14px",
-                color: "rgba(255,255,255,0.70)",
-                fontFamily: font,
-                textTransform: "lowercase",
-                letterSpacing: "0.2em",
-              }}
-            >
-              total pipeline
-            </EditableText>
-            <EditableText
-              id="pipeline:val-total"
-              as="div"
-              style={{
-                fontSize: "54px",
-                color: theme.turquoise,
-                fontFamily: font,
-                fontWeight: 200,
-                letterSpacing: "-0.02em",
-                lineHeight: 1,
-                flexShrink: 0,
-              }}
-            >
-              —
-            </EditableText>
-          </div>
 
         </div>
       </div>
