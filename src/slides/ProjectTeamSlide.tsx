@@ -48,12 +48,11 @@ export function ProjectTeamSlide({ project }: { project: ProjectConfig }) {
         <div style={{ height: 1, background: muted(0.10), marginBottom: 32 }} />
 
         {/* Team members — responsive grid */}
-        <div style={{ display: "grid", gridTemplateColumns: `repeat(${project.team.length}, 1fr)`, gap: 24, flex: 1, minHeight: 0, alignItems: "flex-start" }}>
+        <div style={{ display: "grid", gridTemplateColumns: `repeat(${project.team.length}, 1fr)`, gap: 24, flex: 1, minHeight: 0, alignItems: "stretch" }}>
           {project.team.map((member, i) => (
             <div
               key={i}
               style={{
-                flex: 1,
                 display: "flex",
                 flexDirection: "column",
                 border: `1px solid ${muted(0.10)}`,
@@ -64,7 +63,7 @@ export function ProjectTeamSlide({ project }: { project: ProjectConfig }) {
               {/* Photo */}
               <div
                 style={{
-                  flex: "0 0 64%",
+                  flex: 1,
                   background: teal(0.07),
                   display: "flex",
                   alignItems: "center",
