@@ -114,20 +114,30 @@ export function PipelineSlide() {
           </div>
 
           {/* Target states footer */}
-          <div style={{ marginTop: "28px", paddingTop: "20px", borderTop: "1px solid rgba(77,186,214,0.14)", display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
+          <div style={{ marginTop: "28px", paddingTop: "20px", borderTop: "1px solid rgba(77,186,214,0.14)" }}>
             <EditableText
               id="pipeline:target-states"
-              as="span"
+              as="div"
               style={{
                 fontSize: "16px",
                 color: "rgba(255,255,255,0.70)",
                 fontFamily: font,
                 textTransform: "lowercase",
                 letterSpacing: "0.08em",
+                marginBottom: "16px",
               }}
             >
               target states: utah · florida · ohio · colorado · oklahoma · indiana
             </EditableText>
+            {/* Lender partner */}
+            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+              <span style={{ fontSize: "11px", color: "rgba(255,255,255,0.40)", fontFamily: font, textTransform: "lowercase", letterSpacing: "0.14em" }}>financed by</span>
+              <img
+                src="/Logos/Fannie may logo color.png"
+                alt="Fannie Mae"
+                style={{ height: "22px", objectFit: "contain", opacity: 0.85 }}
+              />
+            </div>
           </div>
         </EditableEl>
 

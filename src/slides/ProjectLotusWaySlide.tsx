@@ -2,17 +2,22 @@
 
 import { font, theme } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
-
-
+import { EditableEl } from "@/components/EditableEl";
+import { EditableBgImage } from "@/components/EditableBgImage";
 import type { ProjectConfig } from "./projectData";
 
-const BG   = "#F7F5F0";
-const INK  = "#050a0c";
-const muted = (a: number) => `rgba(5,10,12,${a})`;
+const teal = (a: number) => `rgba(77,186,214,${a})`;
+const muted = (a: number) => `rgba(255,255,255,${a})`;
+
+const CARD_TOPICS = [
+  { key: "mission",   label: "mission",             heading: "two buildings, one mission" },
+  { key: "heritage",  label: "industrial heritage",  heading: "industrial heritage, renewed" },
+  { key: "programs",  label: "resident programs",    heading: "resident programs from opening day" },
+];
 
 export function ProjectLotusWaySlide({ project }: { project: ProjectConfig }) {
   const k = project.key;
-  const slideNum = String(project.slideNumStart + 1).padStart(2, "0");
+  const pillars = project.lotusWayPillars;
 
   return (
     <div
@@ -21,190 +26,114 @@ export function ProjectLotusWaySlide({ project }: { project: ProjectConfig }) {
         width: "100%",
         height: "100%",
         overflow: "hidden",
-        background: BG,
+        background: theme.darkBg,
         fontFamily: font,
       }}
     >
+      {/* Full-bleed building rendering */}
+      <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
+        <EditableBgImage
+          id={`${k}-lotus-way:bg-photo`}
+          label="building rendering"
+          src={project.images.hero}
+          style={{ width: "100%", height: "100%", opacity: 0.38 }}
+        />
+        {/* gradient — darker at bottom for card legibility */}
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(170deg, rgba(5,10,12,0.60) 0%, rgba(5,10,12,0.45) 40%, rgba(5,10,12,0.85) 100%)" }} />
+      </div>
 
+      {/* Layout */}
+      <div style={{ position: "relative", display: "flex", flexDirection: "column", height: "100%", padding: "44px 60px 52px", gap: 28 }}>
 
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          height: "100%",
-          padding: "56px 64px 72px",
-        }}
-      >
         {/* Header */}
-        <div style={{ marginBottom: 24 }}>
+        <div style={{ flexShrink: 0 }}>
           <EditableText
             id={`${k}-lotus-way:eyebrow`}
             as="div"
-            style={{
-              fontSize: 12,
-              color: theme.turquoise,
-              letterSpacing: "0.28em",
-              textTransform: "lowercase",
-              fontFamily: font,
-              fontWeight: 300,
-              marginBottom: 10,
-            }}
+            style={{ fontSize: "10px", color: theme.turquoise, letterSpacing: "0.32em", textTransform: "uppercase", fontFamily: font, fontWeight: 500, marginBottom: "10px" }}
           >
             the lotus way · {project.name}
           </EditableText>
 
           <EditableText
             id={`${k}-lotus-way:headline`}
-            as="h1"
-            style={{
-              fontSize: "46px",
-              color: INK,
-              fontWeight: 300,
-              fontFamily: font,
-              lineHeight: 1.2,
-              letterSpacing: "-0.02em",
-              textTransform: "lowercase",
-            }}
+            as="div"
+            style={{ fontSize: "36px", color: "#ffffff", fontWeight: 300, fontFamily: font, lineHeight: 1.2, letterSpacing: "-0.02em", textTransform: "lowercase" }}
           >
             how this project represents the lotus way.
           </EditableText>
         </div>
 
-        <div
-          style={{
-            height: 1,
-            background: "rgba(77,186,214,0.18)",
-            marginBottom: 24,
-          }}
-        />
+        <div style={{ height: "1px", background: teal(0.20), flexShrink: 0 }} />
 
-        {/* 3-column pillar grid */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: 12,
-            flex: 1,
-            minHeight: 0,
-          }}
-        >
-          {project.lotusWayPillars.map((pillar, i) => (
-            <div
-              key={i}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                overflow: "hidden",
-                borderRadius: 4,
-                border: "1px solid rgba(77,186,214,0.12)",
-              }}
-            >
-              {/* Photo or placeholder */}
-              <div
+        {/* Three cards */}
+        <div style={{ flex: 1, display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px", minHeight: 0 }}>
+          {CARD_TOPICS.map((topic, i) => {
+            const pillar = pillars[i];
+            return (
+              <EditableEl
+                key={topic.key}
+                id={`${k}-lotus-way:card-${topic.key}`}
+                label={`card — ${topic.label}`}
+                type="card"
                 style={{
-                  flex: "0 0 44%",
-                  position: "relative",
-                  overflow: "hidden",
-                  background: pillar.img ? undefined : "rgba(77,186,214,0.06)",
                   display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
+                  flexDirection: "column",
+                  background: "rgba(5,10,12,0.58)",
+                  backdropFilter: "blur(28px) saturate(160%)",
+                  WebkitBackdropFilter: "blur(28px) saturate(160%)",
+                  borderRadius: "14px",
+                  border: "1px solid rgba(255,255,255,0.10)",
+                  borderTop: `2px solid ${teal(0.55)}`,
+                  boxShadow: "0 8px 36px rgba(0,0,0,0.45)",
+                  overflow: "hidden",
                 }}
               >
-                {pillar.img ? (
-                  <>
+                {/* Card image */}
+                {pillar?.img && (
+                  <div style={{ height: "38%", flexShrink: 0, position: "relative", overflow: "hidden" }}>
                     <img
                       src={pillar.img}
                       alt=""
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                        objectPosition: "center 35%",
-                        display: "block",
-                      }}
+                      style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 30%", display: "block" }}
                     />
-                    <div
-                      style={{
-                        position: "absolute",
-                        inset: 0,
-                        background:
-                          "linear-gradient(to bottom, rgba(5,10,12,0.0) 50%, rgba(5,10,12,0.65) 100%)",
-                      }}
-                    />
-                  </>
-                ) : (
-                  <div style={{ fontSize: 11, color: "rgba(77,186,214,0.30)", fontFamily: font, letterSpacing: "0.18em", textTransform: "lowercase" }}>
-                    rendering coming soon
+                    <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(5,10,12,0) 40%, rgba(5,10,12,0.70) 100%)" }} />
                   </div>
                 )}
-                <EditableText
-                  id={`${k}-lotus-way:pillar-label-${i}`}
-                  as="div"
-                  style={{
-                    position: "absolute",
-                    bottom: 10,
-                    left: 14,
-                    fontSize: 10,
-                    color: theme.turquoise,
-                    fontFamily: font,
-                    letterSpacing: "0.22em",
-                    textTransform: "lowercase",
-                    fontWeight: 400,
-                  }}
-                >
-                  {pillar.label}
-                </EditableText>
-              </div>
 
-              {/* Text */}
-              <div
-                style={{
-                  flex: 1,
-                  padding: "16px 18px",
-                  background: "rgba(77,186,214,0.04)",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 10,
-                }}
-              >
-                <EditableText
-                  id={`${k}-lotus-way:pillar-heading-${i}`}
-                  as="div"
-                  style={{
-                    fontSize: "34px",
-                    color: INK,
-                    fontFamily: font,
-                    fontWeight: 300,
-                    lineHeight: 1.3,
-                    textTransform: "lowercase",
-                    letterSpacing: "-0.01em",
-                  }}
-                >
-                  {pillar.heading}
-                </EditableText>
+                {/* Card text */}
+                <div style={{ flex: 1, padding: "24px 26px 28px", display: "flex", flexDirection: "column", gap: "12px" }}>
+                  <EditableText
+                    id={`${k}-lotus-way:card-label-${topic.key}`}
+                    as="div"
+                    style={{ fontSize: "9px", color: theme.turquoise, letterSpacing: "0.30em", textTransform: "uppercase", fontFamily: font, fontWeight: 500 }}
+                  >
+                    {topic.label}
+                  </EditableText>
 
-                <EditableText
-                  id={`${k}-lotus-way:pillar-body-${i}`}
-                  as="div"
-                  style={{
-                    fontSize: "24px",
-                    color: muted(0.60),
-                    fontFamily: font,
-                    fontWeight: 300,
-                    lineHeight: 1.6,
-                    textTransform: "lowercase",
-                  }}
-                >
-                  {pillar.body}
-                </EditableText>
-              </div>
-            </div>
-          ))}
+                  <EditableText
+                    id={`${k}-lotus-way:card-heading-${topic.key}`}
+                    as="div"
+                    style={{ fontSize: "22px", color: "#ffffff", fontFamily: font, fontWeight: 300, lineHeight: 1.25, textTransform: "lowercase", letterSpacing: "-0.01em" }}
+                  >
+                    {pillar?.heading ?? topic.heading}
+                  </EditableText>
+
+                  <div style={{ height: "1px", background: teal(0.15) }} />
+
+                  <EditableText
+                    id={`${k}-lotus-way:card-body-${topic.key}`}
+                    as="div"
+                    style={{ fontSize: "14px", color: muted(0.75), fontFamily: font, fontWeight: 300, lineHeight: 1.65, textTransform: "lowercase" }}
+                  >
+                    {pillar?.body ?? ""}
+                  </EditableText>
+                </div>
+              </EditableEl>
+            );
+          })}
         </div>
       </div>
-
-
     </div>
   );
 }

@@ -150,8 +150,8 @@ export const FORGE: ProjectConfig = {
   team: [
     { name: "christian graf", title: "senior development associate" },
     { name: "angie clarke",   title: "development analyst"          },
-    { name: "steven",         title: "—"                            },
-    { name: "carden",         title: "—"                            },
+    { name: "stephen blomquist", title: "—"                          },
+    { name: "carden likes",   title: "—"                            },
   ],
   unitMix: [
     { ami: "30% ami", units: 20,  type: "studio / 1br"    },
