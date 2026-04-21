@@ -131,17 +131,18 @@ export default function LIHTCSlide() {
 
           {/* LIHTC diagram — hero image */}
           <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ delay: 0.15, duration: 0.52, ease: [0.25, 0.46, 0.45, 0.94] }}
-            style={{ flex: 1, minHeight: 0 }}
+            style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}
           >
             <EditableEl
               id="lihtc:diagram-image"
               label="what is lihtc diagram"
               type="card"
               style={{
-                height: "100%",
+                flex: 1,
+                minHeight: 0,
                 background: "rgba(255,255,255,0.96)",
                 borderRadius: "12px",
                 border: "1px solid rgba(255,255,255,0.18)",
@@ -163,9 +164,10 @@ export default function LIHTCSlide() {
 
           {/* Developer / Operator bar */}
           <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ delay: 0.30, duration: 0.52, ease: [0.25, 0.46, 0.45, 0.94] }}
+            style={{ flexShrink: 0 }}
           >
             <EditableEl
               id="lihtc:developer-bar"
