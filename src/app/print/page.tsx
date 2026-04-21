@@ -131,6 +131,24 @@ function PrintInner() {
           ← back
         </button>
 
+        <a
+          href="/pdf"
+          style={{
+            marginLeft: "auto",
+            padding: "10px 18px",
+            background: "transparent",
+            color: "rgba(77,186,214,0.6)",
+            border: "1px solid rgba(77,186,214,0.2)",
+            borderRadius: 4,
+            cursor: "pointer",
+            fontSize: 12,
+            letterSpacing: "0.06em",
+            textDecoration: "none",
+          }}
+        >
+          letter pdf →
+        </a>
+
         {generating && (
           <span style={{ fontSize: 11, color: "rgba(255,255,255,0.35)", letterSpacing: "0.1em" }}>
             capturing {progress}% — this takes about a minute

@@ -199,9 +199,9 @@ function SlideDrawer({ index, go, onClose, onOpenEditor }: {
           </span>
         </button>
 
-        {/* Print link */}
+        {/* Print links */}
         <a
-          href="/print"
+          href="/pdf"
           style={{
             display: "flex", alignItems: "center", gap: 12,
             width: "100%", padding: "14px 28px",
@@ -219,7 +219,30 @@ function SlideDrawer({ index, go, onClose, onOpenEditor }: {
             color: "rgba(2,143,170,0.8)",
             letterSpacing: "0.1em", textTransform: "lowercase",
           }}>
-            print / export pdf
+            letter pdf (11×8.5)
+          </span>
+        </a>
+
+        <a
+          href="/print"
+          style={{
+            display: "flex", alignItems: "center", gap: 12,
+            width: "100%", padding: "10px 28px 14px",
+            background: "transparent", border: "none",
+            cursor: "pointer", textDecoration: "none",
+          }}
+        >
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" style={{ flexShrink: 0 }}>
+            <rect x="2" y="4" width="9" height="6" rx="1" stroke="rgba(255,255,255,0.2)" strokeWidth="1.2" />
+            <path d="M4 4V2h5v2" stroke="rgba(255,255,255,0.2)" strokeWidth="1.2" strokeLinecap="round" />
+            <path d="M4 8h5M4 10h3" stroke="rgba(255,255,255,0.2)" strokeWidth="1.2" strokeLinecap="round" />
+          </svg>
+          <span style={{
+            fontSize: 11, fontFamily: font, fontWeight: 400,
+            color: "rgba(255,255,255,0.25)",
+            letterSpacing: "0.1em", textTransform: "lowercase",
+          }}>
+            16:9 export (html2canvas)
           </span>
         </a>
 

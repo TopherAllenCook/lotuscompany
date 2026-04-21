@@ -34,7 +34,7 @@ html, body {
   font-family: var(--font-futura), "Futura", "Helvetica Neue", Arial, sans-serif;
 }
 
-/* ── Print / PDF export ─────────────────────────────────────── */
+/* ── html2canvas PDF export (/print) ───────────────────────── */
 @media print {
   /* 15in × 8.4375in = 1440px × 810px at 96dpi (16:9 widescreen) */
   @page {
@@ -75,5 +75,70 @@ html, body {
   .print-slide:last-child {
     break-after: auto;
     page-break-after: auto;
+  }
+}
+
+/* ── Browser-native PDF export (/pdf) — letter landscape ───── */
+
+/*
+   Screen preview: each page is a 1056×816 px card (11×8.5 in at 96 dpi).
+   The 1440×810 slide is scaled to 0.7333 to fit the width exactly, then
+   centred vertically with 111 px of breathing room top and bottom.
+*/
+.pdf-page {
+  width: 1056px;
+  height: 816px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  /* screen-only gap between pages */
+  margin-bottom: 2px;
+}
+
+.pdf-slide-inner {
+  width: 1440px;
+  height: 810px;
+  transform: scale(0.7333);
+  transform-origin: center center;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+@media print {
+  /* Letter landscape */
+  @page {
+    size: 11in 8.5in landscape;
+    margin: 0;
+  }
+
+  /* Override the /print rules above when on the /pdf route */
+  .pdf-page {
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    break-after: page;
+    page-break-after: always;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    background: #000 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .pdf-page:last-child {
+    break-after: auto;
+    page-break-after: auto;
+  }
+
+  .pdf-slide-inner {
+    transform: scale(0.7333) !important;
+    transform-origin: center center !important;
   }
 }
