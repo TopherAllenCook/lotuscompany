@@ -47,7 +47,7 @@ export default function LIHTCSlide() {
       </div>
 
       {/* Layout */}
-      <div style={{ position: "relative", display: "flex", alignItems: "stretch", height: "100%", padding: "48px 60px 56px", gap: 28 }}>
+      <div style={{ position: "relative", display: "flex", alignItems: "stretch", height: "100%", padding: "36px 52px 42px", gap: 24 }}>
 
         {/* ── Left: policy card ── */}
         <EditableEl
@@ -55,10 +55,10 @@ export default function LIHTCSlide() {
           label="policy glass card"
           type="card"
           style={{
-            flex: "0 0 40%",
+            flex: "0 0 38%",
             display: "flex",
             flexDirection: "column",
-            padding: "32px 36px",
+            padding: "26px 30px",
             background: "rgba(5,10,12,0.58)",
             backdropFilter: "blur(32px) saturate(180%)",
             WebkitBackdropFilter: "blur(32px) saturate(180%)",
@@ -80,7 +80,7 @@ export default function LIHTCSlide() {
           <EditableText
             id="lihtc:headline"
             as="h1"
-            style={{ fontSize: "34px", color: "#ffffff", fontWeight: 300, fontFamily: font, lineHeight: 1.15, letterSpacing: "-0.02em", textTransform: "lowercase", margin: "0 0 10px" }}
+            style={{ fontSize: "28px", color: "#ffffff", fontWeight: 300, fontFamily: font, lineHeight: 1.18, letterSpacing: "-0.02em", textTransform: "lowercase", margin: "0 0 8px" }}
           >
             what is lihtc?
           </EditableText>
@@ -89,22 +89,22 @@ export default function LIHTCSlide() {
           <EditableText
             id="lihtc:subtitle"
             as="div"
-            style={{ fontSize: "15px", color: teal(0.85), fontFamily: font, fontStyle: "italic", fontWeight: 300, textTransform: "lowercase", lineHeight: 1.5, marginBottom: "20px" }}
+            style={{ fontSize: "13px", color: teal(0.85), fontFamily: font, fontStyle: "italic", fontWeight: 300, textTransform: "lowercase", lineHeight: 1.5, marginBottom: "16px" }}
           >
             lihtc is the operating backbone, not just a backdrop
           </EditableText>
 
-          <div style={{ height: "1px", background: teal(0.20), marginBottom: "20px" }} />
+          <div style={{ height: "1px", background: teal(0.20), marginBottom: "16px" }} />
 
           {/* Bullets */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "16px", flex: 1 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "12px", flex: 1 }}>
             {BULLETS.map((b, i) => (
-              <div key={i} style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
-                <div style={{ width: "5px", height: "5px", borderRadius: "50%", background: theme.turquoise, marginTop: "8px", flexShrink: 0 }} />
+              <div key={i} style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
+                <div style={{ width: "5px", height: "5px", borderRadius: "50%", background: theme.turquoise, marginTop: "7px", flexShrink: 0 }} />
                 <EditableText
                   id={`lihtc:bullet-${i}`}
                   as="p"
-                  style={{ fontSize: "16px", color: muted(0.82), fontFamily: font, fontWeight: 300, textTransform: "lowercase", lineHeight: 1.65, margin: 0 }}
+                  style={{ fontSize: "14px", color: muted(0.82), fontFamily: font, fontWeight: 300, textTransform: "lowercase", lineHeight: 1.60, margin: 0 }}
                 >
                   {b}
                 </EditableText>
@@ -114,7 +114,7 @@ export default function LIHTCSlide() {
         </EditableEl>
 
         {/* ── Right: diagram + developer bar ── */}
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "16px", minWidth: 0 }}>
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "10px", minWidth: 0 }}>
 
           {/* Section header */}
           <div>
@@ -141,14 +141,12 @@ export default function LIHTCSlide() {
               type="card"
               style={{
                 height: "100%",
-                background: "rgba(5,10,12,0.45)",
-                backdropFilter: "blur(20px) saturate(150%)",
-                WebkitBackdropFilter: "blur(20px) saturate(150%)",
+                background: "rgba(255,255,255,0.96)",
                 borderRadius: "12px",
-                border: "1px solid rgba(255,255,255,0.11)",
+                border: "1px solid rgba(255,255,255,0.18)",
                 boxShadow: "0 6px 32px rgba(0,0,0,0.35)",
                 overflow: "hidden",
-                padding: "10px",
+                padding: "12px",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -157,7 +155,7 @@ export default function LIHTCSlide() {
               <img
                 src="/lotus-photos/what_is_lihtc.png"
                 alt="What is LIHTC — federal credit flow diagram"
-                style={{ width: "100%", height: "100%", objectFit: "contain", display: "block", borderRadius: "6px" }}
+                style={{ width: "100%", height: "100%", objectFit: "contain", display: "block", borderRadius: "4px" }}
               />
             </EditableEl>
           </motion.div>
