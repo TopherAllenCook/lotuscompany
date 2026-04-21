@@ -66,10 +66,6 @@ export const SLIDE_REGISTRY = [
   // ── Forge ─────────────────────────────────────────────────────────────────
   { key: "forge-cover",           component: () => React.createElement(ProjectCoverSlide,            { project: FORGE }),    title: "Forge — Cover"              },
   { key: "forge-lotus-way",       component: () => React.createElement(ProjectLotusWaySlide,         { project: FORGE }),    title: "Forge — The Lotus Way"      },
-  { key: "forge-impact",          component: () => React.createElement(ProjectImpactDirectiveSlide,  { project: FORGE }),    title: "Forge — Impact Directive"   },
-  { key: "forge-investment",      component: () => React.createElement(ProjectInvestmentDirectiveSlide, { project: FORGE }), title: "Forge — Investment Directive" },
-  { key: "forge-commitment",      component: () => React.createElement(ProjectCommitmentSlide,       { project: FORGE }),    title: "Forge — Commitment + Draw"  },
-  { key: "forge-partnership",     component: () => React.createElement(ProjectPartnershipTermsSlide, { project: FORGE }),    title: "Forge — Partnership Terms"  },
   { key: "forge-team",            component: () => React.createElement(ProjectTeamSlide,             { project: FORGE }),    title: "Forge — Development Team"   },
 
   // ── University Parkway ────────────────────────────────────────────────────
@@ -80,7 +76,6 @@ export const SLIDE_REGISTRY = [
   // ── Lotus Vale ────────────────────────────────────────────────────────────
   { key: "lotus-vale-cover",       component: () => React.createElement(ProjectCoverSlide,            { project: LOTUS_VALE }), title: "Lotus Vale — Cover"              },
   { key: "lotus-vale-lotus-way",   component: () => React.createElement(ProjectLotusWaySlide,         { project: LOTUS_VALE }), title: "Lotus Vale — The Lotus Way"      },
-  { key: "lotus-vale-partnership", component: () => React.createElement(ProjectPartnershipTermsSlide, { project: LOTUS_VALE }), title: "Lotus Vale — Partnership Terms"  },
   { key: "lotus-vale-team",        component: () => React.createElement(ProjectTeamSlide,             { project: LOTUS_VALE }), title: "Lotus Vale — Development Team"   },
 
   // Platform — close

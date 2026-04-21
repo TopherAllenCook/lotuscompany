@@ -61,7 +61,7 @@ export function ProjectTeamSlide({ project }: { project: ProjectConfig }) {
                 overflow: "hidden",
               }}
             >
-              {/* Photo placeholder */}
+              {/* Photo */}
               <div
                 style={{
                   flex: "0 0 64%",
@@ -71,41 +71,33 @@ export function ProjectTeamSlide({ project }: { project: ProjectConfig }) {
                   justifyContent: "center",
                   position: "relative",
                   minHeight: 280,
+                  overflow: "hidden",
                 }}
               >
-                <div
-                  style={{
-                    width: 72,
-                    height: 72,
-                    borderRadius: "50%",
-                    border: `1px solid ${muted(0.18)}`,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    background: "rgba(255,255,255,0.50)",
-                  }}
-                >
-                  <EditableText id={`${k}-team:avatar-initial-${i}`} as="div" style={{ fontSize: "46px", color: muted(0.28), fontFamily: font, fontWeight: 300, letterSpacing: "-0.02em" }}>
-                    {member.name.charAt(0)}
-                  </EditableText>
-                </div>
-
-                <EditableText
-                  id={`${k}-team:photo-hint-${i}`}
-                  as="div"
-                  style={{
-                    position: "absolute",
-                    bottom: 12,
-                    left: 16,
-                    fontSize: 11,
-                    color: muted(0.22),
-                    fontFamily: font,
-                    letterSpacing: "0.18em",
-                    textTransform: "lowercase",
-                  }}
-                >
-                  photo
-                </EditableText>
+                {member.photo ? (
+                  <img
+                    src={member.photo}
+                    alt={member.name}
+                    style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }}
+                  />
+                ) : (
+                  <div
+                    style={{
+                      width: 72,
+                      height: 72,
+                      borderRadius: "50%",
+                      border: `1px solid ${muted(0.18)}`,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      background: "rgba(255,255,255,0.50)",
+                    }}
+                  >
+                    <EditableText id={`${k}-team:avatar-initial-${i}`} as="div" style={{ fontSize: "46px", color: muted(0.28), fontFamily: font, fontWeight: 300, letterSpacing: "-0.02em" }}>
+                      {member.name.charAt(0)}
+                    </EditableText>
+                  </div>
+                )}
               </div>
 
               {/* Name + title */}

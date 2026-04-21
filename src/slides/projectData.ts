@@ -1,6 +1,7 @@
 export interface TeamMember {
   name: string;
   title: string;
+  photo?: string;
 }
 
 export interface UnitTier {
@@ -85,10 +86,10 @@ export const STEELTON: ProjectConfig = {
   sectionLabel: "steelton village",
   images: STEELTON_IMGS,
   team: [
-    { name: "christian graf",  title: "senior development associate" },
-    { name: "angie clarke",    title: "development analyst"          },
-    { name: "steven blomquist", title: "director of development"      },
-    { name: "carden likes",    title: "capital markets manager"      },
+    { name: "christian graf",   title: "senior development associate", photo: "/headshots/christian-graf.jpg"  },
+    { name: "angie clarke",     title: "development analyst",          photo: "/headshots/angie-clarke.jpg"   },
+    { name: "steven blomquist", title: "director of development",      photo: "/headshots/steven-blomquist.jpg" },
+    { name: "carden likes",     title: "capital markets manager",      photo: "/headshots/carden-likes.jpg"   },
   ],
   unitMix: [
     { ami: "30% ami", units: 28,  type: "studio / 1br" },
@@ -148,10 +149,10 @@ export const FORGE: ProjectConfig = {
     tertiary:  "/Forge/Forge Rendering.png",
   },
   team: [
-    { name: "christian graf", title: "senior development associate" },
-    { name: "angie clarke",   title: "development analyst"          },
-    { name: "steven blomquist", title: "director of development"      },
-    { name: "carden likes",   title: "capital markets manager"       },
+    { name: "christian graf",   title: "senior development associate", photo: "/headshots/christian-graf.jpg"  },
+    { name: "angie clarke",     title: "development analyst",          photo: "/headshots/angie-clarke.jpg"   },
+    { name: "steven blomquist", title: "director of development",      photo: "/headshots/steven-blomquist.jpg" },
+    { name: "carden likes",     title: "capital markets manager",      photo: "/headshots/carden-likes.jpg"   },
   ],
   unitMix: [
     { ami: "30% ami", units: 20,  type: "studio / 1br"    },
@@ -209,11 +210,11 @@ export const UPARKWAY: ProjectConfig = {
     tertiary:  "/steelton-village/Steelton I_Unit Rendering_2026.03.10.jpg",
   },
   team: [
-    { name: "andrea palmer",  title: "development associate" },
-    { name: "emma brooks",    title: "development analyst"   },
-    { name: "steven blomquist", title: "director of development" },
-    { name: "carden likes",    title: "capital markets manager" },
-    { name: "jake jones",      title: "—"                       },
+    { name: "andrea palmer",    title: "development associate",   photo: "/headshots/andrea-palmer.jpg"    },
+    { name: "emma brooks",      title: "development analyst",     photo: "/headshots/emma-brooks.jpg"      },
+    { name: "steven blomquist", title: "director of development", photo: "/headshots/steven-blomquist.jpg" },
+    { name: "carden likes",     title: "capital markets manager", photo: "/headshots/carden-likes.jpg"     },
+    { name: "jake jones",       title: "—"                                                                 },
   ],
   unitMix: [
     { ami: "30% ami", units: 21,  type: "1br"           },
@@ -270,11 +271,11 @@ export const LOTUS_VALE: ProjectConfig = {
     tertiary:  "/steelton-village/Steelton I_Updated Lobby_2026.04.02.jpg",
   },
   team: [
-    { name: "andrea palmer",    title: "development associate" },
-    { name: "angie clarke",     title: "development analyst"   },
-    { name: "steven blomquist", title: "director of development" },
-    { name: "carden likes",    title: "capital markets manager" },
-    { name: "scott kim",        title: "—"                     },
+    { name: "andrea palmer",    title: "development associate",   photo: "/headshots/andrea-palmer.jpg"    },
+    { name: "angie clarke",     title: "development analyst",     photo: "/headshots/angie-clarke.jpg"     },
+    { name: "steven blomquist", title: "director of development", photo: "/headshots/steven-blomquist.jpg" },
+    { name: "carden likes",     title: "capital markets manager", photo: "/headshots/carden-likes.jpg"     },
+    { name: "scott kim",        title: "—",                       photo: "/headshots/scott-kim.jpg"        },
   ],
   unitMix: [
     { ami: "30% ami", units: 11, type: "1br"           },
