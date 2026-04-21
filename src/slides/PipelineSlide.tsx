@@ -129,15 +129,6 @@ export function PipelineSlide() {
             >
               target states: utah · florida · ohio · colorado · oklahoma · indiana
             </EditableText>
-            {/* Lender partner */}
-            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-              <span style={{ fontSize: "11px", color: "rgba(255,255,255,0.40)", fontFamily: font, textTransform: "lowercase", letterSpacing: "0.14em" }}>financed by</span>
-              <img
-                src="/Logos/Fannie may logo color.png"
-                alt="Fannie Mae"
-                style={{ height: "22px", objectFit: "contain", opacity: 0.85 }}
-              />
-            </div>
           </div>
         </EditableEl>
 
