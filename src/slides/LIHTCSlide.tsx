@@ -140,6 +140,28 @@ export default function LIHTCSlide() {
 
           <div style={{ height: 1, background: "rgba(77,186,214,0.18)" }} />
 
+          {/* What is LIHTC diagram */}
+          <EditableEl
+            id="lihtc:diagram-image"
+            label="what is lihtc diagram"
+            type="card"
+            style={{
+              background: "rgba(5,10,12,0.42)",
+              backdropFilter: "blur(16px)",
+              WebkitBackdropFilter: "blur(16px)",
+              borderRadius: "10px",
+              border: "1px solid rgba(255,255,255,0.12)",
+              overflow: "hidden",
+              padding: "10px",
+            }}
+          >
+            <img
+              src="/lotus-photos/what_is_lihtc.png"
+              alt="What is LIHTC diagram"
+              style={{ width: "100%", height: "auto", display: "block", borderRadius: "6px" }}
+            />
+          </EditableEl>
+
           {/* Flow row */}
           <div style={{ display: "flex", alignItems: "stretch", gap: 0 }}>
             {FLOW_STEPS.map((step, i) => (
