@@ -19,8 +19,10 @@ const BULLETS = [
 const DEV_BULLETS = [
   "sources and structures projects",
   "secures lihtc awards",
-  "executes development & operations",
+  "executes on development and operations",
   "partners with investors to sell tax credits",
+  "retains long-term ownership",
+  "ensures compliance with federal regulations",
 ];
 
 export default function LIHTCSlide() {
@@ -198,7 +200,7 @@ export default function LIHTCSlide() {
               </div>
 
               {/* Bullets — 2 columns for breathing room */}
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "8px 24px" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "8px 20px" }}>
                 {DEV_BULLETS.map((b, i) => (
                   <div key={i} style={{ display: "flex", gap: "10px", alignItems: "flex-start", minWidth: 0 }}>
                     <div style={{ width: "4px", height: "4px", borderRadius: "50%", background: theme.turquoise, marginTop: "8px", flexShrink: 0 }} />
