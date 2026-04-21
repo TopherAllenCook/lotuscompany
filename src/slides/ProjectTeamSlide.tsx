@@ -12,6 +12,10 @@ const teal = (a: number) => `rgba(77,186,214,${a})`;
 export function ProjectTeamSlide({ project }: { project: ProjectConfig }) {
   const k = project.key;
   const slideNum = String(project.slideNumStart + 6).padStart(2, "0");
+  const count = project.team.length;
+  const photoMinH = count >= 5 ? 180 : 280;
+  const nameFontSize = count >= 5 ? "24px" : "32px";
+  const cardPadding = count >= 5 ? "14px 16px 18px" : "20px 24px 24px";
 
   return (
     <div
@@ -69,7 +73,7 @@ export function ProjectTeamSlide({ project }: { project: ProjectConfig }) {
                   alignItems: "center",
                   justifyContent: "center",
                   position: "relative",
-                  minHeight: 280,
+                  minHeight: photoMinH,
                   overflow: "hidden",
                 }}
               >
@@ -100,11 +104,11 @@ export function ProjectTeamSlide({ project }: { project: ProjectConfig }) {
               </div>
 
               {/* Name + title */}
-              <div style={{ padding: "20px 24px 24px", background: "rgba(255,255,255,0.50)", flexShrink: 0 }}>
+              <div style={{ padding: cardPadding, background: "rgba(255,255,255,0.50)", flexShrink: 0 }}>
                 <EditableText
                   id={`${k}-team:name-${i}`}
                   as="div"
-                  style={{ fontSize: "32px", color: INK, fontFamily: font, fontWeight: 300, letterSpacing: "-0.01em", textTransform: "lowercase", marginBottom: 6, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}
+                  style={{ fontSize: nameFontSize, color: INK, fontFamily: font, fontWeight: 300, letterSpacing: "-0.01em", textTransform: "lowercase", marginBottom: 6, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}
                 >
                   {member.name}
                 </EditableText>
