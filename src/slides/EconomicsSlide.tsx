@@ -4,7 +4,6 @@ import { font, theme } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
 
 
-import { DataTag } from "@/components/StatusChip";
 import { EditableEl } from "@/components/EditableEl";
 import { EditableBgImage } from "@/components/EditableBgImage";
 
@@ -188,8 +187,7 @@ export function EconomicsSlide() {
               textTransform: "lowercase",
             }}
           >
-            modeled assumption for presentation design. base case illustrative path: 14.4 percent irr
-            <DataTag type="MODELED" />, driven by 12 month recap and base gp economics.
+            modeled assumption for presentation design. base case illustrative path: 14.4 percent irr, driven by 12 month recap and base gp economics.
           </EditableText>
         </EditableEl>
 
