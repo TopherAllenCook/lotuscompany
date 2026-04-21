@@ -13,9 +13,8 @@ export function ProjectTeamSlide({ project }: { project: ProjectConfig }) {
   const k = project.key;
   const slideNum = String(project.slideNumStart + 6).padStart(2, "0");
   const count = project.team.length;
-  const photoMinH = count >= 5 ? 180 : 280;
-  const nameFontSize = count >= 5 ? "24px" : "32px";
-  const cardPadding = count >= 5 ? "14px 16px 18px" : "20px 24px 24px";
+  const nameFontSize = count >= 5 ? "20px" : "28px";
+  const cardPadding = count >= 5 ? "12px 14px 16px" : "18px 22px 22px";
 
   return (
     <div
@@ -51,8 +50,8 @@ export function ProjectTeamSlide({ project }: { project: ProjectConfig }) {
 
         <div style={{ height: 1, background: muted(0.10), marginBottom: 32 }} />
 
-        {/* Team members — responsive grid */}
-        <div style={{ display: "grid", gridTemplateColumns: `repeat(${project.team.length}, 1fr)`, gap: 24, flex: 1, minHeight: 0, alignItems: "stretch" }}>
+        {/* Team members — fixed N-column grid */}
+        <div style={{ display: "grid", gridTemplateColumns: `repeat(${project.team.length}, 1fr)`, gap: 20, flex: 1, minHeight: 0, alignItems: "start", alignContent: "start" }}>
           {project.team.map((member, i) => (
             <div
               key={i}
@@ -62,18 +61,21 @@ export function ProjectTeamSlide({ project }: { project: ProjectConfig }) {
                 border: `1px solid ${muted(0.10)}`,
                 borderRadius: 6,
                 overflow: "hidden",
+                breakInside: "avoid",
+                pageBreakInside: "avoid",
               }}
             >
-              {/* Photo */}
+              {/* Photo — fixed 2:3 portrait aspect ratio so PDF can't collapse it */}
               <div
                 style={{
-                  flex: 1,
+                  position: "relative",
+                  width: "100%",
+                  aspectRatio: "2/3",
+                  flexShrink: 0,
                   background: teal(0.07),
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  position: "relative",
-                  minHeight: photoMinH,
                   overflow: "hidden",
                 }}
               >

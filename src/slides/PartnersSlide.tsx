@@ -95,7 +95,6 @@ export function PartnersSlide() {
                 background: "rgba(77,186,214,0.04)",
                 display: "flex",
                 flexDirection: "column",
-                overflow: "hidden",
               }}
             >
               {/* Logo area — white background so logos render correctly */}
@@ -112,9 +111,13 @@ export function PartnersSlide() {
                 <img
                   src={partner.logo}
                   alt={partner.name}
+                  width={200}
+                  height={80}
                   style={{
+                    width: "auto",
+                    height: "auto",
                     maxWidth: "100%",
-                    maxHeight: "88px",
+                    maxHeight: "80px",
                     objectFit: "contain",
                     display: "block",
                   }}
