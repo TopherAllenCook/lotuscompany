@@ -126,7 +126,7 @@ export function PipelineSlide() {
                 letterSpacing: "0.08em",
               }}
             >
-              target states: —
+              target states: utah · florida · ohio · colorado · oklahoma · indiana
             </EditableText>
           </div>
         </EditableEl>
