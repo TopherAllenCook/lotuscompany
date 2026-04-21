@@ -75,7 +75,6 @@ export const SLIDE_REGISTRY = [
   // ── University Parkway ────────────────────────────────────────────────────
   { key: "uparkway-cover",        component: () => React.createElement(ProjectCoverSlide,            { project: UPARKWAY }), title: "University Parkway — Cover"              },
   { key: "uparkway-lotus-way",    component: () => React.createElement(ProjectLotusWaySlide,         { project: UPARKWAY }), title: "University Parkway — The Lotus Way"      },
-  { key: "uparkway-impact",       component: () => React.createElement(ProjectImpactDirectiveSlide,  { project: UPARKWAY }), title: "University Parkway — Impact Directive"   },
   { key: "uparkway-investment",   component: () => React.createElement(ProjectInvestmentDirectiveSlide, { project: UPARKWAY }), title: "University Parkway — Investment Directive" },
   { key: "uparkway-commitment",   component: () => React.createElement(ProjectCommitmentSlide,       { project: UPARKWAY }), title: "University Parkway — Commitment + Draw"  },
   { key: "uparkway-partnership",  component: () => React.createElement(ProjectPartnershipTermsSlide, { project: UPARKWAY }), title: "University Parkway — Partnership Terms"  },
