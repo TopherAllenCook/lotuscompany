@@ -70,7 +70,6 @@ export function LotusStructureSlide() {
             most models trade capital, control, or impact. we won&apos;t.
           </EditableText>
 
-          <div style={{ height: "1px", background: teal(0.18), marginBottom: "18px" }} />
 
           <EditableText
             id="structure:caption"

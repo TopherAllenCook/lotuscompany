@@ -86,7 +86,6 @@ export default function MembershipSlide() {
             impact partners collectively share in the gp alongside lotus.
           </EditableText>
 
-          <div style={{ height: "1px", background: "rgba(77,186,214,0.22)", marginBottom: "20px" }} />
 
           {/* Numbered bullets */}
           <div style={{ display: "flex", flexDirection: "column", gap: "14px", flex: 1 }}>

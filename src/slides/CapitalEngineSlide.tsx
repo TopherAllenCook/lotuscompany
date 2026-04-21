@@ -68,13 +68,6 @@ export default function CapitalEngineSlide() {
             capital is advanced early, repaid at closing, and retained through gp economics.
           </EditableText>
 
-          <div
-            style={{
-              height: "1px",
-              background: "rgba(77, 186, 214, 0.18)",
-              marginBottom: "18px",
-            }}
-          />
 
           <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
             <EditableText

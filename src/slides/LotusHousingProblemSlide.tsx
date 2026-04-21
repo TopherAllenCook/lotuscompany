@@ -29,7 +29,6 @@ const bulletVariants = {
 const PERSONAS = [
   {
     initial: "M",
-    img: "/headshots/maya.png",
     name: "maya, 32",
     role: "home health aide",
     stat: "7.2M",
@@ -37,7 +36,6 @@ const PERSONAS = [
   },
   {
     initial: "L",
-    img: "/headshots/letty.jpg",
     name: "letty, 41",
     role: "grocery cashier",
     stat: "1 in 2",
@@ -45,7 +43,6 @@ const PERSONAS = [
   },
   {
     initial: "M",
-    img: "/headshots/marcus.png",
     name: "marcus, 29",
     role: "warehouse worker",
     stat: "8.46M",
@@ -191,7 +188,7 @@ export function LotusHousingProblemSlide() {
                   boxShadow: "0 4px 24px rgba(0,0,0,0.35)",
                 }}
               >
-                {/* Avatar — headshot */}
+                {/* Avatar — initial */}
                 <div
                   style={{
                     width: "64px",
@@ -199,14 +196,15 @@ export function LotusHousingProblemSlide() {
                     borderRadius: "50%",
                     border: `2px solid ${theme.turquoise}`,
                     flexShrink: 0,
-                    overflow: "hidden",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    background: "rgba(77,186,214,0.08)",
                   }}
                 >
-                  <img
-                    src={p.img}
-                    alt={p.name}
-                    style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }}
-                  />
+                  <span style={{ fontSize: "26px", color: theme.turquoise, fontFamily: font, fontWeight: 300, lineHeight: 1 }}>
+                    {p.initial}
+                  </span>
                 </div>
 
                 {/* Name + role */}

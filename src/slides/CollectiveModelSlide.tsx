@@ -94,13 +94,6 @@ export default function CollectiveModelSlide() {
             partners participate in decisions and stay connected to outcomes.
           </EditableText>
 
-          <div
-            style={{
-              height: "1px",
-              background: "rgba(77, 186, 214, 0.18)",
-              marginBottom: "16px",
-            }}
-          />
 
           <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "20px" }}>
             {[

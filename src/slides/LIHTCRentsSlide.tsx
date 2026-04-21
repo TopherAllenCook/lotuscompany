@@ -75,12 +75,11 @@ export function LIHTCRentsSlide() {
 
           <EditableText
             id="lihtc-rents:subtitle" as="div"
-            style={{ fontSize: "13px", color: teal(0.85), fontFamily: font, fontStyle: "italic", fontWeight: 300, textTransform: "lowercase", lineHeight: 1.55, marginBottom: "18px" }}
+            style={{ fontSize: "13px", color: teal(0.85), fontFamily: font, fontStyle: "italic", fontWeight: 300, textTransform: "lowercase", lineHeight: 1.55, marginBottom: "28px" }}
           >
             lower debt service means lower rents. federal credits fill the gap that would otherwise fall on residents.
           </EditableText>
 
-          <div style={{ height: "1px", background: teal(0.20), marginBottom: "18px" }} />
 
           <EditableText
             id="lihtc-rents:mechanic-label" as="div"
