@@ -59,9 +59,9 @@ export function RiskControlsSlide() {
           id="risk-controls:bg-photo"
           label="background photo"
           src="/steelton-village/Steelton I_Updated Lobby_2026.04.02.jpg"
-          style={{ width: "100%", height: "100%", opacity: 0.50 }}
+          style={{ width: "100%", height: "100%", opacity: 0.30 }}
         />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(5,10,12,0.35) 0%, rgba(5,10,12,0.15) 60%, rgba(5,10,12,0.0) 100%)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(5,10,12,0.65) 0%, rgba(5,10,12,0.50) 60%, rgba(5,10,12,0.40) 100%)" }} />
       </div>
 
       <div style={{ position: "relative", display: "flex", flexDirection: "column", height: "100%", padding: "56px 64px 72px" }}>
