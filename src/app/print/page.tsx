@@ -74,7 +74,10 @@ function PrintInner() {
       setProgress(Math.round(((i + 1) / total) * 100));
     }
 
-    pdf.save("lotus-company-deck.pdf");
+    const blob = pdf.output("blob");
+    const url = URL.createObjectURL(blob);
+    window.open(url, "_blank");
+    setTimeout(() => URL.revokeObjectURL(url), 60000);
     setGenerating(false);
     setProgress(0);
   }
