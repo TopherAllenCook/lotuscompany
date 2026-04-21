@@ -100,18 +100,18 @@ export function ProjectTeamSlide({ project }: { project: ProjectConfig }) {
               </div>
 
               {/* Name + title */}
-              <div style={{ padding: "20px 24px 24px", background: "rgba(255,255,255,0.50)" }}>
+              <div style={{ padding: "20px 24px 24px", background: "rgba(255,255,255,0.50)", flexShrink: 0 }}>
                 <EditableText
                   id={`${k}-team:name-${i}`}
                   as="div"
-                  style={{ fontSize: "40px", color: INK, fontFamily: font, fontWeight: 300, letterSpacing: "-0.01em", textTransform: "lowercase", marginBottom: 6 }}
+                  style={{ fontSize: "32px", color: INK, fontFamily: font, fontWeight: 300, letterSpacing: "-0.01em", textTransform: "lowercase", marginBottom: 6, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}
                 >
                   {member.name}
                 </EditableText>
                 <EditableText
                   id={`${k}-team:title-${i}`}
                   as="div"
-                  style={{ fontSize: 12, color: theme.turquoise, fontFamily: font, letterSpacing: "0.20em", textTransform: "lowercase", marginBottom: 16 }}
+                  style={{ fontSize: 12, color: theme.turquoise, fontFamily: font, letterSpacing: "0.20em", textTransform: "lowercase", marginBottom: 16, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}
                 >
                   {member.title}
                 </EditableText>
