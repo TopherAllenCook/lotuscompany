@@ -5,7 +5,6 @@ import { EditableText } from "@/components/EditableText";
 import { EditableEl } from "@/components/EditableEl";
 import { EditableBgImage } from "@/components/EditableBgImage";
 
-const BG = "#424242";
 const INK = "#ffffff";
 const muted = (a: number) => `rgba(255,255,255,${a})`;
 const teal = (a: number) => `rgba(77,186,214,${a})`;
@@ -31,13 +30,6 @@ const DEV_BULLETS = [
   "partners with investors to sell tax credits",
 ];
 
-const CLOSING = [
-  "government allocates tax credits to incentivize affordable housing",
-  "investors provide upfront capital in exchange for those credits",
-  "projects are built with long-term rent restrictions",
-  "ensures compliance with federal regulations",
-];
-
 export default function LIHTCSlide() {
   return (
     <div
@@ -46,118 +38,113 @@ export default function LIHTCSlide() {
         width: "100%",
         height: "100%",
         overflow: "hidden",
-        background: BG,
+        background: theme.darkBg,
         display: "flex",
         flexDirection: "column",
-        padding: "36px 56px 44px",
-        fontFamily: font,
       }}
     >
+      {/* Full-bleed background image */}
+      <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
+        <EditableBgImage
+          id="lihtc:bg-photo"
+          label="background photo"
+          src="/lotus-photos/solar-aerial.jpg"
+          style={{ width: "100%", height: "100%", opacity: 0.52 }}
+        />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(5,10,12,0.30) 0%, rgba(5,10,12,0.12) 50%, rgba(5,10,12,0.02) 100%)" }} />
+      </div>
 
-      <div style={{ display: "flex", gap: "24px", flex: 1, minHeight: 0 }}>
+      {/* Content */}
+      <div style={{ position: "relative", display: "flex", alignItems: "center", height: "100%", padding: "52px 64px 68px", gap: 32 }}>
 
-        {/* ── Left: card ─────────────────────────────────────────────── */}
+        {/* Left: policy card */}
         <EditableEl
           id="lihtc:card"
-          label="left card"
+          label="policy glass card"
           type="card"
           style={{
-            flex: "0 0 38%",
+            flex: "0 0 42%",
             display: "flex",
             flexDirection: "column",
-            border: `1px solid ${muted(0.10)}`,
-            borderRadius: "14px",
-            overflow: "hidden",
+            padding: "32px 36px",
+            background: "rgba(5,10,12,0.54)",
+            backdropFilter: "blur(28px) saturate(200%)",
+            WebkitBackdropFilter: "blur(28px) saturate(200%)",
+            borderRadius: "16px",
+            border: "1px solid rgba(255,255,255,0.15)",
+            boxShadow: "0 8px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.14)",
           }}
         >
-          <div style={{ padding: "24px 28px 20px", flex: 1 }}>
-            <EditableText
-              id="lihtc:eyebrow"
-              as="div"
-              style={{ fontSize: 14, color: theme.turquoise, letterSpacing: "0.28em", textTransform: "lowercase", fontFamily: font, fontWeight: 400, marginBottom: 10 }}
-            >
-              policy
-            </EditableText>
-
-            <EditableText
-              id="lihtc:headline"
-              as="h1"
-              style={{ fontSize: "32px", color: INK, fontWeight: 300, fontFamily: font, lineHeight: 1.1, letterSpacing: "-0.02em", textTransform: "lowercase", margin: "0 0 8px" }}
-            >
-              what is lihtc?
-            </EditableText>
-
-            <EditableText
-              id="lihtc:subtitle"
-              as="div"
-              style={{ fontSize: "15px", color: theme.turquoise, fontFamily: font, fontStyle: "italic", fontWeight: 300, textTransform: "lowercase", marginBottom: "14px", lineHeight: 1.45 }}
-            >
-              lihtc is the operating backbone, not just a backdrop
-            </EditableText>
-
-            <div style={{ height: "1px", background: muted(0.10), marginBottom: "12px" }} />
-
-            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-              {BULLETS.map((b, i) => (
-                <div key={i} style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
-                  <div style={{ width: "5px", height: "5px", borderRadius: "50%", background: theme.turquoise, marginTop: "7px", flexShrink: 0 }} />
-                  <EditableText
-                    id={`lihtc:bullet-${i}`}
-                    as="p"
-                    style={{ fontSize: "15px", color: muted(0.70), fontFamily: font, fontWeight: 300, textTransform: "lowercase", lineHeight: 1.6, margin: 0 }}
-                  >
-                    {b}
-                  </EditableText>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Photo strip at card bottom — EditableEl makes height/width overridable in editor */}
-          <EditableEl
-            id="lihtc:card-photo-container"
-            label="card photo container"
-            type="card"
-            style={{ height: 130, flexShrink: 0, overflow: "hidden" }}
+          <EditableText
+            id="lihtc:eyebrow"
+            as="div"
+            style={{ fontSize: 13, color: theme.turquoise, letterSpacing: "0.28em", textTransform: "lowercase", fontFamily: font, fontWeight: 300, marginBottom: 10 }}
           >
-            <EditableBgImage
-              id="lihtc:card-photo"
-              label="card photo"
-              src="/lotus-photos/solar-aerial.jpg"
-              style={{ width: "100%", height: "100%" }}
-            />
-          </EditableEl>
+            policy
+          </EditableText>
+
+          <EditableText
+            id="lihtc:headline"
+            as="h1"
+            style={{ fontSize: "36px", color: INK, fontWeight: 300, fontFamily: font, lineHeight: 1.15, letterSpacing: "-0.02em", textTransform: "lowercase", margin: "0 0 8px" }}
+          >
+            what is lihtc?
+          </EditableText>
+
+          <EditableText
+            id="lihtc:subtitle"
+            as="div"
+            style={{ fontSize: "15px", color: theme.turquoise, fontFamily: font, fontStyle: "italic", fontWeight: 300, textTransform: "lowercase", marginBottom: "16px", lineHeight: 1.45 }}
+          >
+            lihtc is the operating backbone, not just a backdrop
+          </EditableText>
+
+          <div style={{ height: "1px", background: "rgba(77,186,214,0.18)", marginBottom: "14px" }} />
+
+          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+            {BULLETS.map((b, i) => (
+              <div key={i} style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
+                <div style={{ width: "5px", height: "5px", borderRadius: "50%", background: theme.turquoise, marginTop: "7px", flexShrink: 0 }} />
+                <EditableText
+                  id={`lihtc:bullet-${i}`}
+                  as="p"
+                  style={{ fontSize: "15px", color: muted(0.80), fontFamily: font, fontWeight: 300, textTransform: "lowercase", lineHeight: 1.6, margin: 0 }}
+                >
+                  {b}
+                </EditableText>
+              </div>
+            ))}
+          </div>
         </EditableEl>
 
-        {/* ── Right: infographic ─────────────────────────────────────── */}
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "10px", justifyContent: "center" }}>
+        {/* Right: infographic */}
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "14px", justifyContent: "center" }}>
 
           {/* Header */}
           <div>
             <EditableText
               id="lihtc:infographic-title"
               as="div"
-              style={{ fontSize: 14, color: theme.turquoise, letterSpacing: "0.24em", textTransform: "lowercase", fontFamily: font, marginBottom: 4 }}
+              style={{ fontSize: 13, color: theme.turquoise, letterSpacing: "0.28em", textTransform: "lowercase", fontFamily: font, fontWeight: 300, marginBottom: 4 }}
             >
               how lihtc works
             </EditableText>
             <EditableText
               id="lihtc:infographic-sub"
               as="div"
-              style={{ fontSize: "16px", color: muted(0.65), fontFamily: font, fontWeight: 300, textTransform: "lowercase", lineHeight: 1.5 }}
+              style={{ fontSize: "17px", color: muted(0.80), fontFamily: font, fontWeight: 300, textTransform: "lowercase", lineHeight: 1.5 }}
             >
               how affordable housing is financed in the u.s.
             </EditableText>
           </div>
 
-          <div style={{ height: 1, background: muted(0.08) }} />
+          <div style={{ height: 1, background: "rgba(77,186,214,0.18)" }} />
 
           {/* Flow row */}
           <div style={{ display: "flex", alignItems: "stretch", gap: 0 }}>
             {FLOW_STEPS.map((step, i) => (
-              <div key={i} style={{ display: "flex", alignItems: "center", flex: 1 }}>
-                <div style={{ flex: 1, position: "relative" }}>
-                  {/* Arrow label above connector */}
+              <div key={i} style={{ display: "flex", alignItems: "center", flex: 1, minWidth: 0 }}>
+                <div style={{ flex: 1, position: "relative", minWidth: 0 }}>
                   {step.label && (
                     <div style={{ position: "absolute", top: -18, left: "50%", transform: "translateX(-50%)", whiteSpace: "nowrap" }}>
                       <EditableText
@@ -176,9 +163,11 @@ export default function LIHTCSlide() {
                     style={{
                       textAlign: "center",
                       padding: "10px 10px",
-                      background: teal(0.06),
+                      background: "rgba(5,10,12,0.52)",
+                      backdropFilter: "blur(16px)",
+                      WebkitBackdropFilter: "blur(16px)",
                       borderRadius: "8px",
-                      border: `1px solid ${muted(0.10)}`,
+                      border: "1px solid rgba(255,255,255,0.15)",
                     }}
                   >
                     <EditableText
@@ -191,7 +180,7 @@ export default function LIHTCSlide() {
                     <EditableText
                       id={`lihtc:flow-step-${i}-sub`}
                       as="div"
-                      style={{ fontSize: "12px", color: muted(0.42), fontFamily: font, fontWeight: 300, textTransform: "lowercase" }}
+                      style={{ fontSize: "12px", color: muted(0.50), fontFamily: font, fontWeight: 300, textTransform: "lowercase" }}
                     >
                       {step.sub}
                     </EditableText>
@@ -215,14 +204,16 @@ export default function LIHTCSlide() {
             label="developer / operator bar"
             type="card"
             style={{
-              padding: "12px 16px",
-              background: teal(0.06),
-              border: `1px solid ${muted(0.10)}`,
+              padding: "14px 18px",
+              background: "rgba(5,10,12,0.52)",
+              backdropFilter: "blur(16px)",
+              WebkitBackdropFilter: "blur(16px)",
+              border: "1px solid rgba(255,255,255,0.15)",
               borderLeft: `3px solid ${theme.turquoise}`,
               borderRadius: "8px",
             }}
           >
-            <div style={{ marginBottom: "8px" }}>
+            <div style={{ marginBottom: "10px" }}>
               <EditableText
                 id="lihtc:developer-title"
                 as="div"
@@ -233,19 +224,19 @@ export default function LIHTCSlide() {
               <EditableText
                 id="lihtc:developer-sub"
                 as="div"
-                style={{ fontSize: 14, color: theme.turquoise, fontFamily: font, fontWeight: 400, textTransform: "lowercase", letterSpacing: "0.16em", marginTop: "3px" }}
+                style={{ fontSize: 13, color: theme.turquoise, fontFamily: font, fontWeight: 300, textTransform: "lowercase", letterSpacing: "0.18em", marginTop: "3px" }}
               >
                 lotus impact initiative
               </EditableText>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "4px 16px" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "4px 16px", minWidth: 0 }}>
               {DEV_BULLETS.map((b, i) => (
-                <div key={i} style={{ display: "flex", gap: "8px", alignItems: "flex-start" }}>
+                <div key={i} style={{ display: "flex", gap: "8px", alignItems: "flex-start", minWidth: 0 }}>
                   <div style={{ width: "4px", height: "4px", borderRadius: "50%", background: theme.turquoise, marginTop: "6px", flexShrink: 0 }} />
                   <EditableText
                     id={`lihtc:dev-bullet-${i}`}
                     as="div"
-                    style={{ fontSize: "16px", color: muted(0.65), fontFamily: font, fontWeight: 300, textTransform: "lowercase", lineHeight: 1.5 }}
+                    style={{ fontSize: "15px", color: muted(0.72), fontFamily: font, fontWeight: 300, textTransform: "lowercase", lineHeight: 1.5 }}
                   >
                     {b}
                   </EditableText>
@@ -254,25 +245,8 @@ export default function LIHTCSlide() {
             </div>
           </EditableEl>
 
-          {/* Closing bullets */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-            {CLOSING.map((c, i) => (
-              <div key={i} style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
-                <div style={{ width: "4px", height: "4px", borderRadius: "50%", background: teal(0.50), marginTop: "7px", flexShrink: 0 }} />
-                <EditableText
-                  id={`lihtc:closing-${i}`}
-                  as="div"
-                  style={{ fontSize: "15px", color: muted(0.55), fontFamily: font, fontWeight: 300, textTransform: "lowercase", lineHeight: 1.5 }}
-                >
-                  {c}
-                </EditableText>
-              </div>
-            ))}
-          </div>
-
         </div>
       </div>
-
     </div>
   );
 }

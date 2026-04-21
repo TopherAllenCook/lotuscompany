@@ -134,7 +134,7 @@ export function LotusStructureSlide() {
           paddingLeft: "64px",
           paddingRight: "64px",
           paddingBottom: "72px",
-          overflowY: "hidden",
+          overflow: "hidden",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -149,23 +149,24 @@ export function LotusStructureSlide() {
             border: "1px solid rgba(255,255,255,0.15)",
             boxShadow: "0 8px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.14)",
             overflow: "hidden",
+            minWidth: 0,
           }}
         >
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
-          style={{ fontFamily: font }}
+          style={{ fontFamily: font, minWidth: 0 }}
         >
           {/* Header row */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", background: "rgba(77,186,214,0.12)" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", background: "rgba(77,186,214,0.12)", minWidth: 0 }}>
             {[
               { id: "structure:header-dimension",   label: "dimensions"        },
               { id: "structure:header-philanthropy", label: "philanthropy"      },
               { id: "structure:header-blindpool",    label: "blind-pool fund"   },
               { id: "structure:header-curated",      label: "the lotus collective" },
             ].map((h) => (
-              <div key={h.id} style={{ padding: "10px 16px" }}>
+              <div key={h.id} style={{ padding: "10px 16px", minWidth: 0, overflow: "hidden" }}>
                 <EditableText id={h.id} as="span" style={{ fontSize: "12px", fontWeight: 500, color: theme.turquoise, letterSpacing: "0.14em", textTransform: "uppercase" }}>
                   {h.label}
                 </EditableText>
@@ -182,24 +183,25 @@ export function LotusStructureSlide() {
                 gridTemplateColumns: "1fr 1fr 1fr 1fr",
                 background: rowIdx % 2 === 1 ? "rgba(255,255,255,0.025)" : "transparent",
                 borderTop: rowIdx > 0 ? "1px solid rgba(77,186,214,0.12)" : "none",
+                minWidth: 0,
               }}
             >
-              <div style={{ padding: "12px 16px" }}>
+              <div style={{ padding: "12px 16px", minWidth: 0 }}>
                 <EditableText id={`structure:dim-${rowIdx}`} as="span" style={{ fontSize: "15px", fontWeight: 300, color: "rgba(77,186,214,0.8)", letterSpacing: "0.08em", textTransform: "lowercase" }}>
                   {row.dimension}
                 </EditableText>
               </div>
-              <div style={{ padding: "12px 16px" }}>
+              <div style={{ padding: "12px 16px", minWidth: 0 }}>
                 <EditableText id={`structure:phil-${rowIdx}`} as="span" style={{ fontSize: "16px", fontWeight: 400, color: "rgba(255,255,255,0.80)", textTransform: "lowercase" }}>
                   {row.philanthropy}
                 </EditableText>
               </div>
-              <div style={{ padding: "12px 16px" }}>
+              <div style={{ padding: "12px 16px", minWidth: 0 }}>
                 <EditableText id={`structure:blind-${rowIdx}`} as="span" style={{ fontSize: "16px", fontWeight: 400, color: "rgba(255,255,255,0.80)", textTransform: "lowercase" }}>
                   {row.blindPool}
                 </EditableText>
               </div>
-              <div style={{ padding: "12px 16px" }}>
+              <div style={{ padding: "12px 16px", minWidth: 0 }}>
                 <EditableText id={`structure:curated-${rowIdx}`} as="span" style={{ fontSize: "16px", fontWeight: 400, color: "#fff", textTransform: "lowercase" }}>
                   {row.curated}
                 </EditableText>
