@@ -214,7 +214,7 @@ export const UPARKWAY: ProjectConfig = {
     { name: "emma brooks",      title: "development analyst",     photo: "/headshots/emma-brooks.jpg"      },
     { name: "steven blomquist", title: "director of development", photo: "/headshots/steven-blomquist.jpg" },
     { name: "carden likes",     title: "capital markets manager", photo: "/headshots/carden-likes.jpg"     },
-    { name: "jake jones",       title: "—"                                                                 },
+    { name: "jake jones",       title: "development analyst",     photo: "/headshots/jake-jones.jpg"       },
   ],
   unitMix: [
     { ami: "30% ami", units: 21,  type: "1br"           },
@@ -275,7 +275,7 @@ export const LOTUS_VALE: ProjectConfig = {
     { name: "angie clarke",     title: "development analyst",     photo: "/headshots/angie-clarke.jpg"     },
     { name: "steven blomquist", title: "director of development", photo: "/headshots/steven-blomquist.jpg" },
     { name: "carden likes",     title: "capital markets manager", photo: "/headshots/carden-likes.jpg"     },
-    { name: "scott kim",        title: "—",                       photo: "/headshots/scott-kim.jpg"        },
+    { name: "scott kim",        title: "development associate",   photo: "/headshots/scott-kim.jpg"        },
   ],
   unitMix: [
     { ami: "30% ami", units: 11, type: "1br"           },
