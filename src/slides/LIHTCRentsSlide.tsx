@@ -40,7 +40,7 @@ export function LIHTCRentsSlide() {
       </div>
 
       {/* Main layout */}
-      <div style={{ position: "relative", display: "flex", height: "100%", padding: "36px 52px 40px", gap: 22 }}>
+      <div style={{ position: "relative", display: "flex", height: "100%", padding: "44px 60px 48px", gap: 32 }}>
 
         {/* ── Left: glass card ── */}
         <EditableEl
@@ -48,10 +48,10 @@ export function LIHTCRentsSlide() {
           label="mechanic glass card"
           type="card"
           style={{
-            flex: "0 0 40%",
+            flex: "0 0 38%",
             display: "flex",
             flexDirection: "column",
-            padding: "24px 28px",
+            padding: "28px 32px",
             background: "rgba(5,10,12,0.58)",
             backdropFilter: "blur(32px) saturate(180%)",
             WebkitBackdropFilter: "blur(32px) saturate(180%)",
@@ -61,34 +61,34 @@ export function LIHTCRentsSlide() {
           }}
         >
           <EditableText id="lihtc-rents:eyebrow" as="div"
-            style={{ fontSize: "9px", color: theme.turquoise, letterSpacing: "0.32em", textTransform: "uppercase", fontFamily: font, fontWeight: 500, marginBottom: "8px" }}
+            style={{ fontSize: "9px", color: theme.turquoise, letterSpacing: "0.32em", textTransform: "uppercase", fontFamily: font, fontWeight: 500, marginBottom: "10px" }}
           >
             how lihtc lowers rents
           </EditableText>
 
           <EditableText id="lihtc-rents:headline" as="div"
-            style={{ fontSize: "20px", color: "#ffffff", fontWeight: 300, fontFamily: font, lineHeight: 1.25, letterSpacing: "-0.02em", textTransform: "lowercase", marginBottom: "10px" }}
+            style={{ fontSize: "19px", color: "#ffffff", fontWeight: 300, fontFamily: font, lineHeight: 1.28, letterSpacing: "-0.02em", textTransform: "lowercase", marginBottom: "14px" }}
           >
             tax credits replace equity — residents pay the difference.
           </EditableText>
 
           <EditableText id="lihtc-rents:desc" as="div"
-            style={{ fontSize: "12px", color: muted(0.72), fontFamily: font, fontWeight: 300, lineHeight: 1.60, textTransform: "lowercase", marginBottom: "14px" }}
+            style={{ fontSize: "12px", color: muted(0.72), fontFamily: font, fontWeight: 300, lineHeight: 1.65, textTransform: "lowercase", marginBottom: "18px" }}
           >
             lihtc reduces the debt a development must carry. lower debt service means lower rents — federal tax credits fill the gap that would otherwise fall on residents.
           </EditableText>
 
-          <div style={{ height: "1px", background: teal(0.18), marginBottom: "14px" }} />
+          <div style={{ height: "1px", background: teal(0.18), marginBottom: "18px" }} />
 
           <EditableText id="lihtc-rents:mechanic-title" as="div"
-            style={{ fontSize: "9px", color: theme.turquoise, letterSpacing: "0.28em", textTransform: "uppercase", fontFamily: font, fontWeight: 500, marginBottom: "12px" }}
+            style={{ fontSize: "9px", color: theme.turquoise, letterSpacing: "0.28em", textTransform: "uppercase", fontFamily: font, fontWeight: 500, marginBottom: "14px" }}
           >
             the mechanic
           </EditableText>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "13px" }}>
             {MECHANIC_STEPS.map((item, i) => (
-              <div key={i} style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
+              <div key={i} style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
                 <div style={{ flexShrink: 0, width: "5px", height: "5px", borderRadius: "50%", background: theme.turquoise, marginTop: "7px" }} />
                 <div style={{ fontSize: "12px", color: muted(0.82), fontFamily: font, fontWeight: 300, lineHeight: 1.55, textTransform: "lowercase" }}>
                   <span style={{ color: theme.turquoise, fontWeight: 500 }}>{item.n}. </span>{item.text}
@@ -104,7 +104,7 @@ export function LIHTCRentsSlide() {
           {/* Section header */}
           <div style={{ flexShrink: 0 }}>
             <EditableText id="lihtc-rents:chart-title" as="div"
-              style={{ fontSize: "10px", color: theme.turquoise, letterSpacing: "0.32em", textTransform: "uppercase", fontFamily: font, fontWeight: 500, marginBottom: "7px" }}
+              style={{ fontSize: "10px", color: theme.turquoise, letterSpacing: "0.32em", textTransform: "uppercase", fontFamily: font, fontWeight: 500, marginBottom: "10px" }}
             >
               monthly rent by ami tier vs. dayton market rate
             </EditableText>
@@ -113,7 +113,7 @@ export function LIHTCRentsSlide() {
 
           {/* Market rate reference row */}
           <EditableEl id="lihtc-rents:market-row" label="market rate row" type="card"
-            style={{ flexShrink: 0, display: "flex", justifyContent: "space-between", alignItems: "center", padding: "9px 16px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.09)", borderRadius: "8px" }}
+            style={{ flexShrink: 0, display: "flex", justifyContent: "space-between", alignItems: "center", padding: "12px 20px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.09)", borderRadius: "8px" }}
           >
             <EditableText id="lihtc-rents:market-lbl" as="div"
               style={{ fontSize: "12px", color: muted(0.55), fontFamily: font, textTransform: "lowercase", letterSpacing: "0.06em" }}
@@ -128,7 +128,7 @@ export function LIHTCRentsSlide() {
           </EditableEl>
 
           {/* AMI tier rows */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "8px", flex: 1, minHeight: 0 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "10px", flex: 1, minHeight: 0 }}>
             {tiers.map((tier, i) => {
               const barPct = (tier.rent / marketRent) * 100;
               const barOpacity = 0.38 + i * 0.13;
@@ -140,7 +140,7 @@ export function LIHTCRentsSlide() {
                   type="card"
                   style={{
                     flex: 1,
-                    padding: "0 16px",
+                    padding: "0 20px",
                     background: "rgba(5,10,12,0.42)",
                     backdropFilter: "blur(16px)",
                     WebkitBackdropFilter: "blur(16px)",
@@ -185,14 +185,14 @@ export function LIHTCRentsSlide() {
           </div>
 
           {/* Summary tiles */}
-          <div style={{ flexShrink: 0, display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "8px" }}>
+          <div style={{ flexShrink: 0, display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "10px" }}>
             {[
               { value: "up to 70%",   label: "below market at 30% ami" },
               { value: "$1,015 / mo", label: "avg monthly savings at 30% ami" },
               { value: "15+ yrs",     label: "affordability restriction period" },
             ].map((stat, i) => (
               <EditableEl key={i} id={`lihtc-rents:summary-tile-${i}`} label={`summary tile — ${stat.label}`} type="card"
-                style={{ background: teal(0.07), border: `1px solid ${teal(0.16)}`, borderRadius: "8px", padding: "10px 12px" }}
+                style={{ background: teal(0.07), border: `1px solid ${teal(0.16)}`, borderRadius: "8px", padding: "13px 16px" }}
               >
                 <EditableText id={`lihtc-rents:summary-val-${i}`} as="div"
                   style={{ fontSize: "20px", color: "#ffffff", fontFamily: font, fontWeight: 300, lineHeight: 1, marginBottom: "4px", letterSpacing: "-0.01em" }}
