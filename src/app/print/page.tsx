@@ -45,6 +45,9 @@ function PrintInner() {
     setGenerating(true);
     setProgress(0);
 
+    // Open the target window NOW — inside the user gesture — before any await
+    const pdfWindow = window.open("", "_blank");
+
     try {
       const { default: html2canvas } = await import("html2canvas");
       const { default: jsPDF } = await import("jspdf");
@@ -81,8 +84,19 @@ function PrintInner() {
 
       const blob = pdf.output("blob");
       const url = URL.createObjectURL(blob);
-      window.open(url, "_blank");
+      if (pdfWindow) {
+        pdfWindow.location.href = url;
+      } else {
+        // fallback if popup was blocked
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "lotus-company-deck.pdf";
+        a.click();
+      }
       setTimeout(() => URL.revokeObjectURL(url), 60000);
+    } catch (err) {
+      pdfWindow?.close();
+      throw err;
     } finally {
       runningRef.current = false;
       setGenerating(false);
