@@ -1,27 +1,29 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { font, theme } from "@/lib/theme";
 import { EditableText } from "@/components/EditableText";
 import { EditableEl } from "@/components/EditableEl";
-
-
+import { EditableBgImage } from "@/components/EditableBgImage";
 
 const marketRent = 1450;
 const tiers = [
-  { ami: "30% ami", pct: 30, rent: 435,  savings: marketRent - 435,  label: "extremely low income" },
-  { ami: "50% ami", pct: 50, rent: 725,  savings: marketRent - 725,  label: "very low income"      },
-  { ami: "60% ami", pct: 60, rent: 870,  savings: marketRent - 870,  label: "low income"           },
-  { ami: "80% ami", pct: 80, rent: 1160, savings: marketRent - 1160, label: "moderate income"      },
+  { ami: "30% ami", rent: 435,  savings: marketRent - 435,  label: "extremely low income" },
+  { ami: "50% ami", rent: 725,  savings: marketRent - 725,  label: "very low income"       },
+  { ami: "60% ami", rent: 870,  savings: marketRent - 870,  label: "low income"            },
+  { ami: "80% ami", rent: 1160, savings: marketRent - 1160, label: "moderate income"       },
 ];
 
-const MECHANIC_STEPS: { step: string; text: string; sub?: string }[] = [
-  { step: "01", text: "developer applies for lihtc allocation from the state housing finance agency." },
-  { step: "02", text: "in exchange for lowering rents to 60% of the area median income (ami) or lower, developments qualify for tax credits." },
-  { step: "03", text: "by restricting 100% of units to 60% ami, 100% of residential construction costs can be claimed as a 4% lihtc.", sub: "4% lihtcs generate 4% of your residential costs as a tax credit annually for ten years, effectively providing equity for 40% of the costs of the development." },
-  { step: "05", text: "then apply for 4% lihtc credits through the state housing finance agency and sell these 4% credits to institutional investors, typically banks." },
-  { step: "06", text: "lower rents equal less debt, reducing monthly debt service." },
-  { step: "07", text: "the permanent financing capital stack will then reflect a first mortgage, 4% lihtc investor equity, and deferred developer fee." },
+const MECHANIC_STEPS = [
+  { n: "01", text: "developer applies for lihtc allocation from the state housing finance agency." },
+  { n: "02", text: "in exchange for lowering rents to 60% ami or lower, developments qualify for tax credits." },
+  { n: "03", text: "restricting 100% of units to 60% ami lets 100% of residential construction costs be claimed as a 4% lihtc." },
+  { n: "04", text: "credits are sold to institutional investors (typically banks) to raise equity — reducing required debt." },
+  { n: "05", text: "lower debt means lower rents; the permanent capital stack reflects a first mortgage, investor equity, and deferred developer fee." },
 ];
+
+const muted = (a: number) => `rgba(255,255,255,${a})`;
+const teal  = (a: number) => `rgba(77,186,214,${a})`;
 
 export function LIHTCRentsSlide() {
   return (
@@ -35,301 +37,270 @@ export function LIHTCRentsSlide() {
         fontFamily: font,
       }}
     >
+      {/* Background */}
+      <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
+        <EditableBgImage
+          id="lihtc-rents:bg-photo"
+          label="background photo"
+          src="/steelton-village/Steelton I_Updated Lobby_2026.04.02.jpg"
+          style={{ width: "100%", height: "100%", opacity: 0.35 }}
+        />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(110deg, rgba(5,10,12,0.88) 0%, rgba(5,10,12,0.60) 55%, rgba(5,10,12,0.28) 100%)" }} />
+      </div>
 
+      <div style={{ position: "relative", display: "flex", alignItems: "stretch", height: "100%", padding: "48px 60px 52px", gap: 28 }}>
 
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          height: "100%",
-          padding: "56px 64px 72px",
-        }}
-      >
-        {/* Header */}
-        <div style={{ marginBottom: 16 }}>
+        {/* ── Left: glass card with mechanic steps ── */}
+        <EditableEl
+          id="lihtc-rents:card-left"
+          label="mechanic glass card"
+          type="card"
+          style={{
+            flex: "0 0 42%",
+            display: "flex",
+            flexDirection: "column",
+            padding: "30px 34px",
+            background: "rgba(5,10,12,0.58)",
+            backdropFilter: "blur(32px) saturate(180%)",
+            WebkitBackdropFilter: "blur(32px) saturate(180%)",
+            borderRadius: "16px",
+            border: "1px solid rgba(255,255,255,0.11)",
+            boxShadow: "0 12px 48px rgba(0,0,0,0.50), inset 0 1px 0 rgba(255,255,255,0.08)",
+          }}
+        >
+          {/* Eyebrow */}
           <EditableText
             id="lihtc-rents:eyebrow"
             as="div"
-            style={{
-              fontSize: 12,
-              color: theme.turquoise,
-              letterSpacing: "0.28em",
-              textTransform: "lowercase",
-              fontFamily: font,
-              fontWeight: 300,
-              marginBottom: 10,
-            }}
+            style={{ fontSize: "11px", color: theme.turquoise, letterSpacing: "0.32em", textTransform: "uppercase", fontFamily: font, fontWeight: 500, marginBottom: "10px" }}
           >
             how lihtc lowers rents
           </EditableText>
 
+          {/* Headline — contained so it wraps cleanly */}
           <EditableText
             id="lihtc-rents:headline"
             as="h1"
-            style={{
-              fontSize: "40px",
-              color: "#fff",
-              fontWeight: 300,
-              fontFamily: font,
-              lineHeight: 1.2,
-              letterSpacing: "-0.02em",
-              textTransform: "lowercase",
-            }}
+            style={{ fontSize: "28px", color: "#ffffff", fontWeight: 300, fontFamily: font, lineHeight: 1.22, letterSpacing: "-0.02em", textTransform: "lowercase", margin: "0 0 12px" }}
           >
             tax credits replace equity — residents pay the difference.
           </EditableText>
-        </div>
 
-        <div style={{ height: 1, background: "rgba(77,186,214,0.18)", marginBottom: 24 }} />
+          {/* Description */}
+          <EditableText
+            id="lihtc-rents:desc"
+            as="div"
+            style={{ fontSize: "14px", color: muted(0.70), fontFamily: font, fontWeight: 300, lineHeight: 1.65, textTransform: "lowercase", marginBottom: "18px" }}
+          >
+            lihtc reduces the debt a development must carry. lower debt service means lower rents — federal tax credits fill the gap that would otherwise fall on residents.
+          </EditableText>
 
-        {/* Two-column layout */}
-        <div style={{ display: "flex", gap: 32, flex: 1, minHeight: 0 }}>
+          <div style={{ height: "1px", background: teal(0.18), marginBottom: "18px" }} />
 
-          {/* Left — explanation */}
-          <div style={{ flex: "0 0 38%", display: "flex", flexDirection: "column", gap: 12 }}>
-            <EditableText
-              id="lihtc-rents:desc"
-              as="div"
-              style={{
-                fontSize: "15px",
-                color: "rgba(206,232,238,0.75)",
-                fontFamily: font,
-                fontWeight: 300,
-                lineHeight: 1.65,
-                textTransform: "lowercase",
-              }}
-            >
-              the low-income housing tax credit (lihtc) reduces the amount of debt a development must carry. lower debt service means lower rents — not because the building is cheaper, but because federal tax credits fill the gap that would otherwise fall on residents.
-            </EditableText>
+          {/* Mechanic label */}
+          <EditableText
+            id="lihtc-rents:mechanic-title"
+            as="div"
+            style={{ fontSize: "10px", color: theme.turquoise, letterSpacing: "0.28em", textTransform: "uppercase", fontFamily: font, fontWeight: 500, marginBottom: "14px" }}
+          >
+            the mechanic
+          </EditableText>
 
-            <div style={{ height: 1, background: "rgba(77,186,214,0.10)" }} />
-
-            <EditableText
-              id="lihtc-rents:mechanic-title"
-              as="div"
-              style={{
-                fontSize: 11,
-                color: theme.turquoise,
-                letterSpacing: "0.24em",
-                textTransform: "lowercase",
-                fontFamily: font,
-                marginBottom: 8,
-              }}
-            >
-              the mechanic
-            </EditableText>
-
+          {/* Steps */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "13px", flex: 1 }}>
             {MECHANIC_STEPS.map((item, i) => (
-              <div key={i} style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
-                <EditableText
-                  id={`lihtc-rents:step-num-${i}`}
-                  as="div"
-                  style={{
-                    flexShrink: 0,
-                    fontSize: 10,
-                    color: theme.turquoise,
-                    fontFamily: font,
-                    letterSpacing: "0.16em",
-                    paddingTop: 2,
-                  }}
-                >
-                  {item.step}
-                </EditableText>
-                <div>
-                  <EditableText
-                    id={`lihtc-rents:step-${i}`}
-                    as="div"
-                    style={{
-                      fontSize: "13px",
-                      color: "rgba(206,232,238,0.60)",
-                      fontFamily: font,
-                      fontWeight: 300,
-                      lineHeight: 1.6,
-                      textTransform: "lowercase",
-                    }}
-                  >
-                    {item.text}
-                  </EditableText>
-                  {item.sub && (
-                    <div style={{ display: "flex", gap: 10, marginTop: 5, paddingLeft: 2 }}>
-                      <div style={{ width: 2, background: "rgba(77,186,214,0.30)", borderRadius: 1, flexShrink: 0 }} />
-                      <EditableText
-                        id={`lihtc-rents:step-${i}-sub`}
-                        as="div"
-                        style={{
-                          fontSize: "12px",
-                          color: "rgba(206,232,238,0.40)",
-                          fontFamily: font,
-                          fontWeight: 300,
-                          lineHeight: 1.6,
-                          textTransform: "lowercase",
-                          fontStyle: "italic",
-                        }}
-                      >
-                        {item.sub}
-                      </EditableText>
-                    </div>
-                  )}
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.12 + i * 0.08, duration: 0.42, ease: [0.25, 0.46, 0.45, 0.94] }}
+                style={{ display: "flex", gap: "14px", alignItems: "flex-start" }}
+              >
+                {/* Step badge */}
+                <div style={{
+                  flexShrink: 0,
+                  width: "22px",
+                  height: "22px",
+                  borderRadius: "50%",
+                  background: teal(0.10),
+                  border: `1px solid ${teal(0.35)}`,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginTop: "1px",
+                }}>
+                  <span style={{ fontSize: "9px", color: theme.turquoise, fontFamily: font, fontWeight: 600, lineHeight: 1 }}>
+                    {item.n}
+                  </span>
                 </div>
-              </div>
+                <EditableText
+                  id={`lihtc-rents:step-${i}`}
+                  as="div"
+                  style={{ fontSize: "14px", color: muted(0.78), fontFamily: font, fontWeight: 300, lineHeight: 1.60, textTransform: "lowercase" }}
+                >
+                  {item.text}
+                </EditableText>
+              </motion.div>
             ))}
           </div>
+        </EditableEl>
 
-          {/* Right — rent comparison */}
-          <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 16 }}>
+        {/* ── Right: rent comparison ── */}
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "14px", minWidth: 0 }}>
+
+          {/* Section header */}
+          <div>
             <EditableText
               id="lihtc-rents:chart-title"
               as="div"
-              style={{
-                fontSize: 11,
-                color: theme.turquoise,
-                letterSpacing: "0.24em",
-                textTransform: "lowercase",
-                fontFamily: font,
-              }}
+              style={{ fontSize: "11px", color: theme.turquoise, letterSpacing: "0.32em", textTransform: "uppercase", fontFamily: font, fontWeight: 500, marginBottom: "8px" }}
             >
               monthly rent by ami tier vs. dayton market rate
             </EditableText>
+            <div style={{ height: "1px", background: teal(0.20) }} />
+          </div>
 
-            {/* Market rate reference */}
-            <EditableEl
-              id="lihtc-rents:market-row"
-              label="market rate row"
-              type="card"
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                padding: "10px 16px",
-                background: "rgba(255,255,255,0.04)",
-                border: "1px solid rgba(255,255,255,0.08)",
-                borderRadius: 4,
-              }}
+          {/* Market rate reference row */}
+          <EditableEl
+            id="lihtc-rents:market-row"
+            label="market rate row"
+            type="card"
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              padding: "12px 18px",
+              background: "rgba(255,255,255,0.04)",
+              border: "1px solid rgba(255,255,255,0.09)",
+              borderRadius: "10px",
+            }}
+          >
+            <EditableText
+              id="lihtc-rents:market-lbl"
+              as="div"
+              style={{ fontSize: "13px", color: muted(0.52), fontFamily: font, textTransform: "lowercase", letterSpacing: "0.06em" }}
             >
-              <EditableText
-                id="lihtc-rents:market-lbl"
-                as="div"
-                style={{ fontSize: 12, color: "rgba(206,232,238,0.50)", fontFamily: font, textTransform: "lowercase", letterSpacing: "0.08em" }}
-              >
-                dayton market rate (2br avg)
-              </EditableText>
-              <EditableText
-                id="lihtc-rents:market-val"
-                as="div"
-                style={{ fontSize: "34px", color: "rgba(206,232,238,0.55)", fontFamily: font, fontWeight: 300 }}
-              >
-                ${marketRent.toLocaleString()} / mo
-              </EditableText>
-            </EditableEl>
+              dayton market rate (2br avg)
+            </EditableText>
+            <EditableText
+              id="lihtc-rents:market-val"
+              as="div"
+              style={{ fontSize: "28px", color: muted(0.52), fontFamily: font, fontWeight: 300, letterSpacing: "-0.02em" }}
+            >
+              ${marketRent.toLocaleString()} / mo
+            </EditableText>
+          </EditableEl>
 
-            {/* AMI tier bars */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              {tiers.map((tier, i) => {
-                const barPct = (tier.rent / marketRent) * 100;
-                return (
-                  <EditableEl key={i} id={`lihtc-rents:tier-row-${i}`} label={`tier row — ${tier.ami}`} type="card">
-                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 5 }}>
-                      <EditableText
-                        id={`lihtc-rents:tier-lbl-${i}`}
-                        as="div"
-                        style={{ fontSize: 11, color: theme.turquoise, fontFamily: font, letterSpacing: "0.18em", textTransform: "lowercase" }}
-                      >
-                        {tier.ami} — {tier.label}
-                      </EditableText>
-                      <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
+          {/* AMI tier bars */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "10px", flex: 1 }}>
+            {tiers.map((tier, i) => {
+              const barPct = (tier.rent / marketRent) * 100;
+              const barOpacity = 0.38 + i * 0.13;
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: 14 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.18 + i * 0.09, duration: 0.46, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  style={{ flex: 1 }}
+                >
+                  <EditableEl
+                    id={`lihtc-rents:tier-row-${i}`}
+                    label={`tier row — ${tier.ami}`}
+                    type="card"
+                    style={{
+                      height: "100%",
+                      padding: "12px 16px",
+                      background: "rgba(5,10,12,0.42)",
+                      backdropFilter: "blur(16px)",
+                      WebkitBackdropFilter: "blur(16px)",
+                      border: "1px solid rgba(255,255,255,0.08)",
+                      borderRadius: "10px",
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    {/* Row header */}
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "8px" }}>
+                      <div>
+                        <EditableText
+                          id={`lihtc-rents:tier-ami-${i}`}
+                          as="span"
+                          style={{ fontSize: "11px", color: theme.turquoise, fontFamily: font, letterSpacing: "0.20em", textTransform: "uppercase", fontWeight: 500 }}
+                        >
+                          {tier.ami}
+                        </EditableText>
+                        <span style={{ fontSize: "11px", color: teal(0.45), fontFamily: font, marginLeft: "8px", textTransform: "lowercase" }}>
+                          {tier.label}
+                        </span>
+                      </div>
+                      <div style={{ display: "flex", alignItems: "baseline", gap: "12px" }}>
                         <EditableText
                           id={`lihtc-rents:tier-rent-${i}`}
                           as="div"
-                          style={{ fontSize: "34px", color: "#fff", fontFamily: font, fontWeight: 300 }}
+                          style={{ fontSize: "26px", color: "#ffffff", fontFamily: font, fontWeight: 300, letterSpacing: "-0.02em", lineHeight: 1 }}
                         >
                           ${tier.rent.toLocaleString()}
                         </EditableText>
                         <EditableText
                           id={`lihtc-rents:tier-savings-${i}`}
                           as="div"
-                          style={{ fontSize: 11, color: "rgba(77,186,214,0.65)", fontFamily: font, textTransform: "lowercase" }}
+                          style={{ fontSize: "12px", color: teal(0.72), fontFamily: font, textTransform: "lowercase" }}
                         >
                           saves ${tier.savings.toLocaleString()} / mo
                         </EditableText>
                       </div>
                     </div>
-                    <div style={{ height: 6, background: "rgba(77,186,214,0.10)", borderRadius: 3, overflow: "hidden" }}>
-                      <div
-                        style={{
-                          height: "100%",
-                          width: `${barPct}%`,
-                          background: `rgba(77,186,214,${0.3 + (i * 0.15)})`,
-                          borderRadius: 3,
-                        }}
-                      />
+                    {/* Bar */}
+                    <div style={{ height: "5px", background: teal(0.10), borderRadius: "3px", overflow: "hidden" }}>
+                      <div style={{ height: "100%", width: `${barPct}%`, background: `rgba(77,186,214,${barOpacity})`, borderRadius: "3px" }} />
                     </div>
                   </EditableEl>
-                );
-              })}
-            </div>
+                </motion.div>
+              );
+            })}
+          </div>
 
-            <div style={{ height: 1, background: "rgba(77,186,214,0.10)", marginTop: 4 }} />
-
-            {/* Summary stat */}
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(3, 1fr)",
-                gap: 10,
-              }}
-            >
-              {[
-                { value: "up to 70%",    label: "below market rent at 30% ami" },
-                { value: "$1,015 / mo",  label: "avg monthly savings at 30% ami" },
-                { value: "15+ yrs",      label: "affordability restriction period" },
-              ].map((stat, i) => (
-                <EditableEl
-                  key={i}
-                  id={`lihtc-rents:summary-tile-${i}`}
-                  label={`summary tile — ${stat.label}`}
-                  type="card"
-                  style={{
-                    background: "rgba(77,186,214,0.06)",
-                    border: "1px solid rgba(77,186,214,0.14)",
-                    borderRadius: 4,
-                    padding: "12px 14px",
-                  }}
+          {/* Summary tiles */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "10px" }}>
+            {[
+              { value: "up to 70%",   label: "below market at 30% ami" },
+              { value: "$1,015 / mo", label: "avg monthly savings at 30% ami" },
+              { value: "15+ yrs",     label: "affordability restriction period" },
+            ].map((stat, i) => (
+              <EditableEl
+                key={i}
+                id={`lihtc-rents:summary-tile-${i}`}
+                label={`summary tile — ${stat.label}`}
+                type="card"
+                style={{
+                  background: teal(0.07),
+                  border: `1px solid ${teal(0.16)}`,
+                  borderRadius: "10px",
+                  padding: "12px 14px",
+                }}
+              >
+                <EditableText
+                  id={`lihtc-rents:summary-val-${i}`}
+                  as="div"
+                  style={{ fontSize: "26px", color: "#ffffff", fontFamily: font, fontWeight: 300, lineHeight: 1, marginBottom: "5px", letterSpacing: "-0.01em" }}
                 >
-                  <EditableText
-                    id={`lihtc-rents:summary-val-${i}`}
-                    as="div"
-                    style={{
-                      fontSize: "34px",
-                      color: "#fff",
-                      fontFamily: font,
-                      fontWeight: 300,
-                      lineHeight: 1,
-                      marginBottom: 5,
-                    }}
-                  >
-                    {stat.value}
-                  </EditableText>
-                  <EditableText
-                    id={`lihtc-rents:summary-lbl-${i}`}
-                    as="div"
-                    style={{
-                      fontSize: 10,
-                      color: "rgba(206,232,238,0.40)",
-                      fontFamily: font,
-                      lineHeight: 1.4,
-                      textTransform: "lowercase",
-                    }}
-                  >
-                    {stat.label}
-                  </EditableText>
-                </EditableEl>
-              ))}
-            </div>
+                  {stat.value}
+                </EditableText>
+                <EditableText
+                  id={`lihtc-rents:summary-lbl-${i}`}
+                  as="div"
+                  style={{ fontSize: "11px", color: muted(0.52), fontFamily: font, lineHeight: 1.4, textTransform: "lowercase" }}
+                >
+                  {stat.label}
+                </EditableText>
+              </EditableEl>
+            ))}
           </div>
         </div>
+
       </div>
-
-
     </div>
   );
 }
