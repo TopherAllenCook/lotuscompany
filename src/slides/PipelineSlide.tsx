@@ -231,6 +231,7 @@ export function PipelineSlide() {
                     flexShrink: 0,
                   }}
                 >
+                  {" "}
                 </EditableText>
               </EditableEl>
             );
