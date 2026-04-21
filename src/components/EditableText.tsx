@@ -387,7 +387,7 @@ export function EditableText<T extends keyof React.JSX.IntrinsicElements = "div"
   );
 
   const displayChildren =
-    override.content !== undefined && typeof children === "string"
+    override.content !== undefined && override.content !== "" && typeof children === "string"
       ? override.content
       : children;
 
