@@ -59,20 +59,21 @@ export function LIHTCRentsSlide() {
             flex: "0 0 40%",
             display: "flex",
             flexDirection: "column",
-            padding: "24px 28px",
+            padding: "22px 26px",
             background: "rgba(5,10,12,0.58)",
             backdropFilter: "blur(32px) saturate(180%)",
             WebkitBackdropFilter: "blur(32px) saturate(180%)",
             borderRadius: "14px",
             border: "1px solid rgba(255,255,255,0.11)",
             boxShadow: "0 12px 48px rgba(0,0,0,0.50), inset 0 1px 0 rgba(255,255,255,0.08)",
+            overflow: "hidden",
           }}
         >
           {/* Eyebrow */}
           <EditableText
             id="lihtc-rents:eyebrow"
             as="div"
-            style={{ fontSize: "10px", color: theme.turquoise, letterSpacing: "0.32em", textTransform: "uppercase", fontFamily: font, fontWeight: 500, marginBottom: "8px" }}
+            style={{ fontSize: "9px", color: theme.turquoise, letterSpacing: "0.32em", textTransform: "uppercase", fontFamily: font, fontWeight: 500, marginBottom: "6px", flexShrink: 0 }}
           >
             how lihtc lowers rents
           </EditableText>
@@ -81,7 +82,7 @@ export function LIHTCRentsSlide() {
           <EditableText
             id="lihtc-rents:headline"
             as="h1"
-            style={{ fontSize: "22px", color: "#ffffff", fontWeight: 300, fontFamily: font, lineHeight: 1.22, letterSpacing: "-0.02em", textTransform: "lowercase", margin: "0 0 10px" }}
+            style={{ fontSize: "20px", color: "#ffffff", fontWeight: 300, fontFamily: font, lineHeight: 1.22, letterSpacing: "-0.02em", textTransform: "lowercase", margin: "0 0 8px", flexShrink: 0 }}
           >
             tax credits replace equity — residents pay the difference.
           </EditableText>
@@ -90,31 +91,31 @@ export function LIHTCRentsSlide() {
           <EditableText
             id="lihtc-rents:desc"
             as="div"
-            style={{ fontSize: "13px", color: muted(0.70), fontFamily: font, fontWeight: 300, lineHeight: 1.60, textTransform: "lowercase", marginBottom: "14px" }}
+            style={{ fontSize: "12px", color: muted(0.70), fontFamily: font, fontWeight: 300, lineHeight: 1.55, textTransform: "lowercase", marginBottom: "12px", flexShrink: 0 }}
           >
             lihtc reduces the debt a development must carry. lower debt service means lower rents — federal tax credits fill the gap that would otherwise fall on residents.
           </EditableText>
 
-          <div style={{ height: "1px", background: teal(0.18), marginBottom: "14px" }} />
+          <div style={{ height: "1px", background: teal(0.18), marginBottom: "12px", flexShrink: 0 }} />
 
           {/* Mechanic label */}
           <EditableText
             id="lihtc-rents:mechanic-title"
             as="div"
-            style={{ fontSize: "9px", color: theme.turquoise, letterSpacing: "0.28em", textTransform: "uppercase", fontFamily: font, fontWeight: 500, marginBottom: "12px" }}
+            style={{ fontSize: "9px", color: theme.turquoise, letterSpacing: "0.28em", textTransform: "uppercase", fontFamily: font, fontWeight: 500, marginBottom: "10px", flexShrink: 0 }}
           >
             the mechanic
           </EditableText>
 
           {/* Steps */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "10px", flex: 1 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
             {MECHANIC_STEPS.map((item, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, x: -8 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.10 + i * 0.07, duration: 0.38, ease: [0.25, 0.46, 0.45, 0.94] }}
-                style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}
+                style={{ display: "flex", gap: "10px", alignItems: "flex-start", flexShrink: 0 }}
               >
                 {/* Step badge */}
                 <div style={{
@@ -136,7 +137,7 @@ export function LIHTCRentsSlide() {
                 <EditableText
                   id={`lihtc-rents:step-${i}`}
                   as="div"
-                  style={{ fontSize: "12px", color: muted(0.78), fontFamily: font, fontWeight: 300, lineHeight: 1.55, textTransform: "lowercase" }}
+                  style={{ fontSize: "11px", color: muted(0.78), fontFamily: font, fontWeight: 300, lineHeight: 1.50, textTransform: "lowercase" }}
                 >
                   {item.text}
                 </EditableText>
