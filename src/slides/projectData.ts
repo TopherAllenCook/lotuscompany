@@ -211,8 +211,9 @@ export const UPARKWAY: ProjectConfig = {
   team: [
     { name: "andrea palmer",  title: "development associate" },
     { name: "emma brooks",    title: "development analyst"   },
-    { name: "steven carden",  title: "—"                     },
-    { name: "jake jones",     title: "—"                     },
+    { name: "steven blomquist", title: "director of development" },
+    { name: "carden likes",    title: "capital markets manager" },
+    { name: "jake jones",      title: "—"                       },
   ],
   unitMix: [
     { ami: "30% ami", units: 21,  type: "1br"           },
