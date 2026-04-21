@@ -17,6 +17,7 @@ function PrintInner() {
   const [generating, setGenerating] = useState(false);
   const [progress, setProgress] = useState(0);
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
+  const [buildError, setBuildError] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const runningRef = useRef(false);
 
@@ -49,6 +50,7 @@ function PrintInner() {
     if (!containerRef.current || runningRef.current) return;
     runningRef.current = true;
     setPdfUrl(null);
+    setBuildError(null);
     setGenerating(true);
     setProgress(0);
 
@@ -76,6 +78,7 @@ function PrintInner() {
           width: 1440,
           height: 810,
           logging: false,
+          imageTimeout: 15000,
         });
 
         if (i > 0) pdf.addPage([1440, 810], "landscape");
@@ -85,6 +88,8 @@ function PrintInner() {
 
       const blob = pdf.output("blob");
       setPdfUrl(URL.createObjectURL(blob));
+    } catch (err) {
+      setBuildError(err instanceof Error ? err.message : String(err));
     } finally {
       runningRef.current = false;
       setGenerating(false);
@@ -203,6 +208,11 @@ function PrintInner() {
         {generating && (
           <span style={{ fontSize: 11, color: "rgba(255,255,255,0.35)", letterSpacing: "0.1em" }}>
             capturing {progress}% — this takes about a minute
+          </span>
+        )}
+        {buildError && (
+          <span style={{ fontSize: 11, color: "#f87171", letterSpacing: "0.06em", maxWidth: 600 }}>
+            error: {buildError}
           </span>
         )}
       </div>
