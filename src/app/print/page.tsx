@@ -14,44 +14,12 @@ export default function PrintPage() {
 
 function PrintInner() {
   const [ready, setReady] = useState(false);
-  const [countdown, setCountdown] = useState(3);
 
+  // Give Supabase overrides + images 3s to load before enabling print
   useEffect(() => {
-    // Wait for Supabase overrides + images to load before enabling print
-    const imgs = Array.from(document.images);
-    let settled = false;
-
-    function checkReady() {
-      if (settled) return;
-      settled = true;
-      // Additional 500ms buffer after images for font rendering
-      setTimeout(() => setReady(true), 500);
-    }
-
-    const allLoaded = imgs.every((img) => img.complete);
-    if (allLoaded && imgs.length > 0) {
-      checkReady();
-    } else {
-      // Wait for all images to load, with 4s max timeout
-      let loaded = 0;
-      const total = imgs.length || 1;
-      const onLoad = () => { loaded++; if (loaded >= total) checkReady(); };
-      imgs.forEach((img) => {
-        if (img.complete) { loaded++; }
-        else { img.addEventListener("load", onLoad); img.addEventListener("error", onLoad); }
-      });
-      if (loaded >= total) checkReady();
-      // Fallback timeout
-      setTimeout(checkReady, 4000);
-    }
+    const t = setTimeout(() => setReady(true), 3000);
+    return () => clearTimeout(t);
   }, []);
-
-  // Countdown display while loading
-  useEffect(() => {
-    if (ready) return;
-    const t = setInterval(() => setCountdown((c) => Math.max(0, c - 1)), 1000);
-    return () => clearInterval(t);
-  }, [ready]);
 
   return (
     <div style={{ margin: 0, padding: 0, background: "#050a0c" }}>
@@ -62,8 +30,7 @@ function PrintInner() {
           position: "fixed", top: 0, left: 0, right: 0, zIndex: 1000,
           display: "flex", alignItems: "center", gap: 12,
           padding: "12px 20px",
-          background: "rgba(5,10,12,0.92)",
-          backdropFilter: "blur(12px)",
+          background: "rgba(5,10,12,0.95)",
           borderBottom: "1px solid rgba(255,255,255,0.08)",
         }}
       >
@@ -71,19 +38,19 @@ function PrintInner() {
           onClick={() => window.print()}
           disabled={!ready}
           style={{
-            padding: "10px 24px",
-            background: ready ? "#4dbad6" : "rgba(77,186,214,0.3)",
-            color: ready ? "#050a0c" : "rgba(5,10,12,0.5)",
+            padding: "10px 28px",
+            background: ready ? "#4dbad6" : "rgba(77,186,214,0.25)",
+            color: ready ? "#050a0c" : "rgba(255,255,255,0.3)",
             border: "none",
             borderRadius: 4,
             cursor: ready ? "pointer" : "not-allowed",
             fontSize: 13,
             fontWeight: 600,
             letterSpacing: "0.08em",
-            transition: "all 0.3s ease",
+            transition: "all 0.4s ease",
           }}
         >
-          {ready ? "print / save pdf" : `preparing… ${countdown > 0 ? countdown : ""}`}
+          {ready ? "print / save pdf" : "preparing…"}
         </button>
 
         <button
@@ -91,25 +58,23 @@ function PrintInner() {
           style={{
             padding: "10px 18px",
             background: "transparent",
-            color: "rgba(255,255,255,0.5)",
-            border: "1px solid rgba(255,255,255,0.15)",
+            color: "rgba(255,255,255,0.4)",
+            border: "1px solid rgba(255,255,255,0.12)",
             borderRadius: 4,
             cursor: "pointer",
             fontSize: 13,
           }}
         >
-          back
+          ← back
         </button>
 
-        <span style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", letterSpacing: "0.1em", marginLeft: 8 }}>
-          {ready
-            ? "in chrome: destination → save as pdf · background graphics → on"
-            : "loading content and images…"}
+        <span style={{ fontSize: 11, color: "rgba(255,255,255,0.25)", letterSpacing: "0.1em", marginLeft: 4 }}>
+          chrome: destination → save as pdf · background graphics → on · scale → 100%
         </span>
       </div>
 
-      {/* Spacer so slides don't hide behind toolbar */}
-      <div className="no-print" style={{ height: 57 }} />
+      {/* Spacer */}
+      <div className="no-print" style={{ height: 53 }} />
 
       {/* Slides */}
       {slides.map((slide, i) => (
